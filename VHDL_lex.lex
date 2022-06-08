@@ -163,6 +163,12 @@ eol = ("\013\010"|"\010"|"\013");
 "xnor"  => (col1:=yypos-(!eolpos); col2:=(!col1) + 3;  pri (yytext,!lin,!col1, !col2); Tokens.XNOR(!lin1,!col1,!lin1,!col2));
 "xor"  => (col1:=yypos-(!eolpos); col2:=(!col1) + 2;  pri (yytext,!lin,!col1, !col2); Tokens.XOR(!lin1,!col1,!lin1,!col2));
 
+"val"  => (col1:=yypos-(!eolpos); col2:=(!col1) + 2;  pri (yytext,!lin,!col1, !col2); Tokens.VAL(!lin1,!col1,!lin1,!col2));
+"lst"  => (col1:=yypos-(!eolpos); col2:=(!col1) + 2;  pri (yytext,!lin,!col1, !col2); Tokens.LST(!lin1,!col1,!lin1,!col2));
+"elt"  => (col1:=yypos-(!eolpos); col2:=(!col1) + 2;  pri (yytext,!lin,!col1, !col2); Tokens.ELT(!lin1,!col1,!lin1,!col2));
+"pos"  => (col1:=yypos-(!eolpos); col2:=(!col1) + 2;  pri (yytext,!lin,!col1, !col2); Tokens.POS(!lin1,!col1,!lin1,!col2));
+"len"  => (col1:=yypos-(!eolpos); col2:=(!col1) + 2;  pri (yytext,!lin,!col1, !col2); Tokens.LEN(!lin1,!col1,!lin1,!col2));
+
 {digit} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin,!col1, !col2); Tokens.INT_CONST(yytext,!lin1,!col1,!lin1,!col2));
 {id} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin,!col1, !col2); Tokens.ID(yytext,!lin1,!col1,!lin1,!col2));
 
