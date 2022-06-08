@@ -176,6 +176,19 @@ eol = ("\013\010"|"\010"|"\013");
 "pos"  => (col1:=yypos-(!eolpos); col2:=(!col1) + 2;  pri (yytext,!lin,!col1, !col2); Tokens.POS(!lin1,!col1,!lin1,!col2));
 "len"  => (col1:=yypos-(!eolpos); col2:=(!col1) + 2;  pri (yytext,!lin,!col1, !col2); Tokens.LEN(!lin1,!col1,!lin1,!col2));
 
+"std_logic"  => (col1:=yypos-(!eolpos); col2:=(!col1) + 8;  pri (yytext,!lin,!col1, !col2); Tokens.STD_LOGIC(!lin1,!col1,!lin1,!col2));
+"std_logic_vector"  => (col1:=yypos-(!eolpos); col2:=(!col1) + 15;  pri (yytext,!lin,!col1, !col2); Tokens.STD_LOGIC_VECTOR(!lin1,!col1,!lin1,!col2));
+"std_ulogic"  => (col1:=yypos-(!eolpos); col2:=(!col1) + 9;  pri (yytext,!lin,!col1, !col2); Tokens.STD_ULOGIC(!lin1,!col1,!lin1,!col2));
+"std_ulogic_vector"  => (col1:=yypos-(!eolpos); col2:=(!col1) + 16;  pri (yytext,!lin,!col1, !col2); Tokens.STD_ULOGIC_VECTOR(!lin1,!col1,!lin1,!col2));
+"bit"  => (col1:=yypos-(!eolpos); col2:=(!col1) + 2;  pri (yytext,!lin,!col1, !col2); Tokens.BIT(!lin1,!col1,!lin1,!col2));
+"bit_vector"  => (col1:=yypos-(!eolpos); col2:=(!col1) + 2;  pri (yytext,!lin,!col1, !col2); Tokens.BIT_VECTOR(!lin1,!col1,!lin1,!col2));
+"string"  => (col1:=yypos-(!eolpos); col2:=(!col1) + 2;  pri (yytext,!lin,!col1, !col2); Tokens.STRING(!lin1,!col1,!lin1,!col2));
+"time"  => (col1:=yypos-(!eolpos); col2:=(!col1) + 2;  pri (yytext,!lin,!col1, !col2); Tokens.TIME(!lin1,!col1,!lin1,!col2));
+"numeric"  => (col1:=yypos-(!eolpos); col2:=(!col1) + 2;  pri (yytext,!lin,!col1, !col2); Tokens.NUMERIC(!lin1,!col1,!lin1,!col2));
+"boolean"  => (col1:=yypos-(!eolpos); col2:=(!col1) + 2;  pri (yytext,!lin,!col1, !col2); Tokens.BOOLEAN(!lin1,!col1,!lin1,!col2));
+"character"  => (col1:=yypos-(!eolpos); col2:=(!col1) + 2;  pri (yytext,!lin,!col1, !col2); Tokens.CHARACTER(!lin1,!col1,!lin1,!col2));
+
+
 {integer} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin,!col1, !col2); Tokens.INTEGER(yytext,!lin1,!col1,!lin1,!col2));
 {real_num} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin,!col1, !col2); Tokens.REAL_NUM(yytext,!lin1,!col1,!lin1,!col2));
 {hex_num} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin,!col1, !col2); Tokens.HEX_NUM(yytext,!lin1,!col1,!lin1,!col2));
