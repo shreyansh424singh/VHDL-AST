@@ -20,11 +20,9 @@ structure Tokens = Tokens
     val pri :   string * int * int * int -> unit = fn
             (bad,line,col1, col2) =>
             TextIO.output(TextIO.stdOut,bad^"  ------  " ^
-             "["
-            ^Int.toString line^"."^Int.toString col1
-            ^"]  -  "^  "["
-            ^Int.toString line^"."^Int.toString col2
-            ^"]" ^  "\n");
+            "["^Int.toString line^"."^Int.toString col1
+            ^"]  -  "^  "["^Int.toString line^"."^
+            Int.toString col2^"]" ^  "\n");
 
     val eof = fn fileName => Tokens.EOF (!lin1,!col1,!lin1,!col2);
 
@@ -33,8 +31,16 @@ structure Tokens = Tokens
 %arg (fileName:string);
 id = [a-zA-Z]+[a-zA-Z0-9]*;
 whitespace = [\ \t]+;
-num =  ["+"|"-"]?[0-9]+;
-(* hex_num =  ["x"][0-9]+; *)
+integer =  ["+"|"-"]?[0-9]+;
+real_num = ["+"|"-"]?[0-9]+["."][0-9]+;
+hex_num = ["16#"]?[0-9A-Fa-f]["#"];
+bin_num = ["2#"]?[0-1_]+["#"];
+realExp_num = ["+"|"-"]?[0-9]+["."][0-9]+["E"]["+"|"-"]?[0-9]+;
+bin_vec = ["B"]?["\""][0-1_]+["\""];
+dec_vec = ["0"]?["\""][0-9]+["\""];
+hex_vec = [xX]?["\""][0-9a-fA-F]+["\""];
+array = [\'].*[\']
+string = ["\""].*["\""]
 eol = ("\013\010"|"\010"|"\013");
 
 %%
@@ -170,7 +176,16 @@ eol = ("\013\010"|"\010"|"\013");
 "pos"  => (col1:=yypos-(!eolpos); col2:=(!col1) + 2;  pri (yytext,!lin,!col1, !col2); Tokens.POS(!lin1,!col1,!lin1,!col2));
 "len"  => (col1:=yypos-(!eolpos); col2:=(!col1) + 2;  pri (yytext,!lin,!col1, !col2); Tokens.LEN(!lin1,!col1,!lin1,!col2));
 
-{digit} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin,!col1, !col2); Tokens.INT_CONST(yytext,!lin1,!col1,!lin1,!col2));
+{integer} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin,!col1, !col2); Tokens.INTEGER(yytext,!lin1,!col1,!lin1,!col2));
+{real_num} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin,!col1, !col2); Tokens.REAL_NUM(yytext,!lin1,!col1,!lin1,!col2));
+{hex_num} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin,!col1, !col2); Tokens.HEX_NUM(yytext,!lin1,!col1,!lin1,!col2));
+{bin_num} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin,!col1, !col2); Tokens.BIN_NUM(yytext,!lin1,!col1,!lin1,!col2));
+{realexp_num} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin,!col1, !col2); Tokens.REALEXP_NUM(yytext,!lin1,!col1,!lin1,!col2));
+{bin_vec} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin,!col1, !col2); Tokens.BIN_VEC(yytext,!lin1,!col1,!lin1,!col2));
+{dec_vec} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin,!col1, !col2); Tokens.DEC_VEC(yytext,!lin1,!col1,!lin1,!col2));
+{hex_vec} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin,!col1, !col2); Tokens.HEX_VEC(yytext,!lin1,!col1,!lin1,!col2));
+{array} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin,!col1, !col2); Tokens.ARRAY(yytext,!lin1,!col1,!lin1,!col2));
+{string} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin,!col1, !col2); Tokens.STRING(yytext,!lin1,!col1,!lin1,!col2));
 {id} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin,!col1, !col2); Tokens.ID(yytext,!lin1,!col1,!lin1,!col2));
 
 {whitespace}+ => (continue());
