@@ -33,7 +33,8 @@ structure Tokens = Tokens
 %arg (fileName:string);
 id = [a-zA-Z]+[a-zA-Z0-9]*;
 whitespace = [\ \t]+;
-digit =  ["+"|"~"]?[0-9]+;
+num =  ["+"|"-"]?[0-9]+;
+(* hex_num =  ["x"][0-9]+; *)
 eol = ("\013\010"|"\010"|"\013");
 
 %%
