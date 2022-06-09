@@ -41,6 +41,7 @@ dec_vec = ["0"]?["\""][0-9]+["\""];
 hex_vec = [xX]?["\""][0-9a-fA-F]+["\""];
 array = [\'].*[\']
 string = ["\""].*["\""]
+comment = ["--"].*["\n"|"\013\010"|"\010"|"\013"]
 eol = ("\013\010"|"\010"|"\013");
 
 %%
@@ -188,7 +189,6 @@ eol = ("\013\010"|"\010"|"\013");
 "boolean"  => (col1:=yypos-(!eolpos); col2:=(!col1) + 2;  pri (yytext,!lin,!col1, !col2); Tokens.BOOLEAN(!lin1,!col1,!lin1,!col2));
 "character"  => (col1:=yypos-(!eolpos); col2:=(!col1) + 2;  pri (yytext,!lin,!col1, !col2); Tokens.CHARACTER(!lin1,!col1,!lin1,!col2));
 
-
 {integer} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin,!col1, !col2); Tokens.INTEGER(yytext,!lin1,!col1,!lin1,!col2));
 {real_num} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin,!col1, !col2); Tokens.REAL_NUM(yytext,!lin1,!col1,!lin1,!col2));
 {hex_num} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin,!col1, !col2); Tokens.HEX_NUM(yytext,!lin1,!col1,!lin1,!col2));
@@ -203,5 +203,6 @@ eol = ("\013\010"|"\010"|"\013");
 
 {whitespace}+ => (continue());
 {eol} => (lin1:=(!lin1)+1; eolpos:=yypos+size yytext; continue());
+{comment} => (lin1:=(!lin1)+1; eolpos:=yypos+size yytext; continue());
 
 . => (col1:=yypos-(!eolpos); badCh (fileName,yytext,!lin1,!col1,!lin1,!col2); continue());
