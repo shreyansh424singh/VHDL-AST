@@ -580,3 +580,304 @@ struct
 end
    
 
+    and   if_statement = IF_STATEMENT_1 of label * condition * sequential_statement_body * condition list * sequential_statement_body list * sequential_statement_body * label
+                       | IF_STATEMENT_2 of condition * sequential_statement_body * condition list * sequential_statement_body list * sequential_statement_body * label
+                       | IF_STATEMENT_3 of label * condition * sequential_statement_body * condition list * sequential_statement_body list * label
+                       | IF_STATEMENT_4 of condition * sequential_statement_body * condition list * sequential_statement_body list * label
+                       | IF_STATEMENT_5 of label * condition * sequential_statement_body * condition list * sequential_statement_body list
+                       | IF_STATEMENT_6 of condition * sequential_statement_body * condition list * sequential_statement_body list
+                       | IF_STATEMENT_7 of label * condition * sequential_statement_body * condition list * sequential_statement_body list * sequential_statement_body
+                       | IF_STATEMENT_8 of condition * sequential_statement_body * condition list * sequential_statement_body list * sequential_statement_body
+
+    and   incomplete_subtype_indication = INCOMPLETE_SUBTYPE_INDICATION_1 of subtype_indication
+                                        | INCOMPLETE_SUBTYPE_INDICATION_2 of anonymous_type_indication                       
+
+    and   incomplete_type_declaration = INCOMPLETE_TYPE_DECLARATION of identifier
+
+    and   incomplete_type_definition = INCOMPLETE_TYPE_DEFINITION_1 of private_incomplete_type_definition
+                                     | INCOMPLETE_TYPE_DEFINITION_2 of scalar_incomplete_type_definition
+                                     | INCOMPLETE_TYPE_DEFINITION_3 of discrete_incomplete_type_definition
+                                     | INCOMPLETE_TYPE_DEFINITION_4 of integer_incomplete_type_definition
+                                     | INCOMPLETE_TYPE_DEFINITION_5 of physical_incomplete_type_definition
+                                     | INCOMPLETE_TYPE_DEFINITION_6 of floating_incomplete_type_definition
+                                     | INCOMPLETE_TYPE_DEFINITION_7 of array_incomplete_type_definition
+                                     | INCOMPLETE_TYPE_DEFINITION_8 of access_incomplete_type_definition
+                                     | INCOMPLETE_TYPE_DEFINITION_9 of file_incomplete_type_definition                                          
+
+    and   incomplete_type_mark = INCOMPLETE_TYPE_MARK_1 of type_mark
+                               | INCOMPLETE_TYPE_MARK_2 of anonymous_type_indication                                     
+
+    and   index_constraint = INDEX_CONSTRAINT of discrete_range list
+
+    and   index_subtype_definition = INDEX_SUBTYPE_DEFINITION of type_mark
+
+    and   indexed_name = INDEXED_NAME of prefix * expression list
+
+    and   instantiated_unit = INSTANTIATED_UNIT_1 of name
+                            | INSTANTIATED_UNIT_2 of name * identifier
+
+    and   instantiation_list = INSTANTIATION_LIST of label list                                                           
+                             | OTHERS | ALL
+
+    and   integer = INTEGER of digit list
+
+    and   integer_incomplete_type_definition = RANGE
+
+    and   integer_type_definition = INTEGER_TYPE_DEFINITION of range_constraint
+
+    and   interface_constant_declaration = INTERFACE_CONSTANT_DECLARATION_1 of identifier_list * interface_type_indication * conditional_expression                               
+                                         | INTERFACE_CONSTANT_DECLARATION_2 of identifier_list * interface_type_indication
+
+    and   interface_declaration = INTERFACE_DECLARATION_1 of interface_object_declaration
+                                | INTERFACE_DECLARATION_2 of interface_type_declaration
+                                | INTERFACE_DECLARATION_3 of interface_subprogram_declaration
+                                | INTERFACE_DECLARATION_4 of interface_package_declaration                                          
+
+    and   interface_element = INTERFACE_ELEMENT of interface_declaration
+
+    and   interface_file_declaration = INTERFACE_FILE_DECLARATION of identifier_list * subtype_indication                                
+
+    and   interface_function_specification = INTERFACE_FUNCTION_SPECIFICATION_1 of designator * formal_parameter_list * type_mark
+                                           | INTERFACE_FUNCTION_SPECIFICATION_2 of designator * type_mark
+
+    and   interface_incomplete_type_declaration = INTERFACE_INCOMPLETE_TYPE_DECLARATION of identifier
+
+    and   interface_list = INTERFACE_LIST of interface_element list
+
+    and   interface_object_declaration = INTERFACE_OBJECT_DECLARATION_1 of interface_constant_declaration
+                                       | INTERFACE_OBJECT_DECLARATION_2 of interface_signal_declaration
+                                       | INTERFACE_OBJECT_DECLARATION_3 of interface_variable_declaration
+                                       | INTERFACE_OBJECT_DECLARATION_4 of interface_file_declaration                                           
+
+    and   interface_package_declaration = INTERFACE_PACKAGE_DECLARATION of identifier * name * interface_package_generic_map_aspect
+
+    and   interface_package_generic_map_aspect = INTERFACE_PACKAGE_GENERIC_MAP_ASPECT of generic_map_aspect
+                                               (* |      WHAT TO WRITE???                                   *)
+
+    and   interface_procedure_specification = INTERFACE_PROCEDURE_SPECIFICATION_1 of designator *  formal_parameter_list                                                
+                                            | INTERFACE_PROCEDURE_SPECIFICATION_2 of designator 
+
+    and   interface_signal_declaration = INTERFACE_SIGNAL_DECLARATION_1 of identifier_list * interface_type_indication * static_conditional_expression                                             
+                                       | INTERFACE_SIGNAL_DECLARATION_2 of identifier_list * interface_type_indication 
+
+    and   interface_subprogram_declaration = INTERFACE_SUBPROGRAM_DECLARATION_1 of interface_subprogram_specification * interface_subprogram_default                                                                                    
+                                           | INTERFACE_SUBPROGRAM_DECLARATION_2 of interface_subprogram_specification
+
+    and   interface_type_declaration = INTERFACE_TYPE_DECLARATION of interface_incomplete_type_declaration
+
+    and   interface_type_indication = INTERFACE_TYPE_INDICATION_1 of subtype_indication
+                                    | INTERFACE_TYPE_INDICATION_2 of anonymous_type_indication                                           
+
+    and   interface_variable_declaration = INTERFACE_VARIABLE_DECLARATION_1 of  identifier_list * interface_type_indication * expression                                    
+                                         | INTERFACE_VARIABLE_DECLARATION_2 of  identifier_list * interface_type_indication                                     
+
+    and   iteration_scheme    = ITERATION_SCHEME_1 of condition                                          
+                           | ITERATION_SCHEME_2 of parameter_specification
+
+    and   label = LABEL of identifier
+
+    and   letter = LETTER_1 of upper_case_letter                                                                     
+                 | LETTER_2 of lower_case_letter                                                                     
+
+    and   letter_or_digit = LETTER_OR_DIGIT_1 of letter                 
+                          | LETTER_OR_DIGIT_2 of digit
+
+    and   library_clause = LIBRARY_CLAUSE of logical_name_list
+
+    and   library_unit = LIBRARY_UNIT_1 of primary_unit                                           
+                       | LIBRARY_UNIT_2 of secondary_unit                                           
+
+    and   literal = LITERAL_1 of numeric_literal
+                  | LITERAL_2 of enumeration_literal
+                  | LITERAL_3 of string_literal
+                  | LITERAL_4 of bit_string_literal
+                  | NULL                       
+
+    and   logical_expression = LOGICAL_EXPRESSION of relation * relation list
+
+    and   logical_name = LOGICAL_NAME of identifier
+
+    and   logical_name_list = LOGICAL_NAME_LIST of logical_name list
+
+    and   logical_operator = AND
+                           | OR
+                           | NAND
+                           | NOR
+                           | XOR
+                           | XNOR   
+
+    and   loop_statement = LOOP_STATEMENT_1 of label * iteration_scheme * sequential_statement_body * label                           
+                         | LOOP_STATEMENT_2 of label * sequential_statement_body * label                           
+                         | LOOP_STATEMENT_3 of label * iteration_scheme * sequential_statement_body
+                         | LOOP_STATEMENT_4 of label * sequential_statement_body
+                         | LOOP_STATEMENT_5 of iteration_scheme * sequential_statement_body
+                         | LOOP_STATEMENT_6 of sequential_statement_body
+                         | LOOP_STATEMENT_7 of iteration_scheme * sequential_statement_body * label                           
+                         | LOOP_STATEMENT_8 of sequential_statement_body * label                           
+
+    and   miscellaneous_operator = EXPT
+                                 | ABS
+                                 | NOT                         
+
+    and   mode = IN
+               | OUT
+               | INOUT
+               | BUFFER
+               | LINKAGE     
+
+    and   mode_indication = MODE_INDICATION_1 of simple_mode_indication
+                          | MODE_INDICATION_2 of mode_view_indication                                           
+
+    and   mode_view_declaration = MODE_VIEW_DECLARATION_1 of identifier * subtype_indication * mode_view_element_definition list * simple_name                           
+                                | MODE_VIEW_DECLARATION_2 of identifier * subtype_indication * mode_view_element_definition list
+
+    and   mode_view_element_definition = MODE_VIEW_ELEMENT_DEFINITION of record_element_list * element_mode_indication
+
+    and   mode_view_indication = MODE_VIEW_INDICATION_1 of record_mode_view_indication
+                               | MODE_VIEW_INDICATION_2 of array_mode_view_indication
+
+    and   multiplying_operator = MULT
+                               | DIV
+                               | MOD
+                               | REM
+
+    and   name = NAME_1 of simple_name
+               | NAME_2 of operator_symbol
+               | NAME_3 of character_literal
+               | NAME_4 of selected_name
+               | NAME_5 of indexed_name
+               | NAME_6 of slice_name
+               | NAME_7 of attribute_name
+               | NAME_8 of external_name                               
+
+    and   next_statement = NEXT_STATEMENT_1 of label * label * condition                
+                         | NEXT_STATEMENT_2 of label * condition                
+                         | NEXT_STATEMENT_3 of condition                
+                         | NEXT_STATEMENT_4 of label                
+                         | NEXT_STATEMENT_5 of label * label                
+                         (* | NEXT_STATEMENT_6 of   ???? *)
+
+    and   null_statement = NULL_STATEMENT_1 of label                         
+                         (* | NULL_STATEMENT_1 of ????                          *)
+
+    and   numeric_literal = NUMERIC_LITERAL_1 of abstract_literal
+                          | NUMERIC_LITERAL_2 of physical_literal                         
+
+    and   object_declaration = OBJECT_DECLARATION_1 of constant_declaration
+                             | OBJECT_DECLARATION_2 of signal_declaration
+                             | OBJECT_DECLARATION_3 of variable_declaration
+                             | OBJECT_DECLARATION_4 of file_declaration                          
+
+    and   operator_symbol = OPERATOR_SYMBOL of string_literal
+
+    and   package_body = PACKAGE_BODY_1 of simple_name * package_body_declarative_part * simple_name                              
+                       | PACKAGE_BODY_2 of simple_name * package_body_declarative_part 
+
+    and   package_body_declarative_item = PACKAGE_BODY_DECLARATIVE_ITEM_1 of subprogram_declaration
+                                        | PACKAGE_BODY_DECLARATIVE_ITEM_2 of subprogram_body
+                                        | PACKAGE_BODY_DECLARATIVE_ITEM_3 of subprogram_instantiation_declaration
+                                        | PACKAGE_BODY_DECLARATIVE_ITEM_4 of package_declaration
+                                        | PACKAGE_BODY_DECLARATIVE_ITEM_5 of package_body
+                                        | PACKAGE_BODY_DECLARATIVE_ITEM_6 of package_instantiation_declaration
+                                        | PACKAGE_BODY_DECLARATIVE_ITEM_7 of type_declaration
+                                        | PACKAGE_BODY_DECLARATIVE_ITEM_8 of subtype_declaration
+                                        | PACKAGE_BODY_DECLARATIVE_ITEM_9 of mode_view_declaration
+                                        | PACKAGE_BODY_DECLARATIVE_ITEM_10 of constant_declaration
+                                        | PACKAGE_BODY_DECLARATIVE_ITEM_11 of variable_declaration
+                                        | PACKAGE_BODY_DECLARATIVE_ITEM_12 of file_declaration
+                                        | PACKAGE_BODY_DECLARATIVE_ITEM_13 of alias_declaration
+                                        | PACKAGE_BODY_DECLARATIVE_ITEM_14 of attribute_declaration
+                                        | PACKAGE_BODY_DECLARATIVE_ITEM_15 of attribute_specification
+                                        | PACKAGE_BODY_DECLARATIVE_ITEM_16 of use_clause
+                                        | PACKAGE_BODY_DECLARATIVE_ITEM_17 of group_template_declaration
+                                        | PACKAGE_BODY_DECLARATIVE_ITEM_18 of group_declaration                       
+
+    and   package_body_declarative_part = PACKAGE_BODY_DECLARATIVE_PART of package_body_declarative_item list                                        
+
+    and   package_declaration = PACKAGE_DECLARATION_1 of identifier * package_header * package_declarative_part * simple_name 
+                              | PACKAGE_DECLARATION_1 of identifier * package_header * package_declarative_part
+
+    and   package_declarative_item = PACKAGE_DECLARATIVE_ITEM_1  of subprogram_declaration
+                                   | PACKAGE_DECLARATIVE_ITEM_2  of subprogram_instantiation_declaration
+                                   | PACKAGE_DECLARATIVE_ITEM_3  of package_declaration
+                                   | PACKAGE_DECLARATIVE_ITEM_4  of package_instantiation_declaration
+                                   | PACKAGE_DECLARATIVE_ITEM_5  of type_declaration
+                                   | PACKAGE_DECLARATIVE_ITEM_6  of subtype_declaration
+                                   | PACKAGE_DECLARATIVE_ITEM_7  of constant_declaration
+                                   | PACKAGE_DECLARATIVE_ITEM_8  of signal_declaration
+                                   | PACKAGE_DECLARATIVE_ITEM_9  of variable_declaration
+                                   | PACKAGE_DECLARATIVE_ITEM_10 of file_declaration
+                                   | PACKAGE_DECLARATIVE_ITEM_11 of alias_declaration
+                                   | PACKAGE_DECLARATIVE_ITEM_12 of component_declaration
+                                   | PACKAGE_DECLARATIVE_ITEM_13 of attribute_declaration
+                                   | PACKAGE_DECLARATIVE_ITEM_14 of attribute_specification
+                                   | PACKAGE_DECLARATIVE_ITEM_15 of disconnection_specification
+                                   | PACKAGE_DECLARATIVE_ITEM_16 of use_clause
+                                   | PACKAGE_DECLARATIVE_ITEM_17 of group_template_declaration
+                                   | PACKAGE_DECLARATIVE_ITEM_18 of group_declaration
+                                   | PACKAGE_DECLARATIVE_ITEM_19 of PSL_Property_Declaration
+                                   | PACKAGE_DECLARATIVE_ITEM_20 of PSL_Sequence_Declaration                              
+
+    and   package_declarative_part = PACKAGE_DECLARATIVE_PART of package_declarative_item list
+
+    and   package_header = PACKAGE_HEADER_1 of  generic_clause * generic_map_aspect                                   
+                         | PACKAGE_HEADER_2 of  generic_map_aspect                                   
+                         | PACKAGE_HEADER_3 of  generic_clause                                    
+                         (* | PACKAGE_HEADER_4 of  ??????                                  *)
+
+    and   package_instantiation_declaration = PACKAGE_INSTANTIATION_DECLARATION_1 of identifier * name * generic_map_aspect                         
+                                            | PACKAGE_INSTANTIATION_DECLARATION_2 of identifier * name                      
+
+    and   package_pathname = PACKAGE_PATHNAME of name * simple_name list * simple_name                                            
+
+    and   parameter_map_aspect = PARAMETER_MAP_ASPECT of association_list
+
+    and   parameter_specification = PARAMETER_SPECIFICATION of identifier * discrete_range
+
+    and   partial_pathname = PARTIAL_PATHNAME of pathname_element * simple_name
+
+    and   pathname_element = PATHNAME_ELEMENT_1 of simple_name
+                           | PATHNAME_ELEMENT_2 of label * expression 
+                           | PATHNAME_ELEMENT_3 of label  
+
+    (* and   physical_incomplete_type_definition =     ????                        *)
+
+    and   physical_literal = PHYSICAL_LITERAL_1 of abstract_literal * name
+                           | PHYSICAL_LITERAL_2 of name
+
+    and   physical_type_definition = PHYSICAL_TYPE_DEFINITION_1 of range_constraint * primary_unit_declaration * secondary_unit_declaration list                            
+                                   | PHYSICAL_TYPE_DEFINITION_2 of range_constraint * primary_unit_declaration * secondary_unit_declaration list * simple_name
+
+    and   plain_return_statement = PLAIN_RETURN_STATEMENT_1 of label * condition
+                                 | PLAIN_RETURN_STATEMENT_2 of condition                                                              
+                                 | PLAIN_RETURN_STATEMENT_3 of label                                                              
+                                 (* | PLAIN_RETURN_STATEMENT_4 of  ??????????                                                             *)
+
+    and   port_clause = PORT_CLAUSE of port_list                                 
+
+    and   port_list = PORT_LIST of interface_list
+
+    and   port_map_aspect = PORT_MAP_ASPECT of association_list
+
+    and   prefix = PREFIX_1 of name  
+                 | PREFIX_2 of function_call
+
+    and   primary = PRIMARY_1 of name
+                  | PRIMARY_2 of literal
+                  | PRIMARY_3 of aggregate
+                  | PRIMARY_4 of function_call
+                  | PRIMARY_5 of qualified_expression
+                  | PRIMARY_6 of type_conversion
+                  | PRIMARY_7 of allocator
+                  | PRIMARY_8 of conditional_expression                 
+
+    and   primary_unit = PRIMARY_UNIT_1 of entity_declaration
+                       | PRIMARY_UNIT_2 of configuration_declaration
+                       | PRIMARY_UNIT_3 of package_declaration
+                       | PRIMARY_UNIT_4 of package_instantiation_declaration
+                       | PRIMARY_UNIT_5 of context_declaration
+                       | PRIMARY_UNIT_6 of PSL_Verification_Unit                  
+
+    and   primary_unit_declaration = PRIMARY_UNIT_DECLARATION of identifier
+
+    and   private_variable_declaration = PRIVATE_VARIABLE_DECLARATION of variable_declaration
