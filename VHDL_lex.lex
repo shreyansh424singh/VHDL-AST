@@ -190,8 +190,8 @@ eol = ("\013\010"|"\010"|"\013");
 ["c""C"]["h""H"]["a""A"]["r""R"]["a""A"]["c""C"]["t""T"]["e""E"]["r""R"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 8;  pri (yytext,!lin1,!col1, !col2); Tokens.CHARACTER(!lin1,!col1,!lin1,!col2));
 ["n""N"]["a""A"]["t""T"]["u""U"]["r""R"]["a""A"]["l""L"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 6;  pri (yytext,!lin1,!col1, !col2); Tokens.NATURAL(!lin1,!col1,!lin1,!col2));
 ["s""S"]["e""E"]["v""V"]["e""E"]["r""R"]["i""I"]["t""T"]["y""Y"]["_"]["l""L"]["e""E"]["v""V"]["e""E"]["l""L"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 6;  pri (yytext,!lin1,!col1, !col2); Tokens.SEVERITY_LEVEL(!lin1,!col1,!lin1,!col2));
-["f""F"]["i""I"]["l""L"]["e""E"]["_"]["o""O"]["p""P"]["e""E"]["n""N"]["_"]["k""K"]["i""I"]["n""N"]["d""D"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 6;  pri (yytext,!lin1,!col1, !col2); Tokens.FILE_OPEN_KIND(!lin1,!col1,!lin1,!col2));
-["f""F"]["i""I"]["l""L"]["e""E"]["_"]["o""O"]["p""P"]["e""E"]["n""N"]["_"]["s""S"]["t""T"]["a""A"]["t""T"]["u""U"]["s""S"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 6;  pri (yytext,!lin1,!col1, !col2); Tokens.FILE_OPEN_STATUS(!lin1,!col1,!lin1,!col2));
+["f""F"]["i""I"]["l""L"]["e""E"]["_"]["o""O"]["p""P"]["e""E"]["n""N"]["_"]["k""K"]["i""I"]["n""N"]["d""D"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 13;  pri (yytext,!lin1,!col1, !col2); Tokens.FILE_OPEN_KIND(!lin1,!col1,!lin1,!col2));
+["f""F"]["i""I"]["l""L"]["e""E"]["_"]["o""O"]["p""P"]["e""E"]["n""N"]["_"]["s""S"]["t""T"]["a""A"]["t""T"]["u""U"]["s""S"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 15;  pri (yytext,!lin1,!col1, !col2); Tokens.FILE_OPEN_STATUS(!lin1,!col1,!lin1,!col2));
 
 ["f""F"]["a""A"]["i""I"]["l""L"]["u""U"]["r""R"]["e""E"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 6;  pri (yytext,!lin1,!col1, !col2); Tokens.FAILURE(!lin1,!col1,!lin1,!col2));
 ["f""F"]["a""A"]["l""L"]["s""S"]["e""E"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 4;  pri (yytext,!lin1,!col1, !col2); Tokens.FALSE(!lin1,!col1,!lin1,!col2));

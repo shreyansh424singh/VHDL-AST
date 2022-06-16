@@ -1,7 +1,9 @@
 structure W_datatypes =
 struct
 
-  datatype  absolute_pathname = ABSOLUTE_PATHNAME of Par_PathName
+  datatype  AST = ROOT of DESIGN_FILE
+
+    and   absolute_pathname = ABSOLUTE_PATHNAME of Par_PathName
 
     and   abstract_literal  = DECIMAL_LITERAL of decimal_literal
                               | BASED_LITERAL of based_literal
@@ -503,7 +505,7 @@ struct
                       | FORMAL_PART_2 of name * formal_designator
                       | FORMAL_PART_3 of type_mark * formal_designator                             
 
-    and   full_type_declarat  ion = FULL_TYPE_DECLARATION of identifier * type_definition
+    and   full_type_declaration = FULL_TYPE_DECLARATION of identifier * type_definition
 
     and   function_call = FUNCTION_CALL_1 of name * generic_map_aspect * parameter_map_aspect                       
                         | FUNCTION_CALL_2 of name * parameter_map_aspect                       
@@ -575,6 +577,6 @@ struct
                                 | IF_GENERATE_STATEMENT_22 of label * condition * generate_statement_body * label list * condition list * generate_statement_body list * label * generate_statement_body
                                 | IF_GENERATE_STATEMENT_23 of label * condition * generate_statement_body * label list * condition list * generate_statement_body list * generate_statement_body
                                 | IF_GENERATE_STATEMENT_24 of label * condition * generate_statement_body * label list * condition list * generate_statement_body list
-
+end
    
 
