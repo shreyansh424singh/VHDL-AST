@@ -577,8 +577,6 @@ struct
                                 | IF_GENERATE_STATEMENT_22 of label * condition * generate_statement_body * label list * condition list * generate_statement_body list * label * generate_statement_body
                                 | IF_GENERATE_STATEMENT_23 of label * condition * generate_statement_body * label list * condition list * generate_statement_body list * generate_statement_body
                                 | IF_GENERATE_STATEMENT_24 of label * condition * generate_statement_body * label list * condition list * generate_statement_body list
-end
-   
 
     and   if_statement = IF_STATEMENT_1 of label * condition * sequential_statement_body * condition list * sequential_statement_body list * sequential_statement_body * label
                        | IF_STATEMENT_2 of condition * sequential_statement_body * condition list * sequential_statement_body list * sequential_statement_body * label
@@ -881,3 +879,5 @@ end
     and   primary_unit_declaration = PRIMARY_UNIT_DECLARATION of identifier
 
     and   private_variable_declaration = PRIVATE_VARIABLE_DECLARATION of variable_declaration
+
+end
