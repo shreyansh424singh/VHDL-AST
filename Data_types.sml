@@ -8,12 +8,12 @@ struct
 
     and   access_incomplete_type_definition = INCOMPLETE_SUBTYPE_INDICATION of incomplete_subtype_indication
 
-    and   access_type_definition = SUBTYPE_INDICATION of subtype_indication
+    and   access_type_definition = ACCESS_SUBTYPE_INDICATION of subtype_indication
 
     and   actual_designator = EXPRESSION of expression
                               | NAME of name
                               | SUBTYPE_INDICATION of subtype_indication
-                              | OPEN
+                              | OPEN of unit
 
     and   actual_part = ACTUAL_DESIGNATOR of actual_designator
                         | FUNCTION_NAME of name * actual_designator
