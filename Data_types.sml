@@ -72,6 +72,7 @@ struct
 
     and   assertion = ASSERT_1 of condition * expression * expression                                 
                       | ASSERT_2 of condition * expression
+                      | ASSERT_3 of condition
 
     and   assertion_statement = ASSERTION_STM_1 of label * assertion                      
                                 | ASSERTION_STM_2 of assertion
