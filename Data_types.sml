@@ -517,7 +517,7 @@ struct
                       | FORMAL_PART_2 of name * formal_designator
                       | FORMAL_PART_3 of type_mark * formal_designator                             
 
-    and   full_type_declarat  ion = FULL_TYPE_DECLARATION of identifier * type_definition
+    and   full_type_declaration = FULL_TYPE_DECLARATION of identifier * type_definition
 
     and   function_call = FUNCTION_CALL_1 of name * generic_map_aspect * parameter_map_aspect                       
                         | FUNCTION_CALL_2 of name * parameter_map_aspect                       
@@ -1144,7 +1144,7 @@ struct
                       | SIGNAL_LIST_2 of unit
                       | SIGNAL_LIST_3 of unit
 
-    and   signature = SIGNATURE_1 of type_mark list * type_mark
+    and   Signature = SIGNATURE_1 of type_mark list * type_mark
                     | SIGNATURE_2 of type_mark                                                                                             
                     | SIGNATURE_3 of type_mark list                                                                                             
                     | SIGNATURE_4 of unit                                                                                         
