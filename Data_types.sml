@@ -1,7 +1,7 @@
 structure W_datatypes =
 struct
 
-  datatype  absolute_pathname = ABSOLUTE_PATHNAME of Par_PathName
+  datatype  absolute_pathname = ABSOLUTE_PATHNAME of partial_pathname
 
     and   abstract_literal = DECIMAL_LITERAL of decimal_literal
                            | BASED_LITERAL of based_literal
@@ -106,7 +106,7 @@ struct
                          | SX  of unit
                          | D  of unit
 
-    and   based_integer = EXTENDED_DIGIT_LIST of extended_digit list
+    and   based_integer = EXTENDED_DIGIT_LIST of extended_digit * extended_digit list
 
     and   based_literal = BASED_LITERAL_1 of base * based_integer * based_integer * exponent
                           | BASED_LITERAL_2 of base * based_integer * based_integer 
@@ -132,6 +132,7 @@ struct
                                | BINDING_INDICATION_5 of entity_aspect
                                | BINDING_INDICATION_6 of port_map_aspect                                   
                                | BINDING_INDICATION_7 of generic_map_aspect    
+                               | BINDING_INDICATION_7 of unit
 
     and   bit_string_literal = BIT_STRING_LITERAL_1 of integer * base_specifier * bit_value                               
                                | BIT_STRING_LITERAL_2 of integer * base_specifier
@@ -210,17 +211,21 @@ struct
                    | CHOICE_3 of element_simple_name
                    | OTHERS of unit
 
-    and   choices = CHOICES of choice list
+    and   choices = CHOICES of choice * choice list
 
     and   component_configuration = COMPONENT_CONFIGURATION_1 of component_specification * binding_indication * verification_unit_binding_indication list * block_configuration                   
                                     | COMPONENT_CONFIGURATION_2 of component_specification * verification_unit_binding_indication list * block_configuration                   
                                     | COMPONENT_CONFIGURATION_3 of component_specification * verification_unit_binding_indication list                   
                                     | COMPONENT_CONFIGURATION_4 of component_specification * binding_indication * verification_unit_binding_indication list                   
 
-    and   component_declaration = COMPONENT_DECLARATION_1 of identifier * generic_clause * port_clause * simple_name                                  
+    and   component_declaration =   COMPONENT_DECLARATION_1 of identifier * generic_clause * port_clause * simple_name                                  
                                   | COMPONENT_DECLARATION_2 of identifier * port_clause * simple_name                                  
-                                  | COMPONENT_DECLARATION_3 of identifier * port_clause                                  
-                                  | COMPONENT_DECLARATION_4 of identifier * generic_clause * port_clause                                  
+                                  | COMPONENT_DECLARATION_3 of identifier * generic_clause * simple_name                                  
+                                  | COMPONENT_DECLARATION_4 of identifier * simple_name                                  
+                                  | COMPONENT_DECLARATION_5 of identifier * generic_clause                                  
+                                  | COMPONENT_DECLARATION_6 of identifier                                  
+                                  | COMPONENT_DECLARATION_7 of identifier * generic_clause * port_clause                                  
+                                  | COMPONENT_DECLARATION_8 of identifier * port_clause                                  
 
     and   component_instantiation_statement = COMPONENT_INSTANTIATION_STATEMENT_1 of label * instantiated_unit * generic_map_aspect * port_map_aspect                                   
                                               | COMPONENT_INSTANTIATION_STATEMENT_2 of label * instantiated_unit * port_map_aspect                                   
@@ -232,7 +237,7 @@ struct
     and   composite_type_definition = COMPOSITE_TYPE_DEFINITION_1 of array_type_definition
                                       | COMPOSITE_TYPE_DEFINITION_2 of record_type_definition
 
-    and   compound_configuration_specification = COMPOUND_CONFIGURATION_SPECIFICATION of component_specification binding_indication * verification_unit_binding_indication list                                          
+    and   compound_configuration_specification = COMPOUND_CONFIGURATION_SPECIFICATION of component_specification * binding_indication * verification_unit_binding_indication list                                          
 
     and   concurrent_assertion_statement = CONCURRENT_ASSERTION_STATEMENT_1 of label * assertion
                                          | CONCURRENT_ASSERTION_STATEMENT_2 of assertion
@@ -275,14 +280,19 @@ struct
 
     and   condition_clause = CONDITION_CLAUSE of condition
 
-    and   conditional_expression = CONDITIONAL_EXPRESSION of condition list * expression list
+    and   conditional_expression = CONDITIONAL_EXPRESSION of expression * conditional_expression_1 list
+    and   conditional_expression_1 = CONDITIONAL_EXPRESSION_1 of condition * expression
 
-    and   conditional_or_unaffected_expression = CONDITIONAL_OR_UNAFFECTED_EXPRESSION of condition list * expression_or_unaffected list                            
+    and   conditional_or_unaffected_expression = CONDITIONAL_OR_UNAFFECTED_EXPRESSION of expression_or_unaffected * conditional_or_unaffected_expression_1 list * condition
+                                               | CONDITIONAL_OR_UNAFFECTED_EXPRESSION1 of expression_or_unaffected * conditional_or_unaffected_expression_1 list
+    and   conditional_or_unaffected_expression_1 = CONDITIONAL_OR_UNAFFECTED_EXPRESSION_1 of condition * expression_or_unaffected
 
     and   conditional_signal_assignment = CONDITIONAL_SIGNAL_ASSIGNMENT_1 of target * delay_mechanism * conditional_waveforms
                                         | CONDITIONAL_SIGNAL_ASSIGNMENT_2 of target * conditional_waveforms
 
-    and   conditional_waveforms = CONDITIONAL_WAVEFORMS of waveform list * condition list 
+    and   conditional_waveforms_1 = CONDITIONAL_WAVEFORMS_1 of waveform * condition
+    and   conditional_waveforms = CONDITIONAL_WAVEFORMS of waveform * condition * conditional_waveforms_1 list * waveform
+                                | CONDITIONAL_WAVEFORMS1 of waveform * condition * conditional_waveforms_1 list
 
     and   configuration_declaration = CONFIGURATION_DECLARATION of identifier * name * configuration_declarative_part * verification_unit_binding_indication list * block_configuration * simple_name   
 
@@ -1144,7 +1154,7 @@ struct
                       | SIGNAL_LIST_2 of unit
                       | SIGNAL_LIST_3 of unit
 
-    and   Signature = SIGNATURE_1 of type_mark list * type_mark
+    and   signatur = SIGNATURE_1 of type_mark list * type_mark
                     | SIGNATURE_2 of type_mark                                                                                             
                     | SIGNATURE_3 of type_mark list                                                                                             
                     | SIGNATURE_4 of unit                                                                                         
