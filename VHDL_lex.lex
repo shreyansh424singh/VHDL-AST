@@ -163,6 +163,7 @@ eol = ("\013\010"|"\010"|"\013");
 ["u""U"]["n""N"]["i""I"]["t""T"]["s""S"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 4;  pri (yytext,!lin1,!col1, !col2); Tokens.UNITS(!lin1,!col1,!lin1,!col2));
 ["u""U"]["n""N"]["t""T"]["i""I"]["l""L"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 4;  pri (yytext,!lin1,!col1, !col2); Tokens.UNTIL(!lin1,!col1,!lin1,!col2));
 ["u""U"]["s""S"]["e""E"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 2;  pri (yytext,!lin1,!col1, !col2); Tokens.USE(!lin1,!col1,!lin1,!col2));
+["v""V"]["u""U"]["n""N"]["i""I"]["t""T"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 4;  pri (yytext,!lin1,!col1, !col2); Tokens.VUNIT(!lin1,!col1,!lin1,!col2));
 ["v""V"]["a""A"]["r""R"]["i""I"]["a""A"]["b""B"]["l""L"]["e""E"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 7;  pri (yytext,!lin1,!col1, !col2); Tokens.VARIABLE(!lin1,!col1,!lin1,!col2));
 ["w""W"]["a""A"]["i""I"]["t""T"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 3;  pri (yytext,!lin1,!col1, !col2); Tokens.WAIT(!lin1,!col1,!lin1,!col2));
 ["w""W"]["h""H"]["e""E"]["n""N"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 3;  pri (yytext,!lin1,!col1, !col2); Tokens.WHEN(!lin1,!col1,!lin1,!col2));

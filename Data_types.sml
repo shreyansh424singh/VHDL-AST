@@ -3,8 +3,8 @@ struct
 
   datatype  absolute_pathname = ABSOLUTE_PATHNAME of Par_PathName
 
-    and   abstract_literal  = DECIMAL_LITERAL of decimal_literal
-                              | BASED_LITERAL of based_literal
+    and   abstract_literal = DECIMAL_LITERAL of decimal_literal
+                           | BASED_LITERAL of based_literal
 
     and   access_incomplete_type_definition = INCOMPLETE_SUBTYPE_INDICATION of incomplete_subtype_indication
 
@@ -1282,7 +1282,7 @@ struct
                                         | VARIABLE_ASSIGNMENT_STATEMENT_4 of selected_variable_assignment                                 
 
     and   variable_declaration = VARIABLE_DECLARATION_1 of identifier_list * subtype_indication * expression                                         
-                               | VARIABLE_DECLARATION_2 of identifier_list * subtype_indication                                         
+                               | VARIABLE_DECLARATION_2 of identifier_list * subtype_indication 
 
     and   verification_unit_binding_indication = VERIFICATION_UNIT_BINDING_INDICATION of verification_unit_list
 
@@ -1308,8 +1308,8 @@ struct
     and   waveform = WAVEFORM of waveform_element list                         
                    | UNAFFECTED of unit
 
-    and   waveform_element = WAVEFORM_ELEMENT_1 of expression * expression * expression                     
-                           | WAVEFORM_ELEMENT_2 of expression * expression                     
-                           | WAVEFORM_ELEMENT_3 of expression                     
+    and   waveform_element = WAVEFORM_ELEMENT_1 of expression * expression                    
+                           | WAVEFORM_ELEMENT_2 of expression 
+                           | WAVEFORM_ELEMENT_3 of unit
 
 end
