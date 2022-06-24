@@ -46,6 +46,12 @@ eol = ("\013\010"|"\010"|"\013");
 
 %%
 
+"_" => (col1:=yypos-(!eolpos); col2:=(!col1) + 1;  pri (yytext,!lin1,!col1, !col2); Tokens.UNDERSCORE(!lin1,!col1,!lin1,!col2));
+"#" => (col1:=yypos-(!eolpos); col2:=(!col1) + 1;  pri (yytext,!lin1,!col1, !col2); Tokens.HASH(!lin1,!col1,!lin1,!col2));
+"\"" => (col1:=yypos-(!eolpos); col2:=(!col1) + 1;  pri (yytext,!lin1,!col1, !col2); Tokens.INVERTEDCOMMA(!lin1,!col1,!lin1,!col2));
+"?" => (col1:=yypos-(!eolpos); col2:=(!col1) + 1;  pri (yytext,!lin1,!col1, !col2); Tokens.QUESTION(!lin1,!col1,!lin1,!col2));
+"<=>" => (col1:=yypos-(!eolpos); col2:=(!col1) + 1;  pri (yytext,!lin1,!col1, !col2); Tokens.DOUBLEARROW(!lin1,!col1,!lin1,!col2));
+"??" => (col1:=yypos-(!eolpos); col2:=(!col1) + 1;  pri (yytext,!lin1,!col1, !col2); Tokens.DOUBLEQUES(!lin1,!col1,!lin1,!col2));
 "=>" => (col1:=yypos-(!eolpos); col2:=(!col1) + 1;  pri (yytext,!lin1,!col1, !col2); Tokens.ARROW(!lin1,!col1,!lin1,!col2));
 "**" => (col1:=yypos-(!eolpos); col2:=(!col1) + 1;  pri (yytext,!lin1,!col1, !col2); Tokens.EXPT(!lin1,!col1,!lin1,!col2));
 ":=" => (col1:=yypos-(!eolpos); col2:=(!col1) + 1;  pri (yytext,!lin1,!col1, !col2); Tokens.ASSIGN(!lin1,!col1,!lin1,!col2));
