@@ -46,6 +46,7 @@ eol = ("\013\010"|"\010"|"\013");
 
 %%
 
+"`" => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.BACKTICK(!lin1,!col1,!lin1,!col2));
 "_" => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.UNDERSCORE(!lin1,!col1,!lin1,!col2));
 "#" => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.HASH(!lin1,!col1,!lin1,!col2));
 "\"" => (col1:=yypos-(!eolpos); col2:=(!col1) + 1;  pri (yytext,!lin1,!col1, !col2); Tokens.INVERTEDCOMMA(!lin1,!col1,!lin1,!col2));
@@ -68,6 +69,7 @@ eol = ("\013\010"|"\010"|"\013");
 "," => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.COMMA(!lin1,!col1,!lin1,!col2));
 "-"  => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.MINUS(!lin1,!col1,!lin1,!col2));
 "."  => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.DOT(!lin1,!col1,!lin1,!col2));
+"^"  => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.CARROT(!lin1,!col1,!lin1,!col2));
 "/"  => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.DIV(!lin1,!col1,!lin1,!col2));
 ":" => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.COLON(!lin1,!col1,!lin1,!col2));
 ";" => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.SEMICOLON(!lin1,!col1,!lin1,!col2));

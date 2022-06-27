@@ -1063,7 +1063,7 @@ struct
 
     and   secondary_unit_declaration = SECONDARY_UNIT_DECLARATION of identifier * physical_literal
 
-    and   selected_expressions = SELECTED_EXPRESSIONS of expression list * choices list
+    and   selected_expressions = SELECTED_EXPRESSIONS of (expression * choices) list
 
     and   selected_force_assignment = SELECTED_FORCE_ASSIGNMENT_1 of expression * target * force_mode * selected_expressions                           
                                     | SELECTED_FORCE_ASSIGNMENT_2 of expression * target * selected_expressions                           
@@ -1078,7 +1078,7 @@ struct
     and   selected_waveform_assignment = SELECTED_WAVEFORM_ASSIGNMENT_1 of expression * target * delay_mechanism * selected_waveforms
                                        | SELECTED_WAVEFORM_ASSIGNMENT_2 of expression * target * selected_waveforms                                     
 
-    and   selected_waveforms = SELECTED_WAVEFORMS of waveform list * choices list
+    and   selected_waveforms = SELECTED_WAVEFORMS of (waveform * choices) list
 
     and   sensitivity_clause = SENSITIVITY_CLAUSE of sensitivity_list
 
@@ -1161,8 +1161,8 @@ struct
 
     and   simple_configuration_specification = SIMPLE_CONFIGURATION_SPECIFICATION of component_specification * binding_indication                    
 
-    and   simple_expression = SIMPLE_EXPRESSION_1 of sign * term * adding_operator term list
-                            | SIMPLE_EXPRESSION_2 of term * adding_operator term list
+    and   simple_expression = SIMPLE_EXPRESSION_1 of sign * term * (adding_operator*term) list
+                            | SIMPLE_EXPRESSION_2 of term * (adding_operator * term) list
 
     and   simple_force_assignment = SIMPLE_FORCE_ASSIGNMENT_1 of target * force_mode * conditional_or_unaffected_expression                            
                                   | SIMPLE_FORCE_ASSIGNMENT_2 of target * conditional_or_unaffected_expression                            
@@ -1252,7 +1252,7 @@ struct
     and   target = TARGET_1 of name
                  | TARGET_2 of aggregate
 
-    and   term = TERM of factor * multiplying_operator factor list
+    and   term = TERM of factor * (multiplying_operator * factor) list
 
     and   timeout_clause = TIMEOUT_CLAUSE of expression
 
@@ -1275,7 +1275,7 @@ struct
     and   unary_expression = UNARY_EXPRESSION_1 of primary
                            | UNARY_EXPRESSION_2 of logical_operator * primary
 
-    and   unary_miscellaneous_operator = UNARY_MISCELLANEOUS_OPERATOR of unary_logical_operator                          
+    and   unary_miscellaneous_operator = UNARY_MISCELLANEOUS_OPERATOR of logical_operator                          
                                        | NOT of unit
                                        | ABS of unit
 
