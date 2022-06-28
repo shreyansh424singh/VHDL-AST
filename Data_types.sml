@@ -1,7 +1,27 @@
 structure W_datatypes =
 struct
 
-  datatype  absolute_pathname = ABSOLUTE_PATHNAME of partial_pathname
+  datatype  special_character = TICK  of unit
+                              | LPARAN  of unit
+                              | RPARAN  of unit
+                              | COMMA of unit
+                              | DOT of unit
+                              | COLON of unit
+                              | SEMICOLON of unit
+                              | BAR of unit
+                              | LSQUARE of unit
+                              | RSQUARE of unit
+                              | UNDERSCORE of unit
+                              | HASH of unit
+                              | INVERTEDCOMMA of unit
+
+    and   lower_case_letter = LOWER_CASE_LETTER of unit
+
+    and   upper_case_letter = UPPER_CASE_LETTER of unit                              
+
+    and   digit = DIGIT of unit                              
+  
+    and   absolute_pathname = ABSOLUTE_PATHNAME of partial_pathname
 
     and   abstract_literal = DECIMAL_LITERAL of decimal_literal
                            | BASED_LITERAL of based_literal
@@ -12,16 +32,12 @@ struct
 
     and   actual_designator = EXPRESSION of expression
                               | NAME of name
-                              | SUBTYPE_INDICATION of subtype_indication
-                              | OPEN of unit
 
     and   actual_part = ACTUAL_DESIGNATOR of actual_designator
                         | FUNCTION_NAME of name * actual_designator
-                        | TYPE_MARK of  type_mark * actual_designator
+                        | TYPE_MARK1 of  type_mark * actual_designator
 
-    and   adding_operator = PLUS of unit
-                          | MINUS  of unit
-                          | AMP  of unit
+    and   adding_operator = AMP  of unit
 
     and   aggregate = ELEMENT_ASSOCIATION of element_association list
 
@@ -30,9 +46,9 @@ struct
                               | ALIAS_3 of alias_designator * name * signatur
                               | ALIAS_4 of alias_designator * subtype_indication * name
 
-    and   alias_designator = IDENTIFIER of identifier
-                             | CHARACTER_LITERAL of character_literal
-                             | OPERATOR_SYMBOL of operator_symbol
+    and   alias_designator = ALIAS_DESIGNATOR_1 of identifier
+                             | ALIAS_DESIGNATOR_2 of character_literal
+                             | ALIAS_DESIGNATOR_3 of operator_symbol
 
     and   allocator = SUBTYPE_INDICATION of subtype_indication
                       | QUALIFIED_EXPRESSION of qualified_expression
@@ -51,7 +67,6 @@ struct
     and   array_constraint = ARRAY_INDEX_CONSTRAINT_1 of index_constraint * array_element_constraint
                              | ARRAY_INDEX_CONSTRAINT_2 of index_constraint
                              | ARRAY_ELEMENT_CONSTRAINT_1 of array_element_constraint 
-                             | OPEN  of unit
 
     and   array_element_constraint = ARRAY_ELEMENT_CONSTRAINT of element_constraint
 
@@ -67,8 +82,8 @@ struct
 
     and   array_mode_view_indication = ARRAY_MODE_VIEW_IND of name * subtype_indication
 
-    and   array_type_definition = UNBOUNDED_ARRAY_DEFINITION of unbounded_array_definition
-                                  | CONSTRAINED_ARRAY_DEFINITION of constrained_array_definition
+    and   array_type_definition = ARRAY_TYPE_DEFINITION_1 of unbounded_array_definition
+                                | ARRAY_TYPE_DEFINITION_2 of constrained_array_definition
 
     and   assertion = ASSERT_1 of condition * expression * expression                                 
                       | ASSERT_2 of condition * expression
@@ -114,12 +129,10 @@ struct
                           | BASED_LITERAL_4 of base * based_integer
 
     and   basic_character = BASIC_CHARACTER_1 of basic_graphic_character
-                            | BASIC_CHARACTER_2 of format_effector
 
     and   basic_graphic_character = BASIC_GRAPHIC_CHARACTER_1 of upper_case_letter
                                     | BASIC_GRAPHIC_CHARACTER_2 of digit
                                     | BASIC_GRAPHIC_CHARACTER_3 of special_character
-                                    | BASIC_GRAPHIC_CHARACTER_4 of space_character                         
 
     and   basic_identifier = BASIC_IDENTIFIER of letter * letter_or_digit list
 
@@ -132,7 +145,6 @@ struct
                                | BINDING_INDICATION_5 of entity_aspect
                                | BINDING_INDICATION_6 of port_map_aspect                                   
                                | BINDING_INDICATION_7 of generic_map_aspect    
-                               | BINDING_INDICATION_7 of unit
 
     and   bit_string_literal = BIT_STRING_LITERAL_1 of integer * base_specifier * bit_value                               
                                | BIT_STRING_LITERAL_2 of integer * base_specifier
@@ -165,9 +177,6 @@ struct
                                    | BLOCK_DECLARATIVE_ITEM_20 of use_clause
                                    | BLOCK_DECLARATIVE_ITEM_21 of group_template_declaration
                                    | BLOCK_DECLARATIVE_ITEM_22 of group_declaration
-                                   | BLOCK_DECLARATIVE_ITEM_23 of PSL_Property_Declaration
-                                   | BLOCK_DECLARATIVE_ITEM_24 of PSL_Sequence_Declaration
-                                   | BLOCK_DECLARATIVE_ITEM_25 of PSL_Clock_Declaration
 
     and   block_declarative_part = BLOCK_DECLARATIVE_PART of block_declarative_item list
 
@@ -208,7 +217,7 @@ struct
 
     and   choice = CHOICE_1 of simple_expression
                    | CHOICE_2 of discrete_range
-                   | CHOICE_3 of element_simple_name
+                   | CHOICE_3 of simple_name
                    | OTHERS of unit
 
     and   choices = CHOICES of choice * choice list
@@ -274,7 +283,6 @@ struct
                                | CONCURRENT_STATEMENT_6 of concurrent_signal_association_statement
                                | CONCURRENT_STATEMENT_7 of component_instantiation_statement
                                | CONCURRENT_STATEMENT_8 of generate_statement
-                               | CONCURRENT_STATEMENT_9 of PSL_Directive
 
     and   condition = CONDITION of expression
 
@@ -383,15 +391,12 @@ struct
     and   entity_class = ENTITY of unit
                        | ARCHITECTURE of unit
                        | CONFIGURATION of unit
-                       | PROCEDURE of unit
-                       | FUNCTION of unit
                        | PACKAGE of unit
                        | TYPE of unit
                        | SUBTYPE of unit
                        | CONSTANT of unit
                        | VARIABLE of unit
                        | COMPONENT of unit
-                       | LABEL of unit
                        | LITERAL of unit
                        | UNITS of unit
                        | GROUP of unit
@@ -428,9 +433,6 @@ struct
                                   | ENTITY_DECLARATIVE_ITEM_18 of use_clause
                                   | ENTITY_DECLARATIVE_ITEM_19 of group_template_declaration
                                   | ENTITY_DECLARATIVE_ITEM_20 of group_declaration
-                                  | ENTITY_DECLARATIVE_ITEM_21 of PSL_Property_Declaration
-                                  | ENTITY_DECLARATIVE_ITEM_22 of PSL_Sequence_Declaration
-                                  | ENTITY_DECLARATIVE_ITEM_23 of PSL_Clock_Declaration
 
     and   entity_declarative_part = ENTITY_DECLARATIVE_PART of entity_declarative_item list                                  
 
@@ -442,7 +444,6 @@ struct
                         | ENTITY_HEADER_3 of generic_clause                            
 
     and   entity_name_list = ENTITY_NAME_LIST of entity_designator * entity_designator list                        
-                           | OTHERS of unit
                            | ALL of unit
 
     and   entity_specification = ENTITY_SPECIFICATION of entity_name_list * entity_class                           
@@ -450,7 +451,6 @@ struct
     and   entity_statement = ENTITY_STATEMENT_1 of concurrent_assertion_statement
                            | ENTITY_STATEMENT_2 of concurrent_procedure_call_statement
                            | ENTITY_STATEMENT_3 of process_statement
-                           | ENTITY_STATEMENT_4 of PSL_Directive
 
     and   entity_statement_part = ENTITY_STATEMENT_PART of entity_statement list
 
@@ -472,7 +472,7 @@ struct
 
     and   exponent = EXPONENT of integer
 
-    and   expression = EXPRESSION_1 of condition_operator primary
+    and   expression = EXPRESSION_1 of primary
                      | EXPRESSION_2 of logical_expression                         
 
     and   expression_or_unaffected = EXPRESSION_OR_UNAFFECTED of expression
@@ -564,7 +564,6 @@ struct
 
     and   graphic_character = GRAPHIC_CHARACTER_1 of basic_graphic_character
                             | GRAPHIC_CHARACTER_2 of lower_case_letter
-                            | GRAPHIC_CHARACTER_3 of other_special_character                                  
 
     and   group_constituent = GROUP_CONSTITUENT_1 of name                            
                             | GROUP_CONSTITUENT_2 of character_literal                           
@@ -649,8 +648,6 @@ struct
                             | INSTANTIATED_UNIT_2 of name * identifier
 
     and   instantiation_list = INSTANTIATION_LIST of label * label list                                                           
-                             | OTHERS of unit
-                             | ALL of unit
 
     and   integer = INTEGER of digit * digit list
 
@@ -757,13 +754,10 @@ struct
                          | LOOP_STATEMENT_7 of iteration_scheme * sequential_statement_body * label                           
                          | LOOP_STATEMENT_8 of sequential_statement_body * label                           
 
-    and   miscellaneous_operator = EXPT of unit
-                                 | ABS of unit
+    and   miscellaneous_operator = ABS of unit
                                  | NOT of unit
 
-    and   mode = IN of unit
-               | OUT of unit
-               | INOUT of unit
+    and   mode = INOUT of unit
                | BUFFER of unit
                | LINKAGE of unit
 
@@ -857,8 +851,6 @@ struct
                                    | PACKAGE_DECLARATIVE_ITEM_16 of use_clause
                                    | PACKAGE_DECLARATIVE_ITEM_17 of group_template_declaration
                                    | PACKAGE_DECLARATIVE_ITEM_18 of group_declaration
-                                   | PACKAGE_DECLARATIVE_ITEM_19 of PSL_Property_Declaration
-                                   | PACKAGE_DECLARATIVE_ITEM_20 of PSL_Sequence_Declaration                              
 
     and   package_declarative_part = PACKAGE_DECLARATIVE_PART of package_declarative_item list
 
@@ -918,7 +910,6 @@ struct
                        | PRIMARY_UNIT_3 of package_declaration
                        | PRIMARY_UNIT_4 of package_instantiation_declaration
                        | PRIMARY_UNIT_5 of context_declaration
-                       | PRIMARY_UNIT_6 of PSL_Verification_Unit                  
 
     and   primary_unit_declaration = PRIMARY_UNIT_DECLARATION of identifier
 
@@ -927,13 +918,13 @@ struct
     and   private_incomplete_type_definition = PRIVATE_INCOMPLETE_TYPE_DEFINITION of unit                        
 
     and   procedure_call = PROCEDURE_CALL_1 of name 
-                         | PROCEDURE_CALL_2 of name *  PARAMETER_MAP_ASPECT
+                         | PROCEDURE_CALL_2 of name *  parameter_map_aspect
 
     and   procedure_call_statement = PROCEDURE_CALL_STATEMENT_1 of label * procedure_call
                                    | PROCEDURE_CALL_STATEMENT_2 of procedure_call                          
 
-    and   procedure_specification = PROCEDURE_SPECIFICATION_1 of  designator subprogram_header * formal_parameter_list                                     
-                                  | PROCEDURE_SPECIFICATION_2 of  designator subprogram_header 
+    and   procedure_specification = PROCEDURE_SPECIFICATION_1 of  designator * subprogram_header * formal_parameter_list                                     
+                                  | PROCEDURE_SPECIFICATION_2 of  designator * subprogram_header 
 
     and   process_declarative_item = PROCESS_DECLARATIVE_ITEM_1 of subprogram_declaration
                                    | PROCESS_DECLARATIVE_ITEM_2 of subprogram_body
@@ -1040,7 +1031,7 @@ struct
     and   record_mode_view_indication = RECORD_MODE_VIEW_INDICATION_1 of name * subtype_indication
                                       | RECORD_MODE_VIEW_INDICATION_2 of name                                
 
-    and   relation = RELATION_1 of shift_expression * relational_operator shift_expression                                      
+    and   relation = RELATION_1 of shift_expression * relational_operator * shift_expression                                      
                    | RELATION_2 of shift_expression
 
     and   relational_operator = EQ of unit
@@ -1049,12 +1040,12 @@ struct
                               | LT of unit
                               | GE of unit
                               | LE of unit
-                              (* | ?= of unit
-                              | ?/= of unit
-                              | ?< of unit
-                              | ?<= of unit
-                              | ?> of unit
-                              | ?>= of unit *)
+                              | RELO1 of unit
+                              | RELO2  of unit
+                              | RELO3 of unit
+                              | RELO4  of unit
+                              | RELO5 of unit
+                              | RELO6  of unit
 
     and   relative_pathname = RELATIVE_PATHNAME of partial_pathname
 
@@ -1246,7 +1237,6 @@ struct
                                                | SUBPROGRAM_INSTANTIATION_DECLARATION_3 of subprogram_kind * identifier * name                             
                                                | SUBPROGRAM_INSTANTIATION_DECLARATION_4 of subprogram_kind * identifier * name * signatur     
 
-                      | ALL
     and   subprogram_kind = PROCEDURE of unit
                           | FUNCTION of unit                                                    
 
@@ -1294,8 +1284,6 @@ struct
                            | UNARY_EXPRESSION_2 of logical_operator * primary
 
     and   unary_miscellaneous_operator = UNARY_MISCELLANEOUS_OPERATOR of logical_operator                          
-                                       | NOT of unit
-                                       | ABS of unit
 
     and   unbounded_array_definition = UNBOUNDED_ARRAY_DEFINITION of index_subtype_definition list * subtype_indication
 
@@ -1334,7 +1322,6 @@ struct
                          | WAIT_STATEMENT_16 of unit                     
 
     and   waveform = WAVEFORM of waveform_element list                         
-                   | UNAFFECTED of unit
 
     and   waveform_element = WAVEFORM_ELEMENT_1 of expression * expression                    
                            | WAVEFORM_ELEMENT_2 of expression 

@@ -31,16 +31,9 @@ structure Tokens = Tokens
 %arg (fileName:string);
 id = [a-zA-Z]+[a-zA-Z0-9]*;
 whitespace = [\ \t]+;
-int =  ["+"|"-"]?[0-9]+;
-real_num = ["+"|"-"]?[0-9]+["."][0-9]+;
-hex_num = ["16#"]?[0-9A-Fa-f]["#"]?;
-bin_num = ["2#"]?[0-1_]+["#"]?;
-realexp_num = ["+"|"-"]?[0-9]+["."][0-9]+["E""e"]["+"|"-"]?[0-9]+;
-bin_vec = [bB]["\""][0-1_]+["\""];
-dec_vec = ["0"]?["\""][0-9]+["\""];
-hex_vec = [xX]["\""][0-9a-fA-F]+["\""];
-string = \"[.*]+\";
-element = [\'][.*]+[\'];
+digit =  [0-9]+;
+upper_case_letter = [A-Z]+;
+lower_case_letter = [a-z]+;
 comment = ["-"]["-"][.*]+["\n"];
 eol = ("\013\010"|"\010"|"\013");
 
@@ -136,6 +129,7 @@ eol = ("\013\010"|"\010"|"\013");
 ["l""L"]["o""O"]["o""O"]["p""P"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 3;  pri (yytext,!lin1,!col1, !col2); Tokens.LOOP(!lin1,!col1,!lin1,!col2));
 ["m""M"]["a""A"]["p""P"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 2;  pri (yytext,!lin1,!col1, !col2); Tokens.MAP(!lin1,!col1,!lin1,!col2));
 ["m""M"]["o""O"]["d""D"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 2;  pri (yytext,!lin1,!col1, !col2); Tokens.MOD(!lin1,!col1,!lin1,!col2));
+["m""M"]["o""O"]["d""D"]["e""E"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 3;  pri (yytext,!lin1,!col1, !col2); Tokens.MODE(!lin1,!col1,!lin1,!col2));
 ["n""N"]["a""A"]["n""N"]["d""D"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 3;  pri (yytext,!lin1,!col1, !col2); Tokens.NAND(!lin1,!col1,!lin1,!col2));
 ["n""N"]["e""E"]["w""W"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 2;  pri (yytext,!lin1,!col1, !col2); Tokens.NEW(!lin1,!col1,!lin1,!col2));
 ["n""N"]["e""E"]["x""X"]["t""T"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 3;  pri (yytext,!lin1,!col1, !col2); Tokens.NEXT(!lin1,!col1,!lin1,!col2));
@@ -216,17 +210,28 @@ eol = ("\013\010"|"\010"|"\013");
 ["f""F"]["a""A"]["l""L"]["s""S"]["e""E"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 4;  pri (yytext,!lin1,!col1, !col2); Tokens.FALSE(!lin1,!col1,!lin1,!col2));
 ["t""T"]["r""R"]["u""U"]["e""E"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 3;  pri (yytext,!lin1,!col1, !col2); Tokens.TRUE(!lin1,!col1,!lin1,!col2));
 
-{int} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.INT(yytext,!lin1,!col1,!lin1,!col2));
-{real_num} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.REAL_NUM(yytext,!lin1,!col1,!lin1,!col2));
-{hex_num} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.HEX_NUM(yytext,!lin1,!col1,!lin1,!col2));
-{bin_num} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.BIN_NUM(yytext,!lin1,!col1,!lin1,!col2));
-{realexp_num} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.REALEXP_NUM(yytext,!lin1,!col1,!lin1,!col2));
-{bin_vec} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.BIN_VEC(yytext,!lin1,!col1,!lin1,!col2));
-{dec_vec} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.DEC_VEC(yytext,!lin1,!col1,!lin1,!col2));
-{hex_vec} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.HEX_VEC(yytext,!lin1,!col1,!lin1,!col2));
-{element} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.ELEMENT(yytext,!lin1,!col1,!lin1,!col2));
-{string} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.STRINGG(yytext,!lin1,!col1,!lin1,!col2));
-{id} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.ID(yytext,!lin1,!col1,!lin1,!col2));
+["d""D"]["e""E"]["f""F"]["a""A"]["u""U"]["l""L"]["t""T"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 6;  pri (yytext,!lin1,!col1, !col2); Tokens.DEFAULT(!lin1,!col1,!lin1,!col2));
+["p""P"]["a""A"]["r""R"]["a""A"]["m""M"]["e""E"]["t""T"]["e""E"]["r""R"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 8;  pri (yytext,!lin1,!col1, !col2); Tokens.PARAMETER(!lin1,!col1,!lin1,!col2));
+["v""V"]["i""I"]["e""E"]["w""W"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 3;  pri (yytext,!lin1,!col1, !col2); Tokens.VIEW(!lin1,!col1,!lin1,!col2));
+["p""P"]["r""R"]["i""I"]["v""V"]["a""A"]["t""T"]["e""E"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 6;  pri (yytext,!lin1,!col1, !col2); Tokens.PRIVATE(!lin1,!col1,!lin1,!col2));
+["e""E"]["x""X"]["p""P"]["r""R"]["e""E"]["s""S"]["s""S"]["i""I"]["o""O"]["n""N"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 9;  pri (yytext,!lin1,!col1, !col2); Tokens.EXPRESSION(!lin1,!col1,!lin1,!col2));
+["t""T"]["y""Y"]["p""P"]["e""E"]["_"]["m""M"]["a""A"]["r""R"]["k""K"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 8;  pri (yytext,!lin1,!col1, !col2); Tokens.TYPE_MARK(!lin1,!col1,!lin1,!col2));
+
+["b""B"]  => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.B(!lin1,!col1,!lin1,!col2));
+["o""O"]  => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.O(!lin1,!col1,!lin1,!col2));
+["x""X"]  => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.X(!lin1,!col1,!lin1,!col2));
+["u""U"]["b""B"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 1;  pri (yytext,!lin1,!col1, !col2); Tokens.UB(!lin1,!col1,!lin1,!col2));
+["u""U"]["o""O"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 1;  pri (yytext,!lin1,!col1, !col2); Tokens.UO(!lin1,!col1,!lin1,!col2));
+["u""U"]["x""X"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 1;  pri (yytext,!lin1,!col1, !col2); Tokens.UX(!lin1,!col1,!lin1,!col2));
+["s""S"]["b""B"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 1;  pri (yytext,!lin1,!col1, !col2); Tokens.SB(!lin1,!col1,!lin1,!col2));
+["s""S"]["o""O"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 1;  pri (yytext,!lin1,!col1, !col2); Tokens.SO(!lin1,!col1,!lin1,!col2));
+["s""S"]["x""X"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 1;  pri (yytext,!lin1,!col1, !col2); Tokens.SX(!lin1,!col1,!lin1,!col2));
+["d""D"]  => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.D(!lin1,!col1,!lin1,!col2));
+["e""E"]  => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.E(!lin1,!col1,!lin1,!col2));
+
+{digit} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.NUM(yytext,!lin1,!col1,!lin1,!col2));
+{upper_case_letter} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.UPPER_CASE(yytext,!lin1,!col1,!lin1,!col2));
+{lower_case_letter} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.LOWER_CASE(yytext,!lin1,!col1,!lin1,!col2));
 
 {whitespace}+ => (continue());
 {eol} => (lin1:=(!lin1)+1; eolpos:=yypos+size yytext; continue());
