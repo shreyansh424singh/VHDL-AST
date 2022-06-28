@@ -45,7 +45,12 @@ comment = ["-"]["-"][.*]+["\n"];
 eol = ("\013\010"|"\010"|"\013");
 
 %%
+<<<<<<< HEAD
 "@" => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.ADT(!lin1,!col1,!lin1,!col2));
+=======
+
+"^"  => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.CARROT(!lin1,!col1,!lin1,!col2));
+>>>>>>> refs/remotes/origin/main
 "`" => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.BACKTICK(!lin1,!col1,!lin1,!col2));
 "_" => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.UNDERSCORE(!lin1,!col1,!lin1,!col2));
 "#" => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.HASH(!lin1,!col1,!lin1,!col2));
@@ -53,6 +58,15 @@ eol = ("\013\010"|"\010"|"\013");
 "?" => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.QUESTION(!lin1,!col1,!lin1,!col2));
 "<=>" => (col1:=yypos-(!eolpos); col2:=(!col1) + 2;  pri (yytext,!lin1,!col1, !col2); Tokens.DOUBLEARROW(!lin1,!col1,!lin1,!col2));
 "??" => (col1:=yypos-(!eolpos); col2:=(!col1) + 1;  pri (yytext,!lin1,!col1, !col2); Tokens.DOUBLEQUES(!lin1,!col1,!lin1,!col2));
+"\\"  => (col1:=yypos-(!eolpos); col2:=(!col1) + 1;  pri (yytext,!lin1,!col1, !col2); Tokens.BACKSLASH(!lin1,!col1,!lin1,!col2));
+"<<"  => (col1:=yypos-(!eolpos); col2:=(!col1) + 1;  pri (yytext,!lin1,!col1, !col2); Tokens.RIGHTDOUBLE(!lin1,!col1,!lin1,!col2));
+">>"  => (col1:=yypos-(!eolpos); col2:=(!col1) + 1;  pri (yytext,!lin1,!col1, !col2); Tokens.LEFTDOUBLE(!lin1,!col1,!lin1,!col2));
+"?="  => (col1:=yypos-(!eolpos); col2:=(!col1) + 1;  pri (yytext,!lin1,!col1, !col2); Tokens.RELOP1(!lin1,!col1,!lin1,!col2));
+"?/="  => (col1:=yypos-(!eolpos); col2:=(!col1) + 2;  pri (yytext,!lin1,!col1, !col2); Tokens.RELOP2(!lin1,!col1,!lin1,!col2));
+"?<"  => (col1:=yypos-(!eolpos); col2:=(!col1) + 1;  pri (yytext,!lin1,!col1, !col2); Tokens.RELOP3(!lin1,!col1,!lin1,!col2));
+"?<="  => (col1:=yypos-(!eolpos); col2:=(!col1) + 2;  pri (yytext,!lin1,!col1, !col2); Tokens.RELOP4(!lin1,!col1,!lin1,!col2));
+"?>"  => (col1:=yypos-(!eolpos); col2:=(!col1) + 1;  pri (yytext,!lin1,!col1, !col2); Tokens.RELOP5(!lin1,!col1,!lin1,!col2));
+"?>="  => (col1:=yypos-(!eolpos); col2:=(!col1) + 2;  pri (yytext,!lin1,!col1, !col2); Tokens.RELOP6(!lin1,!col1,!lin1,!col2));
 "=>" => (col1:=yypos-(!eolpos); col2:=(!col1) + 1;  pri (yytext,!lin1,!col1, !col2); Tokens.ARROW(!lin1,!col1,!lin1,!col2));
 "**" => (col1:=yypos-(!eolpos); col2:=(!col1) + 1;  pri (yytext,!lin1,!col1, !col2); Tokens.EXPT(!lin1,!col1,!lin1,!col2));
 ":=" => (col1:=yypos-(!eolpos); col2:=(!col1) + 1;  pri (yytext,!lin1,!col1, !col2); Tokens.ASSIGN(!lin1,!col1,!lin1,!col2));
@@ -69,7 +83,6 @@ eol = ("\013\010"|"\010"|"\013");
 "," => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.COMMA(!lin1,!col1,!lin1,!col2));
 "-"  => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.MINUS(!lin1,!col1,!lin1,!col2));
 "."  => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.DOT(!lin1,!col1,!lin1,!col2));
-"^"  => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.CARROT(!lin1,!col1,!lin1,!col2));
 "/"  => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.DIV(!lin1,!col1,!lin1,!col2));
 ":" => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.COLON(!lin1,!col1,!lin1,!col2));
 ";" => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.SEMICOLON(!lin1,!col1,!lin1,!col2));

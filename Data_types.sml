@@ -326,15 +326,19 @@ struct
                        | CONTEXT_ITEM_2 of use_clause
                        | CONTEXT_ITEM_3 of context_reference   
 
-    and   context_reference = CONTEXT_REFERENCE of selected_name list                                           
+    and   context_reference = CONTEXT_REFERENCE of selected_name * selected_name list                                           
 
-    (* and   decimal_literal = DECIMAL_LITERAL of  *)
+    and   decimal_literal = DECIMAL_LITERAL_1 of integer * integer * exponent
+                          | DECIMAL_LITERAL_2 of integer * exponent
+                          | DECIMAL_LITERAL_3 of integer
+                          | DECIMAL_LITERAL_4 of integer * integer
 
-    and   delay_mechanism = DELAY_MECHANISM of expression
+    and   delay_mechanism = DELAY_MECHANISM_1 of unit
+                          | DELAY_MECHANISM_2 of expression
 
     and   design_file = DESIGN_FILE of design_unit list
 
-    and   design_unit = DESIGN_UNIT of context_clause library_unit
+    and   design_unit = DESIGN_UNIT of context_clause * library_unit
 
     and   designator = DESIGNATOR_1 of identifier
                      | DESIGNATOR_2 of operator_symbol
@@ -397,7 +401,7 @@ struct
 
     and   entity_class_entry = ENTITY_CLASS_ENTRY of entity_class
 
-    and   entity_class_entry_list = ENTITY_CLASS_ENTRY_LIST of entity_class_entry list
+    and   entity_class_entry_list = ENTITY_CLASS_ENTRY_LIST of entity_class_entry * entity_class_entry list
 
     and   entity_declaration = ENTITY_DECLARATION_1 of  identifier * entity_header * entity_declarative_part * entity_statement_part * name                       
                              | ENTITY_DECLARATION_2 of  identifier * entity_header * entity_declarative_part * name                       
@@ -437,7 +441,7 @@ struct
                         | ENTITY_HEADER_2 of port_clause                            
                         | ENTITY_HEADER_3 of generic_clause                            
 
-    and   entity_name_list = ENTITY_NAME_LIST of entity_designator list                        
+    and   entity_name_list = ENTITY_NAME_LIST of entity_designator * entity_designator list                        
                            | OTHERS of unit
                            | ALL of unit
 
@@ -457,7 +461,7 @@ struct
     and   enumeration_literal = ENUMERATION_LITERAL_1 of identifier
                               | ENUMERATION_LITERAL_2 of character_literal                      
 
-    and   enumeration_type_definition = ENUMERATION_TYPE_DEFINITION of enumeration_literal list
+    and   enumeration_type_definition = ENUMERATION_TYPE_DEFINITION of enumeration_literal * enumeration_literal list
 
     and   exit_statement = EXIT_STATEMENT_1 of label * label * condition                               
                          | EXIT_STATEMENT_2 of label * condition                               
@@ -534,7 +538,10 @@ struct
                         | FUNCTION_CALL_3 of name                       
                         | FUNCTION_CALL_4 of name * generic_map_aspect                       
 
-    and   function_specification = FUNCTION_SPECIFICATION of designator subprogram_header * formal_parameter_list * identifier * type_mark
+    and   function_specification = FUNCTION_SPECIFICATION_1 of designator * subprogram_header * formal_parameter_list * identifier * type_mark
+                                 | FUNCTION_SPECIFICATION_2 of designator * subprogram_header * identifier * type_mark
+                                 | FUNCTION_SPECIFICATION_3 of designator * subprogram_header * formal_parameter_list * type_mark
+                                 | FUNCTION_SPECIFICATION_4 of designator * subprogram_header * type_mark
 
     and   generate_specification = GENERATE_SPECIFICATION_1 of discrete_range
                                  | GENERATE_SPECIFICATION_2 of expression
@@ -562,7 +569,7 @@ struct
     and   group_constituent = GROUP_CONSTITUENT_1 of name                            
                             | GROUP_CONSTITUENT_2 of character_literal                           
 
-    and   group_constituent_list = GROUP_CONSTITUENT_LIST of group_constituent list
+    and   group_constituent_list = GROUP_CONSTITUENT_LIST of group_constituent * group_constituent list
 
     and   group_declaration = GROUP_DECLARATION of identifier * name * group_constituent_list
 
@@ -573,43 +580,46 @@ struct
     and   identifier = IDENTIFIER_1 of basic_identifier
                      | IDENTIFIER_2 of extended_identifier
 
-    and   identifier_list = IDENTIFIER_LIST of identifier list
+    and   identifier_list = IDENTIFIER_LIST of identifier * identifier list
 
-    and   if_generate_statement = IF_GENERATE_STATEMENT_1 of label * label * condition * generate_statement_body * label list * condition list * generate_statement_body list * label * generate_statement_body * label
-                                | IF_GENERATE_STATEMENT_2 of label * label * condition * generate_statement_body * label list * condition list * generate_statement_body list * generate_statement_body * label
-                                | IF_GENERATE_STATEMENT_3 of label * label * condition * generate_statement_body * label list * condition list * generate_statement_body list * label
-                                | IF_GENERATE_STATEMENT_4 of label * label * condition * generate_statement_body * condition list * generate_statement_body list * label * generate_statement_body * label
-                                | IF_GENERATE_STATEMENT_5 of label * label * condition * generate_statement_body * condition list * generate_statement_body list * generate_statement_body * label
-                                | IF_GENERATE_STATEMENT_6 of label * label * condition * generate_statement_body * condition list * generate_statement_body list * label
-                                | IF_GENERATE_STATEMENT_7 of label * label * condition * generate_statement_body * condition list * generate_statement_body list * label * generate_statement_body
-                                | IF_GENERATE_STATEMENT_8 of label * label * condition * generate_statement_body * condition list * generate_statement_body list * generate_statement_body
-                                | IF_GENERATE_STATEMENT_9 of label * label * condition * generate_statement_body * condition list * generate_statement_body list
-                                | IF_GENERATE_STATEMENT_10 of label * label * condition * generate_statement_body * label list * condition list * generate_statement_body list * label * generate_statement_body
-                                | IF_GENERATE_STATEMENT_11 of label * label * condition * generate_statement_body * label list * condition list * generate_statement_body list * generate_statement_body
-                                | IF_GENERATE_STATEMENT_12 of label * label * condition * generate_statement_body * label list * condition list * generate_statement_body list
-                                | IF_GENERATE_STATEMENT_13 of label * condition * generate_statement_body * label list * condition list * generate_statement_body list * label * generate_statement_body * label
-                                | IF_GENERATE_STATEMENT_14 of label * condition * generate_statement_body * label list * condition list * generate_statement_body list * generate_statement_body * label
-                                | IF_GENERATE_STATEMENT_15 of label * condition * generate_statement_body * label list * condition list * generate_statement_body list * label
-                                | IF_GENERATE_STATEMENT_16 of label * condition * generate_statement_body * condition list * generate_statement_body list * label * generate_statement_body * label
-                                | IF_GENERATE_STATEMENT_17 of label * condition * generate_statement_body * condition list * generate_statement_body list * generate_statement_body * label
-                                | IF_GENERATE_STATEMENT_18 of label * condition * generate_statement_body * condition list * generate_statement_body list * label
-                                | IF_GENERATE_STATEMENT_19 of label * condition * generate_statement_body * condition list * generate_statement_body list * label * generate_statement_body
-                                | IF_GENERATE_STATEMENT_20 of label * condition * generate_statement_body * condition list * generate_statement_body list * generate_statement_body
-                                | IF_GENERATE_STATEMENT_21 of label * condition * generate_statement_body * condition list * generate_statement_body list 
-                                | IF_GENERATE_STATEMENT_22 of label * condition * generate_statement_body * label list * condition list * generate_statement_body list * label * generate_statement_body
-                                | IF_GENERATE_STATEMENT_23 of label * condition * generate_statement_body * label list * condition list * generate_statement_body list * generate_statement_body
-                                | IF_GENERATE_STATEMENT_24 of label * condition * generate_statement_body * label list * condition list * generate_statement_body list
+    and   if_generate_statement1 = IF_GENERATE_STATEMENT1 of label * condition * generate_statement_body
+    and   if_generate_statement2 = IF_GENERATE_STATEMENT2 of condition * generate_statement_body
 
-   
+    and   if_generate_statement = IF_GENERATE_STATEMENT_1 of label * label * condition * generate_statement_body * if_generate_statement1 list * label * generate_statement_body * label
+                                | IF_GENERATE_STATEMENT_2 of label * label * condition * generate_statement_body * if_generate_statement1 list * generate_statement_body * label
+                                | IF_GENERATE_STATEMENT_3 of label * label * condition * generate_statement_body * if_generate_statement1 list * label
+                                | IF_GENERATE_STATEMENT_4 of label * label * condition * generate_statement_body * if_generate_statement2 list * label * generate_statement_body * label
+                                | IF_GENERATE_STATEMENT_5 of label * label * condition * generate_statement_body * if_generate_statement2 list * generate_statement_body * label
+                                | IF_GENERATE_STATEMENT_6 of label * label * condition * generate_statement_body * if_generate_statement2 list * label
+                                | IF_GENERATE_STATEMENT_7 of label * label * condition * generate_statement_body * if_generate_statement2 list * label * generate_statement_body
+                                | IF_GENERATE_STATEMENT_8 of label * label * condition * generate_statement_body * if_generate_statement2 list * generate_statement_body
+                                | IF_GENERATE_STATEMENT_9 of label * label * condition * generate_statement_body * if_generate_statement2 list
+                                | IF_GENERATE_STATEMENT_10 of label * label * condition * generate_statement_body * if_generate_statement1 list * label * generate_statement_body
+                                | IF_GENERATE_STATEMENT_11 of label * label * condition * generate_statement_body * if_generate_statement1 list * generate_statement_body
+                                | IF_GENERATE_STATEMENT_12 of label * label * condition * generate_statement_body * if_generate_statement1 list
+                                | IF_GENERATE_STATEMENT_13 of label * condition * generate_statement_body * if_generate_statement1 list * label * generate_statement_body * label
+                                | IF_GENERATE_STATEMENT_14 of label * condition * generate_statement_body * if_generate_statement1 list * generate_statement_body * label
+                                | IF_GENERATE_STATEMENT_15 of label * condition * generate_statement_body * if_generate_statement1 list * label
+                                | IF_GENERATE_STATEMENT_16 of label * condition * generate_statement_body * if_generate_statement2 list * label * generate_statement_body * label
+                                | IF_GENERATE_STATEMENT_17 of label * condition * generate_statement_body * if_generate_statement2 list * generate_statement_body * label
+                                | IF_GENERATE_STATEMENT_18 of label * condition * generate_statement_body * if_generate_statement2 list * label
+                                | IF_GENERATE_STATEMENT_19 of label * condition * generate_statement_body * if_generate_statement2 list * label * generate_statement_body
+                                | IF_GENERATE_STATEMENT_20 of label * condition * generate_statement_body * if_generate_statement2 list * generate_statement_body
+                                | IF_GENERATE_STATEMENT_21 of label * condition * generate_statement_body * if_generate_statement2 list 
+                                | IF_GENERATE_STATEMENT_22 of label * condition * generate_statement_body * if_generate_statement1 list * label * generate_statement_body
+                                | IF_GENERATE_STATEMENT_23 of label * condition * generate_statement_body * if_generate_statement1 list * generate_statement_body
+                                | IF_GENERATE_STATEMENT_24 of label * condition * generate_statement_body * if_generate_statement1 list
 
-    and   if_statement = IF_STATEMENT_1 of label * condition * sequential_statement_body * condition list * sequential_statement_body list * sequential_statement_body * label
-                       | IF_STATEMENT_2 of condition * sequential_statement_body * condition list * sequential_statement_body list * sequential_statement_body * label
-                       | IF_STATEMENT_3 of label * condition * sequential_statement_body * condition list * sequential_statement_body list * label
-                       | IF_STATEMENT_4 of condition * sequential_statement_body * condition list * sequential_statement_body list * label
-                       | IF_STATEMENT_5 of label * condition * sequential_statement_body * condition list * sequential_statement_body list
-                       | IF_STATEMENT_6 of condition * sequential_statement_body * condition list * sequential_statement_body list
-                       | IF_STATEMENT_7 of label * condition * sequential_statement_body * condition list * sequential_statement_body list * sequential_statement_body
-                       | IF_STATEMENT_8 of condition * sequential_statement_body * condition list * sequential_statement_body list * sequential_statement_body
+    and   if_statement1 = IF_STATEMENT1 of condition * sequential_statement_body
+
+    and   if_statement = IF_STATEMENT_1 of label * condition * sequential_statement_body * if_statement1 list * sequential_statement_body * label
+                       | IF_STATEMENT_2 of condition * sequential_statement_body * if_statement1 list * sequential_statement_body * label
+                       | IF_STATEMENT_3 of label * condition * sequential_statement_body * if_statement1 list * label
+                       | IF_STATEMENT_4 of condition * sequential_statement_body * if_statement1 list * label
+                       | IF_STATEMENT_5 of label * condition * sequential_statement_body * if_statement1 list
+                       | IF_STATEMENT_6 of condition * sequential_statement_body * if_statement1 list
+                       | IF_STATEMENT_7 of label * condition * sequential_statement_body * if_statement1 list * sequential_statement_body
+                       | IF_STATEMENT_8 of condition * sequential_statement_body * if_statement1 list * sequential_statement_body
 
     and   incomplete_subtype_indication = INCOMPLETE_SUBTYPE_INDICATION_1 of subtype_indication
                                         | INCOMPLETE_SUBTYPE_INDICATION_2 of anonymous_type_indication                       
@@ -629,20 +639,20 @@ struct
     and   incomplete_type_mark = INCOMPLETE_TYPE_MARK_1 of type_mark
                                | INCOMPLETE_TYPE_MARK_2 of anonymous_type_indication                                     
 
-    and   index_constraint = INDEX_CONSTRAINT of discrete_range list
+    and   index_constraint = INDEX_CONSTRAINT of discrete_range * discrete_range list
 
     and   index_subtype_definition = INDEX_SUBTYPE_DEFINITION of type_mark
 
-    and   indexed_name = INDEXED_NAME of prefix * expression list
+    and   indexed_name = INDEXED_NAME of prefix * expression * expression list
 
     and   instantiated_unit = INSTANTIATED_UNIT_1 of name
                             | INSTANTIATED_UNIT_2 of name * identifier
 
-    and   instantiation_list = INSTANTIATION_LIST of label list                                                           
+    and   instantiation_list = INSTANTIATION_LIST of label * label list                                                           
                              | OTHERS of unit
                              | ALL of unit
 
-    and   integer = INTEGER of digit list
+    and   integer = INTEGER of digit * digit list
 
     and   integer_incomplete_type_definition = RANGE of unit
 
@@ -665,7 +675,7 @@ struct
 
     and   interface_incomplete_type_declaration = INTERFACE_INCOMPLETE_TYPE_DECLARATION of identifier
 
-    and   interface_list = INTERFACE_LIST of interface_element list
+    and   interface_list = INTERFACE_LIST of interface_element * interface_element list
 
     and   interface_object_declaration = INTERFACE_OBJECT_DECLARATION_1 of interface_constant_declaration
                                        | INTERFACE_OBJECT_DECLARATION_2 of interface_signal_declaration
@@ -681,11 +691,17 @@ struct
     and   interface_procedure_specification = INTERFACE_PROCEDURE_SPECIFICATION_1 of designator *  formal_parameter_list                                                
                                             | INTERFACE_PROCEDURE_SPECIFICATION_2 of designator 
 
-    and   interface_signal_declaration = INTERFACE_SIGNAL_DECLARATION_1 of identifier_list * interface_type_indication * static_conditional_expression                                             
+    and   interface_signal_declaration = INTERFACE_SIGNAL_DECLARATION_1 of identifier_list * interface_type_indication * conditional_expression                                             
                                        | INTERFACE_SIGNAL_DECLARATION_2 of identifier_list * interface_type_indication 
 
     and   interface_subprogram_declaration = INTERFACE_SUBPROGRAM_DECLARATION_1 of interface_subprogram_specification * interface_subprogram_default                                                                                    
                                            | INTERFACE_SUBPROGRAM_DECLARATION_2 of interface_subprogram_specification
+
+    and   interface_subprogram_default = INTERFACE_SUBPROGRAM_DEFAULT_1 of name
+                                       | INTERFACE_SUBPROGRAM_DEFAULT_2 of unit
+
+    and   interface_subprogram_specification = INTERFACE_SUBPROGRAM_SPECIFICATION_1 of interface_procedure_specification
+                                             | INTERFACE_SUBPROGRAM_SPECIFICATION_2 of interface_function_specification                    
 
     and   interface_type_declaration = INTERFACE_TYPE_DECLARATION of interface_incomplete_type_declaration
 
@@ -717,11 +733,13 @@ struct
                   | LITERAL_4 of bit_string_literal
                   | LITERAL_5 of unit 
 
-    and   logical_expression = LOGICAL_EXPRESSION of relation * relation list
+    and   logical_expression = LOGICAL_EXPRESSION_1 of relation * relation list
+                             | LOGICAL_EXPRESSION_2 of relation * relation
+                             | LOGICAL_EXPRESSION_3 of relation
 
     and   logical_name = LOGICAL_NAME of identifier
 
-    and   logical_name_list = LOGICAL_NAME_LIST of logical_name list
+    and   logical_name_list = LOGICAL_NAME_LIST of logical_name * logical_name list
 
     and   logical_operator = AND of unit
                            | OR of unit
