@@ -216,6 +216,7 @@ eol = ("\013\010"|"\010"|"\013");
 ["p""P"]["r""R"]["i""I"]["v""V"]["a""A"]["t""T"]["e""E"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 6;  pri (yytext,!lin1,!col1, !col2); Tokens.PRIVATE(!lin1,!col1,!lin1,!col2));
 ["e""E"]["x""X"]["p""P"]["r""R"]["e""E"]["s""S"]["s""S"]["i""I"]["o""O"]["n""N"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 9;  pri (yytext,!lin1,!col1, !col2); Tokens.EXPRESSION(!lin1,!col1,!lin1,!col2));
 ["t""T"]["y""Y"]["p""P"]["e""E"]["_"]["m""M"]["a""A"]["r""R"]["k""K"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 8;  pri (yytext,!lin1,!col1, !col2); Tokens.TYPE_MARK(!lin1,!col1,!lin1,!col2));
+["c""C"]["o""O"]["n""N"]["t""T"]["e""E"]["x""X"]["t""T"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 6;  pri (yytext,!lin1,!col1, !col2); Tokens.CONTEXT(!lin1,!col1,!lin1,!col2));
 
 ["b""B"]  => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.B(!lin1,!col1,!lin1,!col2));
 ["o""O"]  => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.O(!lin1,!col1,!lin1,!col2));

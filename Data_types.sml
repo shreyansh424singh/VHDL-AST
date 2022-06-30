@@ -30,7 +30,7 @@ struct
 
     and   access_type_definition = ACCESS_SUBTYPE_INDICATION of subtype_indication
 
-    and   actual_designator = EXPRESSION of expression
+    and   actual_designator = EXPRESSION1 of expression
                               | NAME of name
 
     and   actual_part = ACTUAL_DESIGNATOR of actual_designator
