@@ -1327,4 +1327,6 @@ struct
                            | WAVEFORM_ELEMENT_2 of expression 
                            | WAVEFORM_ELEMENT_3 of unit
 
+    and root = ROOT of design_file
+
 end
