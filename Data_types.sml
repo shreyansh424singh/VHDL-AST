@@ -1,26 +1,26 @@
 structure W_datatypes =
 struct
 
-  datatype  special_character = TICK  of unit
-                              | LPARAN  of unit
-                              | RPARAN  of unit
-                              | COMMA of unit
-                              | DOT of unit
-                              | COLON of unit
-                              | SEMICOLON of unit
-                              | BAR of unit
-                              | LSQUARE of unit
-                              | RSQUARE of unit
-                              | UNDERSCORE of unit
-                              | HASH of unit
-                              | INVERTEDCOMMA of unit
-                              | CARROT of unit
+  datatype  special_character = Tick  of unit
+                              | Lparan  of unit
+                              | Rparan  of unit
+                              | Comma of unit
+                              | Dot of unit
+                              | Colon of unit
+                              | Semicolon of unit
+                              | Bar of unit
+                              | Lsquare of unit
+                              | Rsquare of unit
+                              | Underscore of unit
+                              | Hash of unit
+                              | Invertedcomma of unit
+                              | Carrot of unit
 
-    and   lower_case_letter = LOWER_CASE_LETTER of unit
+    and   lower_case_letter = Lower_case_letter of unit
 
-    and   upper_case_letter = UPPER_CASE_LETTER of unit                              
+    and   upper_case_letter = Upper_case_letter of unit                              
 
-    and   digit = DIGIT of unit                              
+    and   digit = Digit of unit                              
   
     and   absolute_pathname = ABSOLUTE_PATHNAME of partial_pathname
 
@@ -31,14 +31,14 @@ struct
 
     and   access_type_definition = ACCESS_SUBTYPE_INDICATION of subtype_indication
 
-    and   actual_designator = EXPRESSION1 of expression
+    and   actual_designator = Expression of expression
                               | NAME of name
 
     and   actual_part = ACTUAL_DESIGNATOR of actual_designator
                         | FUNCTION_NAME of name * actual_designator
-                        | TYPE_MARK1 of  type_mark * actual_designator
+                        | Type_mark of  type_mark * actual_designator
 
-    and   adding_operator = AMP  of unit
+    and   adding_operator = Amp of unit
 
     and   aggregate = ELEMENT_ASSOCIATION of element_association list
 
@@ -98,7 +98,7 @@ struct
 
     and   association_list = ASSOCIATION_ELE_LiST of association_element list
 
-    and   attribute_declaration = ATTRIBUTE of identifier * type_mark
+    and   attribute_declaration = Attribute of identifier * type_mark
 
     and   attribute_designator = ATTRIBUTE_DESIGNATOR of simple_name
 
@@ -111,16 +111,16 @@ struct
 
     and   base = BASE of integer 
     
-    and   base_specifier = B  of unit
-                         | O  of unit
-                         | X  of unit
-                         | UB  of unit
-                         | UO  of unit
-                         | UX  of unit
-                         | SB  of unit
-                         | SO  of unit
-                         | SX  of unit
-                         | D  of unit
+    and   base_specifier = B_  of unit
+                         | O_  of unit
+                         | X_  of unit
+                         | Ub  of unit
+                         | Uo  of unit
+                         | Ux  of unit
+                         | Sb  of unit
+                         | So of unit
+                         | Sx  of unit
+                         | D_  of unit
 
     and   based_integer = EXTENDED_DIGIT_LIST of extended_digit * extended_digit list
 
@@ -137,7 +137,7 @@ struct
 
     and   basic_identifier = BASIC_IDENTIFIER of letter * letter_or_digit list
 
-    and   binary_miscellaneous_operator = EXPT of unit
+    and   binary_miscellaneous_operator = Expt of unit
 
     and   binding_indication = BINDING_INDICATION_1 of entity_aspect * generic_map_aspect * port_map_aspect                                   
                                | BINDING_INDICATION_2 of entity_aspect * generic_map_aspect                                   
@@ -219,7 +219,7 @@ struct
     and   choice = CHOICE_1 of simple_expression
                    | CHOICE_2 of discrete_range
                    | CHOICE_3 of simple_name
-                   | OTHERS of unit
+                   | Others of unit
 
     and   choices = CHOICES of choice * choice list
 
@@ -303,7 +303,8 @@ struct
     and   conditional_waveforms = CONDITIONAL_WAVEFORMS of waveform * condition * conditional_waveforms_1 list * waveform
                                 | CONDITIONAL_WAVEFORMS1 of waveform * condition * conditional_waveforms_1 list
 
-    and   configuration_declaration = CONFIGURATION_DECLARATION of identifier * name * configuration_declarative_part * verification_unit_binding_indication list * block_configuration * simple_name   
+    and   configuration_declaration = CONFIGURATION_DECLARATION_1 of identifier * name * configuration_declarative_part * verification_unit_binding_indication list * block_configuration * simple_name 
+                                    | CONFIGURATION_DECLARATION_2 of identifier * name * configuration_declarative_part * verification_unit_binding_indication list * block_configuration  
 
     and   configuration_declarative_item = CONFIGURATION_DECLARATIVE_ITEM_1 of use_clause
                                          | CONFIGURATION_DECLARATIVE_ITEM_2 of attribute_specification
@@ -352,15 +353,15 @@ struct
     and   designator = DESIGNATOR_1 of identifier
                      | DESIGNATOR_2 of operator_symbol
 
-    and   direction = TO  of unit
-                    | DOWNTO of unit
+    and   direction = To  of unit
+                    | Downto of unit
 
     and   disconnection_specification = DISCONNECTION_SPECIFICATION of guarded_signal_specification * expression
     
     and   discrete_range = DISCRETE_RANGE_1 of subtype_indication
                          | DISCRETE_RANGE_2 of range                     
 
-    and   discrete_incomplete_type_definition = BOX of unit
+    and   discrete_incomplete_type_definition = Box of unit
 
     and   element_array_mode_view_indication = ELEMENT_ARRAY_MODE_VIEW_INDICATION of name
 
@@ -387,23 +388,25 @@ struct
 
     and   entity_aspect = ENTITY_ASPECT_1 of name * identifier
                         | ENTITY_ASPECT_2 of name                              
-                        | OPEN
+                        | Open
 
-    and   entity_class = ENTITY of unit
-                       | ARCHITECTURE of unit
-                       | CONFIGURATION of unit
-                       | PACKAGE of unit
-                       | TYPE of unit
-                       | SUBTYPE of unit
-                       | CONSTANT of unit
-                       | VARIABLE of unit
-                       | COMPONENT of unit
-                       | LITERAL of unit
-                       | UNITS of unit
-                       | GROUP of unit
-                       | FILE of unit
-                       | PROPERTY of unit
-                       | SEQUENCE of unit
+    and   entity_class = Entity of unit
+                       | Architecture of unit
+                       | Configuration of unit
+                       | Package of unit
+                       | Type of unit
+                       | Subtype of unit
+                       | Constant of unit
+                       | Variable of unit
+                       | Component of unit
+                       | Label of unit
+                       | Signal of unit
+                       | Literal of unit
+                       | Units of unit
+                       | Group of unit
+                       | File of unit
+                       | Property of unit
+                       | Sequence of unit
 
     and   entity_class_entry = ENTITY_CLASS_ENTRY of entity_class
 
@@ -445,7 +448,7 @@ struct
                         | ENTITY_HEADER_3 of generic_clause                            
 
     and   entity_name_list = ENTITY_NAME_LIST of entity_designator * entity_designator list                        
-                           | ALL of unit
+                           | All of unit
 
     and   entity_specification = ENTITY_SPECIFICATION of entity_name_list * entity_class                           
 
@@ -469,7 +472,7 @@ struct
                          | EXIT_STATEMENT_3 of condition                               
                          | EXIT_STATEMENT_4 of label * label                               
                          | EXIT_STATEMENT_5 of label                               
-                         | EXIT of unit                            
+                         | Exit of unit                            
 
     and   exponent = EXPONENT of integer
 
@@ -477,7 +480,7 @@ struct
                      | EXPRESSION_2 of logical_expression                         
 
     and   expression_or_unaffected = EXPRESSION_OR_UNAFFECTED of expression
-                                   | UNAFFECTED of unit
+                                   | Unaffected of unit
 
     and   extended_digit = EXTENDED_DIGIT_1 of digit
                          | EXTENDED_DIGIT_2 of letter
@@ -520,8 +523,8 @@ struct
     and   for_generate_statement = FOR_GENERATE_STATEMENT_1 of label * parameter_specification * generate_statement_body * label
                                  | FOR_GENERATE_STATEMENT_2 of label * parameter_specification * generate_statement_body
 
-    and   force_mode = IN of unit
-                     | OUT of unit
+    and   force_mode = In of unit
+                     | Out of unit
 
     and   formal_designator = FORMAL_DESIGNATOR_1 of name * signatur                                 
                             | FORMAL_DESIGNATOR_2 of name                              
@@ -652,7 +655,7 @@ struct
 
     and   integer = INTEGER of digit * digit list
 
-    and   integer_incomplete_type_definition = RANGE of unit
+    and   integer_incomplete_type_definition = Range of unit
 
     and   integer_type_definition = INTEGER_TYPE_DEFINITION of range_constraint
 
@@ -739,12 +742,12 @@ struct
 
     and   logical_name_list = LOGICAL_NAME_LIST of logical_name * logical_name list
 
-    and   logical_operator = AND of unit
-                           | OR of unit
-                           | NAND of unit
-                           | NOR of unit
-                           | XOR of unit
-                           | XNOR of unit
+    and   logical_operator = And of unit
+                           | Or of unit
+                           | Nand of unit
+                           | Nor of unit
+                           | Xor of unit
+                           | Xnor of unit
 
     and   loop_statement = LOOP_STATEMENT_1 of label * iteration_scheme * sequential_statement_body * label                           
                          | LOOP_STATEMENT_2 of label * sequential_statement_body * label                           
@@ -755,12 +758,12 @@ struct
                          | LOOP_STATEMENT_7 of iteration_scheme * sequential_statement_body * label                           
                          | LOOP_STATEMENT_8 of sequential_statement_body * label                           
 
-    and   miscellaneous_operator = ABS of unit
-                                 | NOT of unit
+    and   miscellaneous_operator = Abs of unit
+                                 | Not of unit
 
-    and   mode = INOUT of unit
-               | BUFFER of unit
-               | LINKAGE of unit
+    and   mode = Inout of unit
+               | Buffer of unit
+               | Linkage of unit
 
     and   mode_indication = MODE_INDICATION_1 of simple_mode_indication
                           | MODE_INDICATION_2 of mode_view_indication                                           
@@ -773,10 +776,10 @@ struct
     and   mode_view_indication = MODE_VIEW_INDICATION_1 of record_mode_view_indication
                                | MODE_VIEW_INDICATION_2 of array_mode_view_indication
 
-    and   multiplying_operator = MULT of unit
-                               | DIV of unit
-                               | MOD of unit
-                               | REM of unit
+    and   multiplying_operator = Mult of unit
+                               | Div of unit
+                               | Mod of unit
+                               | Rem of unit
 
     and   name = NAME_1 of simple_name
                | NAME_2 of operator_symbol
@@ -1035,18 +1038,18 @@ struct
     and   relation = RELATION_1 of shift_expression * relational_operator * shift_expression                                      
                    | RELATION_2 of shift_expression
 
-    and   relational_operator = EQ of unit
-                              | NEQ of unit
-                              | GT of unit
-                              | LT of unit
-                              | GE of unit
-                              | LE of unit
-                              | RELO1 of unit
-                              | RELO2  of unit
-                              | RELO3 of unit
-                              | RELO4  of unit
-                              | RELO5 of unit
-                              | RELO6  of unit
+    and   relational_operator = Eq of unit
+                              | Neq of unit
+                              | Gt of unit
+                              | Lt of unit
+                              | Ge of unit
+                              | Le of unit
+                              | Relo1 of unit
+                              | Relo2  of unit
+                              | Relo3 of unit
+                              | Relo4  of unit
+                              | Relo5 of unit
+                              | Relo6  of unit
 
     and   relative_pathname = RELATIVE_PATHNAME of partial_pathname
 
@@ -1137,15 +1140,15 @@ struct
     and   shift_expression = SHIFT_EXPRESSION_1 of simple_expression * shift_operator * simple_expression                                       
                            | SHIFT_EXPRESSION_2 of simple_expression
 
-    and   shift_operator = SLL of unit
-                         | SRL of unit
-                         | SLA of unit
-                         | SRA of unit
-                         | ROL of unit
-                         | ROR of unit
+    and   shift_operator = Sll of unit
+                         | Srl of unit
+                         | Sla of unit
+                         | Sra of unit
+                         | Rol of unit
+                         | Ror of unit
 
-    and   sign = PLUS of unit
-               | MINUS of unit                                                
+    and   sign = Plus of unit
+               | Minus of unit                                           
 
     and   signal_assignment_statement = SIGNAL_ASSIGNMENT_STATEMENT_1 of label * simple_signal_assignment
                                       | SIGNAL_ASSIGNMENT_STATEMENT_2 of simple_signal_assignment
@@ -1161,8 +1164,8 @@ struct
                              | SIGNAL_DECLARATION_3 of identifier_list * subtype_indication                                      
                              | SIGNAL_DECLARATION_4 of identifier_list * subtype_indication * signal_kind             
 
-    and   signal_kind = REGISTER of unit
-                      | BUS of unit
+    and   signal_kind = Register of unit
+                      | Bus of unit
 
     and   signal_list = SIGNAL_LIST_1 of name list
                       | SIGNAL_LIST_2 of unit
@@ -1244,8 +1247,8 @@ struct
                                                | SUBPROGRAM_INSTANTIATION_DECLARATION_3 of subprogram_kind * identifier * name                             
                                                | SUBPROGRAM_INSTANTIATION_DECLARATION_4 of subprogram_kind * identifier * name * signatur     
 
-    and   subprogram_kind = PROCEDURE of unit
-                          | FUNCTION of unit                                                    
+    and   subprogram_kind = Procedure of unit
+                          | Function of unit                                                    
 
     and   subprogram_specification = SUBPROGRAM_SPECIFICATION_1 of procedure_specification
                                    | SUBPROGRAM_SPECIFICATION_2 of function_specification                                            
@@ -1292,7 +1295,7 @@ struct
     and   unary_expression = UNARY_EXPRESSION_1 of primary
                            | UNARY_EXPRESSION_2 of logical_operator * primary
 
-    and   unary_miscellaneous_operator = UNARY_MISCELLANEOUS_OPERATOR of logical_operator                          
+    and   unary_miscellaneous_operator = UNARY_MISCELLANEOUS_OPERATOR of logical_operator
 
     and   unbounded_array_definition = UNBOUNDED_ARRAY_DEFINITION of index_subtype_definition list * subtype_indication
 
