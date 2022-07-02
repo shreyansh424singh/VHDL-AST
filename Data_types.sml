@@ -1015,7 +1015,7 @@ struct
 
     and   range_constraint = RANGE_CONSTRAINT of range
 
-    and   record_constraint = RECORD_CONSTRAINT of record_element_constraint list
+    and   record_constraint = RECORD_CONSTRAINT of record_element_constraint * record_element_constraint list
 
     and   record_element_constraint = RECORD_ELEMENT_CONSTRAINT of simple_name * element_constraint                                                                                                                             
 
@@ -1072,6 +1072,8 @@ struct
 
     and   secondary_unit_declaration = SECONDARY_UNIT_DECLARATION of identifier * physical_literal
 
+    and   ex_when_choices = EX_WHEN_CHOICES of expression * choices
+
     and   selected_expressions = SELECTED_EXPRESSIONS of (expression * choices) list
 
     and   selected_force_assignment = SELECTED_FORCE_ASSIGNMENT_1 of expression * target * force_mode * selected_expressions                           
@@ -1086,6 +1088,8 @@ struct
 
     and   selected_waveform_assignment = SELECTED_WAVEFORM_ASSIGNMENT_1 of expression * target * delay_mechanism * selected_waveforms
                                        | SELECTED_WAVEFORM_ASSIGNMENT_2 of expression * target * selected_waveforms                                     
+
+    and   wave_when_choices = WAVE_WHEN_CHOICES of waveform * choices
 
     and   selected_waveforms = SELECTED_WAVEFORMS of (waveform * choices) list
 
@@ -1169,6 +1173,8 @@ struct
                     | SIGNATURE_4 of unit                                                                                         
 
     and   simple_configuration_specification = SIMPLE_CONFIGURATION_SPECIFICATION of component_specification * binding_indication                    
+
+    and   adding_operator_term = ADDING_OPERATOR_TERM of adding_operator * term
 
     and   simple_expression = SIMPLE_EXPRESSION_1 of sign * term * (adding_operator*term) list
                             | SIMPLE_EXPRESSION_2 of term * (adding_operator * term) list
@@ -1259,6 +1265,8 @@ struct
 
     and   target = TARGET_1 of name
                  | TARGET_2 of aggregate
+
+    and   multiplying_operator_factor = MULTIPLYING_OPERATOR_FACTOR of multiplying_operator * factor
 
     and   term = TERM of factor * (multiplying_operator * factor) list
 

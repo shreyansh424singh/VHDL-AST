@@ -1,7 +1,7 @@
 structure Tokens = Tokens
     type pos = int
     type svalue = Tokens.svalue    
-    type ('a,'b) token = ('a,'b) Tokens.token
+    type ('a,'b,'c,'d) token = ('a,'b,'c,'d) Tokens.token
     type lexresult = (svalue, pos) token
     type lexarg = string
     type arg = lexarg
@@ -24,7 +24,7 @@ structure Tokens = Tokens
             ^"]  -  "^  "["^Int.toString line^"."^
             Int.toString col2^"]" ^  "\n");
 
-    val eof = fn fileName => Tokens.EOF (!lin1,!col1,!lin1,!col2);
+    val eof = fn fileName => Tokens.EOF(!lin1,!col1,!lin1,!col2);
 
 %%
 %header (functor WhlLexFun(structure Tokens: Whl_TOKENS));
@@ -230,9 +230,9 @@ eol = ("\013\010"|"\010"|"\013");
 ["d""D"]  => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.D(!lin1,!col1,!lin1,!col2));
 ["e""E"]  => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.E(!lin1,!col1,!lin1,!col2));
 
-{digit} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.NUM(yytext,!lin1,!col1,!lin1,!col2));
-{upper_case_letter} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.UPPER_CASE(yytext,!lin1,!col1,!lin1,!col2));
-{lower_case_letter} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.LOWER_CASE(yytext,!lin1,!col1,!lin1,!col2));
+{digit} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.NUM(!lin1,!col1,!lin1,!col2));
+{upper_case_letter} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.UPPER_CASE(!lin1,!col1,!lin1,!col2));
+{lower_case_letter} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.LOWER_CASE(!lin1,!col1,!lin1,!col2));
 
 {whitespace}+ => (continue());
 {eol} => (lin1:=(!lin1)+1; eolpos:=yypos+size yytext; continue());
