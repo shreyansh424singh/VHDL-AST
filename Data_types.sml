@@ -14,6 +14,7 @@ struct
                               | UNDERSCORE of unit
                               | HASH of unit
                               | INVERTEDCOMMA of unit
+                              | CARROT of unit
 
     and   lower_case_letter = LOWER_CASE_LETTER of unit
 

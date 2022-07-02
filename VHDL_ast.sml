@@ -15,10 +15,12 @@ struct
 	        fun readNext n = if TextIO.endOfStream inStream then ""
 	                         else TextIO.inputN (inStream, n)
             val lexer = WhlParser.makeLexer readNext fileName
-            val printError : string * int * int -> unit = fn
-                (msg,line,col) =>
-                print (fileName^"["^Int.toString line^":"
-                ^Int.toString col^"] "^msg^"\n");
+            val printError : string * int * int * int * int -> unit = fn
+                (msg,lin1,col1,lin2,col2) =>
+                print (fileName^"["^Int.toString lin1^":"
+                ^Int.toString col1^":"
+                ^Int.toString lin2^":"
+                ^Int.toString col2^"] "^msg^"\n");
 	        val (ans,rem) = WhlParser.parse (15, lexer, printError, fileName)
             handle WhlParser.ParseError => raise WhlError;
             val _ = TextIO.closeIn inStream;
