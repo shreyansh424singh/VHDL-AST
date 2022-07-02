@@ -1,0 +1,2 @@
+Skeleton 5
+d2f2d"Int"d"TextIO"ad"Vhdl"h3aä¢WhlLrVals"jh1aä¢Token"gp2ä¢LrParser"ÿ.gp1e"WhlLrValsFun"aä¢WhlLex"jh1aä¢Tokens"gp2ÿÿ&gp1e"WhlLexFun"ad"WhlParser"jh3aä¢ParserData"gp2ÿÿ‚ad"Lex"gp1ÿaÿ9gp1ÿ9gp1e"JoinWithArg"
