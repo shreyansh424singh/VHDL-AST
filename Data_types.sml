@@ -863,13 +863,13 @@ struct
     and   package_instantiation_declaration = PACKAGE_INSTANTIATION_DECLARATION_1 of identifier * name * generic_map_aspect                         
                                             | PACKAGE_INSTANTIATION_DECLARATION_2 of identifier * name                      
 
-    and   package_pathname = PACKAGE_PATHNAME of name * simple_name list * simple_name                                            
+    and   package_pathname = PACKAGE_PATHNAME of name * simple_name list                                            
 
     and   parameter_map_aspect = PARAMETER_MAP_ASPECT of association_list
 
     and   parameter_specification = PARAMETER_SPECIFICATION of identifier * discrete_range
 
-    and   partial_pathname = PARTIAL_PATHNAME of pathname_element * simple_name
+    and   partial_pathname = PARTIAL_PATHNAME of pathname_element list
 
     and   pathname_element = PATHNAME_ELEMENT_1 of simple_name
                            | PATHNAME_ELEMENT_2 of label * expression 
