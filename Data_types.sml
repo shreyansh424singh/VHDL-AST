@@ -68,6 +68,7 @@ struct
     and   array_constraint = ARRAY_INDEX_CONSTRAINT_1 of index_constraint * array_element_constraint
                              | ARRAY_INDEX_CONSTRAINT_2 of index_constraint
                              | ARRAY_ELEMENT_CONSTRAINT_1 of array_element_constraint 
+                             | ARRAY_INDEX_CONSTRAINT_3 of unit
 
     and   array_element_constraint = ARRAY_ELEMENT_CONSTRAINT of element_constraint
 
@@ -152,7 +153,7 @@ struct
                                | BIT_STRING_LITERAL_3 of base_specifier
                                | BIT_STRING_LITERAL_4 of base_specifier * bit_value                               
 
-    and   bit_value = BIT_VALUE of graphic_character list
+    and   bit_value = BIT_VALUE of graphic_character * graphic_character list
 
     and   block_configuration = BLOCK_CONFIGURATION of block_specification * use_clause list * configuration_item list
 
@@ -388,11 +389,13 @@ struct
 
     and   entity_aspect = ENTITY_ASPECT_1 of name * identifier
                         | ENTITY_ASPECT_2 of name                              
-                        | Open
+                        | Open of unit
 
     and   entity_class = Entity of unit
                        | Architecture of unit
                        | Configuration of unit
+                       | Procedure1 of unit
+                       | Function1 of unit
                        | Package of unit
                        | Type of unit
                        | Subtype of unit
@@ -446,9 +449,11 @@ struct
     and   entity_header = ENTITY_HEADER_1 of generic_clause * port_clause                            
                         | ENTITY_HEADER_2 of port_clause                            
                         | ENTITY_HEADER_3 of generic_clause                            
+                        | ENTITY_HEADER_4 of unit                          
 
     and   entity_name_list = ENTITY_NAME_LIST of entity_designator * entity_designator list                        
-                           | All of unit
+                           | Others1 of unit
+                           | All1 of unit
 
     and   entity_specification = ENTITY_SPECIFICATION of entity_name_list * entity_class                           
 
@@ -652,6 +657,8 @@ struct
                             | INSTANTIATED_UNIT_2 of name * identifier
 
     and   instantiation_list = INSTANTIATION_LIST of label * label list                                                           
+                             | Others2 of unit
+                             | All2 of unit
 
     and   integer = INTEGER of digit * digit list
 
@@ -761,7 +768,9 @@ struct
     and   miscellaneous_operator = Abs of unit
                                  | Not of unit
 
-    and   mode = Inout of unit
+    and   mode = In1 of unit 
+               | Out1 of unit
+               | Inout of unit
                | Buffer of unit
                | Linkage of unit
 
@@ -866,13 +875,13 @@ struct
     and   package_instantiation_declaration = PACKAGE_INSTANTIATION_DECLARATION_1 of identifier * name * generic_map_aspect                         
                                             | PACKAGE_INSTANTIATION_DECLARATION_2 of identifier * name                      
 
-    and   package_pathname = PACKAGE_PATHNAME of name * simple_name list                                            
+    and   package_pathname = PACKAGE_PATHNAME of name * simple_name list * simple_name                                           
 
     and   parameter_map_aspect = PARAMETER_MAP_ASPECT of association_list
 
     and   parameter_specification = PARAMETER_SPECIFICATION of identifier * discrete_range
 
-    and   partial_pathname = PARTIAL_PATHNAME of pathname_element list
+    and   partial_pathname = PARTIAL_PATHNAME of pathname_element list * simple_name
 
     and   pathname_element = PATHNAME_ELEMENT_1 of simple_name
                            | PATHNAME_ELEMENT_2 of label * expression 
@@ -1078,7 +1087,7 @@ struct
 
     and   ex_when_choices = EX_WHEN_CHOICES of expression * choices
 
-    and   selected_expressions = SELECTED_EXPRESSIONS of (expression * choices) list
+    and   selected_expressions = SELECTED_EXPRESSIONS of ex_when_choices list
 
     and   selected_force_assignment = SELECTED_FORCE_ASSIGNMENT_1 of expression * target * force_mode * selected_expressions                           
                                     | SELECTED_FORCE_ASSIGNMENT_2 of expression * target * selected_expressions                           
@@ -1095,13 +1104,13 @@ struct
 
     and   wave_when_choices = WAVE_WHEN_CHOICES of waveform * choices
 
-    and   selected_waveforms = SELECTED_WAVEFORMS of (waveform * choices) list
+    and   selected_waveforms = SELECTED_WAVEFORMS of wave_when_choices list
 
     and   sensitivity_clause = SENSITIVITY_CLAUSE of sensitivity_list
 
     and   sensitivity_list = SENSITIVITY_LIST of name list
 
-    and   sequence_of_statements = SEQUENCE_OF_STATEMENTS of sequential_statement
+    and   sequence_of_statements = SEQUENCE_OF_STATEMENTS of sequential_statement list
 
     and   sequential_block_statement = SEQUENTIAL_BLOCK_STATEMENT_1 of label * sequential_block_declarative_part * sequential_block_statement_part * label                                       
                                      | SEQUENTIAL_BLOCK_STATEMENT_2 of sequential_block_declarative_part * sequential_block_statement_part * label                                       
@@ -1180,8 +1189,8 @@ struct
 
     and   adding_operator_term = ADDING_OPERATOR_TERM of adding_operator * term
 
-    and   simple_expression = SIMPLE_EXPRESSION_1 of sign * term * (adding_operator*term) list
-                            | SIMPLE_EXPRESSION_2 of term * (adding_operator * term) list
+    and   simple_expression = SIMPLE_EXPRESSION_1 of sign * term * adding_operator_term list
+                            | SIMPLE_EXPRESSION_2 of term * adding_operator_term list
 
     and   simple_force_assignment = SIMPLE_FORCE_ASSIGNMENT_1 of target * force_mode * conditional_or_unaffected_expression                            
                                   | SIMPLE_FORCE_ASSIGNMENT_2 of target * conditional_or_unaffected_expression                            
@@ -1272,7 +1281,7 @@ struct
 
     and   multiplying_operator_factor = MULTIPLYING_OPERATOR_FACTOR of multiplying_operator * factor
 
-    and   term = TERM of factor * (multiplying_operator * factor) list
+    and   term = TERM of factor * multiplying_operator_factor list
 
     and   timeout_clause = TIMEOUT_CLAUSE of expression
 
@@ -1333,7 +1342,8 @@ struct
                          | WAIT_STATEMENT_15 of label * sensitivity_clause * condition_clause                               
                          | WAIT_STATEMENT_16 of unit                     
 
-    and   waveform = WAVEFORM of waveform_element list                         
+    and   waveform = WAVEFORM of waveform_element list
+                    | Unaffected1 of unit                         
 
     and   waveform_element = WAVEFORM_ELEMENT_1 of expression * expression                    
                            | WAVEFORM_ELEMENT_2 of expression 
