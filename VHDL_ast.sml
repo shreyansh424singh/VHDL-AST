@@ -17,7 +17,7 @@ struct
             val lexer = WhlParser.makeLexer readNext fileName
             val printError : string * int * int -> unit = fn
                 (msg,line,col) =>
-                print (fileName^"["^Int.toString line^":"
+                print (fileName^" ["^Int.toString line^":"
                 ^Int.toString col^"] "^msg^"\n");
 	        val (ans,rem) = WhlParser.parse (15, lexer, printError, fileName)
             handle WhlParser.ParseError => raise WhlError;

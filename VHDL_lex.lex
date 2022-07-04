@@ -11,6 +11,7 @@ structure Tokens = Tokens
     val col1 = ref 0;
     val col2 = ref 0;
     val eolpos = ref 0;
+    val fd = TextIO.openOut "test.txt";
     val eof = fn fileName => Tokens.EOF(!lin1,!col1,!col2)
     val badCh : string * string * int * int * int-> unit = fn
                 (fileName,bad,lin,col1, col2) =>
@@ -22,10 +23,19 @@ structure Tokens = Tokens
 
     val pri :   string * int * int * int -> unit = fn
             (bad,line,col1, col2) =>
-            TextIO.output(TextIO.stdOut,bad^"  ------  " ^
+            let val pr = TextIO.output(fd ,bad^"  ------  " ^
             "["^Int.toString line^"."^Int.toString col1
             ^"]  -  "^  "["^Int.toString line^"."^
-            Int.toString col2^"]" ^  "\n");
+            Int.toString col2^"]" ^  "\n") handle e => (TextIO.closeOut fd; raise e)
+            in () end
+
+    val pric : int * int -> unit = fn
+            (line, col) =>
+            let val pr = TextIO.output(fd , "Comment starts from :- [" ^
+            Int.toString line ^ "." ^ Int.toString (col+1) 
+             ^  "]\n") handle e => (TextIO.closeOut fd; raise e)
+            in () end
+
 
 %%
 
@@ -36,10 +46,12 @@ whitespace = [\ \t]+;
 digit =  [0-9]+;
 upper_case_letter = [A-Z]+;
 lower_case_letter = [a-z]+;
-comment = ["-"]["-"][.*]+["\n"];
+comment = "--".*;
 eol = ("\013\010"|"\010"|"\013");
 
 %%
+
+{comment} => (pric(!lin1, !col1); eolpos:=yypos+size yytext; continue());
 
 "@" => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.ADT(!lin1,!col1,!col2));
 "^"  => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.CARROT(!lin1,!col1,!col2));
@@ -239,6 +251,5 @@ eol = ("\013\010"|"\010"|"\013");
 
 {whitespace}+ => (continue());
 {eol} => (lin1:=(!lin1)+1; eolpos:=yypos+size yytext; continue());
-{comment} => (lin1:=(!lin1)+1; eolpos:=yypos+size yytext; continue());
 
 . => (col1:=yypos-(!eolpos); badCh (fileName,yytext,!lin1,!col1,!col2); continue());
