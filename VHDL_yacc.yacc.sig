@@ -2,11 +2,25 @@ signature Whl_TOKENS =
 sig
 type ('a,'b) token
 type svalue
+val BASED_INTEGER: (int) *  'a * 'a -> (svalue,'a) token
+val INTEGER: (int) *  'a * 'a -> (svalue,'a) token
+val EXPONENT: (int) *  'a * 'a -> (svalue,'a) token
+val OTHER_SPECIAL_CHARACTER: (int) *  'a * 'a -> (svalue,'a) token
+val STRING_LITERAL: (int) *  'a * 'a -> (svalue,'a) token
+val CHARACTER_LITERAL: (int) *  'a * 'a -> (svalue,'a) token
+val LETTER: (int) *  'a * 'a -> (svalue,'a) token
+val EXTENDED_IDENTIFIER: (int) *  'a * 'a -> (svalue,'a) token
+val BASIC_IDENTIFIER: (int) *  'a * 'a -> (svalue,'a) token
+val REAL_LITERAL: (int) *  'a * 'a -> (svalue,'a) token
+val BIT_STRING_LITERAL_HEX: (int) *  'a * 'a -> (svalue,'a) token
+val BIT_STRING_LITERAL_OCTAL: (int) *  'a * 'a -> (svalue,'a) token
+val BIT_STRING_LITERAL_BINARY: (int) *  'a * 'a -> (svalue,'a) token
+val BIT_STRING_LITERAL: (int) *  'a * 'a -> (svalue,'a) token
+val BASE_LITERAL: (int) *  'a * 'a -> (svalue,'a) token
 val DEFAULT: (int) *  'a * 'a -> (svalue,'a) token
 val PROPERTY: (int) *  'a * 'a -> (svalue,'a) token
 val SEQUENCE: (int) *  'a * 'a -> (svalue,'a) token
 val ATTRIBUTE: (int) *  'a * 'a -> (svalue,'a) token
-val E: (int) *  'a * 'a -> (svalue,'a) token
 val B: (int) *  'a * 'a -> (svalue,'a) token
 val O: (int) *  'a * 'a -> (svalue,'a) token
 val X: (int) *  'a * 'a -> (svalue,'a) token
@@ -46,6 +60,7 @@ val DEC_VEC: (int) *  'a * 'a -> (svalue,'a) token
 val BIN_VEC: (int) *  'a * 'a -> (svalue,'a) token
 val REALEXP_NUM: (int) *  'a * 'a -> (svalue,'a) token
 val BIN_NUM: (int) *  'a * 'a -> (svalue,'a) token
+val OCT_NUM: (int) *  'a * 'a -> (svalue,'a) token
 val HEX_NUM: (int) *  'a * 'a -> (svalue,'a) token
 val REAL_NUM: (int) *  'a * 'a -> (svalue,'a) token
 val INT: (int) *  'a * 'a -> (svalue,'a) token
@@ -59,8 +74,8 @@ val NATURAL: (int) *  'a * 'a -> (svalue,'a) token
 val CHARACTER: (int) *  'a * 'a -> (svalue,'a) token
 val BOOLEAN: (int) *  'a * 'a -> (svalue,'a) token
 val NUMERIC: (int) *  'a * 'a -> (svalue,'a) token
+val E: (int) *  'a * 'a -> (svalue,'a) token
 val TIME: (int) *  'a * 'a -> (svalue,'a) token
-val INTEGER: (int) *  'a * 'a -> (svalue,'a) token
 val STRING: (int) *  'a * 'a -> (svalue,'a) token
 val BIT_VECTOR: (int) *  'a * 'a -> (svalue,'a) token
 val BIT: (int) *  'a * 'a -> (svalue,'a) token

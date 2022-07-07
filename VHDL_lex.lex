@@ -14,10 +14,10 @@ structure Tokens = Tokens
     val fd = TextIO.openOut "test.txt";
     val eof = fn fileName => Tokens.EOF(!col2,!lin1,!col1)
     val badCh : string * string * int * int * int-> unit = fn
-                (fileName,bad,lin,col1, col2) =>
+                (fileName,bad,lin1,col1, col2) =>
                 TextIO.output(TextIO.stdOut,fileName^"["^
-                Int.toString lin^"."^Int.toString col1
-                ^"]  -  "^  "["^Int.toString lin^"."^
+                Int.toString lin1^"."^Int.toString col1
+                ^"]  -  "^  "["^Int.toString lin1^"."^
                 Int.toString col2^"]"^"Invalid character \""
                 ^bad^"\"\n");
 
@@ -41,17 +41,44 @@ structure Tokens = Tokens
 
 %header (functor WhlLexFun(structure Tokens: Whl_TOKENS));
 %arg (fileName:string);
-id = [a-zA-Z]+[a-zA-Z0-9_]*;
-whitespace = [\ \t]+;
-digit =  [0-9]+;
-upper_case_letter = [A-Z]+;
-lower_case_letter = [a-z]+;
+
 comment = "--".*;
+base_literal = [0-9][_0-9]* ["#"] [0-9a-zA-Z][0-9a-zA-Z_]* ("."based_integer)? ["#"] (exponent)?;
+bit_string_literal = bit_string_literal_binary | bit_string_literal_octal | bit_string_literal_hex;
+bit_string_literal_binary = [Bb]["\""][0-1_]+["\""];
+bit_string_literal_octal = [Oo]["\""][0-7_]+["\""];
+bit_string_literal_hex = [xX]["\""][0-9a-fA-F_]+["\""];
+real_literal = [+-]?[0-9]+(.[0-9]+)?(exponent)?;
+basic_identifier = [a-zA-Z]+[a-zA-Z0-9_]*;
+extended_identifier = [\\][a-z0-9&\'()+-\./:\;<=>|\ #[]_]+[\\];
+letter = [a-zA-Z]+;
+character_literal = [\'].*[\'];
+string_literal = ["\""].*["\""];
+other_special_character = [!$@?^`{}~];
+exponent = [Ee][+-]?[0-9][0-9_]*;
+integer =  [0-9][_0-9]*;
+based_integer = [0-9a-zA-Z][0-9a-zA-Z_]*;
+whitespace = [\ \t]+;
 eol = ("\013\010"|"\010"|"\013");
 
 %%
 
 {comment} => (pric(!lin1, !col1); eolpos:=yypos+size yytext; continue());
+{base_literal} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.BASE_LITERAL(!col2,!lin1,!col1));
+{bit_string_literal} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.BIT_STRING_LITERAL(!col2,!lin1,!col1));
+{bit_string_literal_binary} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.BIT_STRING_LITERAL_BINARY(!col2,!lin1,!col1));
+{bit_string_literal_octal} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.BIT_STRING_LITERAL_OCTAL(!col2,!lin1,!col1));
+{bit_string_literal_hex} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.BIT_STRING_LITERAL_HEX(!col2,!lin1,!col1));
+{real_literal} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.REAL_LITERAL(!col2,!lin1,!col1));
+{basic_identifier} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.BASIC_IDENTIFIER(!col2,!lin1,!col1));
+{extended_identifier} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.EXTENDED_IDENTIFIER(!col2,!lin1,!col1));
+{letter} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.LETTER(!col2,!lin1,!col1));
+{character_literal} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.CHARACTER_LITERAL(!col2,!lin1,!col1));
+{string_literal} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.STRING_LITERAL(!col2,!lin1,!col1));
+{other_special_character} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.OTHER_SPECIAL_CHARACTER(!col2,!lin1,!col1));
+{exponent} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.EXPONENT(!col2,!lin1,!col1));
+{integer} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.INTEGER(!col2,!lin1,!col1));
+{based_integer} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.BASED_INTEGER(!col2,!lin1,!col1));
 
 "@" => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.ADT(!col2,!lin1,!col1));
 "^"  => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.CARROT(!col2,!lin1,!col1));
@@ -242,12 +269,6 @@ eol = ("\013\010"|"\010"|"\013");
 ["s""S"]["o""O"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 1;  pri (yytext,!lin1,!col1, !col2); Tokens.SO(!col2,!lin1,!col1));
 ["s""S"]["x""X"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 1;  pri (yytext,!lin1,!col1, !col2); Tokens.SX(!col2,!lin1,!col1));
 ["d""D"]  => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.D(!col2,!lin1,!col1));
-["e""E"]  => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.E(!col2,!lin1,!col1));
-
-
-{digit} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.NUM((yytext,!col2),!lin1,!col1));
-{upper_case_letter} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.UPPER_CASE((yytext,!col2),!lin1,!col1));
-{lower_case_letter} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.LOWER_CASE((yytext,!col2),!lin1,!col1));
 
 {whitespace}+ => (continue());
 {eol} => (lin1:=(!lin1)+1; eolpos:=yypos+size yytext; continue());

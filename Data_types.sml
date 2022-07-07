@@ -1308,7 +1308,7 @@ struct
 
     and   unbounded_array_definition = UNBOUNDED_ARRAY_DEFINITION of index_subtype_definition list * subtype_indication
 
-    and   use_clause = USE_CLAUSE of selected_name list
+    and   use_clause = USE_CLAUSE of selected_name * selected_name list
 
     and   value_return_statement = VALUE_RETURN_STATEMENT_1 of label * conditional_or_unaffected_expression
                                  | VALUE_RETURN_STATEMENT_2 of conditional_or_unaffected_expression                                        
