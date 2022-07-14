@@ -1,0 +1,114 @@
+nischay@nischay-Predator-PH315-53:~/Documents/vhdl project/VHDL-AST$ sml make.sml 
+Standard ML of New Jersey v110.79 [built: Sat Oct 26 12:27:04 2019]
+[opening make.sml]
+[autoloading]
+[library $smlnj/cm/cm.cm is stable]
+[library $smlnj/internal/cm-sig-lib.cm is stable]
+[library $/pgraph.cm is stable]
+[library $smlnj/internal/srcpath-lib.cm is stable]
+[library $SMLNJ-BASIS/basis.cm is stable]
+[library $SMLNJ-BASIS/(basis.cm):basis-common.cm is stable]
+[autoloading done]
+[scanning sources.cm]
+[library $smlnj/compiler/compiler.cm is stable]
+[library $/ml-yacc-lib.cm is stable]
+[attempting to load plugin $/lex-ext.cm]
+[library $/lex-ext.cm is stable]
+[library $smlnj/cm/tools.cm is stable]
+[library $smlnj/internal/cm-lib.cm is stable]
+[plugin $/lex-ext.cm loaded successfully]
+[attempting to load plugin $/mllex-tool.cm]
+[library $/mllex-tool.cm is stable]
+[plugin $/mllex-tool.cm loaded successfully]
+[attempting to load plugin $/mlyacc-tool.cm]
+[library $/mlyacc-tool.cm is stable]
+[plugin $/mlyacc-tool.cm loaded successfully]
+[library $SMLNJ-LIB/Util/smlnj-lib.cm is stable]
+[library $SMLNJ-ML-YACC-LIB/ml-yacc-lib.cm is stable]
+[loading (sources.cm):Data_types.sml]
+[loading (sources.cm):Symbol_table.sml]
+[loading (sources.cm):VHDL_yacc.yacc.sig]
+[loading (sources.cm):VHDL_yacc.yacc.sml]
+[loading (sources.cm):VHDL_lex.lex.sml]
+[loading (sources.cm):VHDL_ast.sml]
+[New bindings added.]
+val it = true : bool
+[autoloading]
+[library $smlnj/compiler/current.cm is stable]
+[library $smlnj/compiler/x86.cm is stable]
+[library $smlnj/viscomp/core.cm is stable]
+[library $smlnj/viscomp/basics.cm is stable]
+[library $smlnj/viscomp/elabdata.cm is stable]
+[library $smlnj/viscomp/elaborate.cm is stable]
+[library $smlnj/MLRISC/Lib.cm is stable]
+[library $SMLNJ-MLRISC/Lib.cm is stable]
+[library $smlnj/smlnj-lib/pp-lib.cm is stable]
+[library $SMLNJ-LIB/PP/pp-lib.cm is stable]
+[library $html-lib.cm(=$SMLNJ-LIB/HTML)/html-lib.cm is stable]
+[library $smlnj/viscomp/debugprof.cm is stable]
+[library $smlnj/MLRISC/Control.cm is stable]
+[library $SMLNJ-MLRISC/Control.cm is stable]
+[library $controls-lib.cm(=$SMLNJ-LIB/Controls)/controls-lib.cm is stable]
+[library $smlnj/smlnj-lib/controls-lib.cm is stable]
+[autoloading done]
+val it = () : unit
+val it = () : unit
+val it = () : unit
+opening Vhdl
+  val tree : string -> W_datatypes.root
+val it =
+  ROOT
+    (DESIGN_FILE
+       [DESIGN_UNIT
+          (CONTEXT_CLAUSE
+             [CONTEXT_ITEM_1
+                (LIBRARY_CLAUSE
+                   (LOGICAL_NAME_LIST
+                      (LOGICAL_NAME (IDENTIFIER_1 (Basic_identifier "ieee")),
+                       []))),
+              CONTEXT_ITEM_2
+                (USE_CLAUSE
+                   (SELECTED_NAME
+                      (PREFIX_2
+                         (FUNCTION_CALL_3
+                            (NAME_4
+                               (SELECTED_NAME
+                                  (PREFIX_2
+                                     (FUNCTION_CALL_3
+                                        (NAME_1
+                                           (SIMPLE_NAME
+                                              (IDENTIFIER_1
+                                                 (Basic_identifier "ieee"))))),
+                                   SUFFIX_1
+                                     (SIMPLE_NAME
+                                        (IDENTIFIER_1
+                                           (Basic_identifier "std_logic_1164"))))))),
+                       SUFFIX_4 ()),[])),
+              CONTEXT_ITEM_2
+                (USE_CLAUSE
+                   (SELECTED_NAME
+                      (PREFIX_2
+                         (FUNCTION_CALL_3
+                            (NAME_4
+                               (SELECTED_NAME
+                                  (PREFIX_2
+                                     (FUNCTION_CALL_3
+                                        (NAME_1
+                                           (SIMPLE_NAME
+                                              (IDENTIFIER_1
+                                                 (Basic_identifier "IEEE"))))),
+                                   SUFFIX_1
+                                     (SIMPLE_NAME
+                                        (IDENTIFIER_1
+                                           (Basic_identifier
+                                              "STD_LOGIC_UNSIGNED"))))))),
+                       SUFFIX_4 ()),[]))],
+           LIBRARY_UNIT_1
+             (PRIMARY_UNIT_1
+                (ENTITY_DECLARATION_2
+                   (IDENTIFIER_1 (Basic_identifier "testbench"),
+                    ENTITY_HEADER_4 (),ENTITY_DECLARATIVE_PART [],
+                    NAME_1
+                      (SIMPLE_NAME
+                         (IDENTIFIER_1 (Basic_identifier "testbench")))))))])
+  : W_datatypes.root

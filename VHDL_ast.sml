@@ -1,20 +1,22 @@
-structure Vhdl =
+structure WhlLrVals = WhlLrValsFun(structure Token = LrParser.Token);
+structure WhlLex    = WhlLexFun(structure Tokens = WhlLrVals.Tokens);
+structure WhlParser = JoinWithArg(
+                            structure ParserData = WhlLrVals.ParserData
+                            structure Lex = WhlLex
+                            structure LrParser = LrParser);
+
+structure Vhdl :
+    sig 
+        val tree : string -> W_datatypes.root
+    end =
 struct
-
-    structure WhlLrVals = WhlLrValsFun(structure Token = LrParser.Token);
-    structure WhlLex    = WhlLexFun(structure Tokens = WhlLrVals.Tokens);
-    structure WhlParser = JoinWithArg(
-                                structure ParserData = WhlLrVals.ParserData
-                                structure Lex = WhlLex
-                                structure LrParser = LrParser);
-
     exception WhlError;
     fun tree fileName = 
         let
-            val inStream = TextIO.openIn fileName
+            val inStream = TextIO.openIn fileName;
 	        fun readNext n = if TextIO.endOfStream inStream then ""
-	                         else TextIO.inputN (inStream, n)
-            val lexer = WhlParser.makeLexer readNext fileName
+	                         else TextIO.inputN (inStream, n);
+            val lexer = WhlParser.makeLexer readNext fileName;
             val printError : string * int * int -> unit = fn
                 (msg,line,col) =>
                 print (fileName^" ["^Int.toString line^":"
