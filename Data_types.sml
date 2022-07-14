@@ -136,7 +136,7 @@ struct
                                     | BASIC_GRAPHIC_CHARACTER_2 of digit
                                     | BASIC_GRAPHIC_CHARACTER_3 of special_character
 
-    and   basic_identifier = BASIC_IDENTIFIER of letter * letter_or_digit list
+    and   basic_identifier = Basic_identifier of string
 
     and   binary_miscellaneous_operator = Expt of unit
 
@@ -339,10 +339,7 @@ struct
 
     and   context_reference = CONTEXT_REFERENCE of selected_name * selected_name list                                           
 
-    and   decimal_literal = DECIMAL_LITERAL_1 of integer * integer * exponent
-                          | DECIMAL_LITERAL_2 of integer * exponent
-                          | DECIMAL_LITERAL_3 of integer
-                          | DECIMAL_LITERAL_4 of integer * integer
+    and   decimal_literal = Real_literal of string
 
     and   delay_mechanism = DELAY_MECHANISM_1 of unit
                           | DELAY_MECHANISM_2 of expression
@@ -701,6 +698,8 @@ struct
 
     and   interface_signal_declaration = INTERFACE_SIGNAL_DECLARATION_1 of identifier_list * interface_type_indication * conditional_expression                                             
                                        | INTERFACE_SIGNAL_DECLARATION_2 of identifier_list * interface_type_indication 
+                                       | INTERFACE_SIGNAL_DECLARATION_3 of identifier_list * mode * interface_type_indication * conditional_expression 
+                                       | INTERFACE_SIGNAL_DECLARATION_4 of identifier_list * mode * interface_type_indication 
 
     and   interface_subprogram_declaration = INTERFACE_SUBPROGRAM_DECLARATION_1 of interface_subprogram_specification * interface_subprogram_default                                                                                    
                                            | INTERFACE_SUBPROGRAM_DECLARATION_2 of interface_subprogram_specification
@@ -716,8 +715,8 @@ struct
     and   interface_type_indication = INTERFACE_TYPE_INDICATION_1 of subtype_indication
                                     | INTERFACE_TYPE_INDICATION_2 of anonymous_type_indication                                           
 
-    and   interface_variable_declaration = INTERFACE_VARIABLE_DECLARATION_1 of  identifier_list * interface_type_indication * expression                                    
-                                         | INTERFACE_VARIABLE_DECLARATION_2 of  identifier_list * interface_type_indication                                     
+    and   interface_variable_declaration = INTERFACE_VARIABLE_DECLARATION_1 of  identifier_list * mode * interface_type_indication * expression                                    
+                                         | INTERFACE_VARIABLE_DECLARATION_2 of  identifier_list * mode * interface_type_indication                                     
 
     and   iteration_scheme = ITERATION_SCHEME_1 of condition                                          
                            | ITERATION_SCHEME_2 of parameter_specification

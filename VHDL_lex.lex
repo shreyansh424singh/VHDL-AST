@@ -63,22 +63,9 @@ eol = ("\013\010"|"\010"|"\013");
 
 %%
 
+{whitespace}+ => (continue());
+{eol} => (lin1:=(!lin1)+1; eolpos:=yypos+size yytext; continue());
 {comment} => (pric(!lin1, !col1); eolpos:=yypos+size yytext; continue());
-{base_literal} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.BASE_LITERAL(!col2,!lin1,!col1));
-{bit_string_literal} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.BIT_STRING_LITERAL(!col2,!lin1,!col1));
-{bit_string_literal_binary} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.BIT_STRING_LITERAL_BINARY(!col2,!lin1,!col1));
-{bit_string_literal_octal} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.BIT_STRING_LITERAL_OCTAL(!col2,!lin1,!col1));
-{bit_string_literal_hex} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.BIT_STRING_LITERAL_HEX(!col2,!lin1,!col1));
-{real_literal} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.REAL_LITERAL(!col2,!lin1,!col1));
-{basic_identifier} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.BASIC_IDENTIFIER(!col2,!lin1,!col1));
-{extended_identifier} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.EXTENDED_IDENTIFIER(!col2,!lin1,!col1));
-{letter} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.LETTER(!col2,!lin1,!col1));
-{character_literal} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.CHARACTER_LITERAL(!col2,!lin1,!col1));
-{string_literal} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.STRING_LITERAL(!col2,!lin1,!col1));
-{other_special_character} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.OTHER_SPECIAL_CHARACTER(!col2,!lin1,!col1));
-{exponent} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.EXPONENT(!col2,!lin1,!col1));
-{integer} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.INTEGER(!col2,!lin1,!col1));
-{based_integer} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.BASED_INTEGER(!col2,!lin1,!col1));
 
 "@" => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.ADT(!col2,!lin1,!col1));
 "^"  => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.CARROT(!col2,!lin1,!col1));
@@ -170,7 +157,6 @@ eol = ("\013\010"|"\010"|"\013");
 ["l""L"]["o""O"]["o""O"]["p""P"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 3;  pri (yytext,!lin1,!col1, !col2); Tokens.LOOP(!col2,!lin1,!col1));
 ["m""M"]["a""A"]["p""P"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 2;  pri (yytext,!lin1,!col1, !col2); Tokens.MAP(!col2,!lin1,!col1));
 ["m""M"]["o""O"]["d""D"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 2;  pri (yytext,!lin1,!col1, !col2); Tokens.MOD(!col2,!lin1,!col1));
-["m""M"]["o""O"]["d""D"]["e""E"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 3;  pri (yytext,!lin1,!col1, !col2); Tokens.MODE(!col2,!lin1,!col1));
 ["n""N"]["a""A"]["n""N"]["d""D"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 3;  pri (yytext,!lin1,!col1, !col2); Tokens.NAND(!col2,!lin1,!col1));
 ["n""N"]["e""E"]["w""W"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 2;  pri (yytext,!lin1,!col1, !col2); Tokens.NEW(!col2,!lin1,!col1));
 ["n""N"]["e""E"]["x""X"]["t""T"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 3;  pri (yytext,!lin1,!col1, !col2); Tokens.NEXT(!col2,!lin1,!col1));
@@ -230,33 +216,11 @@ eol = ("\013\010"|"\010"|"\013");
 ["p""P"]["o""O"]["s""S"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 2;  pri (yytext,!lin1,!col1, !col2); Tokens.POS(!col2,!lin1,!col1));
 ["l""L"]["e""E"]["n""N"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 2;  pri (yytext,!lin1,!col1, !col2); Tokens.LEN(!col2,!lin1,!col1));
 
-["s""S"]["t""T"]["d""D"]["_"]["l""L"]["o""O"]["g""G"]["i""I"]["c""C"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 8;  pri (yytext,!lin1,!col1, !col2); Tokens.STD_LOGIC(!col2,!lin1,!col1));
-["s""S"]["t""T"]["d""D"]["_"]["l""L"]["o""O"]["g""G"]["i""I"]["c""C"]["_"]["v""V"]["e""E"]["c""C"]["t""T"]["o""O"]["r""R"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 15;  pri (yytext,!lin1,!col1, !col2); Tokens.STD_LOGIC_VECTOR(!col2,!lin1,!col1));
-["s""S"]["t""T"]["d""D"]["_"]["u""U"]["l""L"]["o""O"]["g""G"]["i""I"]["c""C"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 9;  pri (yytext,!lin1,!col1, !col2); Tokens.STD_ULOGIC(!col2,!lin1,!col1));
-["s""S"]["t""T"]["d""D"]["_"]["u""U"]["l""L"]["o""O"]["g""G"]["i""I"]["c""C"]["_"]["v""V"]["e""E"]["c""C"]["t""T"]["o""O"]["r""R"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 16;  pri (yytext,!lin1,!col1, !col2); Tokens.STD_ULOGIC_VECTOR(!col2,!lin1,!col1));
-["b""B"]["i""I"]["t""T"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 2;  pri (yytext,!lin1,!col1, !col2); Tokens.BIT(!col2,!lin1,!col1));
-["b""B"]["i""I"]["t""T"]["_"]["v""V"]["e""E"]["c""C"]["t""T"]["o""O"]["r""R"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 9;  pri (yytext,!lin1,!col1, !col2); Tokens.BIT_VECTOR(!col2,!lin1,!col1));
-["s""S"]["t""T"]["r""R"]["i""I"]["n""N"]["g""G"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 5;  pri (yytext,!lin1,!col1, !col2); Tokens.STRING(!col2,!lin1,!col1));
-["i""I"]["n""N"]["t""T"]["e""E"]["g""G"]["e""E"]["r""R"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 6;  pri (yytext,!lin1,!col1, !col2); Tokens.INTEGER(!col2,!lin1,!col1));
-["t""T"]["i""I"]["m""M"]["e""E"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 3;  pri (yytext,!lin1,!col1, !col2); Tokens.TIME(!col2,!lin1,!col1));
-["n""N"]["u""U"]["m""M"]["e""E"]["r""R"]["i""I"]["c""C"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 6;  pri (yytext,!lin1,!col1, !col2); Tokens.NUMERIC(!col2,!lin1,!col1));
-["b""B"]["o""O"]["o""O"]["l""L"]["e""E"]["a""A"]["n""N"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 6;  pri (yytext,!lin1,!col1, !col2); Tokens.BOOLEAN(!col2,!lin1,!col1));
-["c""C"]["h""H"]["a""A"]["r""R"]["a""A"]["c""C"]["t""T"]["e""E"]["r""R"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 8;  pri (yytext,!lin1,!col1, !col2); Tokens.CHARACTER(!col2,!lin1,!col1));
-["n""N"]["a""A"]["t""T"]["u""U"]["r""R"]["a""A"]["l""L"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 6;  pri (yytext,!lin1,!col1, !col2); Tokens.NATURAL(!col2,!lin1,!col1));
-["s""S"]["e""E"]["v""V"]["e""E"]["r""R"]["i""I"]["t""T"]["y""Y"]["_"]["l""L"]["e""E"]["v""V"]["e""E"]["l""L"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 6;  pri (yytext,!lin1,!col1, !col2); Tokens.SEVERITY_LEVEL(!col2,!lin1,!col1));
-["f""F"]["i""I"]["l""L"]["e""E"]["_"]["o""O"]["p""P"]["e""E"]["n""N"]["_"]["k""K"]["i""I"]["n""N"]["d""D"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 13;  pri (yytext,!lin1,!col1, !col2); Tokens.FILE_OPEN_KIND(!col2,!lin1,!col1));
-["f""F"]["i""I"]["l""L"]["e""E"]["_"]["o""O"]["p""P"]["e""E"]["n""N"]["_"]["s""S"]["t""T"]["a""A"]["t""T"]["u""U"]["s""S"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 15;  pri (yytext,!lin1,!col1, !col2); Tokens.FILE_OPEN_STATUS(!col2,!lin1,!col1));
-
-["f""F"]["a""A"]["i""I"]["l""L"]["u""U"]["r""R"]["e""E"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 6;  pri (yytext,!lin1,!col1, !col2); Tokens.FAILURE(!col2,!lin1,!col1));
-["f""F"]["a""A"]["l""L"]["s""S"]["e""E"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 4;  pri (yytext,!lin1,!col1, !col2); Tokens.FALSE(!col2,!lin1,!col1));
-["t""T"]["r""R"]["u""U"]["e""E"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 3;  pri (yytext,!lin1,!col1, !col2); Tokens.TRUE(!col2,!lin1,!col1));
-
 ["d""D"]["e""E"]["f""F"]["a""A"]["u""U"]["l""L"]["t""T"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 6;  pri (yytext,!lin1,!col1, !col2); Tokens.DEFAULT(!col2,!lin1,!col1));
 ["p""P"]["a""A"]["r""R"]["a""A"]["m""M"]["e""E"]["t""T"]["e""E"]["r""R"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 8;  pri (yytext,!lin1,!col1, !col2); Tokens.PARAMETER(!col2,!lin1,!col1));
 ["v""V"]["i""I"]["e""E"]["w""W"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 3;  pri (yytext,!lin1,!col1, !col2); Tokens.VIEW(!col2,!lin1,!col1));
 ["p""P"]["r""R"]["i""I"]["v""V"]["a""A"]["t""T"]["e""E"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 6;  pri (yytext,!lin1,!col1, !col2); Tokens.PRIVATE(!col2,!lin1,!col1));
 ["e""E"]["x""X"]["p""P"]["r""R"]["e""E"]["s""S"]["s""S"]["i""I"]["o""O"]["n""N"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 9;  pri (yytext,!lin1,!col1, !col2); Tokens.EXPRESSION(!col2,!lin1,!col1));
-["t""T"]["y""Y"]["p""P"]["e""E"]["_"]["m""M"]["a""A"]["r""R"]["k""K"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 8;  pri (yytext,!lin1,!col1, !col2); Tokens.TYPE_MARK(!col2,!lin1,!col1));
 ["c""C"]["o""O"]["n""N"]["t""T"]["e""E"]["x""X"]["t""T"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 6;  pri (yytext,!lin1,!col1, !col2); Tokens.CONTEXT(!col2,!lin1,!col1));
 
 ["b""B"]  => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.B(!col2,!lin1,!col1));
@@ -270,7 +234,20 @@ eol = ("\013\010"|"\010"|"\013");
 ["s""S"]["x""X"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 1;  pri (yytext,!lin1,!col1, !col2); Tokens.SX(!col2,!lin1,!col1));
 ["d""D"]  => (col1:=yypos-(!eolpos); col2:=(!col1);  pri (yytext,!lin1,!col1, !col2); Tokens.D(!col2,!lin1,!col1));
 
-{whitespace}+ => (continue());
-{eol} => (lin1:=(!lin1)+1; eolpos:=yypos+size yytext; continue());
+{base_literal} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.BASE_LITERAL((yytext,!col2),!lin1,!col1));
+{bit_string_literal} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.BIT_STRING_LITERAL((yytext,!col2),!lin1,!col1));
+{bit_string_literal_binary} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.BIT_STRING_LITERAL_BINARY((yytext,!col2),!lin1,!col1));
+{bit_string_literal_octal} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.BIT_STRING_LITERAL_OCTAL((yytext,!col2),!lin1,!col1));
+{bit_string_literal_hex} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.BIT_STRING_LITERAL_HEX((yytext,!col2),!lin1,!col1));
+{real_literal} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.REAL_LITERAL((yytext,!col2),!lin1,!col1));
+{basic_identifier} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.BASIC_IDENTIFIER((yytext,!col2),!lin1,!col1));
+{extended_identifier} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.EXTENDED_IDENTIFIER((yytext,!col2),!lin1,!col1));
+{letter} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.LETTER((yytext,!col2),!lin1,!col1));
+{character_literal} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.CHARACTER_LITERAL((yytext,!col2),!lin1,!col1));
+{string_literal} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.STRING_LITERAL((yytext,!col2),!lin1,!col1));
+{other_special_character} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.OTHER_SPECIAL_CHARACTER((yytext,!col2),!lin1,!col1));
+{exponent} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.EXPONENT((yytext,!col2),!lin1,!col1));
+{integer} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.INT((yytext,!col2),!lin1,!col1));
+{based_integer} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.BASED_INTEGER((yytext,!col2),!lin1,!col1));
 
 . => (col1:=yypos-(!eolpos); badCh (fileName,yytext,!lin1,!col1,!col2); continue());
