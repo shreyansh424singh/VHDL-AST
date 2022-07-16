@@ -84,7 +84,7 @@ struct
 
     and   array_mode_view_indication = ARRAY_MODE_VIEW_IND of name * subtype_indication
 
-    and   array_type_definition = ARRAY_TYPE_DEFINITION_1 of unbounded_array_definition
+    and   array_type_definition = ARRAY_TYPE_DEFINITION_1 of unconstrained_array_definition
                                 | ARRAY_TYPE_DEFINITION_2 of constrained_array_definition
 
     and   assertion = ASSERT_1 of condition * expression * expression                                 
@@ -544,11 +544,6 @@ struct
                         | FUNCTION_CALL_3 of name                       
                         | FUNCTION_CALL_4 of name * generic_map_aspect                       
 
-    and   function_specification = FUNCTION_SPECIFICATION_1 of designator * subprogram_header * formal_parameter_list * identifier * type_mark
-                                 | FUNCTION_SPECIFICATION_2 of designator * subprogram_header * identifier * type_mark
-                                 | FUNCTION_SPECIFICATION_3 of designator * subprogram_header * formal_parameter_list * type_mark
-                                 | FUNCTION_SPECIFICATION_4 of designator * subprogram_header * type_mark
-
     and   generate_specification = GENERATE_SPECIFICATION_1 of discrete_range
                                  | GENERATE_SPECIFICATION_2 of expression
                                  | GENERATE_SPECIFICATION_3 of label                       
@@ -716,7 +711,7 @@ struct
                                     | INTERFACE_TYPE_INDICATION_2 of anonymous_type_indication                                           
 
     and   interface_variable_declaration = INTERFACE_VARIABLE_DECLARATION_1 of  identifier_list * mode * interface_type_indication * expression                                    
-                                         | INTERFACE_VARIABLE_DECLARATION_2 of  identifier_list * mode * interface_type_indication                                     
+                                         | INTERFACE_VARIABLE_DECLARATION_2 of  identifier_list * mode * interface_type_indication                                    
 
     and   iteration_scheme = ITERATION_SCHEME_1 of condition                                          
                            | ITERATION_SCHEME_2 of parameter_specification
@@ -934,9 +929,6 @@ struct
 
     and   procedure_call_statement = PROCEDURE_CALL_STATEMENT_1 of label * procedure_call
                                    | PROCEDURE_CALL_STATEMENT_2 of procedure_call                          
-
-    and   procedure_specification = PROCEDURE_SPECIFICATION_1 of  designator * subprogram_header * formal_parameter_list                                     
-                                  | PROCEDURE_SPECIFICATION_2 of  designator * subprogram_header 
 
     and   process_declarative_item = PROCESS_DECLARATIVE_ITEM_1 of subprogram_declaration
                                    | PROCESS_DECLARATIVE_ITEM_2 of subprogram_body
@@ -1215,9 +1207,57 @@ struct
 
     and   simple_variable_assignment = SIMPLE_VARIABLE_ASSIGNMENT of target * conditional_or_unaffected_expression                                      
 
-    and   slice_name = SLICE_NAME of prefix * discrete_range
+    and   simple_expression = SIMPLE_EXPRESSION of term * adding_operator_term list
 
-    and   string_literal = STRING_LITERAL of graphic_character list
+    and   simple_simultaneous_statement = SIMPLE_SIMULTANEOUS_STATEMENT_1 of label * simple_expression * simple_expression * tolerance_aspect
+                                        | SIMPLE_SIMULTANEOUS_STATEMENT_2 of simple_expression * simple_expression * tolerance_aspect
+                                        | SIMPLE_SIMULTANEOUS_STATEMENT_3 of simple_expression * simple_expression
+                                        | SIMPLE_SIMULTANEOUS_STATEMENT_4 of label * simple_expression * simple_expression
+
+    and   simultaneous_alternative = SIMULTANEOUS_ALTERNATIVE of choices * simultaneous_statement_part
+
+    and   simultaneous_case_statement = SIMULTANEOUS_CASE_STATEMENT_1 of label * expression * simultaneous_alternative * simultaneous_alternative list * identifier
+                                      | SIMULTANEOUS_CASE_STATEMENT_2 of expression * simultaneous_alternative * simultaneous_alternative list * identifier
+                                      | SIMULTANEOUS_CASE_STATEMENT_3 of expression * simultaneous_alternative * simultaneous_alternative list
+                                      | SIMULTANEOUS_CASE_STATEMENT_4 of label * expression * simultaneous_alternative * simultaneous_alternative list
+
+    and   condition_simultaneous_statement_part = CONDITION_SIMULTANEOUS_STATEMENT_PART of condition * simultaneous_statement_part
+
+    and   simultaneous_if_statement = SIMULTANEOUS_IF_STATEMENT_1 of label * condition * simultaneous_statement_part * condition_simultaneous_statement_part list * simultaneous_statement_part * identifier
+                                    | SIMULTANEOUS_IF_STATEMENT_2 of condition * simultaneous_statement_part * condition_simultaneous_statement_part list * simultaneous_statement_part * identifier
+                                    | SIMULTANEOUS_IF_STATEMENT_3 of label * condition * simultaneous_statement_part * condition_simultaneous_statement_part list * identifier
+                                    | SIMULTANEOUS_IF_STATEMENT_4 of condition * simultaneous_statement_part * condition_simultaneous_statement_part list * identifier
+                                    | SIMULTANEOUS_IF_STATEMENT_5 of label * condition * simultaneous_statement_part * condition_simultaneous_statement_part list
+                                    | SIMULTANEOUS_IF_STATEMENT_6 of condition * simultaneous_statement_part * condition_simultaneous_statement_part list
+                                    | SIMULTANEOUS_IF_STATEMENT_7 of label * condition * simultaneous_statement_part * condition_simultaneous_statement_part list * simultaneous_statement_part
+                                    | SIMULTANEOUS_IF_STATEMENT_8 of condition * simultaneous_statement_part * condition_simultaneous_statement_part list * simultaneous_statement_part
+
+    and   simultaneous_procedural_statement = SIMULTANEOUS_PROCEDURAL_STATEMENT_1 of label * procedural_declarative_part * procedural_statement_part * identifier
+                                            | SIMULTANEOUS_PROCEDURAL_STATEMENT_2 of procedural_declarative_part * procedural_statement_part * identifier
+                                            | SIMULTANEOUS_PROCEDURAL_STATEMENT_3 of procedural_declarative_part * procedural_statement_part
+                                            | SIMULTANEOUS_PROCEDURAL_STATEMENT_4 of label * procedural_declarative_part * procedural_statement_part
+
+    and   simultaneous_statement = SIMULTANEOUS_STATEMENT_1 of simple_simultaneous_statement
+                                 | SIMULTANEOUS_STATEMENT_2 of simultaneous_if_statement
+                                 | SIMULTANEOUS_STATEMENT_3 of simultaneous_case_statement
+                                 | SIMULTANEOUS_STATEMENT_4 of simultaneous_procedural_statement
+                                 | SIMULTANEOUS_STATEMENT_5 of label
+
+    and   simultaneous_statement_part = SIMULTANEOUS_STATEMENT_PART of simultaneous_statement list
+
+    and   source_aspect = SOURCE_ASPECT_1 of simple_expression * simple_expression
+                        | SOURCE_ASPECT_2 of simple_expression
+
+    and   source_quantity_declaration = SOURCE_QUANTITY_DECLARATION of identifier_list * subtype_indication * source_aspect
+
+    and   step_limit_specification = STEP_LIMIT_SPECIFICATION of quantity_specification * expression
+
+    and   subnature_declaration = SUBNATURE_DECLARATION of identifier * subnature_indication
+
+    and   subnature_indication = SUBNATURE_INDICATION_1 of name * index_constraint * expression * expression
+                               | SUBNATURE_INDICATION_2 of name * expression * expression
+                               | SUBNATURE_INDICATION_3 of name
+                               | SUBNATURE_INDICATION_4 of name * index_constraint
 
     and   subprogram_body = SUBPROGRAM_BODY_1 of subprogram_specification * subprogram_declarative_part * subprogram_statement_part * subprogram_kind * designator
                           | SUBPROGRAM_BODY_2 of subprogram_specification * subprogram_declarative_part * subprogram_statement_part * designator
@@ -1228,10 +1268,6 @@ struct
 
     and   subprogram_declarative_item = SUBPROGRAM_DECLARATIVE_ITEM_1 of subprogram_declaration
                                       | SUBPROGRAM_DECLARATIVE_ITEM_2 of subprogram_body
-                                      | SUBPROGRAM_DECLARATIVE_ITEM_3 of subprogram_instantiation_declaration
-                                      | SUBPROGRAM_DECLARATIVE_ITEM_4 of package_declaration
-                                      | SUBPROGRAM_DECLARATIVE_ITEM_5 of package_body
-                                      | SUBPROGRAM_DECLARATIVE_ITEM_6 of package_instantiation_declaration
                                       | SUBPROGRAM_DECLARATIVE_ITEM_7 of type_declaration
                                       | SUBPROGRAM_DECLARATIVE_ITEM_8 of subtype_declaration
                                       | SUBPROGRAM_DECLARATIVE_ITEM_9 of constant_declaration
@@ -1246,34 +1282,33 @@ struct
 
     and   subprogram_declarative_part = SUBPROGRAM_DECLARATIVE_PART of subprogram_declarative_item list
 
-    and   subprogram_header = SUBPROGRAM_HEADER_1 of generic_list * generic_map_aspect                                       
-                            | SUBPROGRAM_HEADER_2 of generic_list                                       
-                            | SUBPROGRAM_HEADER_3 of unit                                      
-
-    and   subprogram_instantiation_declaration = SUBPROGRAM_INSTANTIATION_DECLARATION_1 of subprogram_kind * identifier * name * signatur * generic_map_aspect                             
-                                               | SUBPROGRAM_INSTANTIATION_DECLARATION_2 of subprogram_kind * identifier * name * generic_map_aspect                             
-                                               | SUBPROGRAM_INSTANTIATION_DECLARATION_3 of subprogram_kind * identifier * name                             
-                                               | SUBPROGRAM_INSTANTIATION_DECLARATION_4 of subprogram_kind * identifier * name * signatur     
-
     and   subprogram_kind = Procedure of unit
                           | Function of unit                                                    
 
     and   subprogram_specification = SUBPROGRAM_SPECIFICATION_1 of procedure_specification
                                    | SUBPROGRAM_SPECIFICATION_2 of function_specification                                            
 
+    and   procedure_specification = PROCEDURE_SPECIFICATION_1 of  designator * formal_parameter_list                                     
+                                  | PROCEDURE_SPECIFICATION_2 of  designator
+
+    and   function_specification = FUNCTION_SPECIFICATION_1 of designator * formal_parameter_list * subtype_indication
+                                 | FUNCTION_SPECIFICATION_2 of designator * subtype_indication
+
     and   subprogram_statement_part = SUBPROGRAM_STATEMENT_PART of sequential_statement list
 
     and   subtype_declaration = SUBTYPE_DECLARATION of identifier * subtype_indication
 
-    and   subtype_indication = SUBTYPE_INDICATION_1 of resolution_indication * type_mark * constraint                                    
-                             | SUBTYPE_INDICATION_2 of type_mark * constraint                                    
-                             | SUBTYPE_INDICATION_3 of type_mark                                    
-                             | SUBTYPE_INDICATION_4 of resolution_indication * type_mark                                    
+    and   subtype_indication = SUBTYPE_INDICATION_1 of selected_name * selected_name * constraint * tolerance_aspect
+                             | SUBTYPE_INDICATION_2 of selected_name * constraint * tolerance_aspect
+                             | SUBTYPE_INDICATION_3 of selected_name * selected_name * tolerance_aspect
+                             | SUBTYPE_INDICATION_4 of selected_name * tolerance_aspect
+                             | SUBTYPE_INDICATION_5 of selected_name * selected_name
+                             | SUBTYPE_INDICATION_6 of selected_name
+                             | SUBTYPE_INDICATION_7 of selected_name * selected_name * constraint
+                             | SUBTYPE_INDICATION_8 of selected_name * constraint
 
-    and   suffix = SUFFIX_1 of simple_name
-                 | SUFFIX_2 of character_literal
-                 | SUFFIX_3 of operator_symbol
-                 | SUFFIX_4 of unit
+    and   suffix = SUFFIX_1 of identifier
+                 | SUFFIX_2 of unit
 
     and   target = TARGET_1 of name
                  | TARGET_2 of aggregate
@@ -1282,47 +1317,39 @@ struct
 
     and   term = TERM of factor * multiplying_operator_factor list
 
+    and   terminal_aspect = TERMINAL_ASPECT_1 of name * name
+                          | TERMINAL_ASPECT_2 of name
+
+    and   terminal_declaration = TERMINAL_DECLARATION of identifier_list * subnature_indication
+
+    and   through_aspect = THROUGH_ASPECT_1 of identifier_list * tolerance_aspect * expression                          
+                         | THROUGH_ASPECT_2 of identifier_list * expression                          
+                         | THROUGH_ASPECT_3 of identifier_list                          
+                         | THROUGH_ASPECT_4 of identifier_list * tolerance_aspect                          
+
     and   timeout_clause = TIMEOUT_CLAUSE of expression
 
-    and   tool_directive = TOOL_DIRECTIVE of identifier * graphic_character list
+    and   tolerance_aspect = TOLERANCE_ASPECT of expression
 
-    and   type_conversion = TYPE_CONVERSION of type_mark * expression
-
-    and   type_declaration = TYPE_DECLARATION_1 of full_type_declaration
-                           | TYPE_DECLARATION_2 of incomplete_type_declaration                                                          
+    and   type_declaration = TYPE_DECLARATION_1 of identifier * type_definition
+                           | TYPE_DECLARATION_2 of identifier                                                           
 
     and   type_definition = TYPE_DEFINITION_1 of scalar_type_definition
                           | TYPE_DEFINITION_2 of composite_type_definition
                           | TYPE_DEFINITION_3 of access_type_definition
                           | TYPE_DEFINITION_4 of file_type_definition
-                          | TYPE_DEFINITION_5 of protected_type_definition
-                          | TYPE_DEFINITION_6 of protected_type_instantiation_definition                           
 
-    and   type_mark = TYPE_MARK of name
+    and   unconstrained_array_definition = UNCONSTRAINED_ARRAY_DEFINITION of index_subtype_definition * index_subtype_definition list * subtype_indication
 
-    and   unary_expression = UNARY_EXPRESSION_1 of primary
-                           | UNARY_EXPRESSION_2 of logical_operator * primary
-
-    and   unary_miscellaneous_operator = UNARY_MISCELLANEOUS_OPERATOR of logical_operator
-
-    and   unbounded_array_definition = UNBOUNDED_ARRAY_DEFINITION of index_subtype_definition list * subtype_indication
+    and   unconstrained_nature_definition = UNCONSTRAINED_NATURE_DEFINITION of index_subtype_definition * index_subtype_definition list * subnature_indication
 
     and   use_clause = USE_CLAUSE of selected_name * selected_name list
 
-    and   value_return_statement = VALUE_RETURN_STATEMENT_1 of label * conditional_or_unaffected_expression
-                                 | VALUE_RETURN_STATEMENT_2 of conditional_or_unaffected_expression                                        
-
-    and   variable_assignment_statement = VARIABLE_ASSIGNMENT_STATEMENT_1 of label * simple_variable_assignment
-                                        | VARIABLE_ASSIGNMENT_STATEMENT_2 of simple_variable_assignment
-                                        | VARIABLE_ASSIGNMENT_STATEMENT_3 of label * selected_variable_assignment                                 
-                                        | VARIABLE_ASSIGNMENT_STATEMENT_4 of selected_variable_assignment                                 
+    and   variable_assignment_statement = VARIABLE_ASSIGNMENT_STATEMENT_1 of label * target * expression
+                                        | VARIABLE_ASSIGNMENT_STATEMENT_2 of target * expression
 
     and   variable_declaration = VARIABLE_DECLARATION_1 of identifier_list * subtype_indication * expression                                         
                                | VARIABLE_DECLARATION_2 of identifier_list * subtype_indication 
-
-    and   verification_unit_binding_indication = VERIFICATION_UNIT_BINDING_INDICATION of verification_unit_list
-
-    and   verification_unit_list = VERIFICATION_UNIT_LIST of name list
 
     and   wait_statement = WAIT_STATEMENT_1 of condition_clause * timeout_clause                               
                          | WAIT_STATEMENT_2 of label * condition_clause * timeout_clause                               
@@ -1341,12 +1368,11 @@ struct
                          | WAIT_STATEMENT_15 of label * sensitivity_clause * condition_clause                               
                          | WAIT_STATEMENT_16 of unit                     
 
-    and   waveform = WAVEFORM of waveform_element list
+    and   waveform = WAVEFORM of waveform_element * waveform_element list
                     | Unaffected1 of unit                         
 
     and   waveform_element = WAVEFORM_ELEMENT_1 of expression * expression                    
                            | WAVEFORM_ELEMENT_2 of expression 
-                           | WAVEFORM_ELEMENT_3 of unit
 
     and root = ROOT of design_file
 
