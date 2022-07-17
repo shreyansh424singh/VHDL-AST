@@ -1621,9 +1621,69 @@ simple_waveform_assignment : target LE delay_mechanism waveform SEMICOLON ((W_da
 
 simple_variable_assignment : target ASSIGN conditional_or_unaffected_expression SEMICOLON ((W_datatypes.SIMPLE_VARIABLE_ASSIGNMENT(target,conditional_or_unaffected_expression)))
 
-slice_name : prefix LPARAN discrete_range RPARAN ((W_datatypes.SLICE_NAME(prefix,discrete_range)))
+simple_expression : PLUS term adding_operator_term_seq              ((W_datatypes.SIMPLE_EXPRESSION(term * adding_operator_term_seq)))  
+                  | IMPLUS term adding_operator_term_seq            ((W_datatypes.SIMPLE_EXPRESSION(term * adding_operator_term_seq)))         
+                  | term adding_operator_term_seq                   ((W_datatypes.SIMPLE_EXPRESSION(term * adding_operator_term_seq)))  
 
-string_literal : INVERTEDCOMMA graphic_character_seq1 INVERTEDCOMMA ((W_datatypes.STRING_LITERAL(graphic_character_seq1)))
+simple_simultaneous_statement : label COLON simple_expression ASSIGN simple_expression tolerance_aspect SEMICOLON          ((W_datatypes.SIMPLE_SIMULTANEOUS_STATEMENT_1(label * simple_expression * simple_expression * tolerance_aspect)))                             
+                              | simple_expression ASSIGN simple_expression tolerance_aspect SEMICOLON                      ((W_datatypes.SIMPLE_SIMULTANEOUS_STATEMENT_1(simple_expression * simple_expression * tolerance_aspect)))               
+                              | simple_expression ASSIGN simple_expression SEMICOLON                                       ((W_datatypes.SIMPLE_SIMULTANEOUS_STATEMENT_1(simple_expression * simple_expression))) 
+                              | label COLON simple_expression ASSIGN simple_expression SEMICOLON                           ((W_datatypes.SIMPLE_SIMULTANEOUS_STATEMENT_1(label * simple_expression * simple_expression)))               
+
+simultaneous_alternative : WHEN choices ARROW simultaneous_statement_part           ((W_datatypes.SIMULTANEOUS_ALTERNATIVE(choices * simultaneous_statement_part)))
+
+simultaneous_alternative_seq : simultaneous_alternative simultaneous_alternative_seq       (simultaneous_alternative :: simultaneous_alternative_seq)
+
+simultaneous_case_statement : label COLON CASE expression USE simultaneous_alternative simultaneous_alternative_seq END CASE identifier SEMICOLON             ((W_datatypes.SIMULTANEOUS_CASE_STATEMENT_1(label * expression * simultaneous_alternative * simultaneous_alternative_seq * identifier)))                               
+                            | CASE expression USE simultaneous_alternative simultaneous_alternative_seq END CASE identifier SEMICOLON                         ((W_datatypes.SIMULTANEOUS_CASE_STATEMENT_2(expression * simultaneous_alternative * simultaneous_alternative_seq * identifier)))                        
+                            | CASE expression USE simultaneous_alternative simultaneous_alternative_seq END CASE SEMICOLON                                    ((W_datatypes.SIMULTANEOUS_CASE_STATEMENT_3(expression * simultaneous_alternative * simultaneous_alternative_seq)))          
+                            | label COLON CASE expression USE simultaneous_alternative simultaneous_alternative_seq END CASE SEMICOLON                        ((W_datatypes.SIMULTANEOUS_CASE_STATEMENT_4(label * expression * simultaneous_alternative * simultaneous_alternative_seq)))                        
+
+condition_simultaneous_statement_part : ELSIF condition USE simultaneous_statement_part           ((W_datatypes.CONDITION_SIMULTANEOUS_STATEMENT_PART(condition, simultaneous_statement_part)))
+
+condition_simultaneous_statement_part_seq : condition_simultaneous_statement_part condition_simultaneous_statement_part_seq                 (condition_simultaneous_statement_part :: condition_simultaneous_statement_part_seq)
+
+simultaneous_if_statement : label COLON IF condition USE simultaneous_statement_part condition_simultaneous_statement_part_seq ELSE simultaneous_statement_part END USE identifier SEMICOLON             ((W_datatypes.SIMULTANEOUS_IF_STATEMENT_1(label * condition * simultaneous_statement_part * condition_simultaneous_statement_part list * simultaneous_statement_part * identifier)))                              
+                          | IF condition USE simultaneous_statement_part condition_simultaneous_statement_part_seq ELSE simultaneous_statement_part END USE identifier SEMICOLON                         ((W_datatypes.SIMULTANEOUS_IF_STATEMENT_2(condition * simultaneous_statement_part * condition_simultaneous_statement_part list * simultaneous_statement_part * identifier)))                       
+                          | IF condition USE simultaneous_statement_part condition_simultaneous_statement_part_seq ELSE simultaneous_statement_part END USE SEMICOLON                                    ((W_datatypes.SIMULTANEOUS_IF_STATEMENT_3(condition * simultaneous_statement_part * condition_simultaneous_statement_part list * simultaneous_statement_part)))         
+                          | label COLON IF condition USE simultaneous_statement_part condition_simultaneous_statement_part_seq ELSE simultaneous_statement_part END USE SEMICOLON                        ((W_datatypes.SIMULTANEOUS_IF_STATEMENT_4(label * condition * simultaneous_statement_part * condition_simultaneous_statement_part list * simultaneous_statement_part)))                       
+                          | label COLON IF condition USE simultaneous_statement_part condition_simultaneous_statement_part_seq END USE identifier SEMICOLON             ((W_datatypes.SIMULTANEOUS_IF_STATEMENT_1(label * condition * simultaneous_statement_part * condition_simultaneous_statement_part list * identifier)))                              
+                          | IF condition USE simultaneous_statement_part condition_simultaneous_statement_part_seq END USE identifier SEMICOLON                         ((W_datatypes.SIMULTANEOUS_IF_STATEMENT_2(condition * simultaneous_statement_part * condition_simultaneous_statement_part list * identifier)))                       
+                          | IF condition USE simultaneous_statement_part condition_simultaneous_statement_part_seq END USE SEMICOLON                                    ((W_datatypes.SIMULTANEOUS_IF_STATEMENT_3(condition * simultaneous_statement_part * condition_simultaneous_statement_part list)))         
+                          | label COLON IF condition USE simultaneous_statement_part condition_simultaneous_statement_part_seq END USE SEMICOLON                        ((W_datatypes.SIMULTANEOUS_IF_STATEMENT_4(label * condition * simultaneous_statement_part * condition_simultaneous_statement_part list)))                       
+
+simultaneous_procedural_statement : label COLON PROCEDURAL IS procedural_declarative_part BEGIN procedural_statement_part END PROCEDURAL identifier SEMICOLON           ((W_datatypes.SIMULTANEOUS_PROCEDURAL_STATEMENT_1(label * procedural_declarative_part * procedural_statement_part * identifier)))                            
+                                  | PROCEDURAL IS procedural_declarative_part BEGIN procedural_statement_part END PROCEDURAL SEMICOLON                                  ((W_datatypes.SIMULTANEOUS_PROCEDURAL_STATEMENT_2(procedural_declarative_part * procedural_statement_part)))       
+                                  | PROCEDURAL IS procedural_declarative_part BEGIN procedural_statement_part END PROCEDURAL identifier SEMICOLON                       ((W_datatypes.SIMULTANEOUS_PROCEDURAL_STATEMENT_3(procedural_declarative_part * procedural_statement_part * identifier)))              
+                                  | label COLON PROCEDURAL IS procedural_declarative_part BEGIN procedural_statement_part END PROCEDURAL SEMICOLON                      ((W_datatypes.SIMULTANEOUS_PROCEDURAL_STATEMENT_4(label * procedural_declarative_part * procedural_statement_part)))              
+                                  | label COLON PROCEDURAL procedural_declarative_part BEGIN procedural_statement_part END PROCEDURAL identifier SEMICOLON           ((W_datatypes.SIMULTANEOUS_PROCEDURAL_STATEMENT_1(label * procedural_declarative_part * procedural_statement_part * identifier)))                            
+                                  | PROCEDURAL procedural_declarative_part BEGIN procedural_statement_part END PROCEDURAL SEMICOLON                                  ((W_datatypes.SIMULTANEOUS_PROCEDURAL_STATEMENT_2(procedural_declarative_part * procedural_statement_part)))       
+                                  | PROCEDURAL procedural_declarative_part BEGIN procedural_statement_part END PROCEDURAL identifier SEMICOLON                       ((W_datatypes.SIMULTANEOUS_PROCEDURAL_STATEMENT_3(procedural_declarative_part * procedural_statement_part * identifier)))              
+                                  | label COLON PROCEDURAL procedural_declarative_part BEGIN procedural_statement_part END PROCEDURAL SEMICOLON                      ((W_datatypes.SIMULTANEOUS_PROCEDURAL_STATEMENT_4(label * procedural_declarative_part * procedural_statement_part)))              
+
+simultaneous_statement : simple_simultaneous_statement                              ((W_datatypes.SIMULTANEOUS_STATEMENT_1(simple_simultaneous_statement)))              
+                       | simultaneous_if_statement                                  ((W_datatypes.SIMULTANEOUS_STATEMENT_2(simultaneous_if_statement)))              
+                       | simultaneous_case_statement                                ((W_datatypes.SIMULTANEOUS_STATEMENT_3(simultaneous_case_statement)))              
+                       | simultaneous_procedural_statement                          ((W_datatypes.SIMULTANEOUS_STATEMENT_4(simultaneous_procedural_statement)))                     
+                       | label COLON NULL SEMICOLON                                 ((W_datatypes.SIMULTANEOUS_STATEMENT_5(label)))              
+
+simultaneous_statement_seq : simultaneous_statement simultaneous_statement_seq             (simultaneous_statement :: simultaneous_statement_seq)
+
+simultaneous_statement_part : simultaneous_statement_seq                            ((W_datatypes.SIMULTANEOUS_STATEMENT_PART(simultaneous_statement_seq)))
+
+source_aspect : SPECTRUM simple_expression COMMA simple_expression                  ((W_datatypes.SOURCE_ASPECT_1(simple_expression, simple_expression)))                            
+              | NOISE simple_expression                                             ((W_datatypes.SOURCE_ASPECT_2(simple_expression)))
+
+source_quantity_declaration : QUANTITY identifier_list COLON subtype_indication source_aspect SEMICOLON                ((W_datatypes.SOURCE_QUANTITY_DECLARATION(identifier_list * subtype_indication * source_aspect)))
+
+step_limit_specification : LIMIT quantity_specification WITH expression SEMICOLON                 ((W_datatypes.STEP_LIMIT_SPECIFICATION(quantity_specification * expression)))
+
+subnature_declaration : SUBNATURE identifier IS subnature_indication SEMICOLON                    ((W_datatypes.SUBNATURE_DECLARATION(identifier * subnature_indication)))
+
+subnature_indication : name index_constraint TOLERANCE expression ACROSS expression THROUGH       ((W_datatypes.SUBNATURE_INDICATION_1(name * index_constraint * expression * expression)))                                                               
+                     | name TOLERANCE expression ACROSS expression THROUGH                        ((W_datatypes.SUBNATURE_INDICATION_2(name * expression * expression)))                                          
+                     | name                                                                       ((W_datatypes.SUBNATURE_INDICATION_3(name)))
+                     | name index_constraint                                                      ((W_datatypes.SUBNATURE_INDICATION_4(name * index_constraint)))              
 
 subprogram_body : subprogram_specification IS subprogram_declarative_part BEGIN subprogram_statement_part END subprogram_kind designator SEMICOLON ((W_datatypes.SUBPROGRAM_BODY_1(subprogram_specification,subprogram_declarative_part,subprogram_statement_part,subprogram_kind,designator)))
                 | subprogram_specification IS subprogram_declarative_part BEGIN subprogram_statement_part END designator SEMICOLON ((W_datatypes.SUBPROGRAM_BODY_2(subprogram_specification, subprogram_declarative_part, subprogram_statement_part,designator)))
@@ -1637,10 +1697,6 @@ subprogram_declarative_item_seq : subprogram_declarative_item subprogram_declara
 
 subprogram_declarative_item : subprogram_declaration ((W_datatypes.SUBPROGRAM_DECLARATIVE_ITEM_1(subprogram_declaration)))
                             | subprogram_body ((W_datatypes.SUBPROGRAM_DECLARATIVE_ITEM_2(subprogram_body)))
-                            | subprogram_instantiation_declaration ((W_datatypes.SUBPROGRAM_DECLARATIVE_ITEM_3(subprogram_instantiation_declaration)))
-                            | package_declaration ((W_datatypes.SUBPROGRAM_DECLARATIVE_ITEM_4(package_declaration)))
-                            | package_body ((W_datatypes.SUBPROGRAM_DECLARATIVE_ITEM_5(package_body)))
-                            | package_instantiation_declaration ((W_datatypes.SUBPROGRAM_DECLARATIVE_ITEM_6(package_instantiation_declaration)))
                             | type_declaration ((W_datatypes.SUBPROGRAM_DECLARATIVE_ITEM_7(type_declaration)))
                             | subtype_declaration ((W_datatypes.SUBPROGRAM_DECLARATIVE_ITEM_8(subtype_declaration)))
                             | constant_declaration ((W_datatypes.SUBPROGRAM_DECLARATIVE_ITEM_9(constant_declaration)))
@@ -1655,101 +1711,91 @@ subprogram_declarative_item : subprogram_declaration ((W_datatypes.SUBPROGRAM_DE
 
 subprogram_declarative_part : subprogram_declarative_item_seq ((W_datatypes.SUBPROGRAM_DECLARATIVE_PART(subprogram_declarative_item_seq)))
 
-subprogram_header : GENERIC LPARAN generic_list RPARAN generic_map_aspect ((W_datatypes.SUBPROGRAM_HEADER_1(generic_list,generic_map_aspect)))
-                  | GENERIC LPARAN generic_list RPARAN ((W_datatypes.SUBPROGRAM_HEADER_2(generic_list)))
-                  | ((W_datatypes.SUBPROGRAM_HEADER_3()))
-
-subprogram_instantiation_declaration : subprogram_kind identifier IS NEW name signatur generic_map_aspect SEMICOLON  ((W_datatypes.SUBPROGRAM_INSTANTIATION_DECLARATION_1(subprogram_kind,identifier,name,signatur,generic_map_aspect)))
-                                     | subprogram_kind identifier IS NEW name signatur SEMICOLON  ((W_datatypes.SUBPROGRAM_INSTANTIATION_DECLARATION_4(subprogram_kind,identifier,name,signatur)))
-                                     | subprogram_kind identifier IS NEW name generic_map_aspect SEMICOLON  ((W_datatypes.SUBPROGRAM_INSTANTIATION_DECLARATION_2(subprogram_kind,identifier,name,generic_map_aspect)))
-                                     | subprogram_kind identifier IS NEW name SEMICOLON  ((W_datatypes.SUBPROGRAM_INSTANTIATION_DECLARATION_3(subprogram_kind,identifier,name)))
-
 subprogram_kind : PROCEDURE  ((W_datatypes.Procedure()))
                 | FUNCTION ((W_datatypes.Function()))
 
 subprogram_specification : procedure_specification ((W_datatypes.SUBPROGRAM_SPECIFICATION_1(procedure_specification)))
                          | function_specification  ((W_datatypes.SUBPROGRAM_SPECIFICATION_2(function_specification)))
 
+procedure_specification : PROCEDURE designator LPAREN formal_parameter_list RPAREN               ((W_datatypes.PROCEDURE_SPECIFICATION_1(designator * formal_parameter_list)))                                    
+                        | PROCEDURE designator                                                   ((W_datatypes.PROCEDURE_SPECIFICATION_2(designator))) 
+
+function_specification : PURE FUNCTION designator LPAREN formal_parameter_list RPAREN RETURN subtype_indication         ((W_datatypes.FUNCTION_SPECIFICATION_1(designator * formal_parameter_list * subtype_indication)))                                         
+                       | PURE FUNCTION designator RETURN subtype_indication                                             ((W_datatypes.FUNCTION_SPECIFICATION_1(designator * subtype_indication)))      
+                       | IMPURE FUNCTION designator LPAREN formal_parameter_list RPAREN RETURN subtype_indication         ((W_datatypes.FUNCTION_SPECIFICATION_1(designator * formal_parameter_list * subtype_indication)))                                         
+                       | IMPURE FUNCTION designator RETURN subtype_indication                                             ((W_datatypes.FUNCTION_SPECIFICATION_1(designator * subtype_indication)))      
+                       | FUNCTION designator LPAREN formal_parameter_list RPAREN RETURN subtype_indication         ((W_datatypes.FUNCTION_SPECIFICATION_1(designator * formal_parameter_list * subtype_indication)))                                         
+                       | FUNCTION designator RETURN subtype_indication                                             ((W_datatypes.FUNCTION_SPECIFICATION_1(designator * subtype_indication)))      
+
 subprogram_statement_part : sequential_statement_seq ((W_datatypes.SUBPROGRAM_STATEMENT_PART(sequential_statement_seq)))
 
 subtype_declaration : SUBTYPE identifier IS subtype_indication SEMICOLON ((W_datatypes.SUBTYPE_DECLARATION(identifier,subtype_indication)))
 
-subtype_indication : resolution_indication type_mark constraint ((W_datatypes.SUBTYPE_INDICATION_1(resolution_indication,type_mark,constraint)))
-                   | resolution_indication type_mark ((W_datatypes.SUBTYPE_INDICATION_4(resolution_indication,type_mark)))
-                   | type_mark constraint ((W_datatypes.SUBTYPE_INDICATION_2(type_mark,constraint)))
-                   | type_mark ((W_datatypes.SUBTYPE_INDICATION_3(type_mark)))
+subtype_indication : selected_name selected_name constraint tolerance_aspect           ((W_datatypes.SUBTYPE_INDICATION_1(selected_name * selected_name * constraint * tolerance_aspect)))                                                 
+                   | selected_name constraint tolerance_aspect                         ((W_datatypes.SUBTYPE_INDICATION_2(selected_name * constraint * tolerance_aspect)))                                   
+                   | selected_name selected_name tolerance_aspect                      ((W_datatypes.SUBTYPE_INDICATION_3(selected_name * selected_name * tolerance_aspect)))                                   
+                   | selected_name tolerance_aspect                                    ((W_datatypes.SUBTYPE_INDICATION_4(selected_name * tolerance_aspect)))                     
+                   | selected_name selected_name                                       ((W_datatypes.SUBTYPE_INDICATION_5(selected_name * selected_name)))                     
+                   | selected_name                                                     ((W_datatypes.SUBTYPE_INDICATION_6(selected_name)))
+                   | selected_name selected_name constraint                            ((W_datatypes.SUBTYPE_INDICATION_7(selected_name * selected_name * constraint)))                                   
+                   | selected_name constraint                                          ((W_datatypes.SUBTYPE_INDICATION_8(selected_name * constraint)))              
 
 suffix : simple_name ((W_datatypes.SUFFIX_1(simple_name)))
-       | character_literal ((W_datatypes.SUFFIX_2(character_literal)))
-       | operator_symbol ((W_datatypes.SUFFIX_3(operator_symbol)))
-       | ALL ((W_datatypes.SUFFIX_4()))
+       | CHARACTER_LITERAL ((W_datatypes.SUFFIX_2()))
+       | STRING_LITERAL   ((W_datatypes.SUFFIX_2()))
+       | ALL                ((W_datatypes.SUFFIX_2()))
 
 target : name ((W_datatypes.TARGET_1(name)))
        | aggregate ((W_datatypes.TARGET_2(aggregate)))
 
 multiplying_operator_factor : multiplying_operator factor             ((W_datatypes.MULTIPLYING_OPERATOR_FACTOR(multiplying_operator, factor)))
 
-multiplying_operator_factor_seq : multiplying_operator_factor multiplying_operator_factor_seq            (multiplying_operator_factor :: multiplying_operator_factor_seq)
+multiplying_operator_factor_seq : COLON multiplying_operator_factor multiplying_operator_factor_seq            (multiplying_operator_factor :: multiplying_operator_factor_seq)
                                    |             ([])
 
 term : factor multiplying_operator_factor_seq ((W_datatypes.TERM(factor,multiplying_operator_factor_seq)))
 
+terminal_aspect : name TO name                         ((W_datatypes.TERMINAL_ASPECT_1(name, name)))        
+                | name                                 ((W_datatypes.TERMINAL_ASPECT_2(name))) 
+
+terminal_declaration : TERMINAL identifier_list COLON subnature_indication SEMICOLON      ((W_datatypes.TERMINAL_DECLARATION(identifier_list * subnature_indication)))
+
+through_aspect : identifier_list tolerance_aspect VARASGN expression THROUGH         ((W_datatypes.THROUGH_ASPECT_1(identifier_list * tolerance_aspect * expression)))                                         
+               | identifier_list VARASGN expression THROUGH                          ((W_datatypes.THROUGH_ASPECT_2(identifier_list * expression)))                           
+               | identifier_list THROUGH                                             ((W_datatypes.THROUGH_ASPECT_3(identifier_list)))      
+               | identifier_list tolerance_aspect THROUGH                            ((W_datatypes.THROUGH_ASPECT_4(identifier_list * tolerance_aspect)))                           
+
 timeout_clause : FOR expression ((W_datatypes.TIMEOUT_CLAUSE(expression)))
 
-(* tool_directive : BACKTICK identifier graphic_character_seq1 ((W_datatypes.TOOL_DIRECTIVE(identifier,graphic_character_seq1))) *)
+tolerance_aspect : TOLERANCE expression          ((W_datatypes.TOLERANCE_ASPECT(expression)))
 
-type_conversion : type_mark LPARAN expression RPARAN ((W_datatypes.TYPE_CONVERSION(type_mark,expression)))
-
-type_declaration : full_type_declaration ((W_datatypes.TYPE_DECLARATION_1(full_type_declaration)))
-                 | incomplete_type_declaration ((W_datatypes.TYPE_DECLARATION_2(incomplete_type_declaration)))
+type_declaration : TYPE identifier IS type_definition SEMICOLON        ((W_datatypes.TYPE_DECLARATION_1(identifier, type_definition)))
+                 | TYPE identifier SEMICOLON                                ((W_datatypes.TYPE_DECLARATION_2(identifier)))
 
 type_definition : scalar_type_definition  ((W_datatypes.TYPE_DEFINITION_1(scalar_type_definition)))
                 | composite_type_definition  ((W_datatypes.TYPE_DEFINITION_2(composite_type_definition)))
                 | access_type_definition  ((W_datatypes.TYPE_DEFINITION_3(access_type_definition)))
                 | file_type_definition  ((W_datatypes.TYPE_DEFINITION_4(file_type_definition)))
-                | protected_type_definition  ((W_datatypes.TYPE_DEFINITION_5(protected_type_definition)))
-                | protected_type_instantiation_definition  ((W_datatypes.TYPE_DEFINITION_6(protected_type_instantiation_definition)))
-
-type_mark : name ((W_datatypes.TYPE_MARK(name)))
-
-unary_expression : primary  ((W_datatypes.UNARY_EXPRESSION_1(primary)))
-                 | ABS primary  ((W_datatypes.UNARY_EXPRESSION_1(primary)))
-                 | NOT primary ((W_datatypes.UNARY_EXPRESSION_1(primary)))
-                 | logical_operator primary  ((W_datatypes.UNARY_EXPRESSION_2(logical_operator,primary)))
-
-(* unary_miscellaneous_operator : ABS   ((W_datatypes.Abs()))
-                             | NOT  ((W_datatypes.Not()))
-                             | logical_operator ((W_datatypes.UNARY_MISCELLANEOUS_OPERATOR(logical_operator))) *)
 
 index_subtype_definition_seq : COMMA index_subtype_definition index_subtype_definition_seq               (index_subtype_definition :: index_subtype_definition_seq)
                             |             ([])
 
-unbounded_array_definition : ARRAY LPARAN index_subtype_definition_seq RPARAN OF subtype_indication ((W_datatypes.UNBOUNDED_ARRAY_DEFINITION(index_subtype_definition_seq,subtype_indication)))
+unconstrained_array_definition : ARRAY LPARAN index_subtype_definition index_subtype_definition_seq RPARAN OF subtype_indication      ((W_datatypes.UNCONSTRAINED_ARRAY_DEFINITION(index_subtype_definition, index_subtype_definition_seq,subtype_indication)))
+
+unconstrained_nature_definition : ARRAY LPARAN index_subtype_definition index_subtype_definition_seq RPARAN OF subnature_indication      ((W_datatypes.UNCONSTRAINED_NATURE_DEFINITION(index_subtype_definition, index_subtype_definition_seq,subnature_indication)))
 
 use_clause_seq : use_clause use_clause_seq      (use_clause :: use_clause_seq)
                |     ([])
 
 use_clause : USE selected_name selected_name_seq SEMICOLON ((W_datatypes.USE_CLAUSE(selected_name, selected_name_seq)))
 
-value_return_statement : label COLON RETURN conditional_or_unaffected_expression SEMICOLON   ((W_datatypes.VALUE_RETURN_STATEMENT_1(label, conditional_or_unaffected_expression)))
-                       | RETURN conditional_or_unaffected_expression SEMICOLON     ((W_datatypes.VALUE_RETURN_STATEMENT_2(conditional_or_unaffected_expression)))
-
-variable_assignment_statement : label COLON simple_variable_assignment              ((W_datatypes.VARIABLE_ASSIGNMENT_STATEMENT_1(label,simple_variable_assignment)))
-                              | label COLON selected_variable_assignment              ((W_datatypes.VARIABLE_ASSIGNMENT_STATEMENT_3(label,selected_variable_assignment)))
-                              | simple_variable_assignment          ((W_datatypes.VARIABLE_ASSIGNMENT_STATEMENT_2(simple_variable_assignment)))
-                              | selected_variable_assignment         ((W_datatypes.VARIABLE_ASSIGNMENT_STATEMENT_4(selected_variable_assignment)))
+variable_assignment_statement : label COLON target VARASGN expression SEMICOLON                ((W_datatypes.VARIABLE_ASSIGNMENT_STATEMENT_1(label,target,expression)))
+                              | target VARASGN expression SEMICOLON                            ((W_datatypes.VARIABLE_ASSIGNMENT_STATEMENT_2(target,expression)))   
 
 variable_declaration : SHARED VARIABLE identifier_list COLON subtype_indication ASSIGN expression SEMICOLON     ((W_datatypes.VARIABLE_DECLARATION_1(identifier_list,subtype_indication,expression)))
                      | VARIABLE identifier_list COLON subtype_indication ASSIGN expression SEMICOLON    ((W_datatypes.VARIABLE_DECLARATION_1(identifier_list,subtype_indication,expression)))
                      | SHARED VARIABLE identifier_list COLON subtype_indication SEMICOLON      ((W_datatypes.VARIABLE_DECLARATION_2(identifier_list,subtype_indication)))
                      | VARIABLE identifier_list COLON subtype_indication SEMICOLON      ((W_datatypes.VARIABLE_DECLARATION_2(identifier_list,subtype_indication)))
-
-verification_unit_binding_indication_seq : verification_unit_binding_indication SEMICOLON verification_unit_binding_indication_seq        (verification_unit_binding_indication :: verification_unit_binding_indication_seq)
-                                         |      ([])
-
-verification_unit_binding_indication : USE VUNIT verification_unit_list ((W_datatypes.VERIFICATION_UNIT_BINDING_INDICATION(verification_unit_list)))
-
-verification_unit_list : name_seq ((W_datatypes.VERIFICATION_UNIT_LIST(name_seq)))
 
 wait_statement : label COLON WAIT sensitivity_clause condition_clause timeout_clause SEMICOLON ((W_datatypes.WAIT_STATEMENT_4(label,sensitivity_clause,condition_clause,timeout_clause)))
                | label COLON WAIT condition_clause timeout_clause SEMICOLON  ((W_datatypes.WAIT_STATEMENT_2(label,condition_clause,timeout_clause)))
@@ -1768,7 +1814,7 @@ wait_statement : label COLON WAIT sensitivity_clause condition_clause timeout_cl
                | WAIT condition_clause SEMICOLON ((W_datatypes.WAIT_STATEMENT_12(condition_clause)))
                | WAIT timeout_clause SEMICOLON ((W_datatypes.WAIT_STATEMENT_5(timeout_clause)))
 
-waveform : waveform_element_seq ((W_datatypes.WAVEFORM(waveform_element_seq)))
+waveform : waveform_element waveform_element_seq ((W_datatypes.WAVEFORM(waveform_element, waveform_element_seq)))
          | UNAFFECTED ((W_datatypes.Unaffected1()))
 
 waveform_element_seq : COMMA waveform_element waveform_element_seq           (waveform_element :: waveform_element_seq)
@@ -1776,5 +1822,3 @@ waveform_element_seq : COMMA waveform_element waveform_element_seq           (wa
 
 waveform_element : expression AFTER expression ((W_datatypes.WAVEFORM_ELEMENT_1(expression1,expression2)))
                  | expression ((W_datatypes.WAVEFORM_ELEMENT_2(expression)))
-                 | NULL AFTER expression ((W_datatypes.WAVEFORM_ELEMENT_2(expression)))
-                 | NULL ((W_datatypes.WAVEFORM_ELEMENT_3()))

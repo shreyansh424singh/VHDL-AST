@@ -1,0 +1,7 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/shreyansh/VHDL-AST'
+mllex VHDL_lex.lex
+mlyacc VHDL_yacc.yacc
+mlton VHDL_mlton.mlb
+make: Leaving directory '/home/shreyansh/VHDL-AST'
+ 
