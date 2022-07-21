@@ -1420,18 +1420,19 @@ carrot_dot_seq : CARROT DOT carrot_dot_seq                     (carrot_dot_seq)
 
 relative_pathname : carrot_dot_seq partial_pathname ((W_datatypes.RELATIVE_PATHNAME(partial_pathname)))
 
+
+
+
+
 report_statement : label COLON REPORT expression SEVERITY expression SEMICOLON ((W_datatypes.REPORT_STATEMENT_3(label,expression1,expression2)))
                  | label COLON REPORT expression SEMICOLON ((W_datatypes.REPORT_STATEMENT_2(label,expression)))
                  | REPORT expression SEVERITY expression SEMICOLON ((W_datatypes.REPORT_STATEMENT_1(expression1,expression2)))
                  | REPORT expression SEMICOLON ((W_datatypes.REPORT_STATEMENT_4(expression)))
 
-resolution_indication : name ((W_datatypes.RESOLUTION_INDICATION_1(name)))
-                      | LPARAN element_resolution RPARAN ((W_datatypes.RESOLUTION_INDICATION_2(element_resolution)))
-
 return_statement : plain_return_statement ((W_datatypes.RETURN_STATEMENT_1(plain_return_statement)))
                  | value_return_statement ((W_datatypes.RETURN_STATEMENT_2(value_return_statement)))
 
-scalar_incomplete_type_definition : BOX ((W_datatypes.SCALAR_INCOMPLETE_TYPE_DEFINITION()))
+scalar_nature_definition : name ACROSS name THROUGH name REFERENCE                  ((W_datatypes.SCALAR_NATURE_DEFINITION(name * name * name)))
 
 scalar_type_definition : enumeration_type_definition ((W_datatypes.SCALAR_TYPE_DEFINITION_1(enumeration_type_definition)))
                        | range_constraint ((W_datatypes.SCALAR_TYPE_DEFINITION_2(range_constraint)))
@@ -1447,62 +1448,20 @@ ex_when_choices : expression WHEN choices              ((W_datatypes.EX_WHEN_CHO
 ex_when_choices_seq : ex_when_choices COMMA ex_when_choices_seq             (ex_when_choices :: ex_when_choices_seq)
                      |  ex_when_choices           ([ex_when_choices])
 
-selected_expressions : ex_when_choices_seq ((W_datatypes.SELECTED_EXPRESSIONS(ex_when_choices_seq)))
-
-selected_force_assignment : WITH expression SELECT QUESTION target LE FORCE force_mode selected_expressions SEMICOLON ((W_datatypes.SELECTED_FORCE_ASSIGNMENT_1(expression,target,force_mode,selected_expressions)))
-                          | WITH expression SELECT target LE FORCE force_mode selected_expressions SEMICOLON ((W_datatypes.SELECTED_FORCE_ASSIGNMENT_1(expression,target,force_mode,selected_expressions)))
-                          | WITH expression SELECT QUESTION target LE FORCE selected_expressions SEMICOLON ((W_datatypes.SELECTED_FORCE_ASSIGNMENT_2(expression,target,selected_expressions)))
-                          | WITH expression SELECT target LE FORCE selected_expressions SEMICOLON ((W_datatypes.SELECTED_FORCE_ASSIGNMENT_2(expression,target,selected_expressions)))
-
-selected_name_seq : COMMA selected_name selected_name_seq         (selected_name :: selected_name_seq)
-              |      ([])
-
-selected_name : prefix DOT suffix ((W_datatypes.SELECTED_NAME(prefix,suffix)))
-
-selected_signal_assignment : selected_waveform_assignment ((W_datatypes.SELECTED_SIGNAL_ASSIGNMENT_1(selected_waveform_assignment)))
-                           | selected_force_assignment ((W_datatypes.SELECTED_SIGNAL_ASSIGNMENT_2(selected_force_assignment)))
-
-selected_variable_assignment : WITH expression SELECT QUESTION target ASSIGN selected_expressions SEMICOLON ((W_datatypes.SELECTED_VARIABLE_ASSIGNMENT(expression,target,selected_expressions)))
-                             | WITH expression SELECT target ASSIGN selected_expressions SEMICOLON ((W_datatypes.SELECTED_VARIABLE_ASSIGNMENT(expression,target,selected_expressions)))
-
-selected_waveform_assignment : WITH expression SELECT QUESTION target ASSIGN delay_mechanism selected_waveforms SEMICOLON ((W_datatypes.SELECTED_WAVEFORM_ASSIGNMENT_1(expression,target,delay_mechanism,selected_waveforms)))
-                             | WITH expression SELECT target ASSIGN delay_mechanism selected_waveforms SEMICOLON ((W_datatypes.SELECTED_WAVEFORM_ASSIGNMENT_1(expression,target,delay_mechanism,selected_waveforms)))
-                             | WITH expression SELECT QUESTION target ASSIGN selected_waveforms SEMICOLON ((W_datatypes.SELECTED_WAVEFORM_ASSIGNMENT_2(expression,target,selected_waveforms)))
-                             | WITH expression SELECT target ASSIGN selected_waveforms SEMICOLON ((W_datatypes.SELECTED_WAVEFORM_ASSIGNMENT_2(expression,target,selected_waveforms)))
+selected_signal_assignment : WITH expression SELECT target LE opts selected_waveforms SEMICOLON          ((W_datatypes.SELECTED_SIGNAL_ASSIGNMENT(expression * target * opts * selected_waveforms)))
 
 wave_when_choices : waveform WHEN choices         ((W_datatypes.WAVE_WHEN_CHOICES(waveform, choices)))
 
-wave_when_choices_seq : wave_when_choices COMMA wave_when_choices_seq        (wave_when_choices :: wave_when_choices_seq)
+wave_when_choices_seq : COMMA wave_when_choices wave_when_choices_seq        (wave_when_choices :: wave_when_choices_seq)
                      | wave_when_choices            ([wave_when_choices])
 
-selected_waveforms : wave_when_choices_seq ((W_datatypes.SELECTED_WAVEFORMS(wave_when_choices_seq)))
+selected_waveforms : waveform WHEN choices wave_when_choices_seq ((W_datatypes.SELECTED_WAVEFORMS(waveform, choices, wave_when_choices_seq)))
 
 sensitivity_clause : ON sensitivity_list ((W_datatypes.SENSITIVITY_CLAUSE(sensitivity_list)))
 
-sensitivity_list : name_seq ((W_datatypes.SENSITIVITY_LIST(name_seq)))
+sensitivity_list : name name_seq ((W_datatypes.SENSITIVITY_LIST(name, name_seq)))
 
 sequence_of_statements : sequential_statement_seq ((W_datatypes.SEQUENCE_OF_STATEMENTS(sequential_statement_seq)))
-
-sequential_block_statement : label COLON BLOCK IS sequential_block_declarative_part BEGIN sequential_block_statement_part END BLOCK label SEMICOLON  ((W_datatypes.SEQUENTIAL_BLOCK_STATEMENT_1(label1, sequential_block_declarative_part, sequential_block_statement_part,label2)))
-                           | label COLON BLOCK IS sequential_block_declarative_part BEGIN sequential_block_statement_part END label SEMICOLON        ((W_datatypes.SEQUENTIAL_BLOCK_STATEMENT_1(label1, sequential_block_declarative_part, sequential_block_statement_part,label2)))
-                           | label COLON BLOCK sequential_block_declarative_part BEGIN sequential_block_statement_part END BLOCK label SEMICOLON     ((W_datatypes.SEQUENTIAL_BLOCK_STATEMENT_1(label1, sequential_block_declarative_part, sequential_block_statement_part,label2)))
-                           | label COLON BLOCK sequential_block_declarative_part BEGIN sequential_block_statement_part END label SEMICOLON           ((W_datatypes.SEQUENTIAL_BLOCK_STATEMENT_1(label1, sequential_block_declarative_part, sequential_block_statement_part,label2)))
-                           | BLOCK IS sequential_block_declarative_part BEGIN sequential_block_statement_part END BLOCK label SEMICOLON  ((W_datatypes.SEQUENTIAL_BLOCK_STATEMENT_2(sequential_block_declarative_part, sequential_block_statement_part,label)))
-                           | BLOCK sequential_block_declarative_part BEGIN sequential_block_statement_part END BLOCK label SEMICOLON  ((W_datatypes.SEQUENTIAL_BLOCK_STATEMENT_2(sequential_block_declarative_part, sequential_block_statement_part,label)))
-                           | BLOCK IS sequential_block_declarative_part BEGIN sequential_block_statement_part END label SEMICOLON  ((W_datatypes.SEQUENTIAL_BLOCK_STATEMENT_2(sequential_block_declarative_part, sequential_block_statement_part,label)))
-                           | BLOCK sequential_block_declarative_part BEGIN sequential_block_statement_part END label SEMICOLON  ((W_datatypes.SEQUENTIAL_BLOCK_STATEMENT_2(sequential_block_declarative_part, sequential_block_statement_part,label)))
-                           | BLOCK IS sequential_block_declarative_part BEGIN sequential_block_statement_part END BLOCK SEMICOLON  ((W_datatypes.SEQUENTIAL_BLOCK_STATEMENT_3(sequential_block_declarative_part, sequential_block_statement_part)))
-                           | BLOCK sequential_block_declarative_part BEGIN sequential_block_statement_part END BLOCK SEMICOLON  ((W_datatypes.SEQUENTIAL_BLOCK_STATEMENT_3(sequential_block_declarative_part, sequential_block_statement_part)))
-                           | BLOCK IS sequential_block_declarative_part BEGIN sequential_block_statement_part END SEMICOLON  ((W_datatypes.SEQUENTIAL_BLOCK_STATEMENT_3(sequential_block_declarative_part, sequential_block_statement_part)))
-                           | BLOCK sequential_block_declarative_part BEGIN sequential_block_statement_part END SEMICOLON  ((W_datatypes.SEQUENTIAL_BLOCK_STATEMENT_3(sequential_block_declarative_part, sequential_block_statement_part)))
-                           | label COLON BLOCK IS sequential_block_declarative_part BEGIN sequential_block_statement_part END BLOCK SEMICOLON  ((W_datatypes.SEQUENTIAL_BLOCK_STATEMENT_4(label, sequential_block_declarative_part, sequential_block_statement_part)))
-                           | label COLON BLOCK sequential_block_declarative_part BEGIN sequential_block_statement_part END BLOCK SEMICOLON  ((W_datatypes.SEQUENTIAL_BLOCK_STATEMENT_4(label, sequential_block_declarative_part, sequential_block_statement_part)))
-                           | label COLON BLOCK IS sequential_block_declarative_part BEGIN sequential_block_statement_part END SEMICOLON  ((W_datatypes.SEQUENTIAL_BLOCK_STATEMENT_4(label, sequential_block_declarative_part, sequential_block_statement_part)))
-                           | label COLON BLOCK sequential_block_declarative_part BEGIN sequential_block_statement_part END SEMICOLON  ((W_datatypes.SEQUENTIAL_BLOCK_STATEMENT_4(label, sequential_block_declarative_part, sequential_block_statement_part)))
-
-sequential_block_declarative_part : process_declarative_item_seq ((W_datatypes.SEQUENTIAL_BLOCK_DECLARATIVE_PART(process_declarative_item_seq)))
-
-sequential_block_statement_part : sequential_statement_seq ((W_datatypes.SEQUENTIAL_BLOCK_STATEMENT_PART(sequential_statement_seq)))
 
 sequential_statement : wait_statement ((W_datatypes.SEQUENTIAL_STATEMENT_1(wait_statement)))
                      | assertion_statement ((W_datatypes.SEQUENTIAL_STATEMENT_2(assertion_statement)))
@@ -1520,20 +1479,6 @@ sequential_statement : wait_statement ((W_datatypes.SEQUENTIAL_STATEMENT_1(wait_
                      | NULL SEMICOLON ((W_datatypes.SEQUENTIAL_STATEMENT_14()))
                      | break_statement ((W_datatypes.SEQUENTIAL_STATEMENT_15(break_statement)))
 
-sequential_statement_body : sequential_statement_declarative_part BEGIN sequence_of_statements ((W_datatypes.SEQUENTIAL_STATEMENT_BODY_1(sequential_statement_declarative_part,sequence_of_statements)))
-                          | sequence_of_statements ((W_datatypes.SEQUENTIAL_STATEMENT_BODY_2(sequence_of_statements)))
-
-sequential_statement_declarative_part : process_declarative_item_seq ((W_datatypes.SEQUENTIAL_STATEMENT_DECLARATIVE_PART(process_declarative_item_seq)))
-
-(* shared_variable_declaration : SHARED VARIABLE identifier_list COLON subtype_indication generic_map_aspect ASSIGN conditional_expression SEMICOLON ((W_datatypes.SHARED_VARIABLE_DECLARATION_1(identifier_list,subtype_indication,generic_map_aspect,conditional_expression)))
-                            | VARIABLE identifier_list COLON subtype_indication generic_map_aspect ASSIGN conditional_expression SEMICOLON ((W_datatypes.SHARED_VARIABLE_DECLARATION_1(identifier_list,subtype_indication,generic_map_aspect,conditional_expression)))
-                            | SHARED VARIABLE identifier_list COLON subtype_indication ASSIGN conditional_expression SEMICOLON ((W_datatypes.SHARED_VARIABLE_DECLARATION_2(identifier_list,subtype_indication,conditional_expression)))
-                            | VARIABLE identifier_list COLON subtype_indication ASSIGN conditional_expression SEMICOLON ((W_datatypes.SHARED_VARIABLE_DECLARATION_2(identifier_list,subtype_indication,conditional_expression)))
-                            | SHARED VARIABLE identifier_list COLON subtype_indication SEMICOLON ((W_datatypes.SHARED_VARIABLE_DECLARATION_3(identifier_list,subtype_indication)))
-                            | VARIABLE identifier_list COLON subtype_indication SEMICOLON ((W_datatypes.SHARED_VARIABLE_DECLARATION_3(identifier_list,subtype_indication)))
-                            | SHARED VARIABLE identifier_list COLON subtype_indication generic_map_aspect SEMICOLON ((W_datatypes.SHARED_VARIABLE_DECLARATION_4(identifier_list,subtype_indication,generic_map_aspect)))
-                            | VARIABLE identifier_list COLON subtype_indication generic_map_aspect SEMICOLON ((W_datatypes.SHARED_VARIABLE_DECLARATION_4(identifier_list,subtype_indication,generic_map_aspect))) *)
-
 shift_expression : simple_expression shift_operator simple_expression ((W_datatypes.SHIFT_EXPRESSION_1(simple_expression1,shift_operator,simple_expression2)))
                  | simple_expression ((W_datatypes.SHIFT_EXPRESSION_2(simple_expression)))
 
@@ -1544,15 +1489,11 @@ shift_operator : SLL ((W_datatypes.Sll()))
                | ROL ((W_datatypes.Rol()))
                | ROR ((W_datatypes.Ror()))
 
-sign : PLUS ((W_datatypes.Plus()))
-     | MINUS ((W_datatypes.Minus()))
-
-signal_assignment_statement : label COLON simple_signal_assignment ((W_datatypes.SIGNAL_ASSIGNMENT_STATEMENT_1(label, simple_signal_assignment)))
-                            | simple_signal_assignment ((W_datatypes.SIGNAL_ASSIGNMENT_STATEMENT_2(simple_signal_assignment)))
-                            | label COLON conditional_signal_assignment ((W_datatypes.SIGNAL_ASSIGNMENT_STATEMENT_3(label,conditional_signal_assignment)))
-                            | conditional_signal_assignment ((W_datatypes.SIGNAL_ASSIGNMENT_STATEMENT_4(conditional_signal_assignment)))
-                            | label COLON selected_signal_assignment ((W_datatypes.SIGNAL_ASSIGNMENT_STATEMENT_5(label, selected_signal_assignment)))
-                            | selected_signal_assignment ((W_datatypes.SIGNAL_ASSIGNMENT_STATEMENT_6(selected_signal_assignment)))
+signal_assignment_statement : label COLON target LE delay_mechanism waveform SEMICOLON                 ((W_datatypes.SIGNAL_ASSIGNMENT_STATEMENT_1(label * target * delay_mechanism * waveform)))                              
+                            | target LE delay_mechanism waveform SEMICOLON                             ((W_datatypes.SIGNAL_ASSIGNMENT_STATEMENT_2(target * delay_mechanism * waveform)))                
+                            | target LE waveform SEMICOLON                                             ((W_datatypes.SIGNAL_ASSIGNMENT_STATEMENT_3(target * waveform)))  
+                            | label COLON target LE waveform SEMICOLON                                 ((W_datatypes.SIGNAL_ASSIGNMENT_STATEMENT_4(label * target * waveform)))                
+                            
 
 signal_association_target : name ((W_datatypes.SIGNAL_ASSOCIATION_TARGET(name)))
 
@@ -1564,7 +1505,7 @@ signal_declaration : SIGNAL identifier_list COLON subtype_indication signal_kind
 signal_kind : REGISTER ((W_datatypes.Register()))
             | BUS ((W_datatypes.Bus()))
 
-signal_list : name_seq ((W_datatypes.SIGNAL_LIST_1(name_seq)))
+signal_list : name name_seq ((W_datatypes.SIGNAL_LIST_1(name, name_seq)))
             | OTHERS ((W_datatypes.SIGNAL_LIST_2()))
             | ALL ((W_datatypes.SIGNAL_LIST_3()))
 
@@ -1572,8 +1513,8 @@ type_mark_seq : COMMA type_mark type_mark_seq           (type_mark :: type_mark_
               |             ([])
 
 signatur : LSQUARE name name_seq RETURN name RSQUARE           ((W_datatypes.SIGNATURE_1(name, name_seq, name)))                            
-         | LSQUARE RETURN name RSQUARE                         ((W_datatypes.SIGNATURE_2(name, name)))              
-         | LSQUARE RSQUARE                                     ((W_datatypes.SIGNATURE_3(name)))
+         | LSQUARE RETURN name RSQUARE                         ((W_datatypes.SIGNATURE_2(name)))              
+         | LSQUARE RSQUARE                                     ((W_datatypes.SIGNATURE_3()))
          | LSQUARE name name_seq RSQUARE                       ((W_datatypes.SIGNATURE_4(name, name_seq)))              
 
 
