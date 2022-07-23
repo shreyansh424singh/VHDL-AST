@@ -813,129 +813,106 @@ struct
 
     and   operator_symbol = OPERATOR_SYMBOL of string_literal
 
-    and   package_body = PACKAGE_BODY_1 of simple_name * package_body_declarative_part * simple_name                              
-                       | PACKAGE_BODY_2 of simple_name * package_body_declarative_part 
+
+
+
+
+
+
+
+
+    and   package_body = PACKAGE_BODY_1 of identifier * package_body_declarative_part * identifier                              
+                       | PACKAGE_BODY_2 of identifier * package_body_declarative_part 
 
     and   package_body_declarative_item = PACKAGE_BODY_DECLARATIVE_ITEM_1 of subprogram_declaration
                                         | PACKAGE_BODY_DECLARATIVE_ITEM_2 of subprogram_body
-                                        | PACKAGE_BODY_DECLARATIVE_ITEM_3 of subprogram_instantiation_declaration
-                                        | PACKAGE_BODY_DECLARATIVE_ITEM_4 of package_declaration
-                                        | PACKAGE_BODY_DECLARATIVE_ITEM_5 of package_body
-                                        | PACKAGE_BODY_DECLARATIVE_ITEM_6 of package_instantiation_declaration
-                                        | PACKAGE_BODY_DECLARATIVE_ITEM_7 of type_declaration
-                                        | PACKAGE_BODY_DECLARATIVE_ITEM_8 of subtype_declaration
-                                        | PACKAGE_BODY_DECLARATIVE_ITEM_9 of mode_view_declaration
-                                        | PACKAGE_BODY_DECLARATIVE_ITEM_10 of constant_declaration
-                                        | PACKAGE_BODY_DECLARATIVE_ITEM_11 of variable_declaration
-                                        | PACKAGE_BODY_DECLARATIVE_ITEM_12 of file_declaration
-                                        | PACKAGE_BODY_DECLARATIVE_ITEM_13 of alias_declaration
-                                        | PACKAGE_BODY_DECLARATIVE_ITEM_14 of attribute_declaration
-                                        | PACKAGE_BODY_DECLARATIVE_ITEM_15 of attribute_specification
-                                        | PACKAGE_BODY_DECLARATIVE_ITEM_16 of use_clause
-                                        | PACKAGE_BODY_DECLARATIVE_ITEM_17 of group_template_declaration
-                                        | PACKAGE_BODY_DECLARATIVE_ITEM_18 of group_declaration                       
+                                        | PACKAGE_BODY_DECLARATIVE_ITEM_3 of type_declaration
+                                        | PACKAGE_BODY_DECLARATIVE_ITEM_4 of subtype_declaration
+                                        | PACKAGE_BODY_DECLARATIVE_ITEM_5 of constant_declaration
+                                        | PACKAGE_BODY_DECLARATIVE_ITEM_6 of variable_declaration
+                                        | PACKAGE_BODY_DECLARATIVE_ITEM_7 of file_declaration
+                                        | PACKAGE_BODY_DECLARATIVE_ITEM_8 of alias_declaration
+                                        | PACKAGE_BODY_DECLARATIVE_ITEM_9 of use_clause
+                                        | PACKAGE_BODY_DECLARATIVE_ITEM_10 of group_template_declaration
+                                        | PACKAGE_BODY_DECLARATIVE_ITEM_11 of group_declaration                       
 
     and   package_body_declarative_part = PACKAGE_BODY_DECLARATIVE_PART of package_body_declarative_item list                                        
 
-    and   package_declaration = PACKAGE_DECLARATION_1 of identifier * package_header * package_declarative_part * simple_name 
-                              | PACKAGE_DECLARATION_2 of identifier * package_header * package_declarative_part
+    and   package_declaration = PACKAGE_DECLARATION_1 of identifier * package_declarative_part * identifier 
+                              | PACKAGE_DECLARATION_2 of identifier * package_declarative_part
 
     and   package_declarative_item = PACKAGE_DECLARATIVE_ITEM_1  of subprogram_declaration
-                                   | PACKAGE_DECLARATIVE_ITEM_2  of subprogram_instantiation_declaration
-                                   | PACKAGE_DECLARATIVE_ITEM_3  of package_declaration
-                                   | PACKAGE_DECLARATIVE_ITEM_4  of package_instantiation_declaration
-                                   | PACKAGE_DECLARATIVE_ITEM_5  of type_declaration
-                                   | PACKAGE_DECLARATIVE_ITEM_6  of subtype_declaration
-                                   | PACKAGE_DECLARATIVE_ITEM_7  of constant_declaration
-                                   | PACKAGE_DECLARATIVE_ITEM_8  of signal_declaration
-                                   | PACKAGE_DECLARATIVE_ITEM_9  of variable_declaration
-                                   | PACKAGE_DECLARATIVE_ITEM_10 of file_declaration
-                                   | PACKAGE_DECLARATIVE_ITEM_11 of alias_declaration
-                                   | PACKAGE_DECLARATIVE_ITEM_12 of component_declaration
-                                   | PACKAGE_DECLARATIVE_ITEM_13 of attribute_declaration
-                                   | PACKAGE_DECLARATIVE_ITEM_14 of attribute_specification
-                                   | PACKAGE_DECLARATIVE_ITEM_15 of disconnection_specification
-                                   | PACKAGE_DECLARATIVE_ITEM_16 of use_clause
-                                   | PACKAGE_DECLARATIVE_ITEM_17 of group_template_declaration
-                                   | PACKAGE_DECLARATIVE_ITEM_18 of group_declaration
+                                   | PACKAGE_DECLARATIVE_ITEM_2  of subprogram_body
+                                   | PACKAGE_DECLARATIVE_ITEM_3  of type_declaration
+                                   | PACKAGE_DECLARATIVE_ITEM_4  of subtype_declaration
+                                   | PACKAGE_DECLARATIVE_ITEM_5  of constant_declaration
+                                   | PACKAGE_DECLARATIVE_ITEM_6  of signal_declaration
+                                   | PACKAGE_DECLARATIVE_ITEM_7  of variable_declaration
+                                   | PACKAGE_DECLARATIVE_ITEM_8  of file_declaration
+                                   | PACKAGE_DECLARATIVE_ITEM_9  of alias_declaration
+                                   | PACKAGE_DECLARATIVE_ITEM_10 of component_declaration
+                                   | PACKAGE_DECLARATIVE_ITEM_11 of attribute_declaration
+                                   | PACKAGE_DECLARATIVE_ITEM_12 of attribute_specification
+                                   | PACKAGE_DECLARATIVE_ITEM_13 of disconnection_specification
+                                   | PACKAGE_DECLARATIVE_ITEM_14 of use_clause
+                                   | PACKAGE_DECLARATIVE_ITEM_15 of group_template_declaration
+                                   | PACKAGE_DECLARATIVE_ITEM_16 of group_declaration
+                                   | PACKAGE_DECLARATIVE_ITEM_17 of nature_declaration
+                                   | PACKAGE_DECLARATIVE_ITEM_18 of subnature_declaration
+                                   | PACKAGE_DECLARATIVE_ITEM_19 of terminal_declaration
 
     and   package_declarative_part = PACKAGE_DECLARATIVE_PART of package_declarative_item list
 
-    and   package_header = PACKAGE_HEADER_1 of  generic_clause * generic_map_aspect                                   
-                         | PACKAGE_HEADER_2 of  generic_map_aspect                                   
-                         | PACKAGE_HEADER_3 of  generic_clause                                    
-                         | PACKAGE_HEADER_4 of  unit                                 
-
-    and   package_instantiation_declaration = PACKAGE_INSTANTIATION_DECLARATION_1 of identifier * name * generic_map_aspect                         
-                                            | PACKAGE_INSTANTIATION_DECLARATION_2 of identifier * name                      
-
-    and   package_pathname = PACKAGE_PATHNAME of name * simple_name list * simple_name                                           
-
-    and   parameter_map_aspect = PARAMETER_MAP_ASPECT of association_list
-
     and   parameter_specification = PARAMETER_SPECIFICATION of identifier * discrete_range
 
-    and   partial_pathname = PARTIAL_PATHNAME of pathname_element list * simple_name
+    and   physical_literal = PHYSICAL_LITERAL_1 of abstract_literal * identifier
+                           | PHYSICAL_LITERAL_2 of identifier
 
-    and   pathname_element = PATHNAME_ELEMENT_1 of simple_name
-                           | PATHNAME_ELEMENT_2 of label * expression 
-                           | PATHNAME_ELEMENT_3 of label  
-
-    and   physical_incomplete_type_definition = PHYSICAL_INCOMPLETE_TYPE_DEFINITION of unit                       
-
-    and   physical_literal = PHYSICAL_LITERAL_1 of abstract_literal * name
-                           | PHYSICAL_LITERAL_2 of name
-
-    and   physical_type_definition = PHYSICAL_TYPE_DEFINITION_1 of range_constraint * primary_unit_declaration * secondary_unit_declaration list                            
-                                   | PHYSICAL_TYPE_DEFINITION_2 of range_constraint * primary_unit_declaration * secondary_unit_declaration list * simple_name
-
-    and   plain_return_statement = PLAIN_RETURN_STATEMENT_1 of label * condition
-                                 | PLAIN_RETURN_STATEMENT_2 of condition                                                              
-                                 | PLAIN_RETURN_STATEMENT_3 of label                                                              
-                                 | PLAIN_RETURN_STATEMENT_4 of unit                                                            
+    and   physical_type_definition = PHYSICAL_TYPE_DEFINITION_1 of range_constraint * base_unit_declaration * secondary_unit_declaration list                            
+                                   | PHYSICAL_TYPE_DEFINITION_2 of range_constraint * base_unit_declaration * secondary_unit_declaration list * identifier
 
     and   port_clause = PORT_CLAUSE of port_list                                 
 
-    and   port_list = PORT_LIST of interface_list
+    and   port_list = PORT_LIST of interface_port_list
 
     and   port_map_aspect = PORT_MAP_ASPECT of association_list
 
-    and   prefix = PREFIX_1 of name  
-                 | PREFIX_2 of function_call
-
-    and   primary = PRIMARY_1 of name
-                  | PRIMARY_2 of literal
-                  | PRIMARY_3 of aggregate
-                  | PRIMARY_4 of function_call
-                  | PRIMARY_5 of qualified_expression
-                  | PRIMARY_6 of type_conversion
-                  | PRIMARY_7 of allocator
-                  | PRIMARY_8 of conditional_expression                 
+    and   primary = PRIMARY_1 of literal
+                  | PRIMARY_2 of qualified_expression
+                  | PRIMARY_3 of expression
+                  | PRIMARY_4 of allocator
+                  | PRIMARY_5 of aggregate
+                  | PRIMARY_6 of name
 
     and   primary_unit = PRIMARY_UNIT_1 of entity_declaration
                        | PRIMARY_UNIT_2 of configuration_declaration
                        | PRIMARY_UNIT_3 of package_declaration
-                       | PRIMARY_UNIT_4 of package_instantiation_declaration
-                       | PRIMARY_UNIT_5 of context_declaration
 
-    and   primary_unit_declaration = PRIMARY_UNIT_DECLARATION of identifier
+    and   procedural_declarative_item = PROCEDURAL_DECLARATIVE_ITEM_1 of subprogram_declaration
+                                      | PROCEDURAL_DECLARATIVE_ITEM_2 of subprogram_body
+                                      | PROCEDURAL_DECLARATIVE_ITEM_3 of type_declaration
+                                      | PROCEDURAL_DECLARATIVE_ITEM_4 of subtype_declaration
+                                      | PROCEDURAL_DECLARATIVE_ITEM_5 of constant_declaration
+                                      | PROCEDURAL_DECLARATIVE_ITEM_6 of variable_declaration
+                                      | PROCEDURAL_DECLARATIVE_ITEM_7 of alias_declaration
+                                      | PROCEDURAL_DECLARATIVE_ITEM_8 of attribute_declaration
+                                      | PROCEDURAL_DECLARATIVE_ITEM_9 of attribute_specification
+                                      | PROCEDURAL_DECLARATIVE_ITEM_10 of use_clause
+                                      | PROCEDURAL_DECLARATIVE_ITEM_11 of group_template_declaration
+                                      | PROCEDURAL_DECLARATIVE_ITEM_12 of group_declaration
 
-    and   private_variable_declaration = PRIVATE_VARIABLE_DECLARATION of variable_declaration
+    and   procedural_declarative_part = PROCEDURAL_DECLARATIVE_PART of procedural_declarative_item list
 
-    and   private_incomplete_type_definition = PRIVATE_INCOMPLETE_TYPE_DEFINITION of unit                        
+    and   procedural_statement_part = PROCEDURAL_STATEMENT_PART of sequential_statement list
 
-    and   procedure_call = PROCEDURE_CALL_1 of name 
-                         | PROCEDURE_CALL_2 of name *  parameter_map_aspect
+    and   procedure_call = PROCEDURE_CALL_1 of selected_name 
+                         | PROCEDURE_CALL_2 of selected_name *  actual_parameter_part
 
     and   procedure_call_statement = PROCEDURE_CALL_STATEMENT_1 of label * procedure_call
                                    | PROCEDURE_CALL_STATEMENT_2 of procedure_call                          
 
     and   process_declarative_item = PROCESS_DECLARATIVE_ITEM_1 of subprogram_declaration
                                    | PROCESS_DECLARATIVE_ITEM_2 of subprogram_body
-                                   | PROCESS_DECLARATIVE_ITEM_3 of subprogram_instantiation_declaration
-                                   | PROCESS_DECLARATIVE_ITEM_4 of package_declaration
-                                   | PROCESS_DECLARATIVE_ITEM_5 of package_body
-                                   | PROCESS_DECLARATIVE_ITEM_6 of package_instantiation_declaration
                                    | PROCESS_DECLARATIVE_ITEM_7 of type_declaration
                                    | PROCESS_DECLARATIVE_ITEM_8 of subtype_declaration
                                    | PROCESS_DECLARATIVE_ITEM_9 of constant_declaration
@@ -950,90 +927,42 @@ struct
 
     and   process_declarative_part =  PROCESS_DECLARATIVE_PART of process_declarative_item list
 
-    and   process_sensitivity_list = PROCESS_SENSITIVITY_LIST_1 of sensitivity_list
-                                   | PROCESS_SENSITIVITY_LIST_2 of unit       
-
-    and   process_statement = PROCESS_STATEMENT_1 of process_sensitivity_list * process_declarative_part * process_statement_part * label                                         
-                            | PROCESS_STATEMENT_2 of label * process_sensitivity_list * process_declarative_part * process_statement_part * label                                         
-                            | PROCESS_STATEMENT_3 of process_declarative_part * process_statement_part * label                                         
-                            | PROCESS_STATEMENT_4 of label * process_declarative_part * process_statement_part * label                                         
-                            | PROCESS_STATEMENT_5 of process_declarative_part * process_statement_part                                         
-                            | PROCESS_STATEMENT_6 of label * process_declarative_part * process_statement_part                                         
-                            | PROCESS_STATEMENT_7 of process_sensitivity_list * process_declarative_part * process_statement_part                                         
-                            | PROCESS_STATEMENT_8 of label * process_sensitivity_list * process_declarative_part * process_statement_part                                         
+    and   process_statement = PROCESS_STATEMENT_1 of label * sensitivity_list * process_declarative_part * process_statement_part * identifier
+                            | PROCESS_STATEMENT_2 of sensitivity_list * process_declarative_part * process_statement_part * identifier
+                            | PROCESS_STATEMENT_3 of label * process_declarative_part * process_statement_part * identifier
+                            | PROCESS_STATEMENT_4 of process_declarative_part * process_statement_part * identifier
+                            | PROCESS_STATEMENT_5 of label * process_declarative_part * process_statement_part
+                            | PROCESS_STATEMENT_6 of process_declarative_part * process_statement_part
+                            | PROCESS_STATEMENT_7 of label * sensitivity_list * process_declarative_part * process_statement_part
+                            | PROCESS_STATEMENT_8 of sensitivity_list * process_declarative_part * process_statement_part
 
     and   process_statement_part = PROCESS_STATEMENT_PART of sequential_statement list                            
 
-    and   protected_type_body = PROTECTED_TYPE_BODY_1 of protected_type_body_declarative_part * simple_name
-                              | PROTECTED_TYPE_BODY_2 of protected_type_body_declarative_part
+    and   qualified_expression = QUALIFIED_EXPRESSION_1 of subtype_indication * aggregate
+                               | QUALIFIED_EXPRESSION_2 of subtype_indication * expression
 
-    and   protected_type_body_declarative_item = PROTECTED_TYPE_BODY_DECLARATIVE_ITEM_1 of subprogram_declaration
-                                               | PROTECTED_TYPE_BODY_DECLARATIVE_ITEM_2 of subprogram_body
-                                               | PROTECTED_TYPE_BODY_DECLARATIVE_ITEM_3 of subprogram_instantiation_declaration
-                                               | PROTECTED_TYPE_BODY_DECLARATIVE_ITEM_4 of package_declaration
-                                               | PROTECTED_TYPE_BODY_DECLARATIVE_ITEM_5 of package_body
-                                               | PROTECTED_TYPE_BODY_DECLARATIVE_ITEM_6 of package_instantiation_declaration
-                                               | PROTECTED_TYPE_BODY_DECLARATIVE_ITEM_7  of type_declaration
-                                               | PROTECTED_TYPE_BODY_DECLARATIVE_ITEM_8  of subtype_declaration
-                                               | PROTECTED_TYPE_BODY_DECLARATIVE_ITEM_9  of constant_declaration
-                                               | PROTECTED_TYPE_BODY_DECLARATIVE_ITEM_10 of variable_declaration
-                                               | PROTECTED_TYPE_BODY_DECLARATIVE_ITEM_11 of file_declaration
-                                               | PROTECTED_TYPE_BODY_DECLARATIVE_ITEM_12 of alias_declaration
-                                               | PROTECTED_TYPE_BODY_DECLARATIVE_ITEM_13 of attribute_declaration
-                                               | PROTECTED_TYPE_BODY_DECLARATIVE_ITEM_14 of attribute_specification
-                                               | PROTECTED_TYPE_BODY_DECLARATIVE_ITEM_15 of use_clause
-                                               | PROTECTED_TYPE_BODY_DECLARATIVE_ITEM_16 of group_template_declaration
-                                               | PROTECTED_TYPE_BODY_DECLARATIVE_ITEM_17 of group_declaration              
-                                               
-    and   protected_type_body_declarative_part = PROTECTED_TYPE_BODY_DECLARATIVE_PART of protected_type_body_declarative_item list
+    and   quantity_declaration = QUANTITY_DECLARATION_1 of free_quantity_declaration
+                               | QUANTITY_DECLARATION_2 of branch_quantity_declaration
+                               | QUANTITY_DECLARATION_3 of source_quantity_declaration
 
-    and   protected_type_declaration = PROTECTED_TYPE_DECLARATION_1 of protected_type_header * protected_type_declarative_part                                               
-                                     | PROTECTED_TYPE_DECLARATION_2 of protected_type_header * protected_type_declarative_part * simple_name                                              
+    and   quantity_list = QUANTITY_LIST_1 of name * name_seq
+                        | QUANTITY_LIST_2 of OTHERS
+                        | QUANTITY_LIST_3 of ALL
 
-    and   protected_type_declarative_item = PROTECTED_TYPE_DECLARATIVE_ITEM_1 of subprogram_declaration
-                                          | PROTECTED_TYPE_DECLARATIVE_ITEM_2 of subprogram_instantiation_declaration
-                                          | PROTECTED_TYPE_DECLARATIVE_ITEM_3 of attribute_specification
-                                          | PROTECTED_TYPE_DECLARATIVE_ITEM_4 of use_clause
-                                          | PROTECTED_TYPE_DECLARATIVE_ITEM_5 of private_variable_declaration
-                                          | PROTECTED_TYPE_DECLARATIVE_ITEM_6 of alias_declaration                                     
+    and   quantity_specification = QUANTITY_SPECIFICATION of quantity_list * name
 
-    and   protected_type_declarative_part = PROTECTED_TYPE_DECLARATIVE_PART of protected_type_declarative_item list
+    and   range_decl = RANGE_DECL_1 of explicit_range
+                     | RANGE_DECL_2 of name
 
-    and   protected_type_definition = PROTECTED_TYPE_DEFINITION_1 of protected_type_declaration
-                                    | PROTECTED_TYPE_DEFINITION_2 of protected_type_body                                          
+    and   explicit_range = EXPLICIT_RANGE_1 of simple_expression * direction * simple_expression
+                         | EXPLICIT_RANGE_2 of simple_expression
 
-    and   protected_type_header = PROTECTED_TYPE_HEADER_1 of  generic_clause * generic_map_aspect                                     
-                                | PROTECTED_TYPE_HEADER_2 of  generic_map_aspect                                     
-                                | PROTECTED_TYPE_HEADER_3 of  generic_clause                                      
-                                | PROTECTED_TYPE_HEADER_4 of  unit                                  
+    and   range_constraint = RANGE_CONSTRAINT of range_decl
 
-    and   protected_type_instantiation_definition = PROTECTED_TYPE_INSTANTIATION_DEFINITION_1 of name
-                                                  | PROTECTED_TYPE_INSTANTIATION_DEFINITION_2 of name * generic_map_aspect
+    and   record_nature_definition = RECORD_NATURE_DEFINITION of nature_element_declaration * nature_element_declaration list * identifier
 
-    and   qualified_expression = QUALIFIED_EXPRESSION_1 of type_mark 
-                               | QUALIFIED_EXPRESSION_2 of type_mark * aggregate
-
-    and   range = RANGE_1 of attribute_name
-                | RANGE_2 of simple_range
-                | RANGE_3 of expression   
-
-    and   range_constraint = RANGE_CONSTRAINT of range
-
-    and   record_constraint = RECORD_CONSTRAINT of record_element_constraint * record_element_constraint list
-
-    and   record_element_constraint = RECORD_ELEMENT_CONSTRAINT of simple_name * element_constraint                                                                                                                             
-
-    and   record_element_list = RECORD_ELEMENT_LIST of simple_name list
-
-    and   record_element_resolution = RECORD_ELEMENT_RESOLUTION of simple_name * resolution_indication
-
-    and   record_resolution = RECORD_RESOLUTION of record_element_resolution list
-
-    and   record_type_definition = RECORD_TYPE_DEFINITION_1 of element_declaration list * simple_name
-                                 | RECORD_TYPE_DEFINITION_2 of element_declaration list
-
-    and   record_mode_view_indication = RECORD_MODE_VIEW_INDICATION_1 of name * subtype_indication
-                                      | RECORD_MODE_VIEW_INDICATION_2 of name                                
+    and   record_type_definition = RECORD_TYPE_DEFINITION_1 of element_declaration * element_declaration list * identifier
+                                 | RECORD_TYPE_DEFINITION_2 of element_declaration * element_declaration list
 
     and   relation = RELATION_1 of shift_expression * relational_operator * shift_expression                                      
                    | RELATION_2 of shift_expression
@@ -1044,32 +973,22 @@ struct
                               | Lt of unit
                               | Ge of unit
                               | Le of unit
-                              | Relo1 of unit
-                              | Relo2  of unit
-                              | Relo3 of unit
-                              | Relo4  of unit
-                              | Relo5 of unit
-                              | Relo6  of unit
-
-    and   relative_pathname = RELATIVE_PATHNAME of partial_pathname
 
     and   report_statement = REPORT_STATEMENT_1 of  expression * expression                              
                            | REPORT_STATEMENT_2 of  label * expression                           
                            | REPORT_STATEMENT_3 of  label * expression * expression                          
                            | REPORT_STATEMENT_4 of  expression                     
 
-    and   resolution_indication = RESOLUTION_INDICATION_1 of name
-                                | RESOLUTION_INDICATION_2 of element_resolution
+    and   return_statement = RETURN_STATEMENT_1 of label * expression
+                           | RETURN_STATEMENT_2 of expression
+                           | RETURN_STATEMENT_3 of unit
+                           | RETURN_STATEMENT_4 of label
 
-    and   return_statement = RETURN_STATEMENT_1 of plain_return_statement
-                           | RETURN_STATEMENT_2 of value_return_statement                               
-
-    and   scalar_incomplete_type_definition = SCALAR_INCOMPLETE_TYPE_DEFINITION of unit                          
+    and   scalar_nature_definition = SCALAR_NATURE_DEFINITION of name * name * name
 
     and   scalar_type_definition = SCALAR_TYPE_DEFINITION_1 of enumeration_type_definition
-                                 | SCALAR_TYPE_DEFINITION_2 of integer_type_definition
-                                 | SCALAR_TYPE_DEFINITION_3 of floating_type_definition
-                                 | SCALAR_TYPE_DEFINITION_4 of physical_type_definition
+                                 | SCALAR_TYPE_DEFINITION_2 of range_constraint
+                                 | SCALAR_TYPE_DEFINITION_3 of physical_type_definition
 
     and   secondary_unit = SECONDARY_UNIT_1 of architecture_body
                          | SECONDARY_UNIT_2 of package_body                                 
@@ -1078,39 +997,17 @@ struct
 
     and   ex_when_choices = EX_WHEN_CHOICES of expression * choices
 
-    and   selected_expressions = SELECTED_EXPRESSIONS of ex_when_choices list
-
-    and   selected_force_assignment = SELECTED_FORCE_ASSIGNMENT_1 of expression * target * force_mode * selected_expressions                           
-                                    | SELECTED_FORCE_ASSIGNMENT_2 of expression * target * selected_expressions                           
-
-    and   selected_name = SELECTED_NAME of prefix * suffix
-
-    and   selected_signal_assignment = SELECTED_SIGNAL_ASSIGNMENT_1 of selected_waveform_assignment
-                                     | SELECTED_SIGNAL_ASSIGNMENT_2 of selected_force_assignment                                    
-
-    and   selected_variable_assignment = SELECTED_VARIABLE_ASSIGNMENT of expression * target * selected_expressions
-
-    and   selected_waveform_assignment = SELECTED_WAVEFORM_ASSIGNMENT_1 of expression * target * delay_mechanism * selected_waveforms
-                                       | SELECTED_WAVEFORM_ASSIGNMENT_2 of expression * target * selected_waveforms                                     
+    and   selected_signal_assignment = SELECTED_SIGNAL_ASSIGNMENT of expression * target * opts * selected_waveforms
 
     and   wave_when_choices = WAVE_WHEN_CHOICES of waveform * choices
 
-    and   selected_waveforms = SELECTED_WAVEFORMS of wave_when_choices list
+    and   selected_waveforms = SELECTED_WAVEFORMS of waveform * choices * wave_when_choices list
 
     and   sensitivity_clause = SENSITIVITY_CLAUSE of sensitivity_list
 
-    and   sensitivity_list = SENSITIVITY_LIST of name list
+    and   sensitivity_list = SENSITIVITY_LIST of name * name list
 
     and   sequence_of_statements = SEQUENCE_OF_STATEMENTS of sequential_statement list
-
-    and   sequential_block_statement = SEQUENTIAL_BLOCK_STATEMENT_1 of label * sequential_block_declarative_part * sequential_block_statement_part * label                                       
-                                     | SEQUENTIAL_BLOCK_STATEMENT_2 of sequential_block_declarative_part * sequential_block_statement_part * label                                       
-                                     | SEQUENTIAL_BLOCK_STATEMENT_3 of sequential_block_declarative_part * sequential_block_statement_part                                       
-                                     | SEQUENTIAL_BLOCK_STATEMENT_4 of label * sequential_block_declarative_part * sequential_block_statement_part                                       
-
-    and   sequential_block_declarative_part = SEQUENTIAL_BLOCK_DECLARATIVE_PART of process_declarative_item list
-
-    and   sequential_block_statement_part = SEQUENTIAL_BLOCK_STATEMENT_PART of sequential_statement list                                      
 
     and   sequential_statement = SEQUENTIAL_STATEMENT_1 of wait_statement
                                | SEQUENTIAL_STATEMENT_2 of assertion_statement
@@ -1124,19 +1021,10 @@ struct
                                | SEQUENTIAL_STATEMENT_10 of next_statement
                                | SEQUENTIAL_STATEMENT_11 of exit_statement
                                | SEQUENTIAL_STATEMENT_12 of return_statement
-                               | SEQUENTIAL_STATEMENT_13 of null_statement
-                               | SEQUENTIAL_STATEMENT_14 of sequential_block_statement
+                               | SEQUENTIAL_STATEMENT_13 of label
+                               | SEQUENTIAL_STATEMENT_14 of unit
+                               | SEQUENTIAL_STATEMENT_15 of break_statement
                                
-    and   sequential_statement_body = SEQUENTIAL_STATEMENT_BODY_1 of sequential_statement_declarative_part * sequence_of_statements                               
-                                    | SEQUENTIAL_STATEMENT_BODY_2 of sequence_of_statements                               
-
-    and   sequential_statement_declarative_part = SEQUENTIAL_STATEMENT_DECLARATIVE_PART of process_declarative_item list
-
-    and   shared_variable_declaration = SHARED_VARIABLE_DECLARATION_1 of identifier_list * subtype_indication * generic_map_aspect * conditional_expression                                     
-                                      | SHARED_VARIABLE_DECLARATION_2 of identifier_list * subtype_indication * conditional_expression                                     
-                                      | SHARED_VARIABLE_DECLARATION_3 of identifier_list * subtype_indication                                     
-                                      | SHARED_VARIABLE_DECLARATION_4 of identifier_list * subtype_indication * generic_map_aspect                                     
-
     and   shift_expression = SHIFT_EXPRESSION_1 of simple_expression * shift_operator * simple_expression                                       
                            | SHIFT_EXPRESSION_2 of simple_expression
 
@@ -1147,17 +1035,10 @@ struct
                          | Rol of unit
                          | Ror of unit
 
-    and   sign = Plus of unit
-               | Minus of unit                                           
-
-    and   signal_assignment_statement = SIGNAL_ASSIGNMENT_STATEMENT_1 of label * simple_signal_assignment
-                                      | SIGNAL_ASSIGNMENT_STATEMENT_2 of simple_signal_assignment
-                                      | SIGNAL_ASSIGNMENT_STATEMENT_3 of label * conditional_signal_assignment
-                                      | SIGNAL_ASSIGNMENT_STATEMENT_4 of conditional_signal_assignment
-                                      | SIGNAL_ASSIGNMENT_STATEMENT_5 of label * selected_signal_assignment               
-                                      | SIGNAL_ASSIGNMENT_STATEMENT_6 of selected_signal_assignment               
-
-    and   signal_association_target = SIGNAL_ASSOCIATION_TARGET of name
+    and   signal_assignment_statement = SIGNAL_ASSIGNMENT_STATEMENT_1 of label * target * delay_mechanism * waveform
+                                      | SIGNAL_ASSIGNMENT_STATEMENT_2 of target * delay_mechanism * waveform
+                                      | SIGNAL_ASSIGNMENT_STATEMENT_3 of target * waveform
+                                      | SIGNAL_ASSIGNMENT_STATEMENT_4 of label * target * waveform
 
     and   signal_declaration = SIGNAL_DECLARATION_1 of identifier_list * subtype_indication * signal_kind * expression                                      
                              | SIGNAL_DECLARATION_2 of identifier_list * subtype_indication * expression                                      
@@ -1167,45 +1048,16 @@ struct
     and   signal_kind = Register of unit
                       | Bus of unit
 
-    and   signal_list = SIGNAL_LIST_1 of name list
+    and   signal_list = SIGNAL_LIST_1 of name * name list
                       | SIGNAL_LIST_2 of unit
                       | SIGNAL_LIST_3 of unit
 
-    and   signatur = SIGNATURE_1 of type_mark list * type_mark
-                    | SIGNATURE_2 of type_mark                                                                                             
-                    | SIGNATURE_3 of type_mark list                                                                                             
-                    | SIGNATURE_4 of unit                                                                                         
-
-    and   simple_configuration_specification = SIMPLE_CONFIGURATION_SPECIFICATION of component_specification * binding_indication                    
+    and   signatur = SIGNATURE_1 of name * name list * name
+                   | SIGNATURE_2 of name
+                   | SIGNATURE_3 of unit
+                   | SIGNATURE_4 of name * name list
 
     and   adding_operator_term = ADDING_OPERATOR_TERM of adding_operator * term
-
-    and   simple_expression = SIMPLE_EXPRESSION_1 of sign * term * adding_operator_term list
-                            | SIMPLE_EXPRESSION_2 of term * adding_operator_term list
-
-    and   simple_force_assignment = SIMPLE_FORCE_ASSIGNMENT_1 of target * force_mode * conditional_or_unaffected_expression                            
-                                  | SIMPLE_FORCE_ASSIGNMENT_2 of target * conditional_or_unaffected_expression                            
-
-    and   simple_mode_indication = SIMPLE_MODE_INDICATION_1 of mode * subtype_indication * interface_type_indication * expression                                   
-                                 | SIMPLE_MODE_INDICATION_2 of subtype_indication * interface_type_indication * expression                                   
-                                 | SIMPLE_MODE_INDICATION_3 of subtype_indication * interface_type_indication                                   
-                                 | SIMPLE_MODE_INDICATION_4 of mode * subtype_indication * interface_type_indication                                   
-
-    and   simple_name = SIMPLE_NAME of identifier
-
-    and   simple_range = SIMPLE_RANGE of simple_expression * direction * simple_expression                                 
-
-    and   simple_release_assignment = SIMPLE_RELEASE_ASSIGNMENT_1 of target * force_mode
-                                    | SIMPLE_RELEASE_ASSIGNMENT_2 of target
-
-    and   simple_signal_assignment = SIMPLE_SIGNAL_ASSIGNMENT_1 of simple_waveform_assignment
-                                   | SIMPLE_SIGNAL_ASSIGNMENT_2 of simple_force_assignment
-                                   | SIMPLE_SIGNAL_ASSIGNMENT_3 of simple_release_assignment                                    
-
-    and   simple_waveform_assignment = SIMPLE_WAVEFORM_ASSIGNMENT_1 of target * delay_mechanism * waveform                                    
-                                     | SIMPLE_WAVEFORM_ASSIGNMENT_2 of target * waveform                                    
-
-    and   simple_variable_assignment = SIMPLE_VARIABLE_ASSIGNMENT of target * conditional_or_unaffected_expression                                      
 
     and   simple_expression = SIMPLE_EXPRESSION of term * adding_operator_term list
 
