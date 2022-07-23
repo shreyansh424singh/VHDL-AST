@@ -1,4 +1,3 @@
-nischay@nischay-Predator-PH315-53:~/Documents/vhdl project/VHDL-AST$ sml make.sml 
 Standard ML of New Jersey v110.79 [built: Sat Oct 26 12:27:04 2019]
 [opening make.sml]
 [autoloading]
@@ -110,5 +109,22 @@ val it =
                     ENTITY_HEADER_4 (),ENTITY_DECLARATIVE_PART [],
                     NAME_1
                       (SIMPLE_NAME
-                         (IDENTIFIER_1 (Basic_identifier "testbench")))))))])
+                         (IDENTIFIER_1 (Basic_identifier "testbench"))))))),
+        DESIGN_UNIT
+          (CONTEXT_CLAUSE [],
+           LIBRARY_UNIT_2
+             (SECONDARY_UNIT_1
+                (ARCHITECTURE_1
+                   (IDENTIFIER_1 (Basic_identifier "fum"),
+                    NAME_1
+                      (SIMPLE_NAME
+                         (IDENTIFIER_1 (Basic_identifier "testbench"))),
+                    BLOCK_DECLARATIVE_ITEM [],
+                    ARCHITECTURE_STATEMENT_PART
+                      [CONCURRENT_STATEMENT_2
+                         (PROCESS_STATEMENT_5
+                            (PROCESS_DECLARATIVE_PART [],
+                             PROCESS_STATEMENT_PART
+                               [SEQUENTIAL_STATEMENT_1 (WAIT_STATEMENT_16 ())]))]))))])
   : W_datatypes.root
+- 
