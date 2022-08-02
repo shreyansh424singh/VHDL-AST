@@ -113,6 +113,7 @@ eol = ("\013\010"|"\010"|"\013");
 
 ["a""A"]["b""B"]["s""S"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 2;  pri (yytext,!lin1,!col1, !col2); Tokens.ABS(!col2,!lin1,!col1));
 ["a""A"]["c""C"]["c""C"]["e""E"]["s""S"]["s""S"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 5;  pri (yytext,!lin1,!col1, !col2); Tokens.ACCESS(!col2,!lin1,!col1));
+["a""A"]["c""C"]["r""R"]["o""O"]["s""S"]["s""S"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 5;  pri (yytext,!lin1,!col1, !col2); Tokens.ACROSS(!col2,!lin1,!col1));
 ["a""A"]["f""F"]["t""T"]["e""E"]["r""R"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 4;  pri (yytext,!lin1,!col1, !col2); Tokens.AFTER(!col2,!lin1,!col1));
 ["a""A"]["l""L"]["i""I"]["a""A"]["s""S"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 4;  pri (yytext,!lin1,!col1, !col2); Tokens.ALIAS(!col2,!lin1,!col1));
 ["a""A"]["l""L"]["l""L"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 2;  pri (yytext,!lin1,!col1, !col2); Tokens.ALL(!col2,!lin1,!col1));
@@ -120,7 +121,7 @@ eol = ("\013\010"|"\010"|"\013");
 ["a""A"]["r""R"]["c""C"]["h""H"]["i""I"]["t""T"]["e""E"]["c""C"]["t""T"]["u""U"]["r""R"]["e""E"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 11;  pri (yytext,!lin1,!col1, !col2); Tokens.ARCHITECTURE(!col2,!lin1,!col1));
 ["a""A"]["r""R"]["r""R"]["a""A"]["y""Y"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 4;  pri (yytext,!lin1,!col1, !col2); Tokens.ARRAY(!col2,!lin1,!col1));
 ["a""A"]["s""S"]["s""S"]["e""E"]["r""R"]["t""T"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 5;  pri (yytext,!lin1,!col1, !col2); Tokens.ASSERT(!col2,!lin1,!col1));
-["a""A"]["t""T"]["t""T"]["r""R"]["i""I"]["b""B"]["u""U"]["t""T"]["e""E"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 8;  pri (yytext,!lin1,!col1, !col2); Tokens.ATRIBUTE(!col2,!lin1,!col1));
+["a""A"]["t""T"]["t""T"]["r""R"]["i""I"]["b""B"]["u""U"]["t""T"]["e""E"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 8;  pri (yytext,!lin1,!col1, !col2); Tokens.ATTRIBUTE(!col2,!lin1,!col1));
 ["b""B"]["e""E"]["g""G"]["i""I"]["n""N"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 4;  pri (yytext,!lin1,!col1, !col2); Tokens.BEGIN(!col2,!lin1,!col1));
 ["b""B"]["l""L"]["o""O"]["c""C"]["k""K"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 4;  pri (yytext,!lin1,!col1, !col2); Tokens.BLOCK(!col2,!lin1,!col1));
 ["b""B"]["o""O"]["d""D"]["y""Y"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 3;  pri (yytext,!lin1,!col1, !col2); Tokens.BODY(!col2,!lin1,!col1));
@@ -215,6 +216,12 @@ eol = ("\013\010"|"\010"|"\013");
 ["e""E"]["l""L"]["t""T"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 2;  pri (yytext,!lin1,!col1, !col2); Tokens.ELT(!col2,!lin1,!col1));
 ["p""P"]["o""O"]["s""S"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 2;  pri (yytext,!lin1,!col1, !col2); Tokens.POS(!col2,!lin1,!col1));
 ["l""L"]["e""E"]["n""N"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 2;  pri (yytext,!lin1,!col1, !col2); Tokens.LEN(!col2,!lin1,!col1));
+["t""T"]["h""H"]["r""R"]["o""O"]["u""U"]["g""G"]["h""H"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 5;  pri (yytext,!lin1,!col1, !col2); Tokens.THROUGH(!col2,!lin1,!col1));
+["s""S"]["p""P"]["e""E"]["c""C"]["t""T"]["r""R"]["u""U"]["m""M"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 6;  pri (yytext,!lin1,!col1, !col2); Tokens.SPECTRUM(!col2,!lin1,!col1));
+["t""T"]["o""O"]["l""L"]["e""E"]["r""R"]["a""A"]["n""N"]["c""C"]["e""E"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 7;  pri (yytext,!lin1,!col1, !col2); Tokens.TOLERANCE(!col2,!lin1,!col1));
+
+
+
 
 ["d""D"]["e""E"]["f""F"]["a""A"]["u""U"]["l""L"]["t""T"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 6;  pri (yytext,!lin1,!col1, !col2); Tokens.DEFAULT(!col2,!lin1,!col1));
 ["p""P"]["a""A"]["r""R"]["a""A"]["m""M"]["e""E"]["t""T"]["e""E"]["r""R"]  => (col1:=yypos-(!eolpos); col2:=(!col1) + 8;  pri (yytext,!lin1,!col1, !col2); Tokens.PARAMETER(!col2,!lin1,!col1));
@@ -247,7 +254,7 @@ eol = ("\013\010"|"\010"|"\013");
 {string_literal} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.STRING_LITERAL((yytext,!col2),!lin1,!col1));
 {other_special_character} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.OTHER_SPECIAL_CHARACTER((yytext,!col2),!lin1,!col1));
 {exponent} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.EXPONENT((yytext,!col2),!lin1,!col1));
-{integer} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.INT((yytext,!col2),!lin1,!col1));
+{integer} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.INTEGER((yytext,!col2),!lin1,!col1));
 {based_integer} => (col1:=yypos-(!eolpos); col2:=(!col1) + size yytext - 1;  pri (yytext,!lin1,!col1, !col2); Tokens.BASED_INTEGER((yytext,!col2),!lin1,!col1));
 
 . => (col1:=yypos-(!eolpos); badCh (fileName,yytext,!lin1,!col1,!col2); continue());
