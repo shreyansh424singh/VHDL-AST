@@ -1,0 +1,14 @@
+local
+    $/smlnj-lib.cm
+	$smlnj/compiler/compiler.cm
+	$/ml-yacc-lib.cm
+	$/basis.cm
+	Data_types.sml
+	Symbol_table.sml
+	VHDL_lex.lex.sml
+	VHDL_yacc.yacc.sig
+	VHDL_yacc.yacc.sml
+	VHDL_ast.sml
+in 
+    load-VHDL.sml
+end
