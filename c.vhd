@@ -16,24 +16,24 @@ signal result: std_logic_vector(15 downto 0);
 begin
 process(alu_control,a,b)
 begin
- case alu_control is
- when "000" =>
-  result <= a + b; -- add
- when "001" =>
-  result <= a - b; -- sub
- when "010" => 
-  result <= a and b; -- and
- when "011" =>
-  result <= a or b; -- or
- when "100" =>
-  if (a<b) then
-   result <= x"0001";
-  else 
-   result <= x"0000";
-  end if;
- when others => result <= a + b; -- add
- end case;
+ --case alu_control is
+ --when "000" =>
+--  result <= a + b; -- add
+-- when "001" =>
+--  result <= a - b; -- sub
+-- when "010" => 
+--  result <= a and b; -- and
+-- when "011" =>
+--  result <= a or b; -- or
+-- when "100" =>
+  --if (a<b) then
+  -- result <= x"0001";
+  --else 
+  -- result <= x"0000";
+  --end if;
+ --when others => result <= a + b; -- add
+ --end case;
 end process;
-  zero <= '1' when result=x"0000" else '0';
-  alu_result <= result;
+  --zero <= '1' when result=x"0000" else '0';
+  --alu_result <= result;
 end Behavioral;

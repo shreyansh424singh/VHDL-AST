@@ -8,15 +8,15 @@ end testbench;
 
 architecture fum of testbench is 
 
---component Program_Memory_64x32 is
---    port (  
---        rd        : out std_logic_vector(31 downto 0);
---        ad        : in std_logic_vector(7 downto 0)
---        ); 
---    end component; 
+component Program_Memory_64x32 is
+    port (  
+        rd        : out std_logic_vector(31 downto 0);
+        ad        : in std_logic_vector(7 downto 0)
+        ); 
+    end component; 
 
---    signal out1:  std_logic_vector (31 downto 0) := (others => '0');
---    signal in1:   std_logic_vector (7 downto 0) := (others => '0');
+    --signal out1:  std_logic_vector (31 downto 0) := (others => '0');
+    --signal in1:   std_logic_vector (7 downto 0) := (others => '0');
 
 begin 
 
