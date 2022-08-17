@@ -104,10 +104,10 @@ adding_operator : AMP     ((W_datatypes.Amp()))
 
 aggregate : LPARAN element_association_seq RPARAN     ((W_datatypes.ELEMENT_ASSOCIATION(element_association_seq)))                    
 
-alias_declaration : ALIAS alias_designator COLON subtype_indication IS name signatur SEMICOLON      ((W_datatypes.ALIAS_2( alias_designator, subtype_indication, name, signatur)))                    
+alias_declaration : ALIAS alias_designator COLON alias_indication IS name signatur SEMICOLON      ((W_datatypes.ALIAS_2( alias_designator, alias_indication, name, signatur)))                    
                   | ALIAS alias_designator IS name signatur SEMICOLON       ((W_datatypes.ALIAS_3( alias_designator, name, signatur)))                    
                   | ALIAS alias_designator IS name SEMICOLON        ((W_datatypes.ALIAS_1( alias_designator, name)))                    
-                  | ALIAS alias_designator COLON subtype_indication IS name SEMICOLON       ((W_datatypes.ALIAS_4( alias_designator, subtype_indication, name)))                    
+                  | ALIAS alias_designator COLON alias_indication IS name SEMICOLON       ((W_datatypes.ALIAS_4( alias_designator, alias_indication, name)))                    
 
 alias_designator : identifier           ((W_datatypes.ALIAS_DESIGNATOR_1(identifier)))                    
                  | character_literal    ((W_datatypes.ALIAS_DESIGNATOR_2(character_literal)))                    
@@ -306,9 +306,10 @@ block_header : generic_clause generic_map_aspect SEMICOLON port_clause port_map_
              | generic_clause                                                                         ((W_datatypes.BLOCK_HEADER_8(generic_clause)))
              |           ((W_datatypes.BLOCK_HEADER_9()))        
 
-block_specification : name                                            ((W_datatypes.BLOCK_SPECIFICATION_1(name)))                             
-                    | identifier                                           ((W_datatypes.BLOCK_SPECIFICATION_2(identifier)))                              
-                    | identifier LPARAN index_specification RPARAN      ((W_datatypes.BLOCK_SPECIFICATION_3(identifier, index_specification)))                                                                   
+block_specification : identifier LPARAN index_specification RPARAN  ((W_datatypes.BLOCK_SPECIFICATION_3(identifier, index_specification)))
+                    | identifier     ((W_datatypes.BLOCK_SPECIFICATION_2(identifier)))
+                    | name      ((W_datatypes.BLOCK_SPECIFICATION_1(name)))   
+
 block_statement : label_colon BLOCK LPARAN expression RPARAN IS block_header block_declarative_part BEGIN block_statement_part END BLOCK identifier SEMICOLON       ((W_datatypes.BLOCK_STATEMENT_1(label_colon, expression, block_header, block_declarative_part, block_statement_part, identifier)))                                  
                 | label_colon BLOCK IS block_header block_declarative_part BEGIN block_statement_part END BLOCK identifier SEMICOLON                               ((W_datatypes.BLOCK_STATEMENT_2(label_colon, block_header, block_declarative_part, block_statement_part, identifier)))          
                 | label_colon BLOCK IS block_header block_declarative_part BEGIN block_statement_part END BLOCK SEMICOLON                                     ((W_datatypes.BLOCK_STATEMENT_3(label_colon, block_header, block_declarative_part, block_statement_part)))      
@@ -754,8 +755,8 @@ exit_statement : label_colon EXIT identifier WHEN condition SEMICOLON     ((W_da
          | E integer                                    ((W_datatypes.EXPONENT(integer)))
          | E MINUS integer                              ((W_datatypes.EXPONENT(integer)))   *) 
 
-expression_seq : COMMA expression expression_seq               (expression :: expression_seq)
-               |     ([])
+(*expression_seq : COMMA expression expression_seq               (expression :: expression_seq)
+               |     ([])*)
 
 relation_logic_seq : COLON logical_operator relation relation_logic_seq (((logical_operator,relation)::relation_logic_seq))
 
@@ -822,7 +823,7 @@ formal_part : identifier                              ((W_datatypes.FORMAL_PART_
             | identifier LPARAN explicit_range RPARAN           ((W_datatypes.FORMAL_PART_2(identifier, explicit_range)))                                     
 (*            | type_mark LPARAN formal_designator RPARAN      ((W_datatypes.FORMAL_PART_3(type_mark, formal_designator))) *)                                    
 
-full_type_declaration : TYPE identifier IS type_definition SEMICOLON         ((W_datatypes.FULL_TYPE_DECLARATION(identifier, type_definition)))
+(*full_type_declaration : TYPE identifier IS type_definition SEMICOLON         ((W_datatypes.FULL_TYPE_DECLARATION(identifier, type_definition)))*)
 
 (*function_call : name generic_map_aspect parameter_map_aspect       ((W_datatypes.FUNCTION_CALL_1(name, generic_map_aspect, parameter_map_aspect)))                                             
               | name parameter_map_aspect                          ((W_datatypes.FUNCTION_CALL_2(name, parameter_map_aspect)))                        
@@ -1700,10 +1701,10 @@ secondary_unit : architecture_body ((W_datatypes.SECONDARY_UNIT_1(architecture_b
 
 secondary_unit_declaration : identifier EQ physical_literal SEMICOLON ((W_datatypes.SECONDARY_UNIT_DECLARATION(identifier,physical_literal)))
 
-ex_when_choices : expression WHEN choices              ((W_datatypes.EX_WHEN_CHOICES(expression, choices)))
+(*ex_when_choices : expression WHEN choices              ((W_datatypes.EX_WHEN_CHOICES(expression, choices)))
 
 ex_when_choices_seq : ex_when_choices COMMA ex_when_choices_seq             (ex_when_choices :: ex_when_choices_seq)
-                     |  ex_when_choices           ([ex_when_choices])
+                     |  ex_when_choices           ([ex_when_choices])*)
 
 selected_signal_assignment : WITH expression SELECT target LE opts selected_waveforms SEMICOLON          ((W_datatypes.SELECTED_SIGNAL_ASSIGNMENT(expression , target , opts , selected_waveforms)))
 

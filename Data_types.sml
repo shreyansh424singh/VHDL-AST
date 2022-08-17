@@ -51,9 +51,9 @@ struct
     and   aggregate = ELEMENT_ASSOCIATION of element_association list
 
     and   alias_declaration = ALIAS_1 of alias_designator * name         
-                              | ALIAS_2 of alias_designator * subtype_indication * name * signatur
+                              | ALIAS_2 of alias_designator * alias_indication * name * signatur
                               | ALIAS_3 of alias_designator * name * signatur
-                              | ALIAS_4 of alias_designator * subtype_indication * name
+                              | ALIAS_4 of alias_designator * alias_indication * name
 
     and   alias_designator = ALIAS_DESIGNATOR_1 of identifier
                              | ALIAS_DESIGNATOR_2 of character_literal

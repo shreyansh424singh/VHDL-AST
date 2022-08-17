@@ -44,7 +44,7 @@ structure Tokens = Tokens
 
 comment = "--".*;
 base_literal = [0-9][_0-9]* ["#"] [0-9a-zA-Z][0-9a-zA-Z_]* ("."based_integer)? ["#"] (exponent)?;
-bit_string_literal = bit_string_literal_binary | bit_string_literal_octal | bit_string_literal_hex;
+bit_string_literal = (bit_string_literal_binary | bit_string_literal_octal | bit_string_literal_hex);
 bit_string_literal_binary = [Bb]["\""][0-1_]+["\""];
 bit_string_literal_octal = [Oo]["\""][0-7_]+["\""];
 bit_string_literal_hex = [xX]["\""][0-9a-fA-F_]+["\""];
