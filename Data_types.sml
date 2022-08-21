@@ -48,7 +48,7 @@ struct
                          | Plus of unit
                          | Minus of unit
 
-    and   aggregate = ELEMENT_ASSOCIATION of element_association list
+    and   aggregate = ELEMENT_ASSOCIATION of element_association * element_association list
 
     and   alias_declaration = ALIAS_1 of alias_designator * name         
                               | ALIAS_2 of alias_designator * alias_indication * name * signatur

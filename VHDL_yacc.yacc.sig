@@ -2,19 +2,13 @@ signature Whl_TOKENS =
 sig
 type ('a,'b) token
 type svalue
-val BASED_INTEGER: (string*int) *  'a * 'a -> (svalue,'a) token
 val INTEGER: (string*int) *  'a * 'a -> (svalue,'a) token
 val EXPONENT: (string*int) *  'a * 'a -> (svalue,'a) token
-val OTHER_SPECIAL_CHARACTER: (string*int) *  'a * 'a -> (svalue,'a) token
 val STRING_LITERAL: (string*int) *  'a * 'a -> (svalue,'a) token
 val CHARACTER_LITERAL: (string*int) *  'a * 'a -> (svalue,'a) token
-val LETTER: (string*int) *  'a * 'a -> (svalue,'a) token
 val EXTENDED_IDENTIFIER: (string*int) *  'a * 'a -> (svalue,'a) token
 val BASIC_IDENTIFIER: (string*int) *  'a * 'a -> (svalue,'a) token
 val REAL_LITERAL: (string*int) *  'a * 'a -> (svalue,'a) token
-val BIT_STRING_LITERAL_HEX: (string*int) *  'a * 'a -> (svalue,'a) token
-val BIT_STRING_LITERAL_OCTAL: (string*int) *  'a * 'a -> (svalue,'a) token
-val BIT_STRING_LITERAL_BINARY: (string*int) *  'a * 'a -> (svalue,'a) token
 val BIT_STRING_LITERAL: (string*int) *  'a * 'a -> (svalue,'a) token
 val BASE_LITERAL: (string*int) *  'a * 'a -> (svalue,'a) token
 val LIMIT: (int) *  'a * 'a -> (svalue,'a) token
@@ -32,16 +26,6 @@ val THROUGH: (int) *  'a * 'a -> (svalue,'a) token
 val DEFAULT: (int) *  'a * 'a -> (svalue,'a) token
 val PROPERTY: (int) *  'a * 'a -> (svalue,'a) token
 val SEQUENCE: (int) *  'a * 'a -> (svalue,'a) token
-val B: (int) *  'a * 'a -> (svalue,'a) token
-val O: (int) *  'a * 'a -> (svalue,'a) token
-val X: (int) *  'a * 'a -> (svalue,'a) token
-val UB: (int) *  'a * 'a -> (svalue,'a) token
-val UO: (int) *  'a * 'a -> (svalue,'a) token
-val UX: (int) *  'a * 'a -> (svalue,'a) token
-val SB: (int) *  'a * 'a -> (svalue,'a) token
-val SO: (int) *  'a * 'a -> (svalue,'a) token
-val SX: (int) *  'a * 'a -> (svalue,'a) token
-val D: (int) *  'a * 'a -> (svalue,'a) token
 val CONTEXT: (int) *  'a * 'a -> (svalue,'a) token
 val EXP: (int) *  'a * 'a -> (svalue,'a) token
 val PRIVATE: (int) *  'a * 'a -> (svalue,'a) token
