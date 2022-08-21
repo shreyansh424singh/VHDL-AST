@@ -1,2 +1,0 @@
-Skeleton 5
-d5Cf3d"Int"d"TextIO"d"W_datatypes"aä¢WhlLrVals"jh1aä¢Token"gp2ä¢LrParser"ÿ3gp1e"WhlLrValsFun"aä¢WhlLex"jh1aä¢Tokens"gp2ÿ#ÿ+gp1e"WhlLexFun"ad"WhlParser"jh3aä¢ParserData"gp2ÿ#ÿ‚ad"Lex"gp1ÿaÿ>gp1ÿ>gp1e"JoinWithArg"ad"Vhdl"jè0ÿƒ N

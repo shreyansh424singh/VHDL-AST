@@ -28,3 +28,8 @@ struct
             ans
 	end
 end
+
+(* 
+exception MissingCmdLineArgs;
+val (inFile::_) = case CommandLine.arguments() of [] => (raise MissingCmdLineArgs) | (hd::tl) => (hd::tl);
+val _ = Vhdl.tree(inFile); *)
