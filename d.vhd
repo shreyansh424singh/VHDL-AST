@@ -15,14 +15,8 @@ component Program_Memory_64x32 is
         ); 
     end component; 
 
-<<<<<<< HEAD
     signal out1:  std_logic_vector (31 downto 0) := (others => "0");
     signal in1:   std_logic_vector (7 downto 0) := (others => "0");
-=======
-    -- signal out1:  std_logic_vector (31 downto 0) := "00000000";
-    -- signal out1:  std_logic_vector (31 downto 0) := (others => '0');
-    -- signal in1:   std_logic_vector (7 downto 0) := (others => '0');
->>>>>>> refs/remotes/origin/main
 
 begin 
 
