@@ -191,13 +191,13 @@ assertion : ASSERT condition REPORT expression SEVERITY expression      ((W_data
 assertion_statement : label_colon assertion SEMICOLON       ((W_datatypes.ASSERTION_STM_1(label_colon, assertion)))
                     | assertion SEMICOLON                   ((W_datatypes.ASSERTION_STM_2(assertion)))
 
-association_element_seq : association_element association_element_seq       (association_element :: association_element_seq)
+association_element_seq : COMMA association_element association_element_seq       (association_element :: association_element_seq)
                         |     ([])
 
 association_element : formal_part ARROW actual_part      ((W_datatypes.ASSOCIATION_ELE_1(formal_part, actual_part )))      
                     | actual_part                        ((W_datatypes.ASSOCIATION_ELE_2(actual_part )))  
 
-association_list : association_element_seq               ((W_datatypes.ASSOCIATION_ELE_LiST(association_element_seq)))
+association_list : association_element association_element_seq               ((W_datatypes.ASSOCIATION_ELE_LiST(association_element, association_element_seq)))
 
 attribute_declaration : ATTRIBUTE label_colon name SEMICOLON      ((W_datatypes.Attribute(label_colon, name)))
 

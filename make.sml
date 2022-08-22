@@ -3,5 +3,5 @@ Control.Print.printDepth := 1000;
 Control.Print.printLength := 1000;
 Control.Print.stringDepth := 1000;
 open Vhdl;
-tree("b.vhd");
+(* tree("c.vhd"); *)
 

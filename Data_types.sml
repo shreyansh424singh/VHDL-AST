@@ -126,7 +126,7 @@ struct
     and   association_element = ASSOCIATION_ELE_1 of formal_part * actual_part                                
                                 | ASSOCIATION_ELE_2 of actual_part
 
-    and   association_list = ASSOCIATION_ELE_LiST of association_element list
+    and   association_list = ASSOCIATION_ELE_LiST of association_element * association_element list
 
     and   attribute_declaration = Attribute of label_colon * name
 
