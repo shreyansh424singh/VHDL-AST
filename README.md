@@ -17,3 +17,5 @@
 - **VHDL_ast.sml** :  A glue code and a driver that reads the sources file and displays the output.
 - **sources.cm** : Provides a list of files that the Compiler Manager will use to build the project.
 
+## References
+- The grammer for vhdl is extracted from https://github.com/antlr/grammars-v4/blob/master/vhdl/vhdl.g4
