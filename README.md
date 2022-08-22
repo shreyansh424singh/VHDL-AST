@@ -19,3 +19,11 @@
 
 ## References
 - The grammer for vhdl is extracted from https://github.com/antlr/grammars-v4/blob/master/vhdl/vhdl.g4
+
+## Issues
+
+- Currently there are
+    - 1007 reduce/reduce conflicts
+    - 84 shift/reduce conflicts
+    - 16 rules are not reduced
+- Still AST is constructed with very few errors.
