@@ -1916,7 +1916,7 @@ target : name ((W_datatypes.TARGET_1(name)))
 
 multiplying_operator_factor : multiplying_operator factor             ((W_datatypes.MULTIPLYING_OPERATOR_FACTOR(multiplying_operator, factor)))
 
-multiplying_operator_factor_seq : COLON multiplying_operator_factor multiplying_operator_factor_seq            (multiplying_operator_factor :: multiplying_operator_factor_seq)
+multiplying_operator_factor_seq : multiplying_operator_factor multiplying_operator_factor_seq            (multiplying_operator_factor :: multiplying_operator_factor_seq)
                                    |             ([])
 
 term : factor multiplying_operator_factor_seq ((W_datatypes.TERM(factor,multiplying_operator_factor_seq)))

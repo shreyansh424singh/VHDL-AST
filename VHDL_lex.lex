@@ -51,7 +51,7 @@ real_literal = [0-9]+(.[0-9]+)?(exponent)?;
 basic_identifier = [a-zA-Z]+[a-zA-Z0-9_]*;
 extended_identifier = [\\][a-z0-9&\'()+-\./:\;<=>|\ #[]_(other_special_character)]+[\\];
 letter = [a-zA-Z]+;
-character_literal = [\'].*[\'];
+character_literal = ["'"].["'"];
 string_literal = ["\""].*["\""];
 other_special_character = [!$@?^`{}~];
 exponent = [Ee][+-]?[0-9][0-9_]*;
