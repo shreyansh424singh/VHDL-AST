@@ -3,5 +3,4 @@ Control.Print.printDepth := 100000;
 Control.Print.printLength := 100000;
 Control.Print.stringDepth := 100000;
 open Vhdl;
-tree("a.vhd");
-
+tree("example/a.vhd");

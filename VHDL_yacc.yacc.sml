@@ -7255,7 +7255,7 @@ name1left, _)) :: rest671)) => let val  result = MlyValue.actual_part
  val  (actual_designator as actual_designator1) = actual_designator1
  ()
  val  RPARAN1 = RPARAN1 ()
- in ((W_datatypes.FUNCTION_NAME(name, actual_designator)))
+ in ((W_datatypes.FUNCTION_NAME(name,actual_designator)))
 end)
  in ( LrTable.NT 5, ( result, name1left, RPARAN1right), rest671)
 end
@@ -7313,7 +7313,7 @@ alias_designator1, _, _)) :: ( _, ( MlyValue.ALIAS ALIAS1, ALIAS1left,
  val  (signatur as signatur1) = signatur1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.ALIAS_2( alias_designator, alias_indication, name, signatur))
+(W_datatypes.ALIAS_2(alias_designator,alias_indication,name,signatur))
 )
 end)
  in ( LrTable.NT 8, ( result, ALIAS1left, SEMICOLON1right), rest671)
@@ -7330,7 +7330,7 @@ MlyValue.ALIAS ALIAS1, ALIAS1left, _)) :: rest671)) => let val  result
  val  (name as name1) = name1 ()
  val  (signatur as signatur1) = signatur1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
- in ((W_datatypes.ALIAS_3( alias_designator, name, signatur)))
+ in ((W_datatypes.ALIAS_3(alias_designator,name,signatur)))
 end)
  in ( LrTable.NT 8, ( result, ALIAS1left, SEMICOLON1right), rest671)
 
@@ -7345,7 +7345,7 @@ result = MlyValue.alias_declaration (fn _ => let val  ALIAS1 = ALIAS1
  val  IS1 = IS1 ()
  val  (name as name1) = name1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
- in ((W_datatypes.ALIAS_1( alias_designator, name)))
+ in ((W_datatypes.ALIAS_1(alias_designator,name)))
 end)
  in ( LrTable.NT 8, ( result, ALIAS1left, SEMICOLON1right), rest671)
 
@@ -7363,7 +7363,7 @@ MlyValue.ALIAS ALIAS1, ALIAS1left, _)) :: rest671)) => let val  result
  val  IS1 = IS1 ()
  val  (name as name1) = name1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
- in ((W_datatypes.ALIAS_4( alias_designator, alias_indication, name)))
+ in ((W_datatypes.ALIAS_4(alias_designator,alias_indication,name)))
 
 end)
  in ( LrTable.NT 8, ( result, ALIAS1left, SEMICOLON1right), rest671)
@@ -7463,7 +7463,7 @@ architecture_statement_part1 ()
  val  identifier3 = identifier3 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.ARCHITECTURE_2(identifier, identifier, architecture_declarative_part, architecture_statement_part,identifier))
+(W_datatypes.ARCHITECTURE_2(identifier,identifier,architecture_declarative_part,architecture_statement_part,identifier))
 )
 end)
  in ( LrTable.NT 12, ( result, ARCHITECTURE1left, SEMICOLON1right), 
@@ -7494,7 +7494,7 @@ architecture_statement_part1 ()
  val  identifier3 = identifier3 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.ARCHITECTURE_2(identifier, identifier, architecture_declarative_part, architecture_statement_part,identifier))
+(W_datatypes.ARCHITECTURE_2(identifier,identifier,architecture_declarative_part,architecture_statement_part,identifier))
 )
 end)
  in ( LrTable.NT 12, ( result, ARCHITECTURE1left, SEMICOLON1right), 
@@ -7523,7 +7523,7 @@ architecture_statement_part1 ()
  val  END1 = END1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.ARCHITECTURE_1(identifier, identifier, architecture_declarative_part, architecture_statement_part))
+(W_datatypes.ARCHITECTURE_1(identifier,identifier,architecture_declarative_part,architecture_statement_part))
 )
 end)
  in ( LrTable.NT 12, ( result, ARCHITECTURE1left, SEMICOLON1right), 
@@ -7554,7 +7554,7 @@ architecture_statement_part1 ()
  val  ARCHITECTURE2 = ARCHITECTURE2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.ARCHITECTURE_1(identifier, identifier, architecture_declarative_part, architecture_statement_part))
+(W_datatypes.ARCHITECTURE_1(identifier,identifier,architecture_declarative_part,architecture_statement_part))
 )
 end)
  in ( LrTable.NT 12, ( result, ARCHITECTURE1left, SEMICOLON1right), 
@@ -7869,7 +7869,7 @@ REPORT1, _, _)) :: ( _, ( MlyValue.condition condition1, _, _)) :: ( _
  val  expression1 = expression1 ()
  val  SEVERITY1 = SEVERITY1 ()
  val  expression2 = expression2 ()
- in ((W_datatypes.ASSERT_1(condition, expression1, expression2)))
+ in ((W_datatypes.ASSERT_1(condition,expression1,expression2)))
 end)
  in ( LrTable.NT 24, ( result, ASSERT1left, expression2right), rest671
 )
@@ -7882,7 +7882,7 @@ MlyValue.assertion (fn _ => let val  ASSERT1 = ASSERT1 ()
  val  (condition as condition1) = condition1 ()
  val  REPORT1 = REPORT1 ()
  val  (expression as expression1) = expression1 ()
- in ((W_datatypes.ASSERT_2(condition, expression)))
+ in ((W_datatypes.ASSERT_2(condition,expression)))
 end)
  in ( LrTable.NT 24, ( result, ASSERT1left, expression1right), rest671
 )
@@ -7895,7 +7895,7 @@ MlyValue.assertion (fn _ => let val  ASSERT1 = ASSERT1 ()
  val  (condition as condition1) = condition1 ()
  val  SEVERITY1 = SEVERITY1 ()
  val  (expression as expression1) = expression1 ()
- in ((W_datatypes.ASSERT_2(condition, expression)))
+ in ((W_datatypes.ASSERT_2(condition,expression)))
 end)
  in ( LrTable.NT 24, ( result, ASSERT1left, expression1right), rest671
 )
@@ -7917,7 +7917,7 @@ MlyValue.label_colon label_colon1, label_colon1left, _)) :: rest671))
 label_colon as label_colon1) = label_colon1 ()
  val  (assertion as assertion1) = assertion1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
- in ((W_datatypes.ASSERTION_STM_1(label_colon, assertion)))
+ in ((W_datatypes.ASSERTION_STM_1(label_colon,assertion)))
 end)
  in ( LrTable.NT 25, ( result, label_colon1left, SEMICOLON1right), 
 rest671)
@@ -7958,7 +7958,7 @@ MlyValue.formal_part formal_part1, formal_part1left, _)) :: rest671))
 formal_part as formal_part1) = formal_part1 ()
  val  ARROW1 = ARROW1 ()
  val  (actual_part as actual_part1) = actual_part1 ()
- in ((W_datatypes.ASSOCIATION_ELE_1(formal_part, actual_part )))
+ in ((W_datatypes.ASSOCIATION_ELE_1(formal_part,actual_part)))
 end)
  in ( LrTable.NT 26, ( result, formal_part1left, actual_part1right), 
 rest671)
@@ -7967,7 +7967,7 @@ end
  actual_part1right)) :: rest671)) => let val  result = 
 MlyValue.association_element (fn _ => let val  (actual_part as 
 actual_part1) = actual_part1 ()
- in ((W_datatypes.ASSOCIATION_ELE_2(actual_part )))
+ in ((W_datatypes.ASSOCIATION_ELE_2(actual_part)))
 end)
  in ( LrTable.NT 26, ( result, actual_part1left, actual_part1right), 
 rest671)
@@ -7981,7 +7981,7 @@ association_element1) = association_element1 ()
  val  (association_element_seq as association_element_seq1) = 
 association_element_seq1 ()
  in (
-(W_datatypes.ASSOCIATION_ELE_LiST(association_element, association_element_seq))
+(W_datatypes.ASSOCIATION_ELE_LiST(association_element,association_element_seq))
 )
 end)
  in ( LrTable.NT 27, ( result, association_element1left, 
@@ -7996,7 +7996,7 @@ ATTRIBUTE1 ()
  val  (label_colon as label_colon1) = label_colon1 ()
  val  (name as name1) = name1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
- in ((W_datatypes.Attribute(label_colon, name)))
+ in ((W_datatypes.Attribute(label_colon,name)))
 end)
  in ( LrTable.NT 28, ( result, ATTRIBUTE1left, SEMICOLON1right), 
 rest671)
@@ -8034,7 +8034,7 @@ entity_specification1 ()
  val  (expression as expression1) = expression1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.ATTRIBUTE_SPECIFICATION(attribute_designator,  entity_specification, expression))
+(W_datatypes.ATTRIBUTE_SPECIFICATION(attribute_designator,entity_specification,expression))
 )
 end)
  in ( LrTable.NT 31, ( result, ATTRIBUTE1left, SEMICOLON1right), 
@@ -8061,7 +8061,7 @@ rest671)) => let val  result = MlyValue.binding_indication (fn _ =>
 generic_map_aspect1 ()
  val  (port_map_aspect as port_map_aspect1) = port_map_aspect1 ()
  in (
-(W_datatypes.BINDING_INDICATION_1(entity_aspect, generic_map_aspect, port_map_aspect))
+(W_datatypes.BINDING_INDICATION_1(entity_aspect,generic_map_aspect,port_map_aspect))
 )
 end)
  in ( LrTable.NT 40, ( result, USE1left, port_map_aspect1right), 
@@ -8076,7 +8076,7 @@ rest671)) => let val  result = MlyValue.binding_indication (fn _ =>
  val  (generic_map_aspect as generic_map_aspect1) = 
 generic_map_aspect1 ()
  in (
-(W_datatypes.BINDING_INDICATION_2(entity_aspect, generic_map_aspect)))
+(W_datatypes.BINDING_INDICATION_2(entity_aspect,generic_map_aspect)))
 
 end)
  in ( LrTable.NT 40, ( result, USE1left, generic_map_aspect1right), 
@@ -8089,9 +8089,8 @@ rest671)) => let val  result = MlyValue.binding_indication (fn _ =>
  let val  USE1 = USE1 ()
  val  (entity_aspect as entity_aspect1) = entity_aspect1 ()
  val  (port_map_aspect as port_map_aspect1) = port_map_aspect1 ()
- in (
-(W_datatypes.BINDING_INDICATION_3(entity_aspect, port_map_aspect)))
-
+ in ((W_datatypes.BINDING_INDICATION_3(entity_aspect,port_map_aspect))
+)
 end)
  in ( LrTable.NT 40, ( result, USE1left, port_map_aspect1right), 
 rest671)
@@ -8103,7 +8102,7 @@ generic_map_aspect1, generic_map_aspect1left, _)) :: rest671)) => let
 generic_map_aspect as generic_map_aspect1) = generic_map_aspect1 ()
  val  (port_map_aspect as port_map_aspect1) = port_map_aspect1 ()
  in (
-(W_datatypes.BINDING_INDICATION_4(generic_map_aspect, port_map_aspect))
+(W_datatypes.BINDING_INDICATION_4(generic_map_aspect,port_map_aspect))
 )
 end)
  in ( LrTable.NT 40, ( result, generic_map_aspect1left, 
@@ -8153,7 +8152,7 @@ configuration_item_seq1 ()
  val  FOR2 = FOR2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.BLOCK_CONFIGURATION(block_specification, use_clause_seq, configuration_item_seq))
+(W_datatypes.BLOCK_CONFIGURATION(block_specification,use_clause_seq,configuration_item_seq))
 )
 end)
  in ( LrTable.NT 43, ( result, FOR1left, SEMICOLON1right), rest671)
@@ -8440,7 +8439,7 @@ generic_map_aspect1 ()
  val  (port_map_aspect as port_map_aspect1) = port_map_aspect1 ()
  val  SEMICOLON2 = SEMICOLON2 ()
  in (
-(W_datatypes.BLOCK_HEADER_1(generic_clause, generic_map_aspect, port_clause, port_map_aspect))
+(W_datatypes.BLOCK_HEADER_1(generic_clause,generic_map_aspect,port_clause,port_map_aspect))
 )
 end)
  in ( LrTable.NT 46, ( result, generic_clause1left, SEMICOLON2right), 
@@ -8456,7 +8455,7 @@ rest671)) => let val  result = MlyValue.block_header (fn _ => let val
  val  (port_map_aspect as port_map_aspect1) = port_map_aspect1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.BLOCK_HEADER_2(generic_clause, port_clause, port_map_aspect))
+(W_datatypes.BLOCK_HEADER_2(generic_clause,port_clause,port_map_aspect))
 )
 end)
  in ( LrTable.NT 46, ( result, generic_clause1left, SEMICOLON1right), 
@@ -8469,7 +8468,7 @@ end
 port_clause as port_clause1) = port_clause1 ()
  val  (port_map_aspect as port_map_aspect1) = port_map_aspect1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
- in ((W_datatypes.BLOCK_HEADER_3(port_clause, port_map_aspect)))
+ in ((W_datatypes.BLOCK_HEADER_3(port_clause,port_map_aspect)))
 end)
  in ( LrTable.NT 46, ( result, port_clause1left, SEMICOLON1right), 
 rest671)
@@ -8485,7 +8484,7 @@ generic_map_aspect1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  val  (port_clause as port_clause1) = port_clause1 ()
  in (
-(W_datatypes.BLOCK_HEADER_4(generic_clause, generic_map_aspect, port_clause))
+(W_datatypes.BLOCK_HEADER_4(generic_clause,generic_map_aspect,port_clause))
 )
 end)
  in ( LrTable.NT 46, ( result, generic_clause1left, port_clause1right)
@@ -8497,7 +8496,7 @@ port_clause1right)) :: ( _, ( MlyValue.generic_clause generic_clause1,
 MlyValue.block_header (fn _ => let val  (generic_clause as 
 generic_clause1) = generic_clause1 ()
  val  (port_clause as port_clause1) = port_clause1 ()
- in ((W_datatypes.BLOCK_HEADER_5(generic_clause, port_clause)))
+ in ((W_datatypes.BLOCK_HEADER_5(generic_clause,port_clause)))
 end)
  in ( LrTable.NT 46, ( result, generic_clause1left, port_clause1right)
 , rest671)
@@ -8519,7 +8518,7 @@ end
  val  (generic_map_aspect as generic_map_aspect1) = 
 generic_map_aspect1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
- in ((W_datatypes.BLOCK_HEADER_7(generic_clause, generic_map_aspect)))
+ in ((W_datatypes.BLOCK_HEADER_7(generic_clause,generic_map_aspect)))
 
 end)
  in ( LrTable.NT 46, ( result, generic_clause1left, SEMICOLON1right), 
@@ -8549,7 +8548,7 @@ identifier1) = identifier1 ()
 index_specification1 ()
  val  RPARAN1 = RPARAN1 ()
  in (
-(W_datatypes.BLOCK_SPECIFICATION_3(identifier, index_specification)))
+(W_datatypes.BLOCK_SPECIFICATION_3(identifier,index_specification)))
 
 end)
  in ( LrTable.NT 47, ( result, identifier1left, RPARAN1right), rest671
@@ -8600,7 +8599,7 @@ block_statement_part1 ()
  val  (identifier as identifier1) = identifier1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.BLOCK_STATEMENT_1(label_colon, expression, block_header, block_declarative_part, block_statement_part, identifier))
+(W_datatypes.BLOCK_STATEMENT_1(label_colon,expression,block_header,block_declarative_part,block_statement_part,identifier))
 )
 end)
  in ( LrTable.NT 48, ( result, label_colon1left, SEMICOLON1right), 
@@ -8630,7 +8629,7 @@ block_statement_part1 ()
  val  (identifier as identifier1) = identifier1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.BLOCK_STATEMENT_2(label_colon, block_header, block_declarative_part, block_statement_part, identifier))
+(W_datatypes.BLOCK_STATEMENT_2(label_colon,block_header,block_declarative_part,block_statement_part,identifier))
 )
 end)
  in ( LrTable.NT 48, ( result, label_colon1left, SEMICOLON1right), 
@@ -8658,7 +8657,7 @@ block_statement_part1 ()
  val  BLOCK2 = BLOCK2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.BLOCK_STATEMENT_3(label_colon, block_header, block_declarative_part, block_statement_part))
+(W_datatypes.BLOCK_STATEMENT_3(label_colon,block_header,block_declarative_part,block_statement_part))
 )
 end)
  in ( LrTable.NT 48, ( result, label_colon1left, SEMICOLON1right), 
@@ -8691,7 +8690,7 @@ block_statement_part1 ()
  val  BLOCK2 = BLOCK2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.BLOCK_STATEMENT_4(label_colon, expression, block_header, block_declarative_part, block_statement_part))
+(W_datatypes.BLOCK_STATEMENT_4(label_colon,expression,block_header,block_declarative_part,block_statement_part))
 )
 end)
  in ( LrTable.NT 48, ( result, label_colon1left, SEMICOLON1right), 
@@ -8725,7 +8724,7 @@ block_statement_part1 ()
  val  (identifier as identifier1) = identifier1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.BLOCK_STATEMENT_1(label_colon, expression, block_header, block_declarative_part, block_statement_part, identifier))
+(W_datatypes.BLOCK_STATEMENT_1(label_colon,expression,block_header,block_declarative_part,block_statement_part,identifier))
 )
 end)
  in ( LrTable.NT 48, ( result, label_colon1left, SEMICOLON1right), 
@@ -8754,7 +8753,7 @@ block_statement_part1 ()
  val  (identifier as identifier1) = identifier1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.BLOCK_STATEMENT_2(label_colon, block_header, block_declarative_part, block_statement_part, identifier))
+(W_datatypes.BLOCK_STATEMENT_2(label_colon,block_header,block_declarative_part,block_statement_part,identifier))
 )
 end)
  in ( LrTable.NT 48, ( result, label_colon1left, SEMICOLON1right), 
@@ -8781,7 +8780,7 @@ block_statement_part1 ()
  val  BLOCK2 = BLOCK2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.BLOCK_STATEMENT_3(label_colon, block_header, block_declarative_part, block_statement_part))
+(W_datatypes.BLOCK_STATEMENT_3(label_colon,block_header,block_declarative_part,block_statement_part))
 )
 end)
  in ( LrTable.NT 48, ( result, label_colon1left, SEMICOLON1right), 
@@ -8813,7 +8812,7 @@ block_statement_part1 ()
  val  BLOCK2 = BLOCK2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.BLOCK_STATEMENT_4(label_colon, expression, block_header, block_declarative_part, block_statement_part))
+(W_datatypes.BLOCK_STATEMENT_4(label_colon,expression,block_header,block_declarative_part,block_statement_part))
 )
 end)
  in ( LrTable.NT 48, ( result, label_colon1left, SEMICOLON1right), 
@@ -9084,7 +9083,7 @@ case_statement_alternative_seq1) = case_statement_alternative_seq1 ()
  val  (identifier as identifier1) = identifier1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.CASE_STATEMENT_1(label_colon, expression, case_statement_alternative_seq, identifier))
+(W_datatypes.CASE_STATEMENT_1(label_colon,expression,case_statement_alternative_seq,identifier))
 )
 end)
  in ( LrTable.NT 52, ( result, label_colon1left, SEMICOLON1right), 
@@ -9107,7 +9106,7 @@ case_statement_alternative_seq1) = case_statement_alternative_seq1 ()
  val  (identifier as identifier1) = identifier1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.CASE_STATEMENT_2(expression, case_statement_alternative_seq, identifier))
+(W_datatypes.CASE_STATEMENT_2(expression,case_statement_alternative_seq,identifier))
 )
 end)
  in ( LrTable.NT 52, ( result, CASE1left, SEMICOLON1right), rest671)
@@ -9128,7 +9127,7 @@ case_statement_alternative_seq1) = case_statement_alternative_seq1 ()
  val  CASE2 = CASE2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.CASE_STATEMENT_3(expression, case_statement_alternative_seq))
+(W_datatypes.CASE_STATEMENT_3(expression,case_statement_alternative_seq))
 )
 end)
  in ( LrTable.NT 52, ( result, CASE1left, SEMICOLON1right), rest671)
@@ -9152,7 +9151,7 @@ case_statement_alternative_seq1) = case_statement_alternative_seq1 ()
  val  CASE2 = CASE2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.CASE_STATEMENT_4(label_colon, expression, case_statement_alternative_seq))
+(W_datatypes.CASE_STATEMENT_4(label_colon,expression,case_statement_alternative_seq))
 )
 end)
  in ( LrTable.NT 52, ( result, label_colon1left, SEMICOLON1right), 
@@ -9178,7 +9177,7 @@ case_statement_alternative_seq1) = case_statement_alternative_seq1 ()
  val  (identifier as identifier1) = identifier1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.CASE_STATEMENT_1(label_colon, expression, case_statement_alternative_seq, identifier))
+(W_datatypes.CASE_STATEMENT_1(label_colon,expression,case_statement_alternative_seq,identifier))
 )
 end)
  in ( LrTable.NT 52, ( result, label_colon1left, SEMICOLON1right), 
@@ -9201,7 +9200,7 @@ case_statement_alternative_seq1) = case_statement_alternative_seq1 ()
  val  (identifier as identifier1) = identifier1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.CASE_STATEMENT_2(expression, case_statement_alternative_seq, identifier))
+(W_datatypes.CASE_STATEMENT_2(expression,case_statement_alternative_seq,identifier))
 )
 end)
  in ( LrTable.NT 52, ( result, CASE1left, SEMICOLON1right), rest671)
@@ -9222,7 +9221,7 @@ case_statement_alternative_seq1) = case_statement_alternative_seq1 ()
  val  CASE2 = CASE2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.CASE_STATEMENT_3(expression, case_statement_alternative_seq))
+(W_datatypes.CASE_STATEMENT_3(expression,case_statement_alternative_seq))
 )
 end)
  in ( LrTable.NT 52, ( result, CASE1left, SEMICOLON1right), rest671)
@@ -9246,7 +9245,7 @@ case_statement_alternative_seq1) = case_statement_alternative_seq1 ()
  val  CASE2 = CASE2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.CASE_STATEMENT_4(label_colon, expression, case_statement_alternative_seq))
+(W_datatypes.CASE_STATEMENT_4(label_colon,expression,case_statement_alternative_seq))
 )
 end)
  in ( LrTable.NT 52, ( result, label_colon1left, SEMICOLON1right), 
@@ -9272,7 +9271,7 @@ case_statement_alternative_seq1) = case_statement_alternative_seq1 ()
  val  (identifier as identifier1) = identifier1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.CASE_STATEMENT_1(label_colon, expression, case_statement_alternative_seq, identifier))
+(W_datatypes.CASE_STATEMENT_1(label_colon,expression,case_statement_alternative_seq,identifier))
 )
 end)
  in ( LrTable.NT 52, ( result, label_colon1left, SEMICOLON1right), 
@@ -9295,7 +9294,7 @@ case_statement_alternative_seq1) = case_statement_alternative_seq1 ()
  val  (identifier as identifier1) = identifier1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.CASE_STATEMENT_2(expression, case_statement_alternative_seq, identifier))
+(W_datatypes.CASE_STATEMENT_2(expression,case_statement_alternative_seq,identifier))
 )
 end)
  in ( LrTable.NT 52, ( result, CASE1left, SEMICOLON1right), rest671)
@@ -9316,7 +9315,7 @@ case_statement_alternative_seq1) = case_statement_alternative_seq1 ()
  val  CASE2 = CASE2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.CASE_STATEMENT_3(expression, case_statement_alternative_seq))
+(W_datatypes.CASE_STATEMENT_3(expression,case_statement_alternative_seq))
 )
 end)
  in ( LrTable.NT 52, ( result, CASE1left, SEMICOLON1right), rest671)
@@ -9340,7 +9339,7 @@ case_statement_alternative_seq1) = case_statement_alternative_seq1 ()
  val  CASE2 = CASE2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.CASE_STATEMENT_4(label_colon, expression, case_statement_alternative_seq))
+(W_datatypes.CASE_STATEMENT_4(label_colon,expression,case_statement_alternative_seq))
 )
 end)
  in ( LrTable.NT 52, ( result, label_colon1left, SEMICOLON1right), 
@@ -9384,7 +9383,7 @@ WHEN1 = WHEN1 ()
  val  (sequence_of_statements as sequence_of_statements1) = 
 sequence_of_statements1 ()
  in (
-(W_datatypes.CASE_STATEMENT_ALTERNATIVE(choices, sequence_of_statements))
+(W_datatypes.CASE_STATEMENT_ALTERNATIVE(choices,sequence_of_statements))
 )
 end)
  in ( LrTable.NT 53, ( result, WHEN1left, sequence_of_statements1right
@@ -9444,7 +9443,7 @@ choice_seq1right)) :: ( _, ( MlyValue.choice choice1, choice1left, _))
  :: rest671)) => let val  result = MlyValue.choices (fn _ => let val 
  (choice as choice1) = choice1 ()
  val  (choice_seq as choice_seq1) = choice_seq1 ()
- in ((W_datatypes.CHOICES(choice, choice_seq)))
+ in ((W_datatypes.CHOICES(choice,choice_seq)))
 end)
  in ( LrTable.NT 56, ( result, choice1left, choice_seq1right), rest671
 )
@@ -9468,7 +9467,7 @@ block_configuration1 ()
  val  FOR2 = FOR2 ()
  val  SEMICOLON2 = SEMICOLON2 ()
  in (
-(W_datatypes.COMPONENT_CONFIGURATION_1(component_specification, binding_indication, block_configuration))
+(W_datatypes.COMPONENT_CONFIGURATION_1(component_specification,binding_indication,block_configuration))
 )
 end)
  in ( LrTable.NT 57, ( result, FOR1left, SEMICOLON2right), rest671)
@@ -9489,7 +9488,7 @@ block_configuration1 ()
  val  FOR2 = FOR2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.COMPONENT_CONFIGURATION_2(component_specification, block_configuration))
+(W_datatypes.COMPONENT_CONFIGURATION_2(component_specification,block_configuration))
 )
 end)
  in ( LrTable.NT 57, ( result, FOR1left, SEMICOLON1right), rest671)
@@ -9528,7 +9527,7 @@ binding_indication1 ()
  val  FOR2 = FOR2 ()
  val  SEMICOLON2 = SEMICOLON2 ()
  in (
-(W_datatypes.COMPONENT_CONFIGURATION_4(component_specification, binding_indication))
+(W_datatypes.COMPONENT_CONFIGURATION_4(component_specification,binding_indication))
 )
 end)
  in ( LrTable.NT 57, ( result, FOR1left, SEMICOLON2right), rest671)
@@ -9552,7 +9551,7 @@ COMPONENT1 = COMPONENT1 ()
  val  identifier2 = identifier2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.COMPONENT_DECLARATION_1(identifier1, generic_clause, port_clause, identifier2))
+(W_datatypes.COMPONENT_DECLARATION_1(identifier1,generic_clause,port_clause,identifier2))
 )
 end)
  in ( LrTable.NT 58, ( result, COMPONENT1left, SEMICOLON1right), 
@@ -9574,7 +9573,7 @@ rest671)) => let val  result = MlyValue.component_declaration (fn _ =>
  val  identifier2 = identifier2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.COMPONENT_DECLARATION_2(identifier1, port_clause, identifier2))
+(W_datatypes.COMPONENT_DECLARATION_2(identifier1,port_clause,identifier2))
 )
 end)
  in ( LrTable.NT 58, ( result, COMPONENT1left, SEMICOLON1right), 
@@ -9596,7 +9595,7 @@ MlyValue.COMPONENT COMPONENT2, _, _)) :: ( _, ( MlyValue.END END1, _,
  val  identifier2 = identifier2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.COMPONENT_DECLARATION_3(identifier1, generic_clause, identifier2))
+(W_datatypes.COMPONENT_DECLARATION_3(identifier1,generic_clause,identifier2))
 )
 end)
  in ( LrTable.NT 58, ( result, COMPONENT1left, SEMICOLON1right), 
@@ -9616,7 +9615,7 @@ COMPONENT1 ()
  val  COMPONENT2 = COMPONENT2 ()
  val  identifier2 = identifier2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
- in ((W_datatypes.COMPONENT_DECLARATION_4(identifier1, identifier2)))
+ in ((W_datatypes.COMPONENT_DECLARATION_4(identifier1,identifier2)))
 
 end)
  in ( LrTable.NT 58, ( result, COMPONENT1left, SEMICOLON1right), 
@@ -9636,8 +9635,8 @@ COMPONENT1 ()
  val  END1 = END1 ()
  val  COMPONENT2 = COMPONENT2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
- in ((W_datatypes.COMPONENT_DECLARATION_5(identifier, generic_clause))
-)
+ in ((W_datatypes.COMPONENT_DECLARATION_5(identifier,generic_clause)))
+
 end)
  in ( LrTable.NT 58, ( result, COMPONENT1left, SEMICOLON1right), 
 rest671)
@@ -9676,7 +9675,7 @@ COMPONENT1 ()
  val  COMPONENT2 = COMPONENT2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.COMPONENT_DECLARATION_7(identifier, generic_clause, port_clause))
+(W_datatypes.COMPONENT_DECLARATION_7(identifier,generic_clause,port_clause))
 )
 end)
  in ( LrTable.NT 58, ( result, COMPONENT1left, SEMICOLON1right), 
@@ -9696,7 +9695,7 @@ COMPONENT1 ()
  val  END1 = END1 ()
  val  COMPONENT2 = COMPONENT2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
- in ((W_datatypes.COMPONENT_DECLARATION_8(identifier, port_clause)))
+ in ((W_datatypes.COMPONENT_DECLARATION_8(identifier,port_clause)))
 
 end)
  in ( LrTable.NT 58, ( result, COMPONENT1left, SEMICOLON1right), 
@@ -9719,7 +9718,7 @@ COMPONENT1 ()
  val  identifier2 = identifier2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.COMPONENT_DECLARATION_1(identifier1, generic_clause, port_clause, identifier2))
+(W_datatypes.COMPONENT_DECLARATION_1(identifier1,generic_clause,port_clause,identifier2))
 )
 end)
  in ( LrTable.NT 58, ( result, COMPONENT1left, SEMICOLON1right), 
@@ -9740,7 +9739,7 @@ COMPONENT1 ()
  val  identifier2 = identifier2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.COMPONENT_DECLARATION_2(identifier1, port_clause, identifier2))
+(W_datatypes.COMPONENT_DECLARATION_2(identifier1,port_clause,identifier2))
 )
 end)
  in ( LrTable.NT 58, ( result, COMPONENT1left, SEMICOLON1right), 
@@ -9761,7 +9760,7 @@ COMPONENT1 = COMPONENT1 ()
  val  identifier2 = identifier2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.COMPONENT_DECLARATION_3(identifier1, generic_clause, identifier2))
+(W_datatypes.COMPONENT_DECLARATION_3(identifier1,generic_clause,identifier2))
 )
 end)
  in ( LrTable.NT 58, ( result, COMPONENT1left, SEMICOLON1right), 
@@ -9779,7 +9778,7 @@ COMPONENT1 = COMPONENT1 ()
  val  COMPONENT2 = COMPONENT2 ()
  val  identifier2 = identifier2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
- in ((W_datatypes.COMPONENT_DECLARATION_4(identifier1, identifier2)))
+ in ((W_datatypes.COMPONENT_DECLARATION_4(identifier1,identifier2)))
 
 end)
  in ( LrTable.NT 58, ( result, COMPONENT1left, SEMICOLON1right), 
@@ -9797,8 +9796,8 @@ rest671)) => let val  result = MlyValue.component_declaration (fn _ =>
  val  END1 = END1 ()
  val  COMPONENT2 = COMPONENT2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
- in ((W_datatypes.COMPONENT_DECLARATION_5(identifier, generic_clause))
-)
+ in ((W_datatypes.COMPONENT_DECLARATION_5(identifier,generic_clause)))
+
 end)
  in ( LrTable.NT 58, ( result, COMPONENT1left, SEMICOLON1right), 
 rest671)
@@ -9833,7 +9832,7 @@ COMPONENT1 = COMPONENT1 ()
  val  COMPONENT2 = COMPONENT2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.COMPONENT_DECLARATION_7(identifier, generic_clause, port_clause))
+(W_datatypes.COMPONENT_DECLARATION_7(identifier,generic_clause,port_clause))
 )
 end)
  in ( LrTable.NT 58, ( result, COMPONENT1left, SEMICOLON1right), 
@@ -9851,7 +9850,7 @@ COMPONENT1 = COMPONENT1 ()
  val  END1 = END1 ()
  val  COMPONENT2 = COMPONENT2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
- in ((W_datatypes.COMPONENT_DECLARATION_8(identifier, port_clause)))
+ in ((W_datatypes.COMPONENT_DECLARATION_8(identifier,port_clause)))
 
 end)
  in ( LrTable.NT 58, ( result, COMPONENT1left, SEMICOLON1right), 
@@ -9871,7 +9870,7 @@ generic_map_aspect1 ()
  val  (port_map_aspect as port_map_aspect1) = port_map_aspect1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.COMPONENT_INSTANTIATION_STATEMENT_1(label_colon, instantiated_unit, generic_map_aspect, port_map_aspect))
+(W_datatypes.COMPONENT_INSTANTIATION_STATEMENT_1(label_colon,instantiated_unit,generic_map_aspect,port_map_aspect))
 )
 end)
  in ( LrTable.NT 59, ( result, label_colon1left, SEMICOLON1right), 
@@ -9888,7 +9887,7 @@ MlyValue.label_colon label_colon1, label_colon1left, _)) :: rest671))
  val  (port_map_aspect as port_map_aspect1) = port_map_aspect1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.COMPONENT_INSTANTIATION_STATEMENT_2(label_colon, instantiated_unit, port_map_aspect))
+(W_datatypes.COMPONENT_INSTANTIATION_STATEMENT_2(label_colon,instantiated_unit,port_map_aspect))
 )
 end)
  in ( LrTable.NT 59, ( result, label_colon1left, SEMICOLON1right), 
@@ -9904,7 +9903,7 @@ label_colon as label_colon1) = label_colon1 ()
  ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.COMPONENT_INSTANTIATION_STATEMENT_3(label_colon, instantiated_unit))
+(W_datatypes.COMPONENT_INSTANTIATION_STATEMENT_3(label_colon,instantiated_unit))
 )
 end)
  in ( LrTable.NT 59, ( result, label_colon1left, SEMICOLON1right), 
@@ -9922,7 +9921,7 @@ end
 generic_map_aspect1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.COMPONENT_INSTANTIATION_STATEMENT_4(label_colon, instantiated_unit, generic_map_aspect))
+(W_datatypes.COMPONENT_INSTANTIATION_STATEMENT_4(label_colon,instantiated_unit,generic_map_aspect))
 )
 end)
  in ( LrTable.NT 59, ( result, label_colon1left, SEMICOLON1right), 
@@ -9935,7 +9934,7 @@ instantiation_list1, instantiation_list1left, _)) :: rest671)) => let
 instantiation_list as instantiation_list1) = instantiation_list1 ()
  val  COLON1 = COLON1 ()
  val  (name as name1) = name1 ()
- in ((W_datatypes.COMPONENT_SPECIFICATION(instantiation_list, name)))
+ in ((W_datatypes.COMPONENT_SPECIFICATION(instantiation_list,name)))
 
 end)
  in ( LrTable.NT 60, ( result, instantiation_list1left, name1right), 
@@ -10001,8 +10000,8 @@ MlyValue.concurrent_assertion_statement (fn _ => let val  (label_colon
  val  (assertion as assertion1) = assertion1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.CONCURRENT_ASSERTION_STATEMENT_1(label_colon, assertion))
-)
+(W_datatypes.CONCURRENT_ASSERTION_STATEMENT_1(label_colon,assertion)))
+
 end)
  in ( LrTable.NT 63, ( result, label_colon1left, SEMICOLON1right), 
 rest671)
@@ -10027,8 +10026,8 @@ MlyValue.label_colon label_colon1, label_colon1left, _)) :: rest671))
  val  (assertion as assertion1) = assertion1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.CONCURRENT_ASSERTION_STATEMENT_1(label_colon, assertion))
-)
+(W_datatypes.CONCURRENT_ASSERTION_STATEMENT_1(label_colon,assertion)))
+
 end)
  in ( LrTable.NT 63, ( result, label_colon1left, SEMICOLON1right), 
 rest671)
@@ -10315,7 +10314,7 @@ label_colon as label_colon1) = label_colon1 ()
  val  (procedure_call as procedure_call1) = procedure_call1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.CONCURRENT_PROCEDURE_CALL_STATEMENT_1(label_colon, procedure_call))
+(W_datatypes.CONCURRENT_PROCEDURE_CALL_STATEMENT_1(label_colon,procedure_call))
 )
 end)
  in ( LrTable.NT 65, ( result, label_colon1left, SEMICOLON1right), 
@@ -10343,7 +10342,7 @@ MlyValue.label_colon label_colon1, label_colon1left, _)) :: rest671))
  val  (procedure_call as procedure_call1) = procedure_call1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.CONCURRENT_PROCEDURE_CALL_STATEMENT_1(label_colon, procedure_call))
+(W_datatypes.CONCURRENT_PROCEDURE_CALL_STATEMENT_1(label_colon,procedure_call))
 )
 end)
  in ( LrTable.NT 65, ( result, label_colon1left, SEMICOLON1right), 
@@ -10372,7 +10371,7 @@ MlyValue.label_colon label_colon1, label_colon1left, _)) :: rest671))
  val  (conditional_signal_assignment as conditional_signal_assignment1
 ) = conditional_signal_assignment1 ()
  in (
-(W_datatypes.CONCURRENT_SIGNAL_ASSIGNMENT_STATEMENT_3(label_colon, conditional_signal_assignment))
+(W_datatypes.CONCURRENT_SIGNAL_ASSIGNMENT_STATEMENT_3(label_colon,conditional_signal_assignment))
 )
 end)
  in ( LrTable.NT 67, ( result, label_colon1left, 
@@ -10402,7 +10401,7 @@ label_colon as label_colon1) = label_colon1 ()
  val  (conditional_signal_assignment as conditional_signal_assignment1
 ) = conditional_signal_assignment1 ()
  in (
-(W_datatypes.CONCURRENT_SIGNAL_ASSIGNMENT_STATEMENT_3(label_colon, conditional_signal_assignment))
+(W_datatypes.CONCURRENT_SIGNAL_ASSIGNMENT_STATEMENT_3(label_colon,conditional_signal_assignment))
 )
 end)
  in ( LrTable.NT 67, ( result, label_colon1left, 
@@ -10431,7 +10430,7 @@ MlyValue.label_colon label_colon1, label_colon1left, _)) :: rest671))
  val  (selected_signal_assignment as selected_signal_assignment1) = 
 selected_signal_assignment1 ()
  in (
-(W_datatypes.CONCURRENT_SIGNAL_ASSIGNMENT_STATEMENT_5(label_colon, selected_signal_assignment))
+(W_datatypes.CONCURRENT_SIGNAL_ASSIGNMENT_STATEMENT_5(label_colon,selected_signal_assignment))
 )
 end)
  in ( LrTable.NT 67, ( result, label_colon1left, 
@@ -10460,7 +10459,7 @@ label_colon as label_colon1) = label_colon1 ()
  val  (selected_signal_assignment as selected_signal_assignment1) = 
 selected_signal_assignment1 ()
  in (
-(W_datatypes.CONCURRENT_SIGNAL_ASSIGNMENT_STATEMENT_5(label_colon, selected_signal_assignment))
+(W_datatypes.CONCURRENT_SIGNAL_ASSIGNMENT_STATEMENT_5(label_colon,selected_signal_assignment))
 )
 end)
  in ( LrTable.NT 67, ( result, label_colon1left, 
@@ -10510,7 +10509,7 @@ end
 conditional_waveforms1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.CONDITIONAL_SIGNAL_ASSIGNMENT_1(target, opts, conditional_waveforms))
+(W_datatypes.CONDITIONAL_SIGNAL_ASSIGNMENT_1(target,opts,conditional_waveforms))
 )
 end)
  in ( LrTable.NT 76, ( result, target1left, SEMICOLON1right), rest671)
@@ -10529,7 +10528,7 @@ waveform as waveform1) = waveform1 ()
  val  (conditional_waveforms as conditional_waveforms1) = 
 conditional_waveforms1 ()
  in (
-(W_datatypes.CONDITIONAL_WAVEFORMS_1(waveform, condition, conditional_waveforms))
+(W_datatypes.CONDITIONAL_WAVEFORMS_1(waveform,condition,conditional_waveforms))
 )
 end)
  in ( LrTable.NT 77, ( result, waveform1left, 
@@ -10542,7 +10541,7 @@ MlyValue.conditional_waveforms (fn _ => let val  (waveform as
 waveform1) = waveform1 ()
  val  WHEN1 = WHEN1 ()
  val  (condition as condition1) = condition1 ()
- in ((W_datatypes.CONDITIONAL_WAVEFORMS_2(waveform, condition)))
+ in ((W_datatypes.CONDITIONAL_WAVEFORMS_2(waveform,condition)))
 end)
  in ( LrTable.NT 77, ( result, waveform1left, condition1right), 
 rest671)
@@ -10581,7 +10580,7 @@ block_configuration1 ()
  val  identifier2 = identifier2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.CONFIGURATION_DECLARATION_1(identifier, name, configuration_declarative_part, block_configuration, identifier))
+(W_datatypes.CONFIGURATION_DECLARATION_1(identifier,name,configuration_declarative_part,block_configuration,identifier))
 )
 end)
  in ( LrTable.NT 78, ( result, CONFIGURATION1left, SEMICOLON1right), 
@@ -10610,7 +10609,7 @@ block_configuration1 ()
  val  CONFIGURATION2 = CONFIGURATION2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.CONFIGURATION_DECLARATION_2(identifier, name, configuration_declarative_part, block_configuration))
+(W_datatypes.CONFIGURATION_DECLARATION_2(identifier,name,configuration_declarative_part,block_configuration))
 )
 end)
  in ( LrTable.NT 78, ( result, CONFIGURATION1left, SEMICOLON1right), 
@@ -10639,7 +10638,7 @@ block_configuration1 ()
  val  identifier2 = identifier2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.CONFIGURATION_DECLARATION_1(identifier, name, configuration_declarative_part, block_configuration, identifier))
+(W_datatypes.CONFIGURATION_DECLARATION_1(identifier,name,configuration_declarative_part,block_configuration,identifier))
 )
 end)
  in ( LrTable.NT 78, ( result, CONFIGURATION1left, SEMICOLON1right), 
@@ -10666,7 +10665,7 @@ block_configuration1 ()
  val  END1 = END1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.CONFIGURATION_DECLARATION_2(identifier, name, configuration_declarative_part, block_configuration))
+(W_datatypes.CONFIGURATION_DECLARATION_2(identifier,name,configuration_declarative_part,block_configuration))
 )
 end)
  in ( LrTable.NT 78, ( result, CONFIGURATION1left, SEMICOLON1right), 
@@ -10787,7 +10786,7 @@ component_specification1 ()
 binding_indication1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.CONFIGURATION_SPECIFICATION(component_specification, binding_indication))
+(W_datatypes.CONFIGURATION_SPECIFICATION(component_specification,binding_indication))
 )
 end)
  in ( LrTable.NT 82, ( result, FOR1left, SEMICOLON1right), rest671)
@@ -10809,7 +10808,7 @@ subtype_indication1 ()
  val  (expression as expression1) = expression1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.CONSTANT_DECLARATION_1(identifier_list, subtype_indication, expression))
+(W_datatypes.CONSTANT_DECLARATION_1(identifier_list,subtype_indication,expression))
 )
 end)
  in ( LrTable.NT 83, ( result, CONSTANT1left, SEMICOLON1right), 
@@ -10828,7 +10827,7 @@ CONSTANT1 = CONSTANT1 ()
 subtype_indication1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.CONSTANT_DECLARATION_2(identifier_list, subtype_indication))
+(W_datatypes.CONSTANT_DECLARATION_2(identifier_list,subtype_indication))
 )
 end)
  in ( LrTable.NT 83, ( result, CONSTANT1left, SEMICOLON1right), 
@@ -10845,7 +10844,7 @@ ARRAY1 ()
  val  (subtype_indication as subtype_indication1) = 
 subtype_indication1 ()
  in (
-(W_datatypes.CONSTRAINED_ARRAY_DEFINITION(index_constraint, subtype_indication))
+(W_datatypes.CONSTRAINED_ARRAY_DEFINITION(index_constraint,subtype_indication))
 )
 end)
  in ( LrTable.NT 84, ( result, ARRAY1left, subtype_indication1right), 
@@ -10862,7 +10861,7 @@ ARRAY1 ()
  val  (subnature_indication as subnature_indication1) = 
 subnature_indication1 ()
  in (
-(W_datatypes.CONSTRAINED_NATURE_DEFINITION(index_constraint, subnature_indication))
+(W_datatypes.CONSTRAINED_NATURE_DEFINITION(index_constraint,subnature_indication))
 )
 end)
  in ( LrTable.NT 417, ( result, ARRAY1left, subnature_indication1right
@@ -10986,7 +10985,7 @@ library_unit1right)) :: ( _, ( MlyValue.context_clause context_clause1
 MlyValue.design_unit (fn _ => let val  (context_clause as 
 context_clause1) = context_clause1 ()
  val  (library_unit as library_unit1) = library_unit1 ()
- in ((W_datatypes.DESIGN_UNIT(context_clause, library_unit)))
+ in ((W_datatypes.DESIGN_UNIT(context_clause,library_unit)))
 end)
  in ( LrTable.NT 93, ( result, context_clause1left, library_unit1right
 ), rest671)
@@ -10995,7 +10994,7 @@ end
 identifier1right)) :: rest671)) => let val  result = 
 MlyValue.designator (fn _ => let val  (identifier as identifier1) = 
 identifier1 ()
- in ((W_datatypes.DESIGNATOR_1(identifier )))
+ in ((W_datatypes.DESIGNATOR_1(identifier)))
 end)
  in ( LrTable.NT 94, ( result, identifier1left, identifier1right), 
 rest671)
@@ -11038,7 +11037,7 @@ DISCONNECT1 ()
  val  (expression as expression1) = expression1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.DISCONNECTION_SPECIFICATION(guarded_signal_specification, expression))
+(W_datatypes.DISCONNECTION_SPECIFICATION(guarded_signal_specification,expression))
 )
 end)
  in ( LrTable.NT 96, ( result, DISCONNECT1left, SEMICOLON1right), 
@@ -11105,7 +11104,7 @@ result = MlyValue.element_association (fn _ => let val  (choices as
 choices1) = choices1 ()
  val  ARROW1 = ARROW1 ()
  val  (expression as expression1) = expression1 ()
- in ((W_datatypes.ELEMENT_ASSOCIATION_1(choices, expression)))
+ in ((W_datatypes.ELEMENT_ASSOCIATION_1(choices,expression)))
 end)
  in ( LrTable.NT 100, ( result, choices1left, expression1right), 
 rest671)
@@ -11131,7 +11130,7 @@ identifier_list1) = identifier_list1 ()
 element_subtype_definition1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.ELEMENT_DECLARATION(identifier_list, element_subtype_definition))
+(W_datatypes.ELEMENT_DECLARATION(identifier_list,element_subtype_definition))
 )
 end)
  in ( LrTable.NT 102, ( result, identifier_list1left, SEMICOLON1right)
@@ -11168,7 +11167,7 @@ result = MlyValue.entity_aspect (fn _ => let val  ENTITY1 = ENTITY1 ()
  val  LPARAN1 = LPARAN1 ()
  val  (identifier as identifier1) = identifier1 ()
  val  RPARAN1 = RPARAN1 ()
- in ((W_datatypes.ENTITY_ASPECT_1(name, identifier)))
+ in ((W_datatypes.ENTITY_ASPECT_1(name,identifier)))
 end)
  in ( LrTable.NT 108, ( result, ENTITY1left, RPARAN1right), rest671)
 
@@ -11378,7 +11377,7 @@ MlyValue.entity_class_entry_list (fn _ => let val  (entity_class_entry
  val  (entity_class_entry_seq as entity_class_entry_seq1) = 
 entity_class_entry_seq1 ()
  in (
-(W_datatypes.ENTITY_CLASS_ENTRY_LIST(entity_class_entry, entity_class_entry_seq))
+(W_datatypes.ENTITY_CLASS_ENTRY_LIST(entity_class_entry,entity_class_entry_seq))
 )
 end)
  in ( LrTable.NT 111, ( result, entity_class_entry1left, 
@@ -11408,7 +11407,7 @@ entity_statement_part1 ()
  val  identifier2 = identifier2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.ENTITY_DECLARATION_1(identifier1, entity_header, entity_declarative_part, entity_statement_part, identifier2))
+(W_datatypes.ENTITY_DECLARATION_1(identifier1,entity_header,entity_declarative_part,entity_statement_part,identifier2))
 )
 end)
  in ( LrTable.NT 112, ( result, ENTITY1left, SEMICOLON1right), rest671
@@ -11433,7 +11432,7 @@ entity_declarative_part1 ()
  val  identifier2 = identifier2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.ENTITY_DECLARATION_2(identifier1, entity_header, entity_declarative_part, identifier2))
+(W_datatypes.ENTITY_DECLARATION_2(identifier1,entity_header,entity_declarative_part,identifier2))
 )
 end)
  in ( LrTable.NT 112, ( result, ENTITY1left, SEMICOLON1right), rest671
@@ -11456,7 +11455,7 @@ entity_declarative_part1 ()
  val  ENTITY2 = ENTITY2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.ENTITY_DECLARATION_3(identifier, entity_header, entity_declarative_part))
+(W_datatypes.ENTITY_DECLARATION_3(identifier,entity_header,entity_declarative_part))
 )
 end)
  in ( LrTable.NT 112, ( result, ENTITY1left, SEMICOLON1right), rest671
@@ -11484,7 +11483,7 @@ entity_statement_part1 ()
  val  ENTITY2 = ENTITY2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.ENTITY_DECLARATION_4(identifier, entity_header, entity_declarative_part, entity_statement_part))
+(W_datatypes.ENTITY_DECLARATION_4(identifier,entity_header,entity_declarative_part,entity_statement_part))
 )
 end)
  in ( LrTable.NT 112, ( result, ENTITY1left, SEMICOLON1right), rest671
@@ -11512,7 +11511,7 @@ entity_statement_part1 ()
  val  identifier2 = identifier2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.ENTITY_DECLARATION_1(identifier1, entity_header, entity_declarative_part, entity_statement_part, identifier))
+(W_datatypes.ENTITY_DECLARATION_1(identifier1,entity_header,entity_declarative_part,entity_statement_part,identifier))
 )
 end)
  in ( LrTable.NT 112, ( result, ENTITY1left, SEMICOLON1right), rest671
@@ -11535,7 +11534,7 @@ entity_declarative_part1 ()
  val  identifier2 = identifier2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.ENTITY_DECLARATION_2(identifier1, entity_header, entity_declarative_part, identifier2))
+(W_datatypes.ENTITY_DECLARATION_2(identifier1,entity_header,entity_declarative_part,identifier2))
 )
 end)
  in ( LrTable.NT 112, ( result, ENTITY1left, SEMICOLON1right), rest671
@@ -11557,7 +11556,7 @@ entity_declarative_part1 ()
  val  END1 = END1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.ENTITY_DECLARATION_3(identifier, entity_header, entity_declarative_part))
+(W_datatypes.ENTITY_DECLARATION_3(identifier,entity_header,entity_declarative_part))
 )
 end)
  in ( LrTable.NT 112, ( result, ENTITY1left, SEMICOLON1right), rest671
@@ -11584,7 +11583,7 @@ entity_statement_part1 ()
  val  END1 = END1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.ENTITY_DECLARATION_4(identifier, entity_header, entity_declarative_part, entity_statement_part))
+(W_datatypes.ENTITY_DECLARATION_4(identifier,entity_header,entity_declarative_part,entity_statement_part))
 )
 end)
  in ( LrTable.NT 112, ( result, ENTITY1left, SEMICOLON1right), rest671
@@ -11860,7 +11859,7 @@ end
 rest671)) => let val  result = MlyValue.entity_designator (fn _ => let
  val  (entity_tag as entity_tag1) = entity_tag1 ()
  val  (signatur as signatur1) = signatur1 ()
- in ((W_datatypes.ENTITY_DESIGNATOR_1(entity_tag, signatur)))
+ in ((W_datatypes.ENTITY_DESIGNATOR_1(entity_tag,signatur)))
 end)
  in ( LrTable.NT 115, ( result, entity_tag1left, signatur1right), 
 rest671)
@@ -11880,7 +11879,7 @@ port_clause1right)) :: ( _, ( MlyValue.generic_clause generic_clause1,
 MlyValue.entity_header (fn _ => let val  (generic_clause as 
 generic_clause1) = generic_clause1 ()
  val  (port_clause as port_clause1) = port_clause1 ()
- in ((W_datatypes.ENTITY_HEADER_1(generic_clause, port_clause)))
+ in ((W_datatypes.ENTITY_HEADER_1(generic_clause,port_clause)))
 end)
  in ( LrTable.NT 116, ( result, generic_clause1left, port_clause1right
 ), rest671)
@@ -11916,7 +11915,7 @@ entity_designator1 ()
  val  (entity_designator_seq as entity_designator_seq1) = 
 entity_designator_seq1 ()
  in (
-(W_datatypes.ENTITY_NAME_LIST(entity_designator, entity_designator_seq))
+(W_datatypes.ENTITY_NAME_LIST(entity_designator,entity_designator_seq))
 )
 end)
  in ( LrTable.NT 117, ( result, entity_designator1left, 
@@ -11945,9 +11944,8 @@ entity_class1right)) :: ( _, ( MlyValue.COLON COLON1, _, _)) :: ( _, (
 entity_name_list1 ()
  val  COLON1 = COLON1 ()
  val  (entity_class as entity_class1) = entity_class1 ()
- in (
-(W_datatypes.ENTITY_SPECIFICATION(entity_name_list, entity_class)))
-
+ in ((W_datatypes.ENTITY_SPECIFICATION(entity_name_list,entity_class))
+)
 end)
  in ( LrTable.NT 118, ( result, entity_name_list1left, 
 entity_class1right), rest671)
@@ -12091,7 +12089,7 @@ enumeration_literal1 ()
 enumeration_literal_seq1 ()
  val  RPARAN1 = RPARAN1 ()
  in (
-(W_datatypes.ENUMERATION_TYPE_DEFINITION(enumeration_literal, enumeration_literal_seq))
+(W_datatypes.ENUMERATION_TYPE_DEFINITION(enumeration_literal,enumeration_literal_seq))
 )
 end)
  in ( LrTable.NT 123, ( result, LPARAN1left, RPARAN1right), rest671)
@@ -12109,8 +12107,7 @@ label_colon as label_colon1) = label_colon1 ()
  val  WHEN1 = WHEN1 ()
  val  (condition as condition1) = condition1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
- in (
-(W_datatypes.EXIT_STATEMENT_1(label_colon, identifier, condition)))
+ in ((W_datatypes.EXIT_STATEMENT_1(label_colon,identifier,condition)))
 
 end)
  in ( LrTable.NT 124, ( result, label_colon1left, SEMICOLON1right), 
@@ -12126,7 +12123,7 @@ EXIT1 ()
  val  WHEN1 = WHEN1 ()
  val  (condition as condition1) = condition1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
- in ((W_datatypes.EXIT_STATEMENT_2(identifier, condition)))
+ in ((W_datatypes.EXIT_STATEMENT_2(identifier,condition)))
 end)
  in ( LrTable.NT 124, ( result, EXIT1left, SEMICOLON1right), rest671)
 
@@ -12141,7 +12138,7 @@ rest671)) => let val  result = MlyValue.exit_statement (fn _ => let
  val  WHEN1 = WHEN1 ()
  val  (condition as condition1) = condition1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
- in ((W_datatypes.EXIT_STATEMENT_7(label_colon, condition)))
+ in ((W_datatypes.EXIT_STATEMENT_7(label_colon,condition)))
 end)
  in ( LrTable.NT 124, ( result, label_colon1left, SEMICOLON1right), 
 rest671)
@@ -12190,7 +12187,7 @@ MlyValue.exit_statement (fn _ => let val  (label_colon as label_colon1
  val  EXIT1 = EXIT1 ()
  val  (identifier as identifier1) = identifier1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
- in ((W_datatypes.EXIT_STATEMENT_4(label_colon, identifier)))
+ in ((W_datatypes.EXIT_STATEMENT_4(label_colon,identifier)))
 end)
  in ( LrTable.NT 124, ( result, label_colon1left, SEMICOLON1right), 
 rest671)
@@ -12242,7 +12239,7 @@ end
  (fn _ => let val  primary1 = primary1 ()
  val  EXPT1 = EXPT1 ()
  val  primary2 = primary2 ()
- in ((W_datatypes.FACTOR_1(primary1, primary2)))
+ in ((W_datatypes.FACTOR_1(primary1,primary2)))
 end)
  in ( LrTable.NT 130, ( result, primary1left, primary2right), rest671)
 
@@ -12286,7 +12283,7 @@ subtype_indication1 ()
 file_open_information1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.FILE_DECLARATION_1(identifier_list, subtype_indication, file_open_information))
+(W_datatypes.FILE_DECLARATION_1(identifier_list,subtype_indication,file_open_information))
 )
 end)
  in ( LrTable.NT 131, ( result, FILE1left, SEMICOLON1right), rest671)
@@ -12304,7 +12301,7 @@ MlyValue.file_declaration (fn _ => let val  FILE1 = FILE1 ()
 subtype_indication1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.FILE_DECLARATION_2(identifier_list, subtype_indication)))
+(W_datatypes.FILE_DECLARATION_2(identifier_list,subtype_indication)))
 
 end)
  in ( LrTable.NT 131, ( result, FILE1left, SEMICOLON1right), rest671)
@@ -12329,7 +12326,7 @@ MlyValue.file_open_information (fn _ => let val  OPEN1 = OPEN1 ()
  val  (file_logical_name as file_logical_name1) = file_logical_name1
  ()
  in (
-(W_datatypes.FILE_OPEN_INFORMATION_1(expression, file_logical_name)))
+(W_datatypes.FILE_OPEN_INFORMATION_1(expression,file_logical_name)))
 
 end)
  in ( LrTable.NT 134, ( result, OPEN1left, file_logical_name1right), 
@@ -12385,7 +12382,7 @@ identifier1 ()
  val  LPARAN1 = LPARAN1 ()
  val  (explicit_range as explicit_range1) = explicit_range1 ()
  val  RPARAN1 = RPARAN1 ()
- in ((W_datatypes.FORMAL_PART_2(identifier, explicit_range)))
+ in ((W_datatypes.FORMAL_PART_2(identifier,explicit_range)))
 end)
  in ( LrTable.NT 142, ( result, identifier1left, RPARAN1right), 
 rest671)
@@ -12406,7 +12403,7 @@ subtype_indication1 ()
  val  (expression as expression1) = expression1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-W_datatypes.FREE_QUANTITY_DECLARATION_1(identifier_list, subtype_indication, expression)
+W_datatypes.FREE_QUANTITY_DECLARATION_1(identifier_list,subtype_indication,expression)
 )
 end)
  in ( LrTable.NT 441, ( result, QUANTITY1left, SEMICOLON1right), 
@@ -12425,7 +12422,7 @@ QUANTITY1 = QUANTITY1 ()
 subtype_indication1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-W_datatypes.FREE_QUANTITY_DECLARATION_2(identifier_list, subtype_indication)
+W_datatypes.FREE_QUANTITY_DECLARATION_2(identifier_list,subtype_indication)
 )
 end)
  in ( LrTable.NT 441, ( result, QUANTITY1left, SEMICOLON1right), 
@@ -12678,7 +12675,7 @@ group_constituent1 ()
  val  (group_constituent_seq as group_constituent_seq1) = 
 group_constituent_seq1 ()
  in (
-(W_datatypes.GROUP_CONSTITUENT_LIST(group_constituent, group_constituent_seq))
+(W_datatypes.GROUP_CONSTITUENT_LIST(group_constituent,group_constituent_seq))
 )
 end)
  in ( LrTable.NT 154, ( result, group_constituent1left, 
@@ -12699,7 +12696,7 @@ group_constituent_list1 ()
  val  RPARAN1 = RPARAN1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.GROUP_DECLARATION(label_colon, name, group_constituent_list))
+(W_datatypes.GROUP_DECLARATION(label_colon,name,group_constituent_list))
 )
 end)
  in ( LrTable.NT 155, ( result, GROUP1left, SEMICOLON1right), rest671)
@@ -12721,7 +12718,7 @@ entity_class_entry_list1 ()
  val  RPARAN1 = RPARAN1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.GROUP_TEMPLATE_DECLARATION(identifier, entity_class_entry_list))
+(W_datatypes.GROUP_TEMPLATE_DECLARATION(identifier,entity_class_entry_list))
 )
 end)
  in ( LrTable.NT 156, ( result, GROUP1left, SEMICOLON1right), rest671)
@@ -12734,9 +12731,9 @@ MlyValue.guarded_signal_specification (fn _ => let val  (signal_list
  as signal_list1) = signal_list1 ()
  val  COLON1 = COLON1 ()
  val  (name as name1) = name1 ()
- in ((W_datatypes.GUARDED_SIGNAL_SPECIFICATION(signal_list, name)))
-
-end)
+ in ((W_datatypes.GUARDED_SIGNAL_SPECIFICATION(signal_list,name)))
+end
+)
  in ( LrTable.NT 157, ( result, signal_list1left, name1right), rest671
 )
 end
@@ -12780,7 +12777,7 @@ identifier1left, _)) :: rest671)) => let val  result =
 MlyValue.identifier_list (fn _ => let val  (identifier as identifier1)
  = identifier1 ()
  val  (identifier_seq as identifier_seq1) = identifier_seq1 ()
- in ((W_datatypes.IDENTIFIER_LIST(identifier, identifier_seq)))
+ in ((W_datatypes.IDENTIFIER_LIST(identifier,identifier_seq)))
 end)
  in ( LrTable.NT 159, ( result, identifier1left, identifier_seq1right)
 , rest671)
@@ -12795,7 +12792,7 @@ ELSIF1 ()
  val  THEN1 = THEN1 ()
  val  (sequence_of_statements as sequence_of_statements1) = 
 sequence_of_statements1 ()
- in ((W_datatypes.IF_STATEMENT1(condition, sequence_of_statements)))
+ in ((W_datatypes.IF_STATEMENT1(condition,sequence_of_statements)))
 
 end)
  in ( LrTable.NT 380, ( result, ELSIF1left, 
@@ -12840,7 +12837,7 @@ MlyValue.if_statement (fn _ => let val  (label_colon as label_colon1)
  val  (identifier as identifier1) = identifier1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.IF_STATEMENT_1(label_colon, condition, sequence_of_statements1, if_statement_seq, sequence_of_statements2, identifier))
+(W_datatypes.IF_STATEMENT_1(label_colon,condition,sequence_of_statements1,if_statement_seq,sequence_of_statements2,identifier))
 )
 end)
  in ( LrTable.NT 161, ( result, label_colon1left, SEMICOLON1right), 
@@ -12867,7 +12864,7 @@ MlyValue.if_statement (fn _ => let val  IF1 = IF1 ()
  val  (identifier as identifier1) = identifier1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.IF_STATEMENT_2(condition, sequence_of_statements1, if_statement_seq, sequence_of_statements2, identifier))
+(W_datatypes.IF_STATEMENT_2(condition,sequence_of_statements1,if_statement_seq,sequence_of_statements2,identifier))
 )
 end)
  in ( LrTable.NT 161, ( result, IF1left, SEMICOLON1right), rest671)
@@ -12894,7 +12891,7 @@ sequence_of_statements1 ()
  val  (identifier as identifier1) = identifier1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.IF_STATEMENT_3(label_colon, condition, sequence_of_statements, if_statement_seq, identifier))
+(W_datatypes.IF_STATEMENT_3(label_colon,condition,sequence_of_statements,if_statement_seq,identifier))
 )
 end)
  in ( LrTable.NT 161, ( result, label_colon1left, SEMICOLON1right), 
@@ -12919,7 +12916,7 @@ sequence_of_statements1 ()
  val  (identifier as identifier1) = identifier1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.IF_STATEMENT_4(condition, sequence_of_statements, if_statement_seq, identifier))
+(W_datatypes.IF_STATEMENT_4(condition,sequence_of_statements,if_statement_seq,identifier))
 )
 end)
  in ( LrTable.NT 161, ( result, IF1left, SEMICOLON1right), rest671)
@@ -12944,7 +12941,7 @@ sequence_of_statements1 ()
  val  IF2 = IF2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.IF_STATEMENT_5(label_colon, condition, sequence_of_statements, if_statement_seq))
+(W_datatypes.IF_STATEMENT_5(label_colon,condition,sequence_of_statements,if_statement_seq))
 )
 end)
  in ( LrTable.NT 161, ( result, label_colon1left, SEMICOLON1right), 
@@ -12967,7 +12964,7 @@ sequence_of_statements1 ()
  val  IF2 = IF2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.IF_STATEMENT_6(condition, sequence_of_statements, if_statement_seq))
+(W_datatypes.IF_STATEMENT_6(condition,sequence_of_statements,if_statement_seq))
 )
 end)
  in ( LrTable.NT 161, ( result, IF1left, SEMICOLON1right), rest671)
@@ -12995,7 +12992,7 @@ label_colon as label_colon1) = label_colon1 ()
  val  IF2 = IF2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.IF_STATEMENT_7(label_colon, condition, sequence_of_statements1, if_statement_seq, sequence_of_statements2))
+(W_datatypes.IF_STATEMENT_7(label_colon,condition,sequence_of_statements1,if_statement_seq,sequence_of_statements2))
 )
 end)
  in ( LrTable.NT 161, ( result, label_colon1left, SEMICOLON1right), 
@@ -13021,7 +13018,7 @@ IF1 ()
  val  IF2 = IF2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.IF_STATEMENT_8(condition, sequence_of_statements1, if_statement_seq, sequence_of_statements2))
+(W_datatypes.IF_STATEMENT_8(condition,sequence_of_statements1,if_statement_seq,sequence_of_statements2))
 )
 end)
  in ( LrTable.NT 161, ( result, IF1left, SEMICOLON1right), rest671)
@@ -13037,9 +13034,8 @@ result = MlyValue.index_constraint (fn _ => let val  LPARAN1 = LPARAN1
  val  (discrete_range_seq as discrete_range_seq1) = 
 discrete_range_seq1 ()
  val  RPARAN1 = RPARAN1 ()
- in (
-(W_datatypes.INDEX_CONSTRAINT(discrete_range, discrete_range_seq)))
-
+ in ((W_datatypes.INDEX_CONSTRAINT(discrete_range,discrete_range_seq))
+)
 end)
  in ( LrTable.NT 162, ( result, LPARAN1left, RPARAN1right), rest671)
 
@@ -13069,7 +13065,7 @@ MlyValue.index_subtype_definition (fn _ => let val  (name as name1) =
 name1 ()
  val  RANGE1 = RANGE1 ()
  val  BOX1 = BOX1 ()
- in ((W_datatypes.INDEX_SUBTYPE_DEFINITION(name )))
+ in ((W_datatypes.INDEX_SUBTYPE_DEFINITION(name)))
 end)
  in ( LrTable.NT 163, ( result, name1left, BOX1right), rest671)
 end
@@ -13100,7 +13096,7 @@ ENTITY1 ()
  val  LPARAN1 = LPARAN1 ()
  val  (identifier as identifier1) = identifier1 ()
  val  RPARAN1 = RPARAN1 ()
- in ((W_datatypes.INSTANTIATED_UNIT_2(name, identifier)))
+ in ((W_datatypes.INSTANTIATED_UNIT_2(name,identifier)))
 end)
  in ( LrTable.NT 165, ( result, ENTITY1left, RPARAN1right), rest671)
 
@@ -13130,9 +13126,8 @@ identifier1left, _)) :: rest671)) => let val  result =
 MlyValue.instantiation_list (fn _ => let val  (identifier as 
 identifier1) = identifier1 ()
  val  (identifier_seq as identifier_seq1) = identifier_seq1 ()
- in ((W_datatypes.INSTANTIATION_LIST(identifier, identifier_seq)))
-end
-)
+ in ((W_datatypes.INSTANTIATION_LIST(identifier,identifier_seq)))
+end)
  in ( LrTable.NT 166, ( result, identifier1left, identifier_seq1right)
 , rest671)
 end
@@ -13167,7 +13162,7 @@ subtype_indication1 ()
  val  ASSIGN1 = ASSIGN1 ()
  val  (expression as expression1) = expression1 ()
  in (
-(W_datatypes.INTERFACE_CONSTANT_DECLARATION_1(identifier_list, subtype_indication, expression))
+(W_datatypes.INTERFACE_CONSTANT_DECLARATION_1(identifier_list,subtype_indication,expression))
 )
 end)
  in ( LrTable.NT 170, ( result, CONSTANT1left, expression1right), 
@@ -13186,7 +13181,7 @@ CONSTANT1 ()
  val  (subtype_indication as subtype_indication1) = 
 subtype_indication1 ()
  in (
-(W_datatypes.INTERFACE_CONSTANT_DECLARATION_2(identifier_list, subtype_indication))
+(W_datatypes.INTERFACE_CONSTANT_DECLARATION_2(identifier_list,subtype_indication))
 )
 end)
  in ( LrTable.NT 170, ( result, CONSTANT1left, 
@@ -13207,7 +13202,7 @@ subtype_indication1 ()
  val  ASSIGN1 = ASSIGN1 ()
  val  (expression as expression1) = expression1 ()
  in (
-(W_datatypes.INTERFACE_CONSTANT_DECLARATION_1(identifier_list, subtype_indication, expression))
+(W_datatypes.INTERFACE_CONSTANT_DECLARATION_1(identifier_list,subtype_indication,expression))
 )
 end)
  in ( LrTable.NT 170, ( result, identifier_list1left, expression1right
@@ -13224,7 +13219,7 @@ identifier_list as identifier_list1) = identifier_list1 ()
  val  (subtype_indication as subtype_indication1) = 
 subtype_indication1 ()
  in (
-(W_datatypes.INTERFACE_CONSTANT_DECLARATION_2(identifier_list, subtype_indication))
+(W_datatypes.INTERFACE_CONSTANT_DECLARATION_2(identifier_list,subtype_indication))
 )
 end)
  in ( LrTable.NT 170, ( result, identifier_list1left, 
@@ -13245,7 +13240,7 @@ subtype_indication1 ()
  val  ASSIGN1 = ASSIGN1 ()
  val  (expression as expression1) = expression1 ()
  in (
-(W_datatypes.INTERFACE_CONSTANT_DECLARATION_1(identifier_list, subtype_indication, expression))
+(W_datatypes.INTERFACE_CONSTANT_DECLARATION_1(identifier_list,subtype_indication,expression))
 )
 end)
  in ( LrTable.NT 170, ( result, CONSTANT1left, expression1right), 
@@ -13262,7 +13257,7 @@ MlyValue.CONSTANT CONSTANT1, CONSTANT1left, _)) :: rest671)) => let
  val  (subtype_indication as subtype_indication1) = 
 subtype_indication1 ()
  in (
-(W_datatypes.INTERFACE_CONSTANT_DECLARATION_2(identifier_list, subtype_indication))
+(W_datatypes.INTERFACE_CONSTANT_DECLARATION_2(identifier_list,subtype_indication))
 )
 end)
  in ( LrTable.NT 170, ( result, CONSTANT1left, 
@@ -13281,7 +13276,7 @@ subtype_indication1 ()
  val  ASSIGN1 = ASSIGN1 ()
  val  (expression as expression1) = expression1 ()
  in (
-(W_datatypes.INTERFACE_CONSTANT_DECLARATION_1(identifier_list, subtype_indication, expression))
+(W_datatypes.INTERFACE_CONSTANT_DECLARATION_1(identifier_list,subtype_indication,expression))
 )
 end)
  in ( LrTable.NT 170, ( result, identifier_list1left, expression1right
@@ -13297,7 +13292,7 @@ identifier_list as identifier_list1) = identifier_list1 ()
  val  (subtype_indication as subtype_indication1) = 
 subtype_indication1 ()
  in (
-(W_datatypes.INTERFACE_CONSTANT_DECLARATION_2(identifier_list, subtype_indication))
+(W_datatypes.INTERFACE_CONSTANT_DECLARATION_2(identifier_list,subtype_indication))
 )
 end)
  in ( LrTable.NT 170, ( result, identifier_list1left, 
@@ -13419,7 +13414,7 @@ MlyValue.interface_file_declaration (fn _ => let val  FILE1 = FILE1 ()
  val  (subtype_indication as subtype_indication1) = 
 subtype_indication1 ()
  in (
-(W_datatypes.INTERFACE_FILE_DECLARATION(identifier_list, subtype_indication))
+(W_datatypes.INTERFACE_FILE_DECLARATION(identifier_list,subtype_indication))
 )
 end)
  in ( LrTable.NT 173, ( result, FILE1left, subtype_indication1right), 
@@ -13513,8 +13508,8 @@ interface_element1 ()
  val  (interface_element_seq as interface_element_seq1) = 
 interface_element_seq1 ()
  in (
-(W_datatypes.INTERFACE_LIST(interface_element, interface_element_seq))
-)
+(W_datatypes.INTERFACE_LIST(interface_element,interface_element_seq)))
+
 end)
  in ( LrTable.NT 176, ( result, interface_element1left, 
 interface_element_seq1right), rest671)
@@ -13793,7 +13788,7 @@ subtype_indication1 ()
  val  ASSIGN1 = ASSIGN1 ()
  val  (expression as expression1) = expression1 ()
  in (
-(W_datatypes.INTERFACE_SIGNAL_DECLARATION_3(identifier_list,signal_mode, subtype_indication, expression))
+(W_datatypes.INTERFACE_SIGNAL_DECLARATION_3(identifier_list,signal_mode,subtype_indication,expression))
 )
 end)
  in ( LrTable.NT 181, ( result, SIGNAL1left, expression1right), 
@@ -13813,7 +13808,7 @@ COLON1, _, _)) :: ( _, ( MlyValue.identifier_list identifier_list1, _,
 subtype_indication1 ()
  val  BUS1 = BUS1 ()
  in (
-(W_datatypes.INTERFACE_SIGNAL_DECLARATION_4(identifier_list,signal_mode, subtype_indication))
+(W_datatypes.INTERFACE_SIGNAL_DECLARATION_4(identifier_list,signal_mode,subtype_indication))
 )
 end)
  in ( LrTable.NT 181, ( result, SIGNAL1left, BUS1right), rest671)
@@ -13834,7 +13829,7 @@ subtype_indication1 ()
  val  ASSIGN1 = ASSIGN1 ()
  val  (expression as expression1) = expression1 ()
  in (
-(W_datatypes.INTERFACE_SIGNAL_DECLARATION_1(identifier_list, subtype_indication, expression))
+(W_datatypes.INTERFACE_SIGNAL_DECLARATION_1(identifier_list,subtype_indication,expression))
 )
 end)
  in ( LrTable.NT 181, ( result, SIGNAL1left, expression1right), 
@@ -13853,7 +13848,7 @@ SIGNAL1 ()
 subtype_indication1 ()
  val  BUS1 = BUS1 ()
  in (
-(W_datatypes.INTERFACE_SIGNAL_DECLARATION_2(identifier_list, subtype_indication))
+(W_datatypes.INTERFACE_SIGNAL_DECLARATION_2(identifier_list,subtype_indication))
 )
 end)
  in ( LrTable.NT 181, ( result, SIGNAL1left, BUS1right), rest671)
@@ -13873,7 +13868,7 @@ subtype_indication1 ()
  val  ASSIGN1 = ASSIGN1 ()
  val  (expression as expression1) = expression1 ()
  in (
-(W_datatypes.INTERFACE_SIGNAL_DECLARATION_1(identifier_list, subtype_indication, expression))
+(W_datatypes.INTERFACE_SIGNAL_DECLARATION_1(identifier_list,subtype_indication,expression))
 )
 end)
  in ( LrTable.NT 181, ( result, SIGNAL1left, expression1right), 
@@ -13890,7 +13885,7 @@ SIGNAL1 = SIGNAL1 ()
  val  (subtype_indication as subtype_indication1) = 
 subtype_indication1 ()
  in (
-(W_datatypes.INTERFACE_SIGNAL_DECLARATION_2(identifier_list, subtype_indication))
+(W_datatypes.INTERFACE_SIGNAL_DECLARATION_2(identifier_list,subtype_indication))
 )
 end)
  in ( LrTable.NT 181, ( result, SIGNAL1left, subtype_indication1right)
@@ -13912,7 +13907,7 @@ subtype_indication1 ()
  val  ASSIGN1 = ASSIGN1 ()
  val  (expression as expression1) = expression1 ()
  in (
-(W_datatypes.INTERFACE_SIGNAL_DECLARATION_3(identifier_list,signal_mode, subtype_indication, expression))
+(W_datatypes.INTERFACE_SIGNAL_DECLARATION_3(identifier_list,signal_mode,subtype_indication,expression))
 )
 end)
  in ( LrTable.NT 181, ( result, SIGNAL1left, expression1right), 
@@ -13931,7 +13926,7 @@ SIGNAL1 = SIGNAL1 ()
  val  (subtype_indication as subtype_indication1) = 
 subtype_indication1 ()
  in (
-(W_datatypes.INTERFACE_SIGNAL_DECLARATION_4(identifier_list,signal_mode, subtype_indication))
+(W_datatypes.INTERFACE_SIGNAL_DECLARATION_4(identifier_list,signal_mode,subtype_indication))
 )
 end)
  in ( LrTable.NT 181, ( result, SIGNAL1left, subtype_indication1right)
@@ -13948,7 +13943,7 @@ end
  val  (subnature_indication as subnature_indication1) = 
 subnature_indication1 ()
  in (
-W_datatypes.INTERFACE_TERMINAL_DECLARATION(identifier_list, subnature_indication)
+W_datatypes.INTERFACE_TERMINAL_DECLARATION(identifier_list,subnature_indication)
 )
 end)
  in ( LrTable.NT 444, ( result, TERMINAL1left, 
@@ -13970,7 +13965,7 @@ subtype_indication1 ()
  val  ASSIGN1 = ASSIGN1 ()
  val  (expression as expression1) = expression1 ()
  in (
-(W_datatypes.INTERFACE_VARIABLE_DECLARATION_1(identifier_list,signal_mode , subtype_indication, expression))
+(W_datatypes.INTERFACE_VARIABLE_DECLARATION_1(identifier_list,signal_mode ,subtype_indication,expression))
 )
 end)
  in ( LrTable.NT 185, ( result, VARIABLE1left, expression1right), 
@@ -13989,7 +13984,7 @@ MlyValue.VARIABLE VARIABLE1, VARIABLE1left, _)) :: rest671)) => let
  val  (subtype_indication as subtype_indication1) = 
 subtype_indication1 ()
  in (
-(W_datatypes.INTERFACE_VARIABLE_DECLARATION_2(identifier_list,signal_mode, subtype_indication))
+(W_datatypes.INTERFACE_VARIABLE_DECLARATION_2(identifier_list,signal_mode,subtype_indication))
 )
 end)
  in ( LrTable.NT 185, ( result, VARIABLE1left, 
@@ -14010,7 +14005,7 @@ subtype_indication1 ()
  val  ASSIGN1 = ASSIGN1 ()
  val  (expression as expression1) = expression1 ()
  in (
-(W_datatypes.INTERFACE_VARIABLE_DECLARATION_3(identifier_list , subtype_indication, expression))
+(W_datatypes.INTERFACE_VARIABLE_DECLARATION_3(identifier_list ,subtype_indication,expression))
 )
 end)
  in ( LrTable.NT 185, ( result, VARIABLE1left, expression1right), 
@@ -14027,7 +14022,7 @@ MlyValue.VARIABLE VARIABLE1, VARIABLE1left, _)) :: rest671)) => let
  val  (subtype_indication as subtype_indication1) = 
 subtype_indication1 ()
  in (
-(W_datatypes.INTERFACE_VARIABLE_DECLARATION_4(identifier_list, subtype_indication))
+(W_datatypes.INTERFACE_VARIABLE_DECLARATION_4(identifier_list,subtype_indication))
 )
 end)
  in ( LrTable.NT 185, ( result, VARIABLE1left, 
@@ -14048,7 +14043,7 @@ subtype_indication1 ()
  val  ASSIGN1 = ASSIGN1 ()
  val  (expression as expression1) = expression1 ()
  in (
-(W_datatypes.INTERFACE_VARIABLE_DECLARATION_1(identifier_list,signal_mode , subtype_indication, expression))
+(W_datatypes.INTERFACE_VARIABLE_DECLARATION_1(identifier_list,signal_mode ,subtype_indication,expression))
 )
 end)
  in ( LrTable.NT 185, ( result, identifier_list1left, expression1right
@@ -14066,7 +14061,7 @@ identifier_list as identifier_list1) = identifier_list1 ()
  val  (subtype_indication as subtype_indication1) = 
 subtype_indication1 ()
  in (
-(W_datatypes.INTERFACE_VARIABLE_DECLARATION_2(identifier_list,signal_mode, subtype_indication))
+(W_datatypes.INTERFACE_VARIABLE_DECLARATION_2(identifier_list,signal_mode,subtype_indication))
 )
 end)
  in ( LrTable.NT 185, ( result, identifier_list1left, 
@@ -14085,7 +14080,7 @@ subtype_indication1 ()
  val  ASSIGN1 = ASSIGN1 ()
  val  (expression as expression1) = expression1 ()
  in (
-(W_datatypes.INTERFACE_VARIABLE_DECLARATION_3(identifier_list , subtype_indication, expression))
+(W_datatypes.INTERFACE_VARIABLE_DECLARATION_3(identifier_list ,subtype_indication,expression))
 )
 end)
  in ( LrTable.NT 185, ( result, identifier_list1left, expression1right
@@ -14101,7 +14096,7 @@ identifier_list as identifier_list1) = identifier_list1 ()
  val  (subtype_indication as subtype_indication1) = 
 subtype_indication1 ()
  in (
-(W_datatypes.INTERFACE_VARIABLE_DECLARATION_4(identifier_list, subtype_indication))
+(W_datatypes.INTERFACE_VARIABLE_DECLARATION_4(identifier_list,subtype_indication))
 )
 end)
  in ( LrTable.NT 185, ( result, identifier_list1left, 
@@ -14233,7 +14228,7 @@ logical_name_seq1right)) :: ( _, ( MlyValue.logical_name logical_name1
 MlyValue.logical_name_list (fn _ => let val  (logical_name as 
 logical_name1) = logical_name1 ()
  val  (logical_name_seq as logical_name_seq1) = logical_name_seq1 ()
- in ((W_datatypes.LOGICAL_NAME_LIST(logical_name, logical_name_seq)))
+ in ((W_datatypes.LOGICAL_NAME_LIST(logical_name,logical_name_seq)))
 
 end)
  in ( LrTable.NT 192, ( result, logical_name1left, 
@@ -14299,7 +14294,7 @@ sequence_of_statements1 ()
  val  (identifier as identifier1) = identifier1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.LOOP_STATEMENT_1(label_colon, iteration_scheme, sequence_of_statements, identifier))
+(W_datatypes.LOOP_STATEMENT_1(label_colon,iteration_scheme,sequence_of_statements,identifier))
 )
 end)
  in ( LrTable.NT 194, ( result, label_colon1left, SEMICOLON1right), 
@@ -14321,7 +14316,7 @@ sequence_of_statements1 ()
  val  (identifier as identifier1) = identifier1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.LOOP_STATEMENT_2(label_colon, sequence_of_statements, identifier))
+(W_datatypes.LOOP_STATEMENT_2(label_colon,sequence_of_statements,identifier))
 )
 end)
  in ( LrTable.NT 194, ( result, label_colon1left, SEMICOLON1right), 
@@ -14343,7 +14338,7 @@ sequence_of_statements1 ()
  val  LOOP2 = LOOP2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.LOOP_STATEMENT_3(label_colon, iteration_scheme, sequence_of_statements))
+(W_datatypes.LOOP_STATEMENT_3(label_colon,iteration_scheme,sequence_of_statements))
 )
 end)
  in ( LrTable.NT 194, ( result, label_colon1left, SEMICOLON1right), 
@@ -14363,7 +14358,7 @@ sequence_of_statements1 ()
  val  LOOP2 = LOOP2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.LOOP_STATEMENT_4(label_colon, sequence_of_statements)))
+(W_datatypes.LOOP_STATEMENT_4(label_colon,sequence_of_statements)))
 
 end)
  in ( LrTable.NT 194, ( result, label_colon1left, SEMICOLON1right), 
@@ -14384,7 +14379,7 @@ sequence_of_statements1 ()
  val  LOOP2 = LOOP2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.LOOP_STATEMENT_5(iteration_scheme, sequence_of_statements))
+(W_datatypes.LOOP_STATEMENT_5(iteration_scheme,sequence_of_statements))
 )
 end)
  in ( LrTable.NT 194, ( result, iteration_scheme1left, SEMICOLON1right
@@ -14423,7 +14418,7 @@ sequence_of_statements1 ()
  val  (identifier as identifier1) = identifier1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.LOOP_STATEMENT_7(iteration_scheme, sequence_of_statements, identifier))
+(W_datatypes.LOOP_STATEMENT_7(iteration_scheme,sequence_of_statements,identifier))
 )
 end)
  in ( LrTable.NT 194, ( result, iteration_scheme1left, SEMICOLON1right
@@ -14441,9 +14436,8 @@ sequence_of_statements1 ()
  val  LOOP2 = LOOP2 ()
  val  (identifier as identifier1) = identifier1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
- in (
-(W_datatypes.LOOP_STATEMENT_8(sequence_of_statements, identifier)))
-
+ in ((W_datatypes.LOOP_STATEMENT_8(sequence_of_statements,identifier))
+)
 end)
  in ( LrTable.NT 194, ( result, LOOP1left, SEMICOLON1right), rest671)
 
@@ -14816,8 +14810,7 @@ label_colon as label_colon1) = label_colon1 ()
  val  WHEN1 = WHEN1 ()
  val  (condition as condition1) = condition1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
- in (
-(W_datatypes.NEXT_STATEMENT_1(label_colon, identifier, condition)))
+ in ((W_datatypes.NEXT_STATEMENT_1(label_colon,identifier,condition)))
 
 end)
  in ( LrTable.NT 199, ( result, label_colon1left, SEMICOLON1right), 
@@ -14833,7 +14826,7 @@ NEXT1 ()
  val  WHEN1 = WHEN1 ()
  val  (condition as condition1) = condition1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
- in ((W_datatypes.NEXT_STATEMENT_8(identifier, condition)))
+ in ((W_datatypes.NEXT_STATEMENT_8(identifier,condition)))
 end)
  in ( LrTable.NT 199, ( result, NEXT1left, SEMICOLON1right), rest671)
 
@@ -14848,7 +14841,7 @@ rest671)) => let val  result = MlyValue.next_statement (fn _ => let
  val  WHEN1 = WHEN1 ()
  val  (condition as condition1) = condition1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
- in ((W_datatypes.NEXT_STATEMENT_2(label_colon, condition)))
+ in ((W_datatypes.NEXT_STATEMENT_2(label_colon,condition)))
 end)
  in ( LrTable.NT 199, ( result, label_colon1left, SEMICOLON1right), 
 rest671)
@@ -14898,7 +14891,7 @@ MlyValue.next_statement (fn _ => let val  (label_colon as label_colon1
  val  NEXT1 = NEXT1 ()
  val  (identifier as identifier1) = identifier1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
- in ((W_datatypes.NEXT_STATEMENT_5(label_colon, identifier)))
+ in ((W_datatypes.NEXT_STATEMENT_5(label_colon,identifier)))
 end)
  in ( LrTable.NT 199, ( result, label_colon1left, SEMICOLON1right), 
 rest671)
@@ -14983,7 +14976,7 @@ rest671)) => let val  result = MlyValue.package_body (fn _ => let val
  val  identifier2 = identifier2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.PACKAGE_BODY_1(identifier1, package_body_declarative_part, identifier2))
+(W_datatypes.PACKAGE_BODY_1(identifier1,package_body_declarative_part,identifier2))
 )
 end)
  in ( LrTable.NT 204, ( result, PACKAGE1left, SEMICOLON1right), 
@@ -15008,7 +15001,7 @@ rest671)) => let val  result = MlyValue.package_body (fn _ => let val
  val  BODY2 = BODY2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.PACKAGE_BODY_2(identifier, package_body_declarative_part))
+(W_datatypes.PACKAGE_BODY_2(identifier,package_body_declarative_part))
 )
 end)
  in ( LrTable.NT 204, ( result, PACKAGE1left, SEMICOLON1right), 
@@ -15032,7 +15025,7 @@ rest671)) => let val  result = MlyValue.package_body (fn _ => let val
  val  identifier2 = identifier2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.PACKAGE_BODY_1(identifier1, package_body_declarative_part, identifier2))
+(W_datatypes.PACKAGE_BODY_1(identifier1,package_body_declarative_part,identifier2))
 )
 end)
  in ( LrTable.NT 204, ( result, PACKAGE1left, SEMICOLON1right), 
@@ -15054,7 +15047,7 @@ rest671)) => let val  result = MlyValue.package_body (fn _ => let val
  val  END1 = END1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.PACKAGE_BODY_2(identifier, package_body_declarative_part))
+(W_datatypes.PACKAGE_BODY_2(identifier,package_body_declarative_part))
 )
 end)
  in ( LrTable.NT 204, ( result, PACKAGE1left, SEMICOLON1right), 
@@ -15237,7 +15230,7 @@ package_declarative_part1 ()
  val  identifier2 = identifier2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.PACKAGE_DECLARATION_1(identifier1, package_declarative_part, identifier2))
+(W_datatypes.PACKAGE_DECLARATION_1(identifier1,package_declarative_part,identifier2))
 )
 end)
  in ( LrTable.NT 207, ( result, PACKAGE1left, SEMICOLON1right), 
@@ -15281,7 +15274,7 @@ package_declarative_part1 ()
  val  identifier2 = identifier2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.PACKAGE_DECLARATION_1(identifier1, package_declarative_part, identifier2))
+(W_datatypes.PACKAGE_DECLARATION_1(identifier1,package_declarative_part,identifier2))
 )
 end)
  in ( LrTable.NT 207, ( result, PACKAGE1left, SEMICOLON1right), 
@@ -15301,7 +15294,7 @@ package_declarative_part1 ()
  val  END1 = END1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.PACKAGE_DECLARATION_2(identifier, package_declarative_part))
+(W_datatypes.PACKAGE_DECLARATION_2(identifier,package_declarative_part))
 )
 end)
  in ( LrTable.NT 207, ( result, PACKAGE1left, SEMICOLON1right), 
@@ -18595,8 +18588,7 @@ MlyValue.scalar_nature_definition (fn _ => let val  name1 = name1 ()
  val  THROUGH1 = THROUGH1 ()
  val  name3 = name3 ()
  val  REFERENCE1 = REFERENCE1 ()
- in ((W_datatypes.SCALAR_NATURE_DEFINITION(name1 , name2 , name3)))
-
+ in ((W_datatypes.SCALAR_NATURE_DEFINITION(name1 ,name2 ,name3)))
 end)
  in ( LrTable.NT 460, ( result, name1left, REFERENCE1right), rest671)
 
@@ -18686,7 +18678,7 @@ result = MlyValue.selected_signal_assignment (fn _ => let val  WITH1 =
 selected_waveforms1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.SELECTED_SIGNAL_ASSIGNMENT(expression , target , opts , selected_waveforms))
+(W_datatypes.SELECTED_SIGNAL_ASSIGNMENT(expression ,target ,opts ,selected_waveforms))
 )
 end)
  in ( LrTable.NT 255, ( result, WITH1left, SEMICOLON1right), rest671)
@@ -18699,7 +18691,7 @@ MlyValue.wave_when_choices (fn _ => let val  (waveform as waveform1) =
  waveform1 ()
  val  WHEN1 = WHEN1 ()
  val  (choices as choices1) = choices1 ()
- in ((W_datatypes.WAVE_WHEN_CHOICES(waveform, choices)))
+ in ((W_datatypes.WAVE_WHEN_CHOICES(waveform,choices)))
 end)
  in ( LrTable.NT 401, ( result, waveform1left, choices1right), rest671
 )
@@ -18738,7 +18730,7 @@ MlyValue.choices choices1, _, _)) :: ( _, ( MlyValue.WHEN WHEN1, _, _)
  val  (wave_when_choices_seq as wave_when_choices_seq1) = 
 wave_when_choices_seq1 ()
  in (
-(W_datatypes.SELECTED_WAVEFORMS(waveform, choices, wave_when_choices_seq))
+(W_datatypes.SELECTED_WAVEFORMS(waveform,choices,wave_when_choices_seq))
 )
 end)
  in ( LrTable.NT 258, ( result, waveform1left, 
@@ -18759,7 +18751,7 @@ end
 result = MlyValue.sensitivity_list (fn _ => let val  (name as name1) =
  name1 ()
  val  (name_seq as name_seq1) = name_seq1 ()
- in ((W_datatypes.SENSITIVITY_LIST(name, name_seq)))
+ in ((W_datatypes.SENSITIVITY_LIST(name,name_seq)))
 end)
  in ( LrTable.NT 260, ( result, name1left, name_seq1right), rest671)
 
@@ -19004,7 +18996,7 @@ rest671)) => let val  result = MlyValue.signal_assignment_statement
  val  (waveform as waveform1) = waveform1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.SIGNAL_ASSIGNMENT_STATEMENT_1(label_colon , target , delay_mechanism , waveform))
+(W_datatypes.SIGNAL_ASSIGNMENT_STATEMENT_1(label_colon ,target ,delay_mechanism ,waveform))
 )
 end)
  in ( LrTable.NT 272, ( result, label_colon1left, SEMICOLON1right), 
@@ -19022,7 +19014,7 @@ target1) = target1 ()
  val  (waveform as waveform1) = waveform1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.SIGNAL_ASSIGNMENT_STATEMENT_2(target , delay_mechanism , waveform))
+(W_datatypes.SIGNAL_ASSIGNMENT_STATEMENT_2(target ,delay_mechanism ,waveform))
 )
 end)
  in ( LrTable.NT 272, ( result, target1left, SEMICOLON1right), rest671
@@ -19053,7 +19045,7 @@ MlyValue.label_colon label_colon1, label_colon1left, _)) :: rest671))
  val  (waveform as waveform1) = waveform1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.SIGNAL_ASSIGNMENT_STATEMENT_4(label_colon,target, waveform))
+(W_datatypes.SIGNAL_ASSIGNMENT_STATEMENT_4(label_colon,target,waveform))
 )
 end)
  in ( LrTable.NT 272, ( result, label_colon1left, SEMICOLON1right), 
@@ -19164,7 +19156,7 @@ end
 result = MlyValue.signal_list (fn _ => let val  (name as name1) = 
 name1 ()
  val  (name_seq as name_seq1) = name_seq1 ()
- in ((W_datatypes.SIGNAL_LIST_1(name, name_seq)))
+ in ((W_datatypes.SIGNAL_LIST_1(name,name_seq)))
 end)
  in ( LrTable.NT 276, ( result, name1left, name_seq1right), rest671)
 
@@ -19195,7 +19187,7 @@ LSQUARE1left, _)) :: rest671)) => let val  result = MlyValue.signatur
  val  RETURN1 = RETURN1 ()
  val  name2 = name2 ()
  val  RSQUARE1 = RSQUARE1 ()
- in ((W_datatypes.SIGNATURE_1(name, name_seq, name)))
+ in ((W_datatypes.SIGNATURE_1(name,name_seq,name)))
 end)
  in ( LrTable.NT 277, ( result, LSQUARE1left, RSQUARE1right), rest671)
 
@@ -19231,7 +19223,7 @@ name1, _, _)) :: ( _, ( MlyValue.LSQUARE LSQUARE1, LSQUARE1left, _))
  val  (name as name1) = name1 ()
  val  (name_seq as name_seq1) = name_seq1 ()
  val  RSQUARE1 = RSQUARE1 ()
- in ((W_datatypes.SIGNATURE_4(name, name_seq)))
+ in ((W_datatypes.SIGNATURE_4(name,name_seq)))
 end)
  in ( LrTable.NT 277, ( result, LSQUARE1left, RSQUARE1right), rest671)
 
@@ -19242,7 +19234,7 @@ MlyValue.adding_operator adding_operator1, adding_operator1left, _))
  => let val  (adding_operator as adding_operator1) = adding_operator1
  ()
  val  (term as term1) = term1 ()
- in ((W_datatypes.ADDING_OPERATOR_TERM(adding_operator, term)))
+ in ((W_datatypes.ADDING_OPERATOR_TERM(adding_operator,term)))
 end)
  in ( LrTable.NT 402, ( result, adding_operator1left, term1right), 
 rest671)
@@ -19273,7 +19265,7 @@ MlyValue.simple_expression (fn _ => let val  PLUS1 = PLUS1 ()
  val  (term as term1) = term1 ()
  val  (adding_operator_term_seq as adding_operator_term_seq1) = 
 adding_operator_term_seq1 ()
- in ((W_datatypes.SIMPLE_EXPRESSION(term , adding_operator_term_seq)))
+ in ((W_datatypes.SIMPLE_EXPRESSION(term ,adding_operator_term_seq)))
 
 end)
  in ( LrTable.NT 279, ( result, PLUS1left, 
@@ -19287,7 +19279,7 @@ MlyValue.simple_expression (fn _ => let val  MINUS1 = MINUS1 ()
  val  (term as term1) = term1 ()
  val  (adding_operator_term_seq as adding_operator_term_seq1) = 
 adding_operator_term_seq1 ()
- in ((W_datatypes.SIMPLE_EXPRESSION(term , adding_operator_term_seq)))
+ in ((W_datatypes.SIMPLE_EXPRESSION(term ,adding_operator_term_seq)))
 
 end)
  in ( LrTable.NT 279, ( result, MINUS1left, 
@@ -19320,7 +19312,7 @@ MlyValue.simple_simultaneous_statement (fn _ => let val  (label_colon
  val  (tolerance_aspect as tolerance_aspect1) = tolerance_aspect1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.SIMPLE_SIMULTANEOUS_STATEMENT_1(label_colon , simple_expression1 , simple_expression2 , tolerance_aspect))
+(W_datatypes.SIMPLE_SIMULTANEOUS_STATEMENT_1(label_colon ,simple_expression1 ,simple_expression2 ,tolerance_aspect))
 )
 end)
  in ( LrTable.NT 461, ( result, label_colon1left, SEMICOLON1right), 
@@ -19338,7 +19330,7 @@ simple_expression1, simple_expression1left, _)) :: rest671)) => let
  val  (tolerance_aspect as tolerance_aspect1) = tolerance_aspect1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.SIMPLE_SIMULTANEOUS_STATEMENT_2(simple_expression1, simple_expression2 , tolerance_aspect))
+(W_datatypes.SIMPLE_SIMULTANEOUS_STATEMENT_2(simple_expression1,simple_expression2 ,tolerance_aspect))
 )
 end)
  in ( LrTable.NT 461, ( result, simple_expression1left, 
@@ -19355,7 +19347,7 @@ simple_expression1 = simple_expression1 ()
  val  simple_expression2 = simple_expression2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.SIMPLE_SIMULTANEOUS_STATEMENT_3(simple_expression1 , simple_expression2))
+(W_datatypes.SIMPLE_SIMULTANEOUS_STATEMENT_3(simple_expression1 ,simple_expression2))
 )
 end)
  in ( LrTable.NT 461, ( result, simple_expression1left, 
@@ -19373,7 +19365,7 @@ MlyValue.label_colon label_colon1, label_colon1left, _)) :: rest671))
  val  simple_expression2 = simple_expression2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.SIMPLE_SIMULTANEOUS_STATEMENT_4(label_colon , simple_expression1 , simple_expression2))
+(W_datatypes.SIMPLE_SIMULTANEOUS_STATEMENT_4(label_colon ,simple_expression1 ,simple_expression2))
 )
 end)
  in ( LrTable.NT 461, ( result, label_colon1left, SEMICOLON1right), 
@@ -19390,7 +19382,7 @@ rest671)) => let val  result = MlyValue.simultaneous_alternative (fn _
  val  (simultaneous_statement_part as simultaneous_statement_part1) = 
 simultaneous_statement_part1 ()
  in (
-(W_datatypes.SIMULTANEOUS_ALTERNATIVE(choices , simultaneous_statement_part))
+(W_datatypes.SIMULTANEOUS_ALTERNATIVE(choices ,simultaneous_statement_part))
 )
 end)
  in ( LrTable.NT 463, ( result, WHEN1left, 
@@ -19444,7 +19436,7 @@ simultaneous_alternative1 ()
  val  (identifier as identifier1) = identifier1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.SIMULTANEOUS_CASE_STATEMENT_1(label_colon , expression , simultaneous_alternative , simultaneous_alternative_seq , identifier))
+(W_datatypes.SIMULTANEOUS_CASE_STATEMENT_1(label_colon ,expression ,simultaneous_alternative ,simultaneous_alternative_seq ,identifier))
 )
 end)
  in ( LrTable.NT 465, ( result, label_colon1left, SEMICOLON1right), 
@@ -19471,7 +19463,7 @@ simultaneous_alternative1 ()
  val  (identifier as identifier1) = identifier1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.SIMULTANEOUS_CASE_STATEMENT_2(expression , simultaneous_alternative , simultaneous_alternative_seq , identifier))
+(W_datatypes.SIMULTANEOUS_CASE_STATEMENT_2(expression ,simultaneous_alternative ,simultaneous_alternative_seq ,identifier))
 )
 end)
  in ( LrTable.NT 465, ( result, CASE1left, SEMICOLON1right), rest671)
@@ -19496,7 +19488,7 @@ simultaneous_alternative1 ()
  val  CASE2 = CASE2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.SIMULTANEOUS_CASE_STATEMENT_3(expression , simultaneous_alternative , simultaneous_alternative_seq))
+(W_datatypes.SIMULTANEOUS_CASE_STATEMENT_3(expression ,simultaneous_alternative ,simultaneous_alternative_seq))
 )
 end)
  in ( LrTable.NT 465, ( result, CASE1left, SEMICOLON1right), rest671)
@@ -19523,7 +19515,7 @@ simultaneous_alternative1 ()
  val  CASE2 = CASE2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.SIMULTANEOUS_CASE_STATEMENT_4(label_colon , expression , simultaneous_alternative , simultaneous_alternative_seq))
+(W_datatypes.SIMULTANEOUS_CASE_STATEMENT_4(label_colon ,expression ,simultaneous_alternative ,simultaneous_alternative_seq))
 )
 end)
  in ( LrTable.NT 465, ( result, label_colon1left, SEMICOLON1right), 
@@ -19541,7 +19533,7 @@ ELSIF1 = ELSIF1 ()
  val  (simultaneous_statement_part as simultaneous_statement_part1) = 
 simultaneous_statement_part1 ()
  in (
-(W_datatypes.CONDITION_SIMULTANEOUS_STATEMENT_PART(condition, simultaneous_statement_part))
+(W_datatypes.CONDITION_SIMULTANEOUS_STATEMENT_PART(condition,simultaneous_statement_part))
 )
 end)
  in ( LrTable.NT 466, ( result, ELSIF1left, 
@@ -19600,7 +19592,7 @@ condition_simultaneous_statement_part_seq1 ()
  val  (identifier as identifier1) = identifier1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.SIMULTANEOUS_IF_STATEMENT_1(label_colon , condition , simultaneous_statement_part , condition_simultaneous_statement_part_seq , simultaneous_statement_part , identifier))
+(W_datatypes.SIMULTANEOUS_IF_STATEMENT_1(label_colon ,condition ,simultaneous_statement_part ,condition_simultaneous_statement_part_seq ,simultaneous_statement_part ,identifier))
 )
 end)
  in ( LrTable.NT 468, ( result, label_colon1left, SEMICOLON1right), 
@@ -19632,7 +19624,7 @@ condition_simultaneous_statement_part_seq1 ()
  val  (identifier as identifier1) = identifier1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.SIMULTANEOUS_IF_STATEMENT_2(condition , simultaneous_statement_part , condition_simultaneous_statement_part_seq , simultaneous_statement_part , identifier))
+(W_datatypes.SIMULTANEOUS_IF_STATEMENT_2(condition ,simultaneous_statement_part ,condition_simultaneous_statement_part_seq ,simultaneous_statement_part ,identifier))
 )
 end)
  in ( LrTable.NT 468, ( result, IF1left, SEMICOLON1right), rest671)
@@ -19662,7 +19654,7 @@ condition_simultaneous_statement_part_seq1 ()
  val  USE2 = USE2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.SIMULTANEOUS_IF_STATEMENT_8(condition , simultaneous_statement_part , condition_simultaneous_statement_part_seq , simultaneous_statement_part))
+(W_datatypes.SIMULTANEOUS_IF_STATEMENT_8(condition ,simultaneous_statement_part ,condition_simultaneous_statement_part_seq ,simultaneous_statement_part))
 )
 end)
  in ( LrTable.NT 468, ( result, IF1left, SEMICOLON1right), rest671)
@@ -19694,7 +19686,7 @@ condition_simultaneous_statement_part_seq1 ()
  val  USE2 = USE2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.SIMULTANEOUS_IF_STATEMENT_7(label_colon , condition , simultaneous_statement_part , condition_simultaneous_statement_part_seq , simultaneous_statement_part))
+(W_datatypes.SIMULTANEOUS_IF_STATEMENT_7(label_colon ,condition ,simultaneous_statement_part ,condition_simultaneous_statement_part_seq ,simultaneous_statement_part))
 )
 end)
  in ( LrTable.NT 468, ( result, label_colon1left, SEMICOLON1right), 
@@ -19724,7 +19716,7 @@ condition_simultaneous_statement_part_seq1 ()
  val  (identifier as identifier1) = identifier1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.SIMULTANEOUS_IF_STATEMENT_3(label_colon , condition , simultaneous_statement_part , condition_simultaneous_statement_part_seq , identifier))
+(W_datatypes.SIMULTANEOUS_IF_STATEMENT_3(label_colon ,condition ,simultaneous_statement_part ,condition_simultaneous_statement_part_seq ,identifier))
 )
 end)
  in ( LrTable.NT 468, ( result, label_colon1left, SEMICOLON1right), 
@@ -19752,7 +19744,7 @@ condition_simultaneous_statement_part_seq1 ()
  val  (identifier as identifier1) = identifier1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.SIMULTANEOUS_IF_STATEMENT_4(condition , simultaneous_statement_part , condition_simultaneous_statement_part_seq , identifier))
+(W_datatypes.SIMULTANEOUS_IF_STATEMENT_4(condition ,simultaneous_statement_part ,condition_simultaneous_statement_part_seq ,identifier))
 )
 end)
  in ( LrTable.NT 468, ( result, IF1left, SEMICOLON1right), rest671)
@@ -19778,7 +19770,7 @@ condition_simultaneous_statement_part_seq1 ()
  val  USE2 = USE2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.SIMULTANEOUS_IF_STATEMENT_6(condition , simultaneous_statement_part , condition_simultaneous_statement_part_seq))
+(W_datatypes.SIMULTANEOUS_IF_STATEMENT_6(condition ,simultaneous_statement_part ,condition_simultaneous_statement_part_seq))
 )
 end)
  in ( LrTable.NT 468, ( result, IF1left, SEMICOLON1right), rest671)
@@ -19806,7 +19798,7 @@ condition_simultaneous_statement_part_seq1 ()
  val  USE2 = USE2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.SIMULTANEOUS_IF_STATEMENT_5(label_colon , condition , simultaneous_statement_part , condition_simultaneous_statement_part_seq))
+(W_datatypes.SIMULTANEOUS_IF_STATEMENT_5(label_colon ,condition ,simultaneous_statement_part ,condition_simultaneous_statement_part_seq))
 )
 end)
  in ( LrTable.NT 468, ( result, label_colon1left, SEMICOLON1right), 
@@ -19835,7 +19827,7 @@ procedural_statement_part1 ()
  val  (identifier as identifier1) = identifier1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.SIMULTANEOUS_PROCEDURAL_STATEMENT_1(label_colon , procedural_declarative_part , procedural_statement_part , identifier))
+(W_datatypes.SIMULTANEOUS_PROCEDURAL_STATEMENT_1(label_colon ,procedural_declarative_part ,procedural_statement_part ,identifier))
 )
 end)
  in ( LrTable.NT 471, ( result, label_colon1left, SEMICOLON1right), 
@@ -19861,7 +19853,7 @@ procedural_statement_part1 ()
  val  PROCEDURAL2 = PROCEDURAL2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.SIMULTANEOUS_PROCEDURAL_STATEMENT_3(procedural_declarative_part , procedural_statement_part))
+(W_datatypes.SIMULTANEOUS_PROCEDURAL_STATEMENT_3(procedural_declarative_part ,procedural_statement_part))
 )
 end)
  in ( LrTable.NT 471, ( result, PROCEDURAL1left, SEMICOLON1right), 
@@ -19889,7 +19881,7 @@ procedural_statement_part1 ()
  val  (identifier as identifier1) = identifier1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.SIMULTANEOUS_PROCEDURAL_STATEMENT_2(procedural_declarative_part , procedural_statement_part , identifier))
+(W_datatypes.SIMULTANEOUS_PROCEDURAL_STATEMENT_2(procedural_declarative_part ,procedural_statement_part ,identifier))
 )
 end)
  in ( LrTable.NT 471, ( result, PROCEDURAL1left, SEMICOLON1right), 
@@ -19916,7 +19908,7 @@ procedural_statement_part1 ()
  val  PROCEDURAL2 = PROCEDURAL2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.SIMULTANEOUS_PROCEDURAL_STATEMENT_4(label_colon , procedural_declarative_part , procedural_statement_part))
+(W_datatypes.SIMULTANEOUS_PROCEDURAL_STATEMENT_4(label_colon ,procedural_declarative_part ,procedural_statement_part))
 )
 end)
  in ( LrTable.NT 471, ( result, label_colon1left, SEMICOLON1right), 
@@ -19944,7 +19936,7 @@ procedural_statement_part1 ()
  val  (identifier as identifier1) = identifier1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.SIMULTANEOUS_PROCEDURAL_STATEMENT_1(label_colon , procedural_declarative_part , procedural_statement_part , identifier))
+(W_datatypes.SIMULTANEOUS_PROCEDURAL_STATEMENT_1(label_colon ,procedural_declarative_part ,procedural_statement_part ,identifier))
 )
 end)
  in ( LrTable.NT 471, ( result, label_colon1left, SEMICOLON1right), 
@@ -19968,7 +19960,7 @@ procedural_statement_part1 ()
  val  PROCEDURAL2 = PROCEDURAL2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.SIMULTANEOUS_PROCEDURAL_STATEMENT_3(procedural_declarative_part , procedural_statement_part))
+(W_datatypes.SIMULTANEOUS_PROCEDURAL_STATEMENT_3(procedural_declarative_part ,procedural_statement_part))
 )
 end)
  in ( LrTable.NT 471, ( result, PROCEDURAL1left, SEMICOLON1right), 
@@ -19994,7 +19986,7 @@ procedural_statement_part1 ()
  val  (identifier as identifier1) = identifier1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.SIMULTANEOUS_PROCEDURAL_STATEMENT_2(procedural_declarative_part , procedural_statement_part , identifier))
+(W_datatypes.SIMULTANEOUS_PROCEDURAL_STATEMENT_2(procedural_declarative_part ,procedural_statement_part ,identifier))
 )
 end)
  in ( LrTable.NT 471, ( result, PROCEDURAL1left, SEMICOLON1right), 
@@ -20020,7 +20012,7 @@ procedural_statement_part1 ()
  val  PROCEDURAL2 = PROCEDURAL2 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.SIMULTANEOUS_PROCEDURAL_STATEMENT_4(label_colon , procedural_declarative_part , procedural_statement_part))
+(W_datatypes.SIMULTANEOUS_PROCEDURAL_STATEMENT_4(label_colon ,procedural_declarative_part ,procedural_statement_part))
 )
 end)
  in ( LrTable.NT 471, ( result, label_colon1left, SEMICOLON1right), 
@@ -20133,7 +20125,7 @@ SPECTRUM1 ()
  val  COMMA1 = COMMA1 ()
  val  simple_expression2 = simple_expression2 ()
  in (
-(W_datatypes.SOURCE_ASPECT_1(simple_expression, simple_expression)))
+(W_datatypes.SOURCE_ASPECT_1(simple_expression,simple_expression)))
 
 end)
  in ( LrTable.NT 472, ( result, SPECTRUM1left, simple_expression2right
@@ -20165,7 +20157,7 @@ subtype_indication1 ()
  val  (source_aspect as source_aspect1) = source_aspect1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.SOURCE_QUANTITY_DECLARATION(identifier_list , subtype_indication , source_aspect))
+(W_datatypes.SOURCE_QUANTITY_DECLARATION(identifier_list ,subtype_indication ,source_aspect))
 )
 end)
  in ( LrTable.NT 475, ( result, QUANTITY1left, SEMICOLON1right), 
@@ -20183,7 +20175,7 @@ quantity_specification1 ()
  val  (expression as expression1) = expression1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.STEP_LIMIT_SPECIFICATION(quantity_specification , expression))
+(W_datatypes.STEP_LIMIT_SPECIFICATION(quantity_specification ,expression))
 )
 end)
  in ( LrTable.NT 419, ( result, LIMIT1left, SEMICOLON1right), rest671)
@@ -20202,8 +20194,8 @@ SUBNATURE1 ()
 subnature_indication1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.SUBNATURE_DECLARATION(identifier , subnature_indication))
-)
+(W_datatypes.SUBNATURE_DECLARATION(identifier ,subnature_indication)))
+
 end)
  in ( LrTable.NT 422, ( result, SUBNATURE1left, SEMICOLON1right), 
 rest671)
@@ -20223,7 +20215,7 @@ name1 ()
  val  expression2 = expression2 ()
  val  THROUGH1 = THROUGH1 ()
  in (
-(W_datatypes.SUBNATURE_INDICATION_1(name , index_constraint , expression , expression))
+(W_datatypes.SUBNATURE_INDICATION_1(name ,index_constraint ,expression ,expression))
 )
 end)
  in ( LrTable.NT 408, ( result, name1left, THROUGH1right), rest671)
@@ -20242,7 +20234,7 @@ name1) = name1 ()
  val  expression2 = expression2 ()
  val  THROUGH1 = THROUGH1 ()
  in (
-(W_datatypes.SUBNATURE_INDICATION_2(name , expression , expression)))
+(W_datatypes.SUBNATURE_INDICATION_2(name ,expression ,expression)))
 
 end)
  in ( LrTable.NT 408, ( result, name1left, THROUGH1right), rest671)
@@ -20260,9 +20252,9 @@ index_constraint1right)) :: ( _, ( MlyValue.name name1, name1left, _))
  :: rest671)) => let val  result = MlyValue.subnature_indication (fn _
  => let val  (name as name1) = name1 ()
  val  (index_constraint as index_constraint1) = index_constraint1 ()
- in ((W_datatypes.SUBNATURE_INDICATION_4(name , index_constraint)))
-
-end)
+ in ((W_datatypes.SUBNATURE_INDICATION_4(name ,index_constraint)))
+end
+)
  in ( LrTable.NT 408, ( result, name1left, index_constraint1right), 
 rest671)
 end
@@ -20314,7 +20306,7 @@ subprogram_statement_part1 ()
  val  (designator as designator1) = designator1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.SUBPROGRAM_BODY_2(subprogram_specification, subprogram_declarative_part, subprogram_statement_part,designator))
+(W_datatypes.SUBPROGRAM_BODY_2(subprogram_specification,subprogram_declarative_part,subprogram_statement_part,designator))
 )
 end)
  in ( LrTable.NT 290, ( result, subprogram_specification1left, 
@@ -20617,7 +20609,7 @@ PROCEDURE1 ()
 formal_parameter_list1 ()
  val  RPARAN1 = RPARAN1 ()
  in (
-(W_datatypes.PROCEDURE_SPECIFICATION_1(designator , formal_parameter_list))
+(W_datatypes.PROCEDURE_SPECIFICATION_1(designator ,formal_parameter_list))
 )
 end)
  in ( LrTable.NT 230, ( result, PROCEDURE1left, RPARAN1right), rest671
@@ -20653,7 +20645,7 @@ formal_parameter_list1 ()
  val  (subtype_indication as subtype_indication1) = 
 subtype_indication1 ()
  in (
-(W_datatypes.FUNCTION_SPECIFICATION_1(designator , formal_parameter_list , subtype_indication))
+(W_datatypes.FUNCTION_SPECIFICATION_1(designator ,formal_parameter_list ,subtype_indication))
 )
 end)
  in ( LrTable.NT 145, ( result, PURE1left, subtype_indication1right), 
@@ -20671,7 +20663,7 @@ MlyValue.function_specification (fn _ => let val  PURE1 = PURE1 ()
  val  (subtype_indication as subtype_indication1) = 
 subtype_indication1 ()
  in (
-(W_datatypes.FUNCTION_SPECIFICATION_2(designator , subtype_indication))
+(W_datatypes.FUNCTION_SPECIFICATION_2(designator ,subtype_indication))
 )
 end)
  in ( LrTable.NT 145, ( result, PURE1left, subtype_indication1right), 
@@ -20696,7 +20688,7 @@ formal_parameter_list1 ()
  val  (subtype_indication as subtype_indication1) = 
 subtype_indication1 ()
  in (
-(W_datatypes.FUNCTION_SPECIFICATION_1(designator , formal_parameter_list , subtype_indication))
+(W_datatypes.FUNCTION_SPECIFICATION_1(designator ,formal_parameter_list ,subtype_indication))
 )
 end)
  in ( LrTable.NT 145, ( result, IMPURE1left, subtype_indication1right)
@@ -20714,7 +20706,7 @@ MlyValue.function_specification (fn _ => let val  IMPURE1 = IMPURE1 ()
  val  (subtype_indication as subtype_indication1) = 
 subtype_indication1 ()
  in (
-(W_datatypes.FUNCTION_SPECIFICATION_2(designator , subtype_indication))
+(W_datatypes.FUNCTION_SPECIFICATION_2(designator ,subtype_indication))
 )
 end)
  in ( LrTable.NT 145, ( result, IMPURE1left, subtype_indication1right)
@@ -20738,7 +20730,7 @@ formal_parameter_list1 ()
  val  (subtype_indication as subtype_indication1) = 
 subtype_indication1 ()
  in (
-(W_datatypes.FUNCTION_SPECIFICATION_1(designator , formal_parameter_list , subtype_indication))
+(W_datatypes.FUNCTION_SPECIFICATION_1(designator ,formal_parameter_list ,subtype_indication))
 )
 end)
  in ( LrTable.NT 145, ( result, FUNCTION1left, 
@@ -20755,7 +20747,7 @@ FUNCTION1 = FUNCTION1 ()
  val  (subtype_indication as subtype_indication1) = 
 subtype_indication1 ()
  in (
-(W_datatypes.FUNCTION_SPECIFICATION_2(designator , subtype_indication))
+(W_datatypes.FUNCTION_SPECIFICATION_2(designator ,subtype_indication))
 )
 end)
  in ( LrTable.NT 145, ( result, FUNCTION1left, 
@@ -20800,7 +20792,7 @@ rest671)) => let val  result = MlyValue.subtype_indication (fn _ =>
  val  (constraint as constraint1) = constraint1 ()
  val  (tolerance_aspect as tolerance_aspect1) = tolerance_aspect1 ()
  in (
-(W_datatypes.SUBTYPE_INDICATION_1(selected_name , selected_name , constraint , tolerance_aspect))
+(W_datatypes.SUBTYPE_INDICATION_1(selected_name ,selected_name ,constraint ,tolerance_aspect))
 )
 end)
  in ( LrTable.NT 300, ( result, selected_name1left, 
@@ -20815,7 +20807,7 @@ selected_name1) = selected_name1 ()
  val  (constraint as constraint1) = constraint1 ()
  val  (tolerance_aspect as tolerance_aspect1) = tolerance_aspect1 ()
  in (
-(W_datatypes.SUBTYPE_INDICATION_2(selected_name , constraint , tolerance_aspect))
+(W_datatypes.SUBTYPE_INDICATION_2(selected_name ,constraint ,tolerance_aspect))
 )
 end)
  in ( LrTable.NT 300, ( result, selected_name1left, 
@@ -20830,7 +20822,7 @@ selected_name1) = selected_name1 ()
  val  selected_name2 = selected_name2 ()
  val  (tolerance_aspect as tolerance_aspect1) = tolerance_aspect1 ()
  in (
-(W_datatypes.SUBTYPE_INDICATION_3(selected_name , selected_name , tolerance_aspect))
+(W_datatypes.SUBTYPE_INDICATION_3(selected_name ,selected_name ,tolerance_aspect))
 )
 end)
  in ( LrTable.NT 300, ( result, selected_name1left, 
@@ -20843,7 +20835,7 @@ result = MlyValue.subtype_indication (fn _ => let val  (selected_name
  as selected_name1) = selected_name1 ()
  val  (tolerance_aspect as tolerance_aspect1) = tolerance_aspect1 ()
  in (
-(W_datatypes.SUBTYPE_INDICATION_4(selected_name , tolerance_aspect)))
+(W_datatypes.SUBTYPE_INDICATION_4(selected_name ,tolerance_aspect)))
 
 end)
  in ( LrTable.NT 300, ( result, selected_name1left, 
@@ -20855,8 +20847,8 @@ selected_name2right)) :: ( _, ( MlyValue.selected_name selected_name1,
 MlyValue.subtype_indication (fn _ => let val  (selected_name as 
 selected_name1) = selected_name1 ()
  val  selected_name2 = selected_name2 ()
- in ((W_datatypes.SUBTYPE_INDICATION_5(selected_name , selected_name))
-)
+ in ((W_datatypes.SUBTYPE_INDICATION_5(selected_name ,selected_name)))
+
 end)
  in ( LrTable.NT 300, ( result, selected_name1left, 
 selected_name2right), rest671)
@@ -20879,7 +20871,7 @@ selected_name1) = selected_name1 ()
  val  selected_name2 = selected_name2 ()
  val  (constraint as constraint1) = constraint1 ()
  in (
-(W_datatypes.SUBTYPE_INDICATION_7(selected_name , selected_name , constraint))
+(W_datatypes.SUBTYPE_INDICATION_7(selected_name ,selected_name ,constraint))
 )
 end)
  in ( LrTable.NT 300, ( result, selected_name1left, constraint1right),
@@ -20891,7 +20883,7 @@ selected_name1left, _)) :: rest671)) => let val  result =
 MlyValue.subtype_indication (fn _ => let val  (selected_name as 
 selected_name1) = selected_name1 ()
  val  (constraint as constraint1) = constraint1 ()
- in ((W_datatypes.SUBTYPE_INDICATION_8(selected_name , constraint)))
+ in ((W_datatypes.SUBTYPE_INDICATION_8(selected_name ,constraint)))
 
 end)
  in ( LrTable.NT 300, ( result, selected_name1left, constraint1right),
@@ -20953,7 +20945,7 @@ multiplying_operator as multiplying_operator1) = multiplying_operator1
  ()
  val  (factor as factor1) = factor1 ()
  in (
-(W_datatypes.MULTIPLYING_OPERATOR_FACTOR(multiplying_operator, factor))
+(W_datatypes.MULTIPLYING_OPERATOR_FACTOR(multiplying_operator,factor))
 )
 end)
  in ( LrTable.NT 403, ( result, multiplying_operator1left, 
@@ -20999,7 +20991,7 @@ MlyValue.TO TO1, _, _)) :: ( _, ( MlyValue.name name1, name1left, _))
  let val  (name as name1) = name1 ()
  val  TO1 = TO1 ()
  val  name2 = name2 ()
- in ((W_datatypes.TERMINAL_ASPECT_1(name, name)))
+ in ((W_datatypes.TERMINAL_ASPECT_1(name,name)))
 end)
  in ( LrTable.NT 425, ( result, name1left, name2right), rest671)
 end
@@ -21023,7 +21015,7 @@ TERMINAL1 = TERMINAL1 ()
 subnature_indication1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
  in (
-(W_datatypes.TERMINAL_DECLARATION(identifier_list , subnature_indication))
+(W_datatypes.TERMINAL_DECLARATION(identifier_list ,subnature_indication))
 )
 end)
  in ( LrTable.NT 430, ( result, TERMINAL1left, SEMICOLON1right), 
@@ -21041,7 +21033,7 @@ result = MlyValue.through_aspect (fn _ => let val  (identifier_list
  val  (expression as expression1) = expression1 ()
  val  THROUGH1 = THROUGH1 ()
  in (
-(W_datatypes.THROUGH_ASPECT_1(identifier_list , tolerance_aspect , expression))
+(W_datatypes.THROUGH_ASPECT_1(identifier_list ,tolerance_aspect ,expression))
 )
 end)
  in ( LrTable.NT 426, ( result, identifier_list1left, THROUGH1right), 
@@ -21056,9 +21048,8 @@ result = MlyValue.through_aspect (fn _ => let val  (identifier_list
  val  ASSIGN1 = ASSIGN1 ()
  val  (expression as expression1) = expression1 ()
  val  THROUGH1 = THROUGH1 ()
- in ((W_datatypes.THROUGH_ASPECT_2(identifier_list , expression)))
-end
-)
+ in ((W_datatypes.THROUGH_ASPECT_2(identifier_list ,expression)))
+end)
  in ( LrTable.NT 426, ( result, identifier_list1left, THROUGH1right), 
 rest671)
 end
@@ -21080,9 +21071,8 @@ MlyValue.identifier_list identifier_list1, identifier_list1left, _))
  let val  (identifier_list as identifier_list1) = identifier_list1 ()
  val  (tolerance_aspect as tolerance_aspect1) = tolerance_aspect1 ()
  val  THROUGH1 = THROUGH1 ()
- in (
-(W_datatypes.THROUGH_ASPECT_4(identifier_list , tolerance_aspect)))
-
+ in ((W_datatypes.THROUGH_ASPECT_4(identifier_list ,tolerance_aspect))
+)
 end)
  in ( LrTable.NT 426, ( result, identifier_list1left, THROUGH1right), 
 rest671)
@@ -21117,9 +21107,9 @@ TYPE1 ()
  val  IS1 = IS1 ()
  val  (type_definition as type_definition1) = type_definition1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
- in ((W_datatypes.TYPE_DECLARATION_1(identifier, type_definition)))
-
-end)
+ in ((W_datatypes.TYPE_DECLARATION_1(identifier,type_definition)))
+end
+)
  in ( LrTable.NT 307, ( result, TYPE1left, SEMICOLON1right), rest671)
 
 end
@@ -21212,7 +21202,7 @@ index_subtype_definition1 ()
  val  (subtype_indication as subtype_indication1) = 
 subtype_indication1 ()
  in (
-(W_datatypes.UNCONSTRAINED_ARRAY_DEFINITION(index_subtype_definition, index_subtype_definition_seq,subtype_indication))
+(W_datatypes.UNCONSTRAINED_ARRAY_DEFINITION(index_subtype_definition,index_subtype_definition_seq,subtype_indication))
 )
 end)
  in ( LrTable.NT 420, ( result, ARRAY1left, subtype_indication1right),
@@ -21237,7 +21227,7 @@ index_subtype_definition1 ()
  val  (subnature_indication as subnature_indication1) = 
 subnature_indication1 ()
  in (
-(W_datatypes.UNCONSTRAINED_NATURE_DEFINITION(index_subtype_definition, index_subtype_definition_seq,subnature_indication))
+(W_datatypes.UNCONSTRAINED_NATURE_DEFINITION(index_subtype_definition,index_subtype_definition_seq,subnature_indication))
 )
 end)
  in ( LrTable.NT 415, ( result, ARRAY1left, subnature_indication1right
@@ -21267,7 +21257,7 @@ MlyValue.use_clause (fn _ => let val  USE1 = USE1 ()
  val  (selected_name_seq as selected_name_seq1) = selected_name_seq1
  ()
  val  SEMICOLON1 = SEMICOLON1 ()
- in ((W_datatypes.USE_CLAUSE(selected_name, selected_name_seq)))
+ in ((W_datatypes.USE_CLAUSE(selected_name,selected_name_seq)))
 end)
  in ( LrTable.NT 313, ( result, USE1left, SEMICOLON1right), rest671)
 
@@ -21564,7 +21554,7 @@ MlyValue.wait_statement (fn _ => let val  WAIT1 = WAIT1 ()
  val  (condition_clause as condition_clause1) = condition_clause1 ()
  val  (timeout_clause as timeout_clause1) = timeout_clause1 ()
  val  SEMICOLON1 = SEMICOLON1 ()
- in ((W_datatypes.WAIT_STATEMENT_1(condition_clause, timeout_clause)))
+ in ((W_datatypes.WAIT_STATEMENT_1(condition_clause,timeout_clause)))
 
 end)
  in ( LrTable.NT 319, ( result, WAIT1left, SEMICOLON1right), rest671)
@@ -21637,7 +21627,7 @@ waveform_element1, waveform_element1left, _)) :: rest671)) => let val
 waveform_element1) = waveform_element1 ()
  val  (waveform_element_seq as waveform_element_seq1) = 
 waveform_element_seq1 ()
- in ((W_datatypes.WAVEFORM(waveform_element, waveform_element_seq)))
+ in ((W_datatypes.WAVEFORM(waveform_element,waveform_element_seq)))
 
 end)
  in ( LrTable.NT 320, ( result, waveform_element1left, 

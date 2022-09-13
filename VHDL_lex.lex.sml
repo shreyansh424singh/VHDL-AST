@@ -115,7 +115,7 @@ structure Tokens = Tokens
     val col1 = ref 0;
     val col2 = ref 0;
     val eolpos = ref 0;
-    val fd = TextIO.openOut "test.txt";
+    val fd = TextIO.openOut "example/test.txt";
     val eof = fn fileName => Tokens.EOF(!col2,!lin1,!col1)
     val badCh : string * string * int * int * int-> unit = fn
                 (fileName,bad,lin1,col1, col2) =>
